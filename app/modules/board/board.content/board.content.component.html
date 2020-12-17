@@ -1,0 +1,11 @@
+<div class="board-content" [ngClass]="{
+    'no-content': contentType === contentTypes.none,
+    'single-content': contentType === contentTypes.single,
+    'double-content': contentType === contentTypes.double,
+    'triple-content': contentType === contentTypes.triple,
+    'four-or-more-content': contentType === contentTypes.fourOrMore
+}">
+    <div class="board-tile-item" *ngFor="let shard of shards">
+        <wn-board-shard-tile [shard]="shard"></wn-board-shard-tile>
+    </div>
+</div>

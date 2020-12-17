@@ -1,0 +1,40 @@
+<wn-navbar-social [labels]="translationResolved"></wn-navbar-social>
+<div class="profile-page profile-page-edit" *ngIf="user && user.id && user.nid">
+    <div class="profile-header">
+        <!-- Profile Cover -->
+        <wn-user-profile-cover [userNid]="user.nid" [edit]="true" [parallax]="true"
+                               [translations]="translationResolved"></wn-user-profile-cover>
+    </div>
+    <!-- Profile toolbar -->
+    <div class="profile-toolbar toolbar-edit">
+        <button class="profile-toolbar-button profile-button-back pull-right" (click)="goBack()">
+            {{translationResolved.back}}
+        </button>
+        <div class="clearfix"></div>
+    </div>
+    <div class="profile-content-wrapper clearfix">
+        <div class="toolbar-container">
+        </div>
+        <div class="page-container">
+            <aside class="profile-sidebar">
+                <h1>Passport</h1>
+                <wn-profile-passport [user]="user" [affix]="true" [edit]="true"
+                                     [translations]="translationResolved"
+                                     [followed]="user.isFollowed" [following]="user.isFollowing"
+                                     [showFollowButton]="false"></wn-profile-passport>
+            </aside>
+            <section class="profile-content">
+                <h1>Account</h1>
+                <div class="form-container">
+                    <div class="form-title">
+                        <h2>{{ translationResolved.change_your_basic_account_info }}</h2>
+                    </div>
+                    <wn-profile-edit-form [user]="user"
+                                          [countries]="translatedCountriesResolved"
+                                          [translations]="translationResolved"></wn-profile-edit-form>
+                </div>
+            </section>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

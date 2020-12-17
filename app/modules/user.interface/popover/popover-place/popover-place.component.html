@@ -1,0 +1,29 @@
+<article class="loading text-center display-flex justify-content-center" *ngIf="isTargetPlaceLoaded === false">
+    <wn-icon
+        glyph="loader"
+        animation="spin"
+        [color]="true"
+        iconSize="xl">
+    </wn-icon>
+</article>
+<article class="text-center" *ngIf="isTargetPlaceLoaded === true" (click)="goToLinkedPlace($event)">
+    <header class="cursor-pointer">
+        <wn-icon
+            [glyph]="iconGlyph"
+            pin="circle"
+            [color]="true"
+            iconSize="lg"
+        ></wn-icon>
+        <h1 class="h2">{{ target.title }}</h1>
+        <wn-star-rating *ngIf="target.rating !== undefined" ratingValue="{{ target.rating }}"></wn-star-rating>
+        <address class="margin-vertical-xs text-secondary" *ngIf="target.address !== undefined">{{ target.address }}</address>
+    </header>
+    <wn-follow-button
+        [targetId]="target.id"
+        [isTargetFollowed]="target.isFollowed"
+        [translation]="translationFollowButton">
+    </wn-follow-button>
+    <section class="statistics margin-top-sm">
+        <wn-statistics-bar [items]="statisticsItems"></wn-statistics-bar>
+    </section>
+</article>

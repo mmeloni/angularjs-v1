@@ -1,0 +1,8 @@
+<blockquote [ngClass]="cssClasses">
+    <p [ngClass]="{ 'text-center': centered === true }">
+        {{ quote }}
+    </p>
+    <footer *ngIf="source !== undefined" [ngClass]="{ 'text-center': centered === true }"  class="margin-top-md">
+        <wn-author-info [author]="source"></wn-author-info>
+    </footer>
+</blockquote>

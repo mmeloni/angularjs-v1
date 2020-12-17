@@ -1,0 +1,32 @@
+<!--
+    NOTE: Keep the indentation in this file as is.
+          The uib-popover will notice even the slightest change and alter the visual rendering accordingly
+-->
+<article>
+    <h1 class="h4 margin-top-none margin-bottom-sm text-secondary">{{ ::translation.travelBoxFolderPopoverTitle }}:</h1>
+
+    <section ng-if="placeStatistics.stages.count === 0 && placeStatistics.hotels.count === 0 && placeStatistics.attractions.count === 0">
+        —
+    </section>
+
+    <section ng-if="placeStatistics.stages.count > 0">
+        <h2 class="h4 margin-bottom-none">
+            <span class="wn-icon wn-icon-place wn-icon-place-color vertical-align-text-bottom"></span><span class="place-statistics-detail-spacer">{{ placeStatistics.stages.count }}</span> {{ ::translation.places }}
+        </h2>
+        <p class="place-statistics-detail-list small">{{ placeStatistics.stages.list }}</p>
+    </section>
+
+    <section ng-if="placeStatistics.hotels.count > 0">
+        <h2 class="h4 margin-bottom-none">
+            <span class="wn-icon wn-icon-hotel wn-icon-hotel-color vertical-align-text-bottom"></span><span class="place-statistics-detail-spacer">{{ placeStatistics.hotels.count }}</span> {{ ::translation.hotels }}
+        </h2>
+        <p class="place-statistics-detail-list small">{{ placeStatistics.hotels.list }}</p>
+    </section>
+
+    <section ng-if="placeStatistics.attractions.count > 0">
+        <h2 class="h4 margin-bottom-none">
+            <span class="wn-icon wn-icon-attraction wn-icon-attraction-color vertical-align-text-bottom"></span><span class="place-statistics-detail-spacer">{{ placeStatistics.attractions.count }}</span> {{ ::translation.attractions }}
+        </h2>
+        <p class="place-statistics-detail-list small">{{ placeStatistics.attractions.list }}</p>
+    </section>
+</article>

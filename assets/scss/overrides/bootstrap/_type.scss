@@ -1,0 +1,22 @@
+h1,
+.h1 {
+  font-weight: $headings-font-weight-h1;
+}
+
+h2,
+.h2 {
+  font-weight: $headings-font-weight-h2;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: $line-height-computed + ($font-size-base / 2);
+  margin-bottom: ($line-height-computed / 2);
+
+  small,
+  .small {
+    font-size: 65%;
+  }
+}
+

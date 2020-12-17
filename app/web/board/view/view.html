@@ -1,0 +1,27 @@
+<div class="board-detail board-view">
+    <section class="header">
+        <wn-image css-classes="image" img-format="'_quad_shard_'" shard=shards[0] err-src="../assets/img/shard-empty.png"></wn-image>
+        <div class="black-veil"></div>
+        <div class="title">{{title}}</div>
+        <div class="description">{{description}}</div>
+    </section>
+    <section class="filters">
+        <div class="filters-background hidden">
+            <wn-image class="image" img-format="'_quad_shard_'" shard=shards[0] err-src="../assets/img/shard-empty.png"></wn-image>
+            <div class="dark-overlay"></div>
+        </div>
+        <wn-image class="owner-image" img-format="'_avatar_'" user=owner err-src="../assets/img/user_empty.png"></wn-image>
+        <div class="owner-text">
+            <div class="name-surname">{{owner.firstname || ""}} {{owner.lastname || ""}}</div>
+            <div class="username">@{{owner.username}}</div>
+        </div>
+
+        <wn-action-bar-view class="action-bar-board-detail" [items]="actionbar.items" [actions]="actionbar.actions"></wn-action-bar-view>
+
+        <div class="title">{{title}}</div>
+    </section>
+    <section class="shards-collection">
+        <wn-grid ng-model="shards" tile-tmpl-url="web/commons/shard/types/shard.html" tiles-controller="ShardController">
+        </wn-grid>
+    </section>
+</div>

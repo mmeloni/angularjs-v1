@@ -1,0 +1,48 @@
+<footer class="container-fluid small">
+    <div class="row">
+        <nav class="col-md-8">
+            <ul class="nav nav-pills">
+                <li>
+                    <a href="http://about.wayonara.com/about-us/">{{ vmLanding.translation.aboutUs }}</a>
+                </li>
+                <li>
+                    <a href="http://about.wayonara.com/contact/">{{ vmLanding.translation.contact_us }}</a>
+                </li>
+                <li>
+                    <a href="http://about.wayonara.com/help/">{{ vmLanding.translation.help }}</a>
+                </li>
+                <li>
+                    <a href="http://about.wayonara.com/jobs/">{{ vmLanding.translation.jobs }}</a>
+                </li>
+                <li>
+                    <a href="http://about.wayonara.com/privacy/">{{ vmLanding.translation.privacy_policy }}</a>
+                </li>
+                <li>
+                    <a href="http://about.wayonara.com/terms/">{{ vmLanding.translation.terms }}</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="col-md-4">
+            <div uib-dropdown class="btn-group btn-group-sm dropup pull-right">
+                <button type="button" class="btn btn-link padding-top-none padding-right-none" uib-dropdown-toggle>
+                    <span class="flag"><img ng-src="../assets/img/flags/{{vmLanding.selectedLang.label}}.png" /></span><span>{{ vmLanding.selectedLang.value }}</span>
+                    <span class="wn-icon wn-icon-chevron-up vertical-align-bottom"></span>
+                </button>
+                <ul class="uib-dropdown-menu" ng-init="vmLanding.switchLanguage(vmLanding.selectedLang.label)">
+                    <li ng-repeat="language in vmLanding.languages track by $index" ng-click="vmLanding.switchLanguage(language.label)">
+                        <span class="flag"><img ng-src="../assets/img/flags/{{language.label}}.png" /></span><span>{{ language.value }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <p class="text-center margin-vertical-grid">{{ vmLanding.translation.copyright }}</p>
+
+    <ul class="list-inline text-center margin-vertical-md">
+        <li><img src="../assets/img/flags/EU.jpg" height="24px" alt="EU funded project" title="EU funded project"/></li>
+        <li><a href="https://www.facebook.com/wayonaracom/"><span class="wn-icon wn-icon-facebook vertical-align-middle"></span></a></li>
+        <li><a href="https://twitter.com/wayonara"><span class="wn-icon wn-icon-twitter vertical-align-middle"></span></a></li>
+        <li><img src="../assets/img/landing/impact-hub-milan.png"  alt="Backed by Impact Hub Milan" title="Backed by Impact Hub Milan"/></li>
+    </ul>
+</footer>

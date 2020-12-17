@@ -1,0 +1,16 @@
+//
+// Popovers
+// --------------------------------------------------
+
+.popover {
+    @include box-shadow($box-shadow-base-size $box-shadow-base-color);
+}
+
+.popover-title {
+    padding: 0;
+    border: 0;
+}
+
+.popover-content {
+    padding: $grid-gutter-width / 2;
+}

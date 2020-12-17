@@ -1,0 +1,15 @@
+@import '../../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+@import '../../../../../../assets/scss/overrides/bootstrap/variables';
+
+article {
+    transition: all ease 0.3s 0s;
+
+    &:hover {
+        margin-top: -10px;
+        @include box-shadow($box-shadow-base-hover-size $box-shadow-base-hover-color);
+    }
+}
+
+h1 {
+    min-height: 140px;
+}

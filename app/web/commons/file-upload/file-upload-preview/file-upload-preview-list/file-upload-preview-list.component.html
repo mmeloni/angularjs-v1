@@ -1,0 +1,10 @@
+<div *ngFor="let file of filesToPreview; let fileIndex = index" class="col-md-2">
+    <wn-file-upload-preview-item
+        [file]="file"
+        [fileId]="fileIndex"
+        filePreviewStyle="max-width: 100%; max-height: 100px; border-radius: 6px;"
+        [containerStyle]="{'height.px': 110}"
+        cssClasses="margin-vertical-grid text-center thumbnail display-flex justify-content-center flex-direction-column"
+        (removeFromList)="remove($event)"
+    ></wn-file-upload-preview-item>
+</div>

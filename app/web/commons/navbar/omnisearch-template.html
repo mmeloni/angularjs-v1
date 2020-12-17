@@ -1,0 +1,15 @@
+<div class="omnisearch-result" ng-click="addToOmnisearch($tag)">
+    <div class="left-panel">
+
+        <wn-image ng-if="data.tagType === 'user'"  user=data img-format="'_avatar_'" err-src="../assets/img/user_empty.png"></wn-image>
+        <wn-image ng-if="data.tagType === 'place'" place=data img-format="'_square_'" err-src="../assets/img/shard-empty.png"></wn-image>
+
+        <div class="omnisearch-result-detail">
+            <span class="label">{{data.label}}</span>
+            <span class="tag-type">{{data.tagType}}</span>
+        </div>
+    </div>
+    <div class="right-panel">
+        <span ng-if="data.tagType === 'place'" class="wn-icon wn-icon-place place-detail-color"></span>
+    </div>
+</div>

@@ -1,0 +1,422 @@
+.shiftDays{
+    color: #f10057;
+}
+
+.result-trip-row{
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 600;
+}
+
+.result-row-secondary{
+    color: #B0BEC5;
+    font-weight: 300;
+}
+
+.result-row{
+    padding: 22px !important;
+    border-top: 0;
+    border-right: 2px solid #eceff1;
+    border-bottom: 1px solid #eceff1;
+    border-left: 2px solid #eceff1;
+}
+
+.quoted-label{
+    background-color: #59aeed;
+    color: #ffffff;
+    width: 80px;
+    height: 25px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 600;
+    line-height: 25px;
+    font-size: 10px;
+    border-radius: 2px;
+}
+
+.quoted-date-unavailable{
+    margin-top: 10px;
+    background-color: #F81618;
+    color: #FFFFFF;
+    width: 120px;
+    height: 25px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 600;
+    line-height: 25px;
+    font-size: 10px;
+}
+
+#tourResultsNavbar .red-date{
+    color: #F81618;
+}
+
+.price-int{
+    font-size: 30px;
+}
+
+.price-decimal{
+    font-size: 20px;
+}
+
+/**layout with toolbar and main content Ex.Quote***/
+
+#tourMainCnt{
+    padding: 22px;
+}
+
+.tour-main-cnt-box{
+    -webkit-flex: 1; /* Safari 6.1+ */
+    -ms-flex: 1; /* IE 10 */
+    display: flex;
+    display: -webkit-flex;
+}
+
+.tour-wall-cnt{
+    margin-left: 22px;
+    width: 100%;
+}
+
+.tour-results-navbar-ele{
+    line-height: 60px;
+}
+
+#tourResultsNavbar{
+    height: 62px;
+}
+
+#tourResultsNavbar .wn-icon{
+    font-size: 24px;
+}
+
+.result-trip-row .wn-icon{
+    font-size: 24px;
+}
+
+.navbar-arrows{
+    line-height: 0;
+    padding-top: 5px;
+}
+.tour-wall-cnt > md-progress-linear {
+    height: 2px;
+}
+
+.tour-wall-cnt > md-progress-linear > .md-container {
+    height: 2px;
+}
+
+#tourResultsNavbar .input-group{
+    line-height: 30px;
+}
+#tourResultsNavbar .glyphicon{
+    line-height: 2;
+    display: block;
+    box-shadow:none;
+}
+
+.wn-datepicker button,
+.wn-datepicker input{
+    border:none;
+    box-shadow:none;
+    height:58px;
+    line-height: 58px;
+}
+
+.wn-datepicker-gly{
+    line-height: 58px !important;
+}
+
+.wn-datepicker input:focus{
+    border:none;
+    box-shadow:none;
+    outline: none;
+    outline-width: 0;
+
+}
+
+.wn-datepicker-popup button .text-info {
+    font-weight: bold;
+    color: $text-color;
+}
+
+.wn-datepicker-popup button{
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    height: 30px;
+}
+
+.border-right {
+    border-right: 2px solid #eceff1;
+}
+
+#quote-search-bar {
+    label {
+        text-transform: capitalize;
+    }
+
+    .input-group-addon,
+    .form-control {
+        padding: 0;
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        height: $icon-font-size-base;
+    }
+
+    > div {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    > div:last-child {
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+
+    .border-left {
+        border-left: 2px solid #eceff1;
+    }
+}
+
+#tourResultsHeader{
+    margin-top: 22px;
+    height: 60px;
+    line-height: 60px;
+    border: 2px solid #eceff1;
+    background-color: #f5f7f8;
+}
+
+#tourResultsHeader .menuitem{
+    padding-left: 30px;
+}
+
+.details-col-left div{
+    margin-top:4px;
+    margin-bottom:4px;
+}
+
+.show-details{
+    line-height: 40px;
+}
+
+.details-controls{
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.segment-duration{
+    margin-left: 15px;
+}
+
+// accordion overrides
+uib-accordion.trip-details-explode .panel-default > .panel-heading{
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+uib-accordion.trip-details-explode .panel-default{
+    background-color: $gray-lighter;
+    border-color: #eceff1;
+    border-radius: 0;
+    box-shadow: 0 1px 1px rgba(236, 239, 241, 0.05);
+}
+
+uib-accordion.trip-details-explode .panel-group{
+    margin-bottom: 0;
+}
+
+.btn-ancillary-vector span{
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+.trip-details-explode button.detail-tag{
+    width: 30px;
+    height: 30px;
+    cursor: default;
+    background-color: #ffffff;
+    font-size: 20px;
+    border: 1px solid #eceff1;
+    border-radius: 100%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    padding: 2px 0 0 0;
+}
+
+.trip-details-explode .btn-ancillary-vector{
+    margin-right: 10px;
+    font-weight: 300;
+    border-radius: 25px;
+}
+
+.trip-details-explode div.popover{
+    min-width: 400px;
+    padding: 15px;
+    font-size: 14px;
+    border-radius: 0px;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.trip-details-explode div.popover .arrow {
+    display: none;
+}
+
+.trip-details-explode div.popover .btn-ancillary-vector{
+    margin-right: 10px;
+    margin-top: 15px;
+    border-radius: 25px;
+}
+
+.trip-details-explode .btn-ancillary-vector.ancillary-selected{
+    background-color: #455A64  !important;
+    color: #ffffff !important;
+    cursor: default;
+    border-radius: 25px;
+}
+
+.btn-ancillary-vector .wn-icon{
+    font-size: 24px;
+}
+
+
+/*
+.trip-details-explode .wn-icon{
+    font-size: 20px;
+    line-height: 30px;
+}
+*/
+
+.vector-connector{
+    border-left: 3px solid;
+    height: 30px;
+    display: block;
+    margin: 0 auto;
+    width: 0;
+}
+
+.stopover-connector{
+    border-left: 3px dashed #b0bec5;
+    height: 80px;
+    display: block;
+    margin: 0 auto;
+    width: 0;
+}
+
+.vector-primary-details{
+    font-weight: 600;
+    line-height: 30px;
+    white-space: nowrap;
+}
+
+.vector-secondary-details{
+    color: #b0bec5;
+    font-weight: 300;
+    line-height: 30px;
+    padding-left: 15px;
+    white-space: nowrap;
+}
+
+.stopover-secondary-details{
+    color: #b0bec5;
+    font-weight: 300;
+    line-height: 20px;
+    padding-top: 30px;
+    display: block;
+    white-space: nowrap;
+}
+
+.ancillary-details{
+    height: 30px;
+}
+
+.trip-details-explode .segment-heading{
+    height:50px;
+}
+
+/************Quote tool bar*******/
+/*.nodeco-select{
+
+  -webkit-appearance:none;
+}*/
+.sort-toggler label{
+    font-weight: normal;
+}
+.sort-toggler{
+    color: #78909c;
+    cursor: pointer;
+}
+.sort-toggler md-icon{
+    color: #78909c;
+}
+/*********** TAB *************/
+.tab-content{
+    padding-top: 10px;
+}
+.tab-toolbar{
+    width: 50%;
+    background-color: #f5f7f8;
+}
+.tab-toolbar.ng-isolate-scope>a{
+    border: 0;
+    height: 60px;
+    vertical-align: middle;
+    display: table-cell;
+    width: 50%;
+    text-align: center;
+    border-radius: 0;
+}
+.tab-toolbar.ng-isolate-scope.active > a,.tab-toolbar.ng-isolate-scope.active > a:hover,.tab-toolbar.ng-isolate-scope.active > a:focus{
+    background-color: #78909c;
+    color: #ffffff;
+    border: 0;
+}
+
+.tab-toolbar.ng-isolate-scope > a{
+    background-color: #f5f7f8;
+    color: #B0BEC5;
+    border: 0;
+}
+.tab-toolbar.ng-isolate-scope > a:hover{
+    background-color: #eceff1;
+    color: #B0BEC5;
+    border: 0;
+}
+.filter-row-head{
+    color: #78909c;
+    font-size: 14px;
+}
+.filter-section{
+    margin-bottom: 30px;
+}
+.poi-filter{
+    font-size: 14px;
+}
+
+.date-search {
+    cursor:pointer;
+}
+
+#tourMainCnt md-progress-linear{
+    height: 2px;
+}
+
+#tourMainCnt md-progress-linear  > .md-container{
+    height: 2px;
+}
+
+$padding-col: 4px; /* padding top + padding bottom of the column = 2px + 2px = 4px */
+$label-height: ($line-height-base * (floor((100 * $font-size-small / $font-size-base)) * $font-size-base/100)); /* $line-height-base * <font size from .small> [px] */
+$label-margin: 5px; /* label default margin */
+$input-group-height: $icon-font-size-base; /* our input-group fixed height */
+
+.trip-arrows-container {
+    display: flex;
+    height: $padding-col + $label-height + $label-margin + $input-group-height;
+    justify-content: center;
+    flex-direction: column;
+}

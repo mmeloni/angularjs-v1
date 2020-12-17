@@ -1,0 +1,35 @@
+<div id="tour-shard-import-container">
+	<header id="tour-shard-import-navbar" class="wn-flex-container v-align-center padded">
+		<button class="ui-action-button not-inked compact wn-flex-content h-align-bottom" ng-click="close()">
+			<span class="wn-icon">delete</span>
+		</button>
+	</header>
+	<div id="tourMainContent" >
+		<div class="import-from-diary-tour-edit-view" ng-include="'web/tour/edit/import-shard-panel/wall-types/diary-presentation.html'" class="wn-flex-container padded"></div>
+	</div>
+    <div id="bottomBarPlan">
+        <md-progress-linear ng-show="addingShard" md-diameter="35px" md-mode="query" value="{{progressPercentage}}"></md-progress-linear>
+		<div class="left">
+			<span class="counter spaced"><p class="shard-added-details" >{{toAddShardsSelected}}</p></span>
+			<span class="wn-icon place-icon spaced">place</span>
+            <span class="place" ng-repeat="shard in toAddShards track by $index | limitTo:3">
+                <p class="shard-added-details" ng-if="$index <= 2">
+                    <span ng-if="$index === 1">, </span>{{shard.geoplace.title}}<span ng-if="$index > 0 && $index <= 2">, </span>
+                </p>
+
+                <p class="shard-added-details" ng-if="$index === 3" >
+                    ...
+                </p>
+            </span>
+		</div>
+		<div class="center">
+			<button ng-click="planAll();">
+				<span class="wn-icon place-icon">place</span>
+				<span>{{ translation.planAll }}</span>
+			</button>
+		</div>
+		<div class="right">
+			<span>{{ translation.planAllInfo }}.</span>
+		</div>
+	</div>
+</div>

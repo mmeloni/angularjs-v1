@@ -1,0 +1,48 @@
+<div class="container-navbar-tour">
+    <div id="navbar-tour" class="navbar-collapse collapse">
+        <div class = "tour-edit-container">
+            <!--Logo-->
+            <!-- Needed to use ng-show because ng-if didn't work -->
+            <wn-icon
+                glyph="loader"
+                [color]="true"
+                icon-size="xl"
+                css-classes="wn-page-loader"
+                animation="spin"
+                ng-show="status=='loading'"
+            ></wn-icon>
+            <wn-icon
+                glyph="logo"
+                [color]="true"
+                icon-size="xl"
+                css-classes="wn-logo"
+                ng-click="backToWayonaraHome()"
+                ng-show="status!='loading'"
+            ></wn-icon>
+
+            <!--Breadcrumbs-->
+            <wn-breadcrumb wn-breadcrumb-list="breadcrumbs"></wn-breadcrumb>
+
+            <!--Actions-->
+            <div class="tour-edit-actions">
+                <button class="ui-action-button compact default" type="button" ng-show="false" ng-click="showAddParticipantsDialog($event)" tooltip-placement="bottom" uib-tooltip="Add Users">
+                    <span class="wn-icon wn-icon-user-add"></span>
+                </button>
+                <button class="ui-action-button compact default" type="button" ng-show="false">
+                    <span class="wn-icon">settings</span>
+                </button>
+                <button class="ui-action-button compact default" type="button" ng-show="false">
+                    <span class="wn-icon">preview-empty</span>
+                </button>
+                <button class="ui-action-button compact default" type="button" ng-show="false">
+                    <span class="wn-icon">discard-empty</span>
+                </button>
+                <button ng-show="false" class="ui-action-button compact default" type="button" tooltip-placement="bottom" uib-tooltip="{{ translation.saveAndClose }}" ng-click="save()">
+                    <span class="wn-icon">save</span>
+                </button>
+                <button ng-show="false" class="ui-action-button expanded primary-alternative" type="button" ng-click="book()">{{ translation.book }}</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+@import '../../../../../assets/scss/overrides/bootstrap/variables';
+
+blockquote {
+    padding: 0;
+    margin: 0;
+    font-size: $font-size-base;
+    border-left: none;
+
+    > p {
+        &:before,
+        &:after {
+            content: '\0022';
+        }
+    }
+}
+
+footer:before {
+    content: '';
+}

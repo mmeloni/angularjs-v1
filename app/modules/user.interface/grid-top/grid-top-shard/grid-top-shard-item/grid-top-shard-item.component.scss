@@ -1,0 +1,34 @@
+@import '../../placeholder';
+@import '../../../../../../assets/scss/overrides/bootstrap/_variables.scss';
+
+.hotel-grid-item{
+    @extend %grid-item;
+    height: 480px;
+    .content{
+        @extend %grid-item-headline;
+    }
+
+    &:hover.static{
+        top: 0px !important;
+    }
+
+    &.static{
+        max-width: $popover-max-width;
+        .hover, .stats{
+            display: none;
+        }
+    }
+
+    .user-popover-container {
+        width: $popover-max-width;
+        height: $avatar-size-sm;
+    }
+
+    .place-popover-container {
+        width: $popover-max-width;
+        height: $avatar-size-sm;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
+}

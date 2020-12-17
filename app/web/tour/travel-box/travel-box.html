@@ -1,0 +1,11 @@
+<div class="travel-box-wrapper" ng-switch on="travelboxSelection">
+    <section class="travel-box" ng-switch-when="travel-box-places">
+		<ng-include src="'web/tour/travel-box/travel-box-places.html'"></ng-include>
+	</section>
+	<section class="travel-box travel-box-stages" ng-switch-when="travel-box-stages">
+		<ng-include src="'web/tour/travel-box/travel-box-stages.html'"></ng-include>
+	</section>
+	<section class="travel-box travel-box-stage-detail" ng-switch-when="travel-box-stage-detail">
+		<ng-include src="'web/tour/travel-box/travel-box-stage-detail.html'"></ng-include>
+	</section>
+</div>

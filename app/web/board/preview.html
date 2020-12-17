@@ -1,0 +1,84 @@
+<article class="panel panel-default panel-card board-card margin-bottom-none" ng-click="viewBoard()" data-main="true" ng-hide="boardHide">
+    <header class="panel-heading background-color-gray-darker">
+        <div class="cover-container">
+            <wn-image img-format="'_square_'" shard="ngModel.shards[0]" err-src="../assets/img/shard-empty.png"></wn-image>
+        </div>
+
+        <h1 class="overlay h5">
+            <span class="wn-icon wn-icon-board vertical-align-middle font-weight-normal"></span>&#32;
+            {{ ::ngModel.title | limitTo: 20 }}{{ ngModel.title.length > 20 ? '&hellip;' : ''}}
+
+
+            <div uib-dropdown on-toggle="toggled(open);" ng-click="$event.stopPropagation();" class="dropdown">
+                <button class="ui-action-button not-inked compact" uib-dropdown-toggle>
+                    <span class="wn-icon wn-icon-chevron-down"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li class="menuitem" ng-repeat-start="option in menuOptions track by $index">
+                        <a ng-click="option.action($event)">
+                            <span class="ui-text-dark ui-font-md">{{ ::option.label }}</span>
+                            <br/>
+                            <span class="ui-text-light ui-font-xs">{{ ::option.description }}</span>
+                        </a>
+                    </li>
+                    <li class="divider" ng-repeat-end></li>
+                </ul>
+            </div>
+        </h1>
+    </header>
+
+    <div class="panel-body container-fluid">
+        <div class="row margin-top-none">
+            <div class="col-md-6">
+                <div class="thumbnail" ng-if="ngModel.shards[1] === undefined"></div>
+                <div class="thumbnail background-color-gray-darker" ng-if="ngModel.shards[1] !== undefined">
+                    <wn-image img-format="'_square_'" shard="ngModel.shards[1]" err-src="../assets/img/shard-empty.png"></wn-image>
+                    <div class="overlay flex-center text-center">
+                        <p>
+                            <span class="wn-icon wn-icon-circle wn-icon-place wn-icon-place-color wn-icon-pin"></span><br />
+                            {{ ::ngModel.shards[1].description | limitTo: 20 }}{{ ngModel.shards[1].description.length > 20 ? '&hellip;' : ''}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="thumbnail" ng-if="ngModel.shards[2] === undefined"></div>
+                <div class="thumbnail background-color-gray-darker" ng-if="ngModel.shards[2] !== undefined">
+                    <wn-image img-format="'_square_'" shard="ngModel.shards[2]" err-src="../assets/img/shard-empty.png"></wn-image>
+                    <div class="overlay flex-center text-center">
+                        <p>
+                            <span class="wn-icon wn-icon-circle wn-icon-place wn-icon-place-color wn-icon-pin"></span><br />
+                            {{ ::ngModel.shards[2].description | limitTo: 20 }}{{ ngModel.shards[2].description.length > 20 ? '&hellip;' : ''}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="thumbnail" ng-if="ngModel.shards[3] === undefined"></div>
+                <div class="thumbnail background-color-gray-darker" ng-if="ngModel.shards[3] !== undefined">
+                    <wn-image img-format="'_square_'" shard="ngModel.shards[3]" err-src="../assets/img/shard-empty.png"></wn-image>
+                    <div class="overlay flex-center text-center">
+                        <p>
+                            <span class="wn-icon wn-icon-circle wn-icon-place wn-icon-place-color wn-icon-pin"></span><br />
+                            {{ ::ngModel.shards[3].description | limitTo: 20 }}{{ ngModel.shards[3].description.length > 20 ? '&hellip;' : ''}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="thumbnail" ng-if="ngModel.shards[4] === undefined"></div>
+                <div class="thumbnail background-color-gray-darker" ng-if="ngModel.shards[4] !== undefined">
+                    <wn-image img-format="'_square_'" shard="ngModel.shards[4]" err-src="../assets/img/shard-empty.png"></wn-image>
+                    <div class="overlay flex-center text-center">
+                        <p>
+                            <span class="wn-icon wn-icon-circle wn-icon-place wn-icon-place-color wn-icon-pin"></span><br />
+                            {{ ::ngModel.shards[4].description | limitTo: 20 }}{{ ngModel.shards[4].description.length > 20 ? '&hellip;' : ''}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

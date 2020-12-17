@@ -1,0 +1,22 @@
+<!-- NOT USED YET -->
+
+<div class="import-shard-panel-wall-tour" ng-repeat="tour in tours track by tour.id">
+
+    <wn-image class="import-shard-panel-wall-tour-background-image" img-format="'_square_'" shard=tour err-src="../assets/img/shard-empty.png"></wn-image>
+
+    <div class="import-shard-panel-wall-tour-front-content">
+        <div class="tour-title">
+            {{tour.title}}
+        </div>
+        <div class="tour-subtitle">
+            {{tour.description}}
+        </div>
+        <div class="tour-hashtag">
+            #ovino, #beeeee, #stupidità
+        </div>
+        <div class="tour-place-text">
+            <span class="wn-icon import-wall" >place</span>
+            <span class="">{{tour.poiName}}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="shardifier-cnt">
+    <div class="shardifier-det row no-padding">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 shardifier-head-cnt">
+            <div class="row shardifier-det-text-content">
+                <div class="col-md-1 "></div>
+                <div class="col-md-4 ">
+                    <div class="row">
+                        <div class="col-md-12 shardifier-head text-center">
+                            {{orig.iata || orig.name}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div ng-show="orig.iata != null" class="col-md-12 shardifier-sec text-center">
+                            {{orig.city_name || orig.name}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center ">
+                    <div class="row text-center">
+                        <div class="col-md-12 text-center">
+                            <span ng-repeat="vector in availableVectorArray" class="text-center shardifier-vect-icon wn-icon wn-icon-{{vector.label}} {{vector.label}}-detail-color"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="row">
+                        <div class="col-md-12 shardifier-head text-center">
+                            {{dest.iata || dest.name}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div ng-show="orig.iata != null" class="col-md-12 shardifier-sec text-center">
+                            {{dest.city_name|| dest.name}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 "></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center shardifier-sec-cnt">
+                <span ng-if="sduration.days >0" class="shardifier-h2">{{sduration.days}} <span class="shardifier-sec2">{{ translation.days }}</span></span>
+                <span ng-if="sduration.hours >0" class="shardifier-h2">{{sduration.hours}} <span class="shardifier-sec2">{{ translation.hours }}</span></span>
+                <span ng-if="sduration.minutes >0" class="shardifier-h2">{{sduration.minutes}} <span class="shardifier-sec2">{{ translation.minutes }}</span></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <span ng-if="distance >0" class="shardifier-h2">{{distance}} <span class="shardifier-sec2">{{ translation.kilometers }}</span></span>
+                </div>
+            </div>
+            <div class="row shardifier-third-cnt">
+                <div class="col-md-12 text-center">
+                    <button class="ui-action-button expanded primary" type="button" aria-hidden="false">{{ translation.from }} <span  ng-bind-html="price | priceFormatter:'btn-price-int':'btn-price-dec'"></span></button>
+                </div>
+            </div>
+            <div class="shardifier-flight">
+            </div>
+            <div class="shardifier-cloud">
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6 no-padding map-cnt">
+            <div class="map"></div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row wn-actionbar">
+        <div class="col-md-8 text-left">
+            <wn-statistics-bar [items]="items"></wn-statistics-bar>
+        </div>
+        <div class="col-md-4 text-right">
+            <ul class="action">
+                <li *ngFor="let option of actions" role="presentation">
+                    <wn-button
+                        [label]="option.label"
+                        [iconClasses]="option.iconClasses"
+                        [action]="option.action"
+                        [status]="option.status"
+                        [loader]="option.loader"
+                    ></wn-button>
+                </li>
+                <li [hidden]="transcludeFollowButton === false"><ng-content select="wn-follow-button"></ng-content></li>
+            </ul>
+        </div>
+    </div>
+</div>

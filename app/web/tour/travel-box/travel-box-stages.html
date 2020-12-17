@@ -1,0 +1,18 @@
+<div class="travel-box-header border-bottom-gray-light">
+    <wn-travel-box-statistics [heading-item]="fileTitleItem" [main-items]="fileStatisticsItem"></wn-travel-box-statistics>
+</div>
+<div class="travel-box-files">
+    <div class="travel-box-files-container">
+        <wn-travel-box-file
+                ng-repeat="stage in selectedPlaceStages.shardsList track by stage.id"
+                ng-model="stage"
+                wn-selected-place="stage.nearestPoi"
+                wn-selected-file="selectedPlaceStages.shardsList[$index]"
+                on-drag="onFileDragCallback(attrs)"
+                on-press="onFilePressCallback(attrs)"
+                on-release="onFileReleaseCallback(attrs)"
+                on-delete="onFileDeleteCallback(attrs)"
+                on-click="onFileClickCallback(attrs)">
+        </wn-travel-box-file>
+    </div>
+</div>

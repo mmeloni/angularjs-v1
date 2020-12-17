@@ -1,0 +1,9 @@
+<div class="amenities">
+    <h2 class="h3 text-uppercase margin-top-none">{{ labels.title }}</h2>
+    <span *ngIf="componentData.length === 0">{{ labels.noAmenities }}</span>
+    <ul>
+        <li *ngFor="let item of componentData">
+            <wn-amenity-item [componentData]="item" [translations]="labels.amenitiesList"></wn-amenity-item>
+        </li>
+    </ul>
+</div>

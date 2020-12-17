@@ -1,0 +1,13 @@
+{
+    "apiServerBaseURL": "https://api.wayonara.com",
+    "awsWayonaraBucket": "wayonara-prod",
+    "awsWayonaraCloudfront": "https://d32oweyxupc59y.cloudfront.net",
+    "facebookAppId": "518481204967125",
+    "siteURL": "https://www.wayonara.com",
+    "googleAnalyticsUA": "UA-60765092-1",
+    "hotjar": true,
+    "hotjarId": 302737,
+    "fbPixel": true,
+    "notificationServerURL": "https://node.wayonara.com",
+    "liveChatLicense": "8807229"
+}

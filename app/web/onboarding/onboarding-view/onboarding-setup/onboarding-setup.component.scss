@@ -1,0 +1,20 @@
+$height-fixed: 370px;
+
+.overflow-scroll {
+    height: $height-fixed;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.btn-facebook {
+    background-color: #3b5998;
+	color: #ffffff;
+	border: 1px solid #3b5998;
+}
+
+.last-step {
+    background-image: url('/assets/img/onboarding/setup/onboarding-invite.png');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    height: $height-fixed;
+}

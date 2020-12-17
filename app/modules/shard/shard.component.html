@@ -1,0 +1,37 @@
+<article class="shard shard-tile shard-{{typeLabel}}" (mouseleave)="closeAllPopOver()"
+         [ngClass]="{
+            'shard-double': size === 'double',
+            'shard-single': size === 'single'
+         }">
+    <!-- Image background -->
+    <wn-shard-background [masterId]="data.masterId"
+                         [size]="size"
+                         (click)="showDetails()"></wn-shard-background>
+
+    <header>
+        <!-- User _deprecated.avatar -->
+        <wn-shard-user-avatar [user]="data.user"
+                              [translations]="translations"></wn-shard-user-avatar>
+
+        <!-- Shard Toolbar -->
+        <wn-shard-toolbar [shard]="data"
+                          [liked]="data.likeUser"
+                          [translations]="translations"></wn-shard-toolbar>
+    </header>
+
+    <!-- Shard title -->
+    <wn-shard-title *ngIf="type === types.tour"
+                    (click)="showDetails()"
+                    [title]="data.title"
+                    [description]="data.description"></wn-shard-title>
+
+    <footer>
+        <!-- Shard plans number -->
+        <wn-shard-plans-count [count]="data.planCount"></wn-shard-plans-count>
+
+        <!-- Shard place details -->
+        <wn-shard-place-details [type]="type"
+                                [place]="data.place"
+                                [translations]="translations"></wn-shard-place-details>
+    </footer>
+</article>

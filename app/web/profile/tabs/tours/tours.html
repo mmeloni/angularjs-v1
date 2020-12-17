@@ -1,0 +1,9 @@
+<div class="tour-container">
+    <!--<wn-shard ng-repeat="shard in tours track by shard.id" grid-manager=masonry ng-model=shard></wn-shard>-->
+    <wn-grid
+        ng-model="tours"
+        tile-tmpl-url="web/commons/shard/types/shard.html"
+        tiles-controller="ShardController"
+    >
+    </wn-grid>
+</div>

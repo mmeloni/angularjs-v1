@@ -1,0 +1,35 @@
+<div class="user-passport">
+    <div class="detail-panel profile-detail-panel" [ngClass]="{affix:isAffixed}">
+        <div class="detail-cover">
+            <wn-user-profile-cover [userNid]="user.nid"></wn-user-profile-cover>
+        </div>
+        <div class="detail-user-profile-pic">
+            <div class="pic-wrapper">
+                <wn-user-profile-pic [userNid]="user.nid" [size]="'large'" [shape]="'square'"
+                                     [edit]="edit && isCurrentUserProfile">
+                </wn-user-profile-pic>
+            </div>
+            <div class="detail-user-name">
+                <h2>{{user.firstname}} {{user.lastname}}</h2>
+                <h3 (click)="goToUserProfile()">@{{user.username || 'not set'}}</h3>
+            </div>
+        </div>
+        <div class="detail-user-description">
+            <p>{{user.biography || 'Not set yet'}}</p>
+        </div>
+        <div class="detail-user-location">
+            <p *ngIf="user.city && user.city.name">
+                <wn-icon [glyph]="'place'"></wn-icon>
+                {{user.city.name}}
+            </p>
+        </div>
+        <div class="detail-user-website" *ngIf="!!user.website">
+            <a href="{{user.website}}" target="_blank">{{user.website}}</a>
+        </div>
+        <div class="follow-button" *ngIf="user.id !== currentUser.id && showFollowButton">
+            <wn-follow-button [translation]="translations" [targetId]="user.nid" [buttonSize]="'lg'"
+                              [isTargetFollowed]="followed"
+                              (toggledFollow)="onFollowToggle($event)"></wn-follow-button>
+        </div>
+    </div>
+</div>

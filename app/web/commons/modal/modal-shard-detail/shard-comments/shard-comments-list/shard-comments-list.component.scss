@@ -1,0 +1,10 @@
+@import '../../../../../../../assets/scss/overrides/bootstrap/variables';
+
+section {
+    margin-top: $modal-inner-padding;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}

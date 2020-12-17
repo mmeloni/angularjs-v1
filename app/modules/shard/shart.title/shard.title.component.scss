@@ -1,0 +1,34 @@
+@import "../../../../assets/scss/utils/mixins";
+
+.shard-title {
+    position: absolute;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    top: 50%;
+    left: 50%;
+    max-width: 430px;
+    width: 100%;
+    @include transform(translateY(-50%) translateX(-50%));
+    > h1 {
+        text-align: center;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 48px;
+        line-height: 120%;
+        margin: 0 0 10px 0;
+        height: auto;
+        -webkit-font-smoothing: antialiased;
+        @include text-shadow(1px, 1px, 2px, rgba(0, 0, 0, 0.4));
+    }
+    > h4 {
+        font-size: 16px;
+        font-style: italic;
+        font-weight: 400;
+        margin: 0;
+        @include text-shadow(1px, 1px, 2px, rgba(0, 0, 0, 0.4));
+    }
+
+}

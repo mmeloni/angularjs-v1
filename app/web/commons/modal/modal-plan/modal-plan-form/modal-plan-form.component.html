@@ -1,0 +1,34 @@
+<form #planForm="ngForm" novalidate>
+    <h1 class="h3 margin-top-none">{{ title }}</h1>
+
+    <div class="wn-input">
+        <div class="form-group">
+            <label>{{ translations.name }}</label>
+            <input type="text" class="form-control" placeholder="{{ translations.name }} ..." [(ngModel)]="model.title" name="title" maxlength="20" required />
+        </div>
+    </div>
+
+    <div class="wn-input">
+        <div class="form-group">
+            <label>{{ translations.description }}</label>
+            <!-- Inline style with "resize: none" and not in CSS file, because it's only for chrome -->
+            <textarea class="form-control" name="{{translations.description}}" placeholder="description ..." [(ngModel)]="model.description" style="resize: none;" maxlength="50"></textarea>
+        </div>
+    </div>
+
+    <div class="actions">
+        <wn-button
+            cssClasses="btn btn-default pull-left"
+            [label]="translations.cancel"
+            (click)="onCancel($event)"
+        ></wn-button>
+
+        <wn-button
+            cssClasses="btn btn-primary pull-right"
+            [label]="translations.create"
+            (click)="onSubmit($event)"
+            [isLoading]="isLoadingButton"
+            [disabled]="planForm.form.valid === false"
+        ></wn-button>
+    </div>
+</form>

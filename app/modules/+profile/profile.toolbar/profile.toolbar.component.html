@@ -1,0 +1,50 @@
+<div class="profile-toolbar" *ngIf="user">
+    <div class="pull-left">
+        <button class="profile-toolbar-button" (click)="showProfileContent('stages')">
+            <span class="button-title">{{translations.shards}}</span>
+            <span class="button-count">{{shardsCount || 0}}</span>
+            <wn-icon [glyph]="'place'" [color]="true"></wn-icon>
+        </button>
+        <button class="profile-toolbar-button" (click)="showProfileContent('boards')">
+            <span class="button-title">{{translations.boards}}</span>
+            <span class="button-count">{{boardsCount || 0}}</span>
+            <wn-icon [glyph]="'board'" [color]="true"></wn-icon>
+        </button>
+        <button class="profile-toolbar-button" (click)="showProfileContent('tours')">
+            <span class="button-title">{{translations.tours}}</span>
+            <span class="button-count">{{toursCount || 0}}</span>
+            <wn-icon [glyph]="'tour'" [color]="true"></wn-icon>
+        </button>
+        <button class="profile-toolbar-button" (click)="showProfileContent('following')">
+            <span class="button-title">{{translations.following}}</span>
+            <span class="button-count">{{followingCount || 0}}</span>
+        </button>
+        <button class="profile-toolbar-button" (click)="showProfileContent('followers')">
+            <span class="button-title">{{translations.followers}}</span>
+            <span class="button-count">{{followersCount || 0}}</span>
+        </button>
+    </div>
+    <div class="pull-right">
+        <button class="profile-toolbar-button profile-button-edit" (click)="goToProfileEdit()"
+                *ngIf="showEdit">
+            {{translations.edit}}
+        </button>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="profile-mobile-navigation" *ngIf="user">
+    <div class="profile-select form-group">
+        <label for="toolbar-select">Navigation</label>
+        <select id="toolbar-select" class="form-control" (change)="handleSelectChange($event)">
+            <option value="stages">{{translations.shards}} ({{shardsCount || 0}})</option>
+            <option value="boards">{{translations.boards}} ({{boardsCount || 0}})</option>
+            <option value="tours">{{translations.tours}} ({{toursCount || 0}})</option>
+            <option value="following">{{translations.following}} ({{followingCount || 0}})</option>
+            <option value="followers">{{translations.followers}} ({{followersCount || 0}})</option>
+        </select>
+    </div>
+    <hr />
+    <button class="btn btn-primary btn-block" (click)="goToProfileEdit()" *ngIf="showEdit">
+        {{translations.edit}}
+    </button>
+</div>

@@ -1,0 +1,14 @@
+<wn-travel-box ng-model="travelBox"
+   on-folder-delete="removePlace(travelboxPlace)"
+   on-folder-add="addPlace()"
+   on-folder-release="releaseShard(attrs)"
+   on-folder-drag="dragPlace(attrs)"
+   travelbox-active-selection="travelboxSelection"
+   active-travel-box-place="selectedTravelBoxPlace"
+   on-file-click="showShardDetails(attrs)"
+   on-file-release="releaseShard(attrs)"
+   on-file-delete="removeStage(attrs)"
+   tour-resolved="tourResolved">
+</wn-travel-box>
+<!--Required for the sliding panel-->
+<div class="tour-shard-importer"></div>

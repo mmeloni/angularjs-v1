@@ -1,0 +1,14 @@
+<div class="cropitDivClass">
+    <!-- This wraps the whole cropper -->
+    <div id="image-cropper">
+        <!-- This is where the preview image is displayed -->
+        <div class="cropit-image-preview drop-area ui-font-sm ui-text-mdark"></div>
+
+        <!-- This range input controls zoom -->
+        <input type="range" class="cropit-image-zoom-input wn-zoom" />
+
+        <!-- This is where user selects new image -->
+        <input type="file" class="cropit-image-input hidden"/>
+    </div>
+	<div class="alert alert-danger" ng-show="uploadError">{{ translation.imageTooSmall }}! (min. 220x220)</div>
+</div>

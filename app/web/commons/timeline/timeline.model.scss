@@ -1,0 +1,244 @@
+.wn-tour {
+	position: fixed;
+	width: 100%;
+}
+
+.wn-tour-edit {
+	position: fixed;
+	width: 100%;
+	margin-top: 90px;
+}
+
+.wn-tour > .editor {
+	padding-left: 22px;
+	padding-right: 22px;
+}
+
+.wn-timeline-wrapper {
+	position: relative;
+	width: 100%;
+	padding: 10px 0 8px 12px;
+    overflow: hidden;
+}
+
+.wn-timeline-wrapper.drop-hit {
+
+    .empty-state {
+        background: rgb(214,217,219); /* Old browsers */
+        background: -moz-linear-gradient(top,  rgba(214,217,219,1) 0%, rgba(245,247,248,1) 50%, rgba(236,239,241,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(214,217,219,1) 0%,rgba(245,247,248,1) 50%,rgba(236,239,241,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(214,217,219,1) 0%,rgba(245,247,248,1) 50%,rgba(236,239,241,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d9db', endColorstr='#eceff1',GradientType=0 ); /* IE6-9 */
+
+        transition: background 0.4s ease;
+    }
+
+    .wn-timeline {
+        background: rgb(214,217,219); /* Old browsers */
+        background: -moz-linear-gradient(top,  rgba(214,217,219,1) 0%, rgba(245,247,248,1) 50%, rgba(236,239,241,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(214,217,219,1) 0%,rgba(245,247,248,1) 50%,rgba(236,239,241,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(214,217,219,1) 0%,rgba(245,247,248,1) 50%,rgba(236,239,241,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d9db', endColorstr='#eceff1',GradientType=0 ); /* IE6-9 */
+
+        transition: background 0.4s ease;
+    }
+}
+
+.wn-timeline {
+	position:relative;
+	width: 100%;
+	height: 40px;
+	vertical-align: middle;
+}
+
+.wn-timetag {
+	display: block;
+	position: absolute;
+	height: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+	background-color: #ffffff;
+	border: 1px solid #eceff1;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+
+	&.labeled {
+		min-width: 100px;
+		border-radius: 25px;
+		padding: 0 8px;
+	}
+
+	&.labeled.quoted {
+		background-color: transparent;
+	}
+
+	&.labeled.selected {
+		background-color: #59aeed;
+		border: 1px solid #59aeed;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.0);
+		color: #ffffff;
+		transition: all 0.4s ease;
+	}
+
+	&.labeled.not-valid {
+		background-color: transparent;
+	}
+
+	&.not-labeled {
+		width: 40px;
+		padding: 0 5px;
+		border-radius: 100%;
+		text-align: center;
+	}
+
+	&.not-labeled.quoted {
+		background-color: #59aeed;
+		border: 1px solid #59aeed;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.0);
+	}
+
+	&.not-labeled.selected {
+		background-color: #3b4556;
+		border: 1px solid #3b4556;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.0);
+		transition: all 0.4s ease;
+	}
+
+	&.not-labeled.not-valid {
+		background-color: transparent;
+	}
+
+	.wn-icon {
+		font-size: 28px;
+	}
+
+	&.not-labeled.quoted .wn-icon {
+		color: #ffffff !important;
+	}
+
+	&.labeled.selected .wn-icon {
+		color: #ffffff !important;
+	}
+
+	.wn-icon.wn-icon-place {
+		color: #43E7C5;
+	}
+
+	.wn-icon.wn-icon-flight {
+		color: #59aeed;
+	}
+
+	.wn-icon.wn-icon-car-sharing {
+		color: #f16522;
+	}
+
+	.wn-icon.wn-icon-train {
+		color: #000000;
+	}
+
+	.wn-icon.wn-icon-walk {
+		color: #fed420;
+	}
+
+	span {
+		line-height: 40px;
+		vertical-align: middle;
+	}
+}
+
+.wn-timetag.not-labeled .wn-timetag-name {
+	display: none;
+}
+
+.wn-timetag.removable {
+	opacity: 0.8 !important;
+}
+
+.wn-connector {
+	display: block;
+	position:absolute;
+	height: 10px;
+	top: 50%;
+	margin-top:-5px;
+	width: 0;
+	cursor: pointer;
+
+	&.selected {
+		background-color: #59aeed !important;
+		border: 1px solid #59aeed;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.0);
+		transition: all 0.4s ease;
+	}
+}
+
+.wn-vs {
+	z-index: 40;
+
+	.ui-action-button.compact {
+		width: 30px;
+		height: 30px;
+		line-height: 22px;
+		font-size: 22px;
+	}
+
+    .ui-action-button.compact:focus {
+        outline: none;
+    }
+
+    .ui-action-button.compact:active {
+        outline: none;
+    }
+}
+
+.wn-fvs {
+	position: absolute;
+}
+
+.wn-fvs .wn-fvs-list {
+	display: none;
+	border: 2px solid #eceff1;
+	padding: 10px 20px 14px;
+	height: 30px;
+	background: white;
+	margin-left: -20px;
+	border-radius: 100px;
+}
+
+.wn-fvs-list > button + button {
+	margin-left: 12px;
+}
+
+.wn-fvs-list button:focus {
+    outline: none;
+}
+
+.wn-fvs-list button:active {
+    outline: none;
+}
+
+.wn-timeline .empty-state {
+	text-align: center;
+	line-height: 40px;
+	border: 2px dashed #eceff1;
+	margin-right: 20px;
+	font-weight: 600;
+}
+
+.timeline-scroll-ctrl {
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+
+	&.previous {
+		left: 20px;
+		z-index: 30;
+	}
+
+	&.next {
+		position: absolute;
+		right: 20px;
+		z-index: 30;
+	}
+}

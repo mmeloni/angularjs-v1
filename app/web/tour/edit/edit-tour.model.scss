@@ -1,0 +1,313 @@
+@import '../../../../assets/scss/overrides/bootstrap/variables';
+
+.add-participants-dialog .modal-body{
+    width: 900px;
+    height: 600px;
+    color: #78909C;
+    padding: 0px;
+}
+
+.heading {
+    height:60px;
+    line-height: 34px;
+    border-bottom: 1px solid #ECEFF1;
+}
+
+.participant-details .label{
+    color: #424242;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.participant-action{
+    color: #424242;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.participants-recap{
+    background-color: #f5f7f8;
+    color: #91a4ae;
+    font-weight: 600;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.participant-row span{
+    margin-right: 20px;
+}
+
+.count-participants{
+    font-weight: 100;
+}
+
+.is-pax{
+    color: #91a4ae;
+}
+
+.search-participants-custom-template li, .tour-participants li, .action-row{
+    color: #424242;
+    height: 60px;
+    line-height: 60px;
+    border: 2px solid #f5f7f8;
+    text-align: center;
+    background: #ffffff;
+}
+
+.search-participants{
+    width: 385px;
+    height: 100%;
+    position: relative;
+}
+
+.search-participants .wn-icon-div-container{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    padding-right: 10px;
+}
+
+.search-participants .wn-icon{
+    align-self: center;
+    font-size: 28px;
+    color: #78909C;
+}
+
+.add-partecipant-class{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid #ECEFF1;
+    display: flex;
+    justify-content: center;
+}
+
+.add-partecipant-class .text{
+    align-self: center;
+}
+
+.modal-footer .action-row{
+    color: #91a4ae;
+    width: 385px;
+    height: 60px;
+}
+
+.search-participants button, .participant-row button, .action-row button, .heading button{
+    background: transparent;
+    display: inline-block;
+    font-style: normal;
+    vertical-align: baseline;
+    position: relative;
+    border: 0;
+}
+
+.search-participants button{
+    display: none;
+}
+
+.search-participants span.search-icon {
+    color: #91a4ae;
+    margin-top: -9px;
+    position: absolute;
+    right: 25px;
+    top: 50%;
+}
+
+.search-participants input:not(.md-input){
+    width: 385px;
+    height: 60px;
+    background: transparent none repeat scroll 0 0;
+    border-bottom: 1px solid #ECEFF1;
+    font-size: 14px;
+    line-height: 40px;
+}
+
+.search-participants input:not(.md-input)::-webkit-input-placeholder{
+    color: #78909C;
+}
+
+.search-participants input:not(.md-input):-moz-placeholder{
+    color: #78909C;
+}
+
+.search-participants input:not(.md-input)::-moz-placeholder{
+    color: #78909C;
+}
+
+.search-participants input:not(.md-input):-ms-input-placeholder{
+    color: #78909C;
+}
+
+.search-participants input:not(.md-input):placeholder-shown{
+    color: #78909C;
+}
+
+.search-participants input:not(.md-input)::-webkit-input-placeholder,
+.search-participants input:not(.md-input):-moz-placeholder,
+.search-participants input:not(.md-input)::-moz-placeholder,
+.search-participants input:not(.md-input):-ms-input-placeholder,
+.search-participants input:not(.md-input):placeholder-shown{
+    color: #78909C;
+}
+
+
+.tour-participants{
+    width: 515px;
+    height: 100%;
+    border-left: 1px solid #ECEFF1;
+}
+
+.tour-participants .scrollable{
+    height: 540px;
+    overflow-y: auto;
+}
+
+.tour-participants .heading {
+    position: relative;
+    padding: 12px 6px 12px 12px;
+    font-weight: 600;
+}
+
+.tour-participants .heading  .wn-icon{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+    color: #78909C;
+    margin-right: 10px;
+    height: 100%;
+}
+
+.tour-participants ul{
+    list-style: none;
+    padding: 0;
+    overflow-y: auto;
+}
+
+.tour-participants select{
+    -moz-appearance: none;
+    background-image: url("/assets/img/ui-select-wayonara.svg");
+    background-position: right 5px center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out
+}
+
+.participant-role select{
+    width: 120px;
+    font-size: 11px;
+}
+
+.participant-age select{
+    width: 70px;
+    font-size: 11px;
+}
+
+.tour-shard-importer{
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: $zindex-modal;
+    background: #ffffff;
+    display: none;
+}
+
+.internal-participants{
+    width: 100%;
+    height: auto;
+    min-height: 90px;
+}
+
+.external-participants{
+    width: 100%;
+    height: auto;
+    min-height: 90px;
+}
+
+.added-participants{
+
+}
+
+.added-participants .participant-row{
+    display: flex;
+    width: 100%;
+    min-height: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #ECEFF1;
+}
+
+.added-participants .participant-row .participant-details{
+    position: relative;
+    align-self: center;
+    width: 100%;
+}
+
+.added-participants .participant-row .participant-details .user-image-name{
+    width: 30%;
+    float: left;
+}
+.added-participants .participant-row .participant-details .select-box{
+    width: 20%;
+    float: left;
+}
+.added-participants .participant-row .participant-details .user-status{
+    width: 15%;
+    float: left;
+}
+.added-participants .participant-row .participant-details .participant-role{
+    width: 25%;
+    float: left;
+}
+.added-participants .participant-row .participant-details .delete-button{
+    width: 10%;
+    float: left;
+}
+.added-participants .participant-row .participant-details .user-image-name-outside{
+    width: 45%;
+    float: left;
+}
+.added-participants .participant-row .participant-details .user-select-age-range{
+    width: 15%;
+    float: left;
+}
+
+.added-participants .participant-row .participant-details .wn-icon{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    font-size: 20px;
+}
+
+.add-participants-dialog .wn-dialog-content{
+    width: 900px;
+    height: 600px;
+    padding: 0;
+}
+
+.add-participants-dialog .ui-flat.ui-input-wrapper.search-participants md-autocomplete-wrap{
+    box-shadow: none;
+}
+
+.wn-icon-image-wayonara{
+    height: 40px;
+}

@@ -1,0 +1,46 @@
+<wn-navbar-social [labels]="translationResolved"></wn-navbar-social>
+
+<main class="has-navbar">
+    <div class="cover-container" [wnBackgroundImage]="coverBackgroundOptions" (imageNotFound)="showMapCover()">
+        <wn-maps [coordinates]="componentData.coordinates" *ngIf="isMapCoverVisible === true"></wn-maps>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 hidden-xs hidden-sm">
+                <div class="sidebar">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div>
+                                <div class="caption text-center">
+                                    <h1 class="h2">{{componentData.title}}</h1>
+                                    <p>{{componentData.admin1CodeExt}}</p>
+                                </div>
+                                <div class="map">
+                                    <wn-maps [coordinates]="componentData.coordinates"></wn-maps>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <wn-action-bar-view class="action-bar-board-detail" [items]="actionbar.items" [actions]="actionbar.actions" [transcludeFollowButton]="true">
+                    <wn-follow-button
+                        [targetId]="componentData.id"
+                        [isTargetFollowed]="isTargetFollowed"
+                        [translation]="translationFollowButton"
+                    ></wn-follow-button>
+                </wn-action-bar-view>
+
+                <wn-grid-top-sights [id]="componentData.relatedPlaceId" [subtitle]="componentData.title" [translations]="translationShard"></wn-grid-top-sights>
+                <wn-grid-top-hotel  [id]="componentData.relatedPlaceId" [subtitle]="componentData.title" [translations]="translationShard"></wn-grid-top-hotel>
+                <wn-grid-top-shard  [id]="componentData.id" [subtitle]="componentData.title" [translations]="translationShard"></wn-grid-top-shard>
+            </div>
+
+        </div>
+    </div>
+</main>

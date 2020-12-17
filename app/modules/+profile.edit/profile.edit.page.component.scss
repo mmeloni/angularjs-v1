@@ -1,0 +1,131 @@
+@import '../../../assets/scss/utils/mixins';
+
+$relevantBp: 1024px;
+
+.profile-page.profile-page-edit {
+    padding-top: 60px;
+    min-height: 1300px;
+
+    .profile-toolbar.toolbar-edit {
+        background: #fcfcfc;
+        position: relative;
+        border-bottom: 2px solid #e5eaec;
+        padding: 20px;
+        margin-bottom: 0;
+        button {
+            position: relative;
+            @include css3-prefix(appereance, none);
+            background: white;
+            border: 1px solid #e5eaec;
+            border-bottom-width: 2px;
+            padding: 5px;
+            margin-right: 10px;
+            min-width: 100px;
+            text-align: center;
+            margin-bottom: 0;
+            @include border-radius(20px);
+        }
+    }
+
+    .profile-content-wrapper {
+        background: #fcfcfc;
+        .toolbar-container {
+            max-width: 1420px;
+            width: 100%;
+            padding: 0 10px;
+            margin: 0 auto;
+        }
+        .page-container {
+            max-width: 1480px;
+            padding: 0 10px;
+            margin: 0 auto;
+            @media screen and (min-width: 768px) {
+                padding: 0 20px;
+            }
+            @media screen and (min-width: 1024px) {
+                padding: 0 10px;
+            }
+            @media screen and (min-width: 1100px) {
+                padding: 0 20px;
+            }
+            .profile-sidebar {
+                width: 100%;
+                @media screen and (min-width: $relevantBp) {
+                    float: left;
+                    max-width: 330px;
+                    margin-right: 10px;
+                }
+                @media screen and (min-width: 1200px) {
+                    max-width: 300px;
+                    margin-right: 20px;
+                }
+                @media screen and (min-width: 1440px) {
+                    max-width: 330px;
+                }
+                h1 {
+                    margin-top: 15px;
+                    margin-bottom: 25px;
+                    font-size: 18px;
+                    text-transform: uppercase;
+                    color: #3b4556;
+                    text-align: center;
+                    font-weight: 400;
+                    @media screen and (min-width: $relevantBp) {
+                        text-align: left;
+                    }
+                }
+            }
+            .profile-content {
+                position: relative;
+                @media screen and (min-width: $relevantBp) {
+                    float: left;
+                    width: 65%;
+                }
+                @media screen and (min-width: 1105px) {
+                    width: 68%;
+                }
+                @media screen and (min-width: 1205px) {
+                    width: 70%;
+                }
+                @media screen and (min-width: 1280px) {
+                    width: 74%;
+                }
+                @media screen and (min-width: 1440px) {
+                    width: 75%;
+                }
+                h1 {
+                    margin-top: 15px;
+                    margin-bottom: 25px;
+                    font-size: 18px;
+                    text-transform: uppercase;
+                    color: #3b4556;
+                    text-align: left;
+                    font-weight: 400;
+                }
+                h2 {
+                    font-size: 16px;
+                    text-transform: uppercase;
+                    color: #3b4556;
+                    text-align: left;
+                    font-weight: 200;
+                    margin-bottom: 25px;
+                }
+                .form-container {
+                    @include border-radius(4px);
+                    background: white;
+                    border: 1px solid #e5eaec;
+                    padding: 0 15px;
+                    margin-bottom: 45px;
+                    @include box-shadow($x: 0px, $y: 0px, $blur: 1px, $color: rgba(0, 0, 0, .1));
+                    @include transition(box-shadow 250ms ease-in-out);
+                    &:hover {
+                        @include box-shadow($x: 1px, $y: 0px, $blur: 7px, $color: rgba(0, 0, 0, .1));
+                    }
+                    .form-title {
+                        border-bottom: 1px solid #e5eaec;
+                    }
+                }
+            }
+        }
+    }
+}

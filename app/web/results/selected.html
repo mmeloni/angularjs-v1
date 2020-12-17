@@ -1,0 +1,296 @@
+<div id="tourMainCnt">
+    <div class="tour-main-cnt-box">
+        <!-- Toolbar Section Start -->
+        <div class="tour-toolbar-cnt tour-ele-decoration" ng-hide="vmRES.resultSelected">
+            <uib-tabset>
+                <uib-tab class="tab-toolbar"
+                    index="{{direction}}"
+                    active="tab.active"
+                    heading="{{direction == 0? 'Outbound':'Return'}}"
+                    ng-repeat="(direction,statsGroup) in [vmRES.resultSelected.totalStats.outboundSegment, vmRES.resultSelected.totalStats.returnSegment] | filter:{returnSegment:'!'}"
+                    select="refreshSlider()">
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ vmRES.translation.transports }}
+                                </div>
+                                <div ng-if="direction == 0 ">
+                                    <wn-vector-filter
+                                        available-vector-bm="statsGroup.inv_vecs"
+                                        wn-vector-filter-model="vmRES.models.skipOutboundVectors" />
+                                </div>
+                                <div ng-if="direction == 1 ">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ vmRES.translation.maxStops }}
+                                </div>
+                                <div ng-if="direction == 0 ">
+                                    <rzslider
+                                        class="wn-slider"
+                                        rz-slider-model="vmRES.models.maxStopsNumberOut"
+                                        rz-slider-options="{floor: 0, ceil: statsGroup.maxStop, onChange: filterOutStops }" />
+
+                                </div>
+                                <div ng-if="direction == 1 ">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ vmRES.translation.departure }} - {{ vmRES.translation.arrival }}
+                                </div>
+                                <wn-slider wn-slider-model="deptime" wn-slider-high="arrtime" segment="statsGroup" on-change="updateTimeOutbound(attrs)"></wn-slider>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ vmRES.translation.waitingTime }}
+                                </div>
+                                <rzslider class="wn-slider" rz-slider-model="vmRES.models.maxWaitingTimeOut" rz-slider-options="{floor: 0, ceil: statsGroup.maxWT, onChange: filterMaxWaitingTimeOut}"></rzslider>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ vmRES.translation.from }}
+                                </div>
+                                <div class="poi-filter" ng-repeat="startPoi in statsGroup.pois.start" >
+                                    <input type="checkbox" ng-change="syncFrom(bool, startPoi.id)" ng-model="bool" ng-checked="bool" ng-init="bool=true" class="ng-valid ng-dirty ng-valid-parse ng-touched ng-not-empty">
+                                    {{ vmRES.startPoi.label }}
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ vmRES.translation.to }}
+                                </div>
+                                <div class="poi-filter" ng-repeat="endPoi in statsGroup.pois.end" >
+                                    <input type="checkbox" ng-change="syncTo(bool, endPoi.id)" ng-model="bool" ng-checked="bool" ng-init="bool=true" class="ng-valid ng-dirty ng-valid-parse ng-touched ng-not-empty">
+                                    {{ vmRES.endPoi.label }}
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ vmRES.translation.carriers }}
+                                </div>
+                                <div class="poi-filter" ng-repeat="carrier in statsGroup.inv_crs" >
+                                    <input type="checkbox" ng-change="syncCarriers(bool, carrier)" ng-model="bool" ng-checked="bool" ng-init="bool=true" class="ng-valid ng-dirty ng-valid-parse ng-touched ng-not-empty">
+                                    {{ vmRES.carrier }}
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+        <!-- Toolbar Section End -->
+
+        <!-- Results Section Start -->
+        <div class="tour-wall-cnt" ng-switch on="selected">
+            <!-- Results Navbar sectiom Start -->
+            <form id="quote-search-bar" class="row margin-horizontal-none tour-ele-decoration">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="small">{{ ::vmRES.translation.from }}</label>
+                            <p class="margin-bottom-none">{{ vmRES.tripOriginName }}</p>
+                        </div>
+                        <div class="col-md-2 trip-arrows-container">
+                            <span class="wn-icon wn-icon-arrow-right"></span>
+                            <span ng-if="(vmRES.resultSelected.trip.returnSegment !== null)" class="wn-icon wn-icon-arrow-left"></span>
+                        </div>
+                        <div class="col-md-5">
+                            <label class="small">{{ ::vmRES.translation.to }}</label>
+                            <p class="margin-bottom-none">{{ vmRES.tripDestinationName }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-left form-group margin-bottom-none" ng-class="(vmRES.resultSelected.trip.returnSegment === null) ? 'border-right col-md-4' : 'col-md-2'">
+                    <label class="small">{{ ::vmRES.translation.depart }}</label>
+                    <div class="margin-bottom-none input-group">
+                        <div class="input-group-addon"><span class="wn-icon wn-icon-calendar vertical-align-text-bottom"></span></div>
+                        <span ng-class="vmRES.callInError ? 'red-date': ''" >{{ vmRES.resultSelected.trip.outboundSegment.startTime | date:'yyyy-MM-dd' }}</span>
+                    </div>
+                </div>
+                <div class="col-md-2 border-right" ng-if="vmRES.resultSelected.trip.returnSegment !== null">
+                    <label class="small">{{ ::vmRES.translation.return }}</label>
+                    <div class="margin-bottom-none input-group">
+                        <div class="input-group-addon"><span class="wn-icon wn-icon-calendar vertical-align-text-bottom"></span></div>
+                        <span ng-class="vmRES.callInError ? 'red-date': ''">{{ vmRES.resultSelected.trip.returnSegment.startTime | date:'yyyy-MM-dd' }}</span>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <label class="small" for="paxCount">{{ ::vmRES.translation.travelers }}</label>
+                    <p class="margin-bottom-none" id="paxCount">{{ (vmRES.tour.participants | filter:{isPax : true}).length }}</p>
+                </div>
+
+                <div class="col-md-2 border-left text-right">
+                    <wn-button
+                        css-classes="btn btn-default"
+                        [label]="vmRES.translation.change"
+                        ng-click="vmRES.changeQuote()"
+                    ></wn-button>
+                </div>
+            </form>
+
+            <!-- Results selected rendering start -->
+            <div id="tourResults">
+                <div class="row result-row no-padding">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2 text-center details-col-left">
+                                <div class="row">
+                                    <div class="col-md-12 no-padding" ng-bind-html='vmRES.resultSelected.price | priceFormatter'></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 no-padding">
+                                        <div class="tour-cls-cnt text-center center-block" >
+                                            <div class="tour-cl-cnt" ng-repeat="carrier in vmRES.resultSelected.carriers track by $index" data-ng-style="{'z-index':  ((vmRES.resultSelected.carriers.length - $index)*2 - 1) }" data-is-last="{{ $last }}">
+                                                <img class="ui-rounded" ng-src="https://s3-eu-west-1.amazonaws.com/wayonara-assets/cl/32/{{carrier.code}}.png" alt="{{carrier.agency}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-10 result-trip-row no-padding">
+                                <div class="row no-padding">
+                                    <div class="col-md-2">
+                                        <div>{{ vmRES.resultSelected.trip.outboundSegment.startTime | tripSegmentTime:'HH:mm' }}</div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="res-vector" ng-repeat="vector in vmRES.resultSelected.trip.outboundSegment.vectors | buyableResults">
+                                            <span class="wn-icon wn-icon-{{ vector.bit | vectorClassPrinter }} {{ vector.bit | vectorClassPrinter }}-detail-color"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div>{{ vmRES.resultSelected.trip.outboundSegment.endTime | tripSegmentTime:'HH:mm' }} <span class="shiftDays">{{ vmRES.resultSelected.trip.outboundSegment.startTime | shiftDays: vmRES.resultSelected.trip.outboundSegment.endTime }}</span></div>
+                                    </div>
+                                    <div class="result-row-secondary">
+                                        <div class="col-md-2">
+                                            <div>
+                                                <span class="wn-icon wn-icon-arrow-right" aria-hidden="true"></span><span class="segment-duration">{{ vmRES.resultSelected.trip.outboundSegment.duration | time:'mm':'hhh mmm':false }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <span>{{ vmRES.resultSelected.trip.outboundSegment.stop }} {{ vmRES.translation.stops }}</span>
+                                        </div>
+                                        <div class="col-md-2 text-right">
+                                            <span class="quoted-label pull-right" >{{ vmRES.translation.quoted | uppercase }}</span>
+                                            <span class="quoted-date-unavailable pull-right" ng-if="vmRES.quoteError">{{ vmRES.translation.dateUnavailable }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row no-padding" ng-if="vmRES.resultSelected.trip.returnSegment">
+                                    <div class="col-md-2">
+                                        <div>{{ vmRES.resultSelected.trip.returnSegment.startTime | tripSegmentTime:'HH:mm' }}</div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="res-vector" ng-repeat="vector in vmRES.resultSelected.trip.returnSegment.vectors | buyableResults">
+                                            <span class="wn-icon wn-icon-{{ vector.bit | vectorClassPrinter }} {{ vector.bit | vectorClassPrinter }}-detail-color"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div>{{ vmRES.resultSelected.trip.returnSegment.endTime | tripSegmentTime:'HH:mm' }}</div>
+                                    </div>
+                                    <div class="result-row-secondary">
+                                        <div class="col-md-2">
+                                            <div>
+                                                <span class="wn-icon wn-icon-arrow-right" aria-hidden="true"></span><span class="segment-duration">{{ vmRES.resultSelected.trip.returnSegment.duration | time:'mm':'hhh mmm':false }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <span>{{ vmRES.resultSelected.trip.returnSegment.stop }} {{ vmRES.translation.stops }}</span>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 text-center details-col-left">
+                                <wn-button
+                                    css-classes="btn btn-default"
+                                    [label]="vmRES.translation.removeQuotation"
+                                    ng-click="vmRES.removeQuotation()"
+                                    [is-loading]="vmRES.isLoadingButtonRemoveQuotation === true"
+                                ></wn-button>
+
+                                <!-- <button class="ui-action-button expanded primary" type="button" ng-click="bookRecap()" ng-disabled="quoteError || enteringRecap">Book (Beta)</button> -->
+                            </div>
+                            <div class="col-md-4 text-left show-details">
+                                <span class="pull-left" ng-click="status.open = !status.open; showDetail(vmRES.resultSelected, status)">
+                                    {{ status.open ? vmRES.translation.hideDetails : vmRES.translation.showDetails }}
+                                    <i class="glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                                </span>
+                            </div>
+                            <div class="col-md-6 result-row-secondary text-right">
+                                <span ng-if="(vmRES.resultSelected.bm | checkSaleablesVectorsInTrip)">{{ vmRES.translation.soldBy }} <b>Wayonara</b></span>
+                                <span ng-if="!(vmRES.resultSelected.bm | checkSaleablesVectorsInTrip)">{{ tvmRES.ranslation.soldBy }} <b>{{ vmRES.translation.otherCompanies }}</b></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <uib-accordion class="trip-details-explode" close-others="false">
+                    <uib-accordion-group is-open="status.open">
+                        <div class="segment-details">
+                            <div class="row segment-heading">
+                                <div class="col-md-12">
+                                    <b>{{ vmRES.translation.depart }}: </b><span class="vector-secondary-details">{{ vmRES.resultSelected.trip.outboundSegment.startTime | date:'dd MMM yyyy' }}</span>
+                                </div>
+                            </div>
+                            <md-progress-linear ng-show="loadingDetails" md-diameter="2px" md-mode="query"></md-progress-linear>
+                            <div ng-repeat="outboundVector in vmRES.resultSelected.trip.outboundSegment.vectors">
+                                <ng-include
+                                    ng-init="vector = outboundVector; vectors = vmRES.resultSelected.trip.outboundSegment.vectors; segment = 'outboundSegment'; resIndex = resultIndex;"
+                                    src="'web/results/selected-details-explode.html'" />
+                            </div>
+                        </div>
+                        <div class="segment-details">
+                            <div class="row segment-heading" ng-if="vmRES.resultSelected.trip.returnSegment">
+                                <div class="col-md-12">
+                                    <b>{{ vmRES.translation.return }}: </b><span class="vector-secondary-details">{{ vmRES.resultSelected.trip.returnSegment.startTime | date:'dd MMM yyyy' }}</span>
+                                </div>
+                            </div>
+                            <div ng-repeat="returnVector in vmRES.resultSelected.trip.returnSegment.vectors">
+                                <ng-include
+                                ng-init="vector = returnVector; vectors = vmRES.resultSelected.trip.returnSegment.vectors; segment = 'returnSegment'; resIndex = resultIndex;"
+                                src="'web/results/selected-details-explode.html'" />
+                            </div>
+                        </div>
+                    </uib-accordion-group>
+                </uib-accordion>
+            </div>
+            <!-- Result selected rendering End -->
+        </div>
+    </div>
+</div>

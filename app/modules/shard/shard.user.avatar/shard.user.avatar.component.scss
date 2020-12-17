@@ -1,0 +1,21 @@
+@import "../../../../assets/scss/utils/mixins";
+
+.shard-user-profile-pic {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    margin: 16px;
+    max-width: 36px;
+}
+
+.popover-item {
+    background: white;
+    padding: 15px;
+    position: absolute;
+    z-index: 101;
+    top: 60px;
+    left: 50%;
+    @include transform(translateX(-50%));
+    @include border-radius();
+    @include box-shadow($x: 0px, $y: 1px, $blur: 3px, $color: rgba(0, 0, 0, .2));
+}

@@ -1,0 +1,25 @@
+.board-cover {
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(200, 200, 200, 1) url("../../../../assets/img/spinner.svg") no-repeat center center;
+    background-size: 28px;
+    &.image-fully-loaded, &.loading-error {
+        background: rgba(200, 200, 200, 1);
+    }
+    img {
+        max-width: 100%;
+        opacity: 0;
+        &.visible {
+            opacity: 1;
+        }
+    }
+    p.board-title {
+        margin: 10px;
+        position: absolute;
+        top: 0;
+        line-height: 1.4;
+        color: white;
+        font-weight: bold;
+    }
+}

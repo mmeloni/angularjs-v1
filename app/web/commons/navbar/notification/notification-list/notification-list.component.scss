@@ -1,0 +1,60 @@
+@import '../../../../../../assets/scss/overrides/bootstrap/variables';
+
+a {
+    color: $text-color;
+    display: block;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.wn-icon {
+    display: inline-block;
+    margin-top: 3px;
+}
+
+.panel-default {
+    border-color: transparent;
+}
+
+.panel-heading {
+    padding: 1.4em 15px; // original in Bootstrap: 10px 15px
+}
+
+.list-group-item {
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    padding: 0.8em 15px;
+
+    &:hover {
+        background-color: $gray-lighter;
+    }
+}
+
+.flex-self-start {
+    align-self: flex-start;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.center-block {
+    span {
+        display: block;
+    }
+}
+
+.btn-link {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-width: 0;
+    color: $gray-dark;
+
+    &:hover {
+        color: $gray-darker;
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,139 @@
+/*--Animations--*/
+
+/* scroll */
+@keyframes scroll {
+	from {
+		background-position:0 0;
+	}
+	to {
+		background-position:0 -2008px;
+	}
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+.slideIn {
+	-webkit-animation-name: slideInRight;
+	animation-name: slideInRight;
+}
+
+/* slide out from the left */
+@keyframes slideOutLeft {
+	to {
+		transform: translateX(-100%);
+	}
+}
+
+.slideOutLeft {
+	-webkit-animation-name: slideOutLeft;
+	animation-name: slideOutLeft;
+}
+
+/* unfade */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 100;
+	}
+}
+
+.fadeIn {
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(0, 100%, 0);
+		transform: translate3d(0, 100%, 0);
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.fadeInUp {
+	-webkit-animation-name: fadeInUp;
+	animation-name: fadeInUp;
+}
+
+/* fade */
+@keyframes fadeOut {
+	to {
+		opacity: 0;
+	}
+}
+
+.fadeOut {
+	-webkit-animation-name: fadeOut;
+	animation-name: fadeOut;
+}
+
+@keyframes fadeOutDown {
+	0% {
+		opacity: 1
+	}
+
+	100% {
+		opacity: 0;
+		-webkit-transform: translate3d(0, 100%, 0);
+		transform: translate3d(0, 100%, 0);
+	}
+}
+
+.fadeOutDown {
+	-webkit-animation-name: fadeOutDown;
+	animation-name: fadeOutDown;
+}
+
+
+/* sliding underline */
+.sliding-middle-out {
+	display: inline-block;
+	position: relative;
+	padding-bottom: 0;
+}
+.sliding-middle-out:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 3px;
+	width: 0;
+	background: transparent;
+	transition: width .5s ease, background-color .5s ease;
+}
+.sliding-middle-out:hover:after {
+	width: 100%;
+	background: #ffffff;
+}
+
+.animation-mask {
+	overflow: hidden;
+}
+
+/* zoom in */
+@keyframes zoomIn {
+    from {
+		transform: scale(1, 1);
+	}
+	to {
+		transform: scale(1.15, 1.15);
+	}
+}
+
+.zoom-in {
+	-webkit-animation: zoomIn 18s forwards;
+	animation: zoomIn 18s forwards;
+}

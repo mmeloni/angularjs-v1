@@ -1,0 +1,56 @@
+<div id="folder{{ngModel.place.id}}" class="travel-box-folder" ng-switch on="activeOverlay">
+    <img
+        ng-if="isAreaOfOrigin === true"
+        class="area-of-origin"
+        src="/assets/img/star-rating.png"
+        width="24"
+        uib-tooltip="{{ ::translation.areaOfOriginHelpText }}"
+        tooltip-append-to-body="true"
+    />
+    <wn-image
+        css-classes="box-image"
+        img-format="'_triple_shard_'"
+        place=ngModel.place
+        err-src="/assets/img/shard-empty.png">
+    </wn-image>
+    <div
+        class="shard-statistics"
+        uib-popover-template="'web/tour/travel-box/travel-box-folder-popover.template.html'"
+        popover-trigger="mouseenter"
+        popover-append-to-body="true"
+        popover-placement="bottom">
+
+        <wn-icon-label
+            [label]="placeStatistics.stages.count"
+            icon-classes="wn-icon wn-icon-place wn-icon-place-color vertical-align-text-bottom"
+        ></wn-icon-label>
+        <wn-icon-label
+            [label]="placeStatistics.hotels.count"
+            icon-classes="wn-icon wn-icon-hotel wn-icon-hotel-color vertical-align-text-bottom"
+            css-classes="margin-left-sm"
+        ></wn-icon-label>
+        <wn-icon-label
+            [label]="placeStatistics.attractions.count"
+            icon-classes="wn-icon wn-icon-attraction wn-icon-attraction-color vertical-align-text-bottom"
+            css-classes="margin-left-sm"
+        ></wn-icon-label>
+    </div>
+
+    <div class="overlay dark" ng-switch-default>
+        <span class="wn-icon wn-icon-pin wn-icon-circle wn-icon-place wn-icon-place-color"></span>
+        <p class="margin-vertical-sm">{{ ngModel.place.title }} ({{ ::translation.area }})</p>
+        <div class="actions-wrapper">
+            <button class="ui-action-button ui-icon-button xs" ng-click="delete()"><span class="wn-icon wn-icon-discard"></span></button>
+        </div>
+    </div>
+    <div class="overlay dark confirm-panel" ng-switch-when="confirm-delete">
+        <div class="panel-header">{{ ::translation.deleteThisShard }}?</div>
+        <div class="panel-actions">
+            <button class="ui-action-button confirm" ng-click="confirmDelete()">{{ ::translation.yesDelete }}</button>
+            <button class="ui-action-button not-inked" ng-click="cancelDelete()">{{ ::translation.cancel }}</button>
+        </div>
+    </div>
+    <div class="dnd-placeholder">
+        <span class="wn-icon wn-icon-pin wn-icon-circle wn-icon-place wn-icon-place-color"></span>
+    </div>
+</div>

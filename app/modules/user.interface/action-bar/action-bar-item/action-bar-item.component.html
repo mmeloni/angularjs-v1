@@ -1,0 +1,10 @@
+<div class="item padding-horizontal-grid text-left" [ngClass]="cssClasses">
+    <div (click)="goToState($event)" [ngClass]="{ 'cursor-pointer': state !== null }">
+        <div class="h2 margin-vertical-none">
+            <p class="margin-top-none margin-bottom-xs" *ngIf="hasIcon === true"><ng-content select="wn-icon"></ng-content></p>
+            <span [ngClass]="iconClasses"></span>
+            <span><strong>{{ value | numberHumanize }}</strong></span>
+        </div>
+        <small class="display-block font-weight-bold">{{ label }}</small>
+    </div>
+</div>

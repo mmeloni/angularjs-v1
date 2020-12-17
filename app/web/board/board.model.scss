@@ -1,0 +1,260 @@
+@import '../../../assets/scss/overrides/bootstrap/variables';
+
+.board-card {
+    width: 316px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+
+    p {
+        margin: 0;
+        width: 100%;
+    }
+
+    header {
+        height: 164px;
+        margin: 0;
+        padding: 0;
+        position: relative;
+
+        h1 {
+            margin: 0;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: $grid-gutter-width / 2;
+        border-top-left-radius: $panel-border-radius - 1; // just like panel-heading in Bootstrap
+        border-top-right-radius: $panel-border-radius - 1; // just like panel-heading in Bootstrap
+        color: #ffffff;
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.35) 100%);
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.35) 100%);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.35) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#a6000000', GradientType=0);
+    }
+
+    .cover-container {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+        border-top-left-radius: $panel-border-radius - 1; // just like panel-heading in Bootstrap
+        border-top-right-radius: $panel-border-radius - 1; // just like panel-heading in Bootstrap
+
+        img {
+            position: absolute;
+            top: calc(50% - 82px); // 50% - parentHeight / 2
+            left: 0;
+            width: 100%;
+        }
+    }
+
+    .flex-center {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .thumbnail {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        min-height: 131px;
+        overflow: hidden;
+    }
+
+    .panel-body {
+        .row {
+            margin-top: $grid-gutter-width;
+        }
+    }
+}
+
+//--View/Edit model
+.board-detail {
+    /* === HEADER === */
+    .header {
+        height: 150px;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+
+        .image {
+            margin-top: -180px;
+            width: 100%;
+            position: absolute;
+            left: 0;
+        }
+
+        .title {
+            position: absolute;
+            top: 32px;
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 400;
+            z-index: 10;
+            color: #FFFFFF;
+            width: 100%;
+            text-align: center;
+        }
+
+        .description {
+            position: absolute;
+            bottom: 32px;
+            font-size: 16px;
+            font-weight: 400;
+            z-index: 10;
+            color: #FFFFFF;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .black-veil {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: #000000;
+    }
+
+    /* ==== FILTERS ==== */
+    .filters {
+        height: 80px;
+        width: 100%;
+        padding: 5px 22px;
+        display: flex;
+        position: relative;
+        align-items: center;
+        flex-direction: row;
+        overflow: hidden;
+
+        &.fixed {
+            top: 55px;
+            position: fixed;
+            z-index: 50;
+            background-color: #ffffff;
+
+            -moz-box-shadow: 0 2px 2px 0 rgba(176, 190, 197, 0.50);
+            -webkit-box-shadow: 0 2px 2px 0 rgba(176, 190, 197, 0.50);
+            box-shadow: 0 2px 2px 0 rgba(176, 190, 197, 0.50);
+        }
+
+        .title {
+            align-self: center;
+            color: #ffffff;
+            width: 350px;
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            margin-left: -175px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            transform: translate(0px, -80px);
+            font-weight: 600;
+            font-size: 32px;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .filters-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 80px;
+
+            img {
+                position: absolute;
+                margin-top: -200px;
+                top: 50%;
+                width: 100%;
+
+                //--TODO potentially common mixin for blurring
+                -webkit-filter: blur(5px);
+                -moz-filter: blur(5px);
+                -o-filter: blur(5px);
+                -ms-filter: blur(5px);
+                filter: blur(5px);
+            }
+
+            .dark-overlay {
+                background-color: rgba(0, 0, 0, 0.5);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        /* === BOARD OWNER === */
+        .owner-image,
+        & img {
+            height: 50px;
+            width: 50px;
+            align-self: center;
+            position: relative;
+        }
+
+        .owner-text {
+            align-self: center;
+            height: 50px;
+            position: relative;
+            width: 300px;
+            padding-left: 10px;
+            flex-grow: 0;
+
+            .name-surname {
+                position: absolute;
+                top: 2px;
+                font-size: 24px;
+                font-weight: 600;
+            }
+
+            .username {
+                position: absolute;
+                bottom: 2px;
+                font-size: 14px;
+                font-weight: 400;
+                color: #78909C;
+            }
+
+            &.inverted {
+                .name-surname {
+                    color: #ffffff;
+                }
+                .username {
+                    color: #ffffff;
+                }
+            }
+        }
+
+        /* === ACTIONS === */
+        .action-bar-board-detail {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+    }
+
+    /* === SHARDS THUMBS === */
+    .shards-collection {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+}

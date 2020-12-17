@@ -1,0 +1,118 @@
+<div class="container">
+    <div class="row display-flex">
+        <div class="col-xs-12 col-md-4 col-md-offset-1">
+            <header class="margin-top-sm margin-bottom-none text-center">
+                <p class="margin-vertical-none">
+                    <a uiSref="homePublic"><img src="/assets/img/public/logo-payoff.png" width="112" height="42" alt="Wayonara" /></a>
+                </p>
+                <h1 class="margin-top-xs margin-bottom-sm">{{ labels.signIn.title }}<span class="text-primary">!</span></h1>
+            </header>
+
+            <main>
+                <wn-facebook-authentication
+                    [label]="labels.signIn.facebookSignIn"
+                    cssClasses="btn-block"
+                    (success)="onFacebookSignInSuccess($event)"
+                    (error)="onFacebookSignInError($event)"
+                ></wn-facebook-authentication>
+
+                <div class="divider margin-top-md margin-bottom-xs">
+                    <hr class="margin-vertical-none" />
+                    <p class="margin-bottom-none text-center"><span class="padding-horizontal-lg">{{ labels.signIn.divider | lowercase }}</span></p>
+                </div>
+
+                <form #signInForm="ngForm" novalidate autocapitalize="none">
+                    <div class="form-group" [ngClass]="{
+                        'has-warning': ((username.dirty === true || username.touched === true) && username.errors !== undefined && username.errors !== null) || authenticationError.username !== '',
+                        'padding-bottom-custom': ((username.dirty === false && username.touched === false) || username.errors === undefined || username.errors === null) && authenticationError.username === ''
+                    }">
+                        <label for="username">{{ translationResolved.username }}</label>
+                        <input
+                            autofocus
+                            id="username"
+                            type="text"
+                            name="_username"
+                            [(ngModel)]="model._username"
+                            #username="ngModel"
+                            #autofocusControl
+                            class="form-control"
+                            maxlength="15"
+                            required />
+                        <span class="help-block margin-vertical-none" *ngIf="(username.dirty === true || username.touched === true) && username.errors !== undefined && username.errors !== null && username.errors['required'] === true">
+                            {{ translationResolved.username_is_required }}
+                        </span>
+                        <span class="help-block margin-vertical-none" *ngIf="authenticationError.username !== ''">
+                            {{ authenticationError.username }}
+                        </span>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{
+                        'has-warning': ((password.dirty === true || password.touched === true) && password.errors !== undefined && password.errors !== null) || authenticationError.password !== '',
+                        'padding-bottom-custom': ((password.dirty === false && password.touched === false) || password.errors === undefined || password.errors === null) && authenticationError.password === ''
+                    }">
+                        <label for="password">{{ translationResolved.password }}</label>
+                        <input
+                            id="password"
+                            type="password"
+                            name="_password"
+                            [(ngModel)]="model._password"
+                            #password="ngModel"
+                            class="form-control"
+                            minlength="8"
+                            maxlength="256"
+                            required />
+                        <span class="help-block margin-vertical-none" *ngIf="(password.dirty === true || password.touched === true) && password.errors !== undefined && password.errors !== null && password.errors['required'] === true">
+                            {{ translationResolved.password_is_required }}
+                        </span>
+                        <span class="help-block margin-vertical-none" *ngIf="(password.dirty === true || password.touched === true) && password.errors !== undefined && password.errors !== null && password.errors['minlength']">
+                            {{ translationResolved.password_too_short }}
+                        </span>
+                        <span class="help-block margin-vertical-none" *ngIf="authenticationError.password !== ''">
+                            {{ authenticationError.password }}
+                        </span>
+                    </div>
+
+                    <wn-button
+                        cssClasses="btn btn-primary btn-lg btn-block"
+                        [label]="translationResolved.sign_in"
+                        buttonType="submit"
+                        [isLoading]="isLoading"
+                        (click)="onSubmit($event)"
+                        [disabled]="!signInForm.form.valid"
+                    ></wn-button>
+                </form>
+
+                <div class="row margin-top-sm margin-bottom-md">
+                    <p class="col-xs-6 margin-vertical-none">
+                        {{ labels.signIn.createAccount }}
+                    </p>
+                    <p class="col-xs-6 text-right margin-vertical-none">
+                        <wn-button
+                            cssClasses="btn btn-default"
+                            [label]="labels.signIn.signUp"
+                            uiSref="signUp"
+                        ></wn-button>
+                    </p>
+                </div>
+
+                <p class="margin-top-md margin-bottom-lg text-center">
+                    <a uiSref="passwordRecovery">{{ labels.signIn.forgotPassword }}</a>
+                </p>
+            </main>
+
+            <footer class="padding-bottom-lg text-center small font-weight-bold">
+                <p class="margin-vertical-sm">{{ labels.commons.footer.madeInItalyIntro }}&#32;<wn-icon glyph="like" iconSize="sm"></wn-icon>&#32;{{ labels.commons.footer.madeInItalyOutro }}</p>
+                <p class="margin-top-none margin-bottom-sm text-secondary">{{ labels.commons.footer.copyright }}</p>
+            </footer>
+        </div>
+
+        <aside class="hidden-xs hidden-sm col-md-6 col-md-offset-1 background-color-gray-darker text-white">
+            <footer class="padding-vertical-md margin-bottom-md text-center">
+                <wn-author-info
+                    [author]="photoAuthor"
+                    cssClasses="text-white"
+                ></wn-author-info>
+            </footer>
+        </aside>
+    </div>
+</div>

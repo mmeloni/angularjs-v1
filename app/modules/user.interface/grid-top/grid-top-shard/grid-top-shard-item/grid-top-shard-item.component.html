@@ -1,0 +1,52 @@
+<article
+    class="hotel-grid-item panel panel-default"
+    [wnBackgroundImage]="shardBackgroundOptions"
+    [wnBackgroundImagePolling]="true"
+    [ngClass]="variant"
+    [wnShardDetailOpen]="componentData.id"
+    [wnShardDetailUser]="currentUser"
+    (mouseenter)="popoverUser.close()"
+    (mouseenter)="popoverPlace.close()">
+
+    <div class="panel-body">
+        <div class="header">
+            <wn-avatar
+                [userId]="componentData.user.nid"
+                cssClasses="pull-left"
+                (mouseenter)="popoverUser.open()">
+            </wn-avatar>
+            <div
+                class="user-popover-container"
+                [ngbPopover]="popoverUserTemplate"
+                #popoverUser="ngbPopover"
+                placement="bottom"
+                container="body"
+                triggers="manual">
+            </div>
+        </div>
+        <div class="hover">
+            <wn-button status="btn-default btn-sm" [iconClasses]="likeIconClasses" [action]="toggleLike"></wn-button>
+            <wn-button label="{{translations.plan}}" status="btn-default btn-sm" iconClasses="wn-icon wn-icon-plan-empty wn-icon-plan-empty-color" [action]="plan"></wn-button>
+        </div>
+        <div class="stats">
+            <wn-icon-label *ngIf="componentData.planCount > 0" [label]="componentData.planCount" iconClasses="wn-icon wn-icon-plan-empty"></wn-icon-label>
+        </div>
+        <div
+            class="place-popover-container"
+            [ngbPopover]="popoverPlaceTemplate"
+            #popoverPlace="ngbPopover"
+            placement="top"
+            container="body"
+            triggers="manual">
+        </div>
+        <div class="type" (mouseenter)=popoverPlace.open()>
+            <wn-icon-label [iconClasses]="shardIconClasses" [label]="componentData.place.title"></wn-icon-label>
+        </div>
+    </div>
+</article>
+<template #popoverUserTemplate>
+    <wn-popover-user [componentData]="componentData.user" [labels]="translations.popovers" (mouseleave)="popoverUser.close()"></wn-popover-user>
+</template>
+<template #popoverPlaceTemplate>
+    <wn-popover-place [componentData]="componentData.place" [labels]="translations.popovers" (mouseleave)="popoverPlace.close()"></wn-popover-place>
+</template>

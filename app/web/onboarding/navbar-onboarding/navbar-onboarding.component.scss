@@ -1,0 +1,16 @@
+@import '../../../../assets/scss/overrides/bootstrap/variables';
+
+.navbar-header {
+    position: absolute;
+    left: 50%;
+    margin-left: -($icon-size-xl / 2);
+}
+
+wn-wizard-step-counter {
+    position: absolute;
+    right: 0;
+}
+
+a {
+    cursor: default;
+}

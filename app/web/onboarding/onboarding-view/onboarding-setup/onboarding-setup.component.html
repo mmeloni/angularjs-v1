@@ -1,0 +1,22 @@
+<div [ngSwitch]="currentStepNumber === 3">
+    <div *ngSwitchCase="false">
+        <div class="row margin-top-grid padding-bottom-grid">
+            <div *ngFor="let item of itemsToFollow[0]; let index = index" class="col-md-3">
+                <wn-onboarding-card-place *ngIf="currentStepNumber === 1" [translation]="translationCardPlace" [place]="item"></wn-onboarding-card-place>
+                <wn-onboarding-card-user *ngIf="currentStepNumber === 2" [translation]="translationCardUser" [user]="item"></wn-onboarding-card-user>
+            </div>
+        </div>
+        <div class="row margin-top-grid padding-bottom-grid">
+            <div *ngFor="let item of itemsToFollow[1]; let index = index" class="col-md-3">
+                <wn-onboarding-card-place *ngIf="currentStepNumber === 1" [translation]="translationCardPlace" [place]="item"></wn-onboarding-card-place>
+                <wn-onboarding-card-user *ngIf="currentStepNumber === 2" [translation]="translationCardUser" [user]="item"></wn-onboarding-card-user>
+            </div>
+        </div>
+    </div>
+    <div *ngSwitchCase="true" class="last-step">
+        <button type="button" class="btn btn-default btn-facebook" (click)="inviteFriends()">
+            <span class="wn-icon wn-icon-facebook vertical-align-middle"></span>&#32;
+            {{ translation.inviteFromFacebook }}
+        </button>
+    </div>
+</div>

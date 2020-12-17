@@ -1,0 +1,15 @@
+@import '../../../../../assets/scss/overrides/bootstrap/variables';
+
+.dropdown li {
+    text-transform: capitalize;
+}
+
+// At the moment of writing, only used for the notifications
+.badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ff1744;
+    border-radius: 4px;
+    min-width: $line-height-computed;
+}

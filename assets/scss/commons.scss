@@ -1,0 +1,695 @@
+/** NOTE **/
+// This file will be gradually dismantled and probably dismissed
+// as we keep using Bootstrap more and more.
+// Or it will only container small utility classes.
+
+@import 'overrides/bootstrap/variables';
+
+@mixin rhythm-single($property, $variant, $value) {
+    .#{$property}-#{$variant} {
+        #{$property}: $value !important;
+    }
+}
+
+@mixin rhythm-vertical($property, $variant, $value) {
+    .#{$property}-vertical-#{$variant} {
+        #{$property}-top: $value !important;
+        #{$property}-bottom: $value !important;
+    }
+}
+
+@mixin rhythm-horizontal($property, $variant, $value) {
+    .#{$property}-horizontal-#{$variant} {
+        #{$property}-right: $value !important;
+        #{$property}-left: $value !important;
+    }
+}
+
+@each $variant, $value in $rhythm-base {
+    @include rhythm-single('margin-top', $variant, $value);
+    @include rhythm-single('margin-right', $variant, $value);
+    @include rhythm-single('margin-bottom', $variant, $value);
+    @include rhythm-single('margin-left', $variant, $value);
+
+    @include rhythm-single('padding-top', $variant, $value);
+    @include rhythm-single('padding-right', $variant, $value);
+    @include rhythm-single('padding-bottom', $variant, $value);
+    @include rhythm-single('padding-left', $variant, $value);
+
+    @include rhythm-vertical('margin', $variant, $value);
+    @include rhythm-vertical('padding', $variant, $value);
+
+    @include rhythm-horizontal('margin', $variant, $value);
+    @include rhythm-horizontal('padding', $variant, $value);
+}
+
+@media (min-width: $screen-md-min) {
+    @each $variant, $value in $rhythm-screen-md-min {
+        @include rhythm-single('margin-top', $variant, $value);
+        @include rhythm-single('margin-right', $variant, $value);
+        @include rhythm-single('margin-bottom', $variant, $value);
+        @include rhythm-single('margin-left', $variant, $value);
+
+        @include rhythm-single('padding-top', $variant, $value);
+        @include rhythm-single('padding-right', $variant, $value);
+        @include rhythm-single('padding-bottom', $variant, $value);
+        @include rhythm-single('padding-left', $variant, $value);
+
+        @include rhythm-vertical('margin', $variant, $value);
+        @include rhythm-vertical('padding', $variant, $value);
+
+        @include rhythm-horizontal('margin', $variant, $value);
+        @include rhythm-horizontal('padding', $variant, $value);
+    }
+}
+
+.padding-vertical-small {
+    padding-top: $padding-small-vertical !important;
+    padding-bottom: $padding-small-vertical !important;
+}
+
+.vertical-align-middle {
+    vertical-align: middle !important;
+}
+
+.vertical-align-bottom {
+    vertical-align: bottom !important;
+}
+
+.vertical-align-text-bottom {
+    vertical-align: text-bottom !important;
+}
+
+.border-gray-light {
+    border: 1px solid $gray-light !important;
+}
+
+.border-bottom-gray-light {
+    border-bottom: 1px solid $gray-light !important;
+}
+
+.border-left-gray-light {
+    border-left: 1px solid $gray-light !important;
+}
+
+.background-color-gray-darker {
+    background-color: $gray-darker !important;
+}
+
+.background-size-cover {
+    background-size: cover !important;
+}
+
+.font-weight-normal {
+    font-weight: normal !important;
+}
+
+.font-weight-bold {
+    font-weight: 600 !important;
+}
+
+.text-place {
+    color: $brand-place !important;
+}
+
+.text-attraction {
+    color: $brand-attraction !important;
+}
+
+.text-hotel {
+    color: $brand-hotel !important;
+}
+
+.text-board {
+    color: $brand-board !important;
+}
+
+.text-secondary {
+    color: $gray-dark !important;
+}
+
+.text-white {
+    color: #ffffff !important;
+}
+
+.text-xl {
+    font-size: $font-size-extra-large !important;
+}
+
+.font-size-h2 {
+    font-size: $font-size-h2 !important;
+}
+
+.text-transform-none {
+    text-transform: none !important;
+}
+
+.position-relative {
+    position: relative !important;
+}
+
+.display-block {
+    display: block !important;
+}
+
+.display-flex {
+    display: flex !important;
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+.flex-direction-column {
+    flex-direction: column !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+// Remember to give a fixed width or max-width to the element you apply this class to
+.truncate-single-line {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* === MIXINS === */
+@mixin hasNavbar() {
+    padding-top: 60px;
+}
+
+/* === COMMONS === */
+body {
+    background-color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+    height: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+div:focus,
+section:focus,
+article:focus,
+img:focus,
+span:focus,
+li:focus
+{
+    outline: none;
+    border: 0;
+}
+
+footer.footer-special .container {
+    width: auto;
+}
+
+footer.footer-special {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    font-weight: 600;
+}
+
+footer.footer-special a,
+footer.footer-special a:active,
+footer.footer-special a:hover,
+footer.footer-special a:link,
+footer.footer-special a:visited {
+    text-decoration: none;
+}
+
+footer.footer-special,
+footer.footer-special a,
+footer.footer-special a:active,
+footer.footer-special a:hover,
+footer.footer-special a:link,
+footer.footer-special a:visited {
+    color: #465a64;
+}
+
+.container.container-wayonara{
+    width: 100%;
+}
+
+md-toast {
+    display: -webkit-flex;
+    position: fixed;
+    bottom: 20px!important;
+    margin-left: 40vw;
+    z-index: 9999999;
+}
+
+.panel-fixed {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.has-navbar {
+    @include hasNavbar();
+}
+
+/* === DROPDOWNS === */
+.dropdown-menu > li.menuitem {
+    padding: 12px 6px;
+    text-transform: capitalize;
+}
+
+.dropdown-menu > li:first-of-type {
+    border-radius: 4px 4px 0 0;
+}
+
+.dropdown-menu > li:last-of-type {
+    border-radius: 0 0 4px 4px;
+}
+
+.dropdown-menu > li:hover,
+.dropdown-menu > li:focus {
+    background-color: #eceff1;
+}
+
+.dropdown-menu > .divider {
+    margin: 0;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    background-color: transparent;
+}
+
+/* === UI PALETTE AND BUTTONS === */
+.ui-font-lg {
+    font-size:48px;
+}
+
+.ui-font-md {
+    font-size:24px;
+}
+
+.ui-font-sm {
+    font-size:18px;
+}
+
+.ui-font-xs {
+    font-size: 14px;
+}
+
+.dropdown-menu .ui-font-md {
+    font-size: 14px;
+}
+
+.dropdown-menu .ui-font-sm {
+    font-size: 12px;
+}
+
+.dropdown-menu .ui-font-xs {
+    font-size: 11px;
+}
+
+.ui-text-dark
+{
+    color: #465a64;
+}
+.ui-text-dark::-webkit-input-placeholder,
+.ui-text-dark input::-webkit-input-placeholder{
+    color: #465a64;
+}
+.ui-text-dark:-moz-placeholder,
+.ui-text-dark input:-moz-placeholder {
+    color: #465a64;
+}
+.ui-text-dark:-moz-placeholder,
+.ui-text-dark-mdark input:-moz-placeholder {
+    color: #465a64;
+}
+.ui-text-dark:-ms-input-placeholder,
+.ui-text-dark input:-ms-input-placeholder {
+    color: #465a64;
+}
+
+.ui-text-mdark
+{
+    color: #91a4ae;
+}
+.ui-text-mdark::-webkit-input-placeholder,
+.ui-text-mdark input::-webkit-input-placeholder{
+    color: #91a4ae;
+}
+.ui-text-mdark:-moz-placeholder,
+.ui-text-mdark input:-moz-placeholder {
+    color: #91a4ae;
+}
+.ui-text-mdark:-moz-placeholder,
+.ui-text-mdark input:-moz-placeholder {
+    color: #91a4ae;
+}
+.ui-text-mdark:-ms-input-placeholder,
+.ui-text-mdark input:-ms-input-placeholder {
+    color: #91a4ae;
+}
+
+.ui-text-light
+{
+    color: #90a4ae;
+}
+.ui-text-light::-webkit-input-placeholder {
+    color: #90a4ae;
+}
+.ui-text-light:-moz-placeholder,
+.ui-text-light input:-moz-placeholder {
+    color: #90a4ae;
+}
+.ui-text-light::-moz-placeholder,
+.ui-text-light input::-moz-placeholder {
+    color: #90a4ae;
+}
+.ui-text-light:-ms-input-placeholder,
+.ui-text-light input:-ms-input-placeholder {
+    color: #90a4ae;
+}
+
+.ui-text-xlight {
+    color: #eceff1;
+}
+
+.searchbar-tour .ui-text-xlight {
+    color: #78909C;
+}
+
+.ui-text-xlight::-webkit-input-placeholder,
+.ui-text-xlight input::-webkit-input-placeholder{
+    color: #eceff1;
+}
+.ui-text-xlight:-moz-placeholder,
+.ui-text-xlight input:-moz-placeholder {
+    color: #eceff1;
+}
+.ui-text-xlight::-moz-placeholder,
+.ui-text-xlight input::-moz-placeholder {
+    color: #eceff1;
+}
+.ui-text-xlight:-ms-input-placeholder,
+.ui-text-xlight input:-ms-input-placeholder {
+    color: #eceff1;
+}
+
+.ui-profile-picture,
+.ui-profile-picture img
+{
+    font-size: 20px;
+    height: 35px;
+    line-height: 35px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 35px;
+}
+
+.ui-color-default {
+    background-color: #cccccc;
+}
+
+md-icon.ui-icon-wayonara {
+    color: rgba(225, 225, 225, 0.9);
+}
+
+.ui-rounded,
+.ui-rounded img {
+    border-radius: 100%;
+}
+
+.ui-action-container {
+    position: relative;
+}
+
+.wn-spinner {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    float: left;
+}
+
+.ui-shard-picture
+{
+    font-size: 20px;
+    height: 50px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 50px;
+}
+
+.vertical-align {
+    display: flex;
+    flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+    display: flex;
+    align-items: center;
+}
+
+.page-background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    top:0;
+    left: 0;
+}
+
+.page-background img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.blurred-bg {
+    -webkit-filter: blur(30px);
+    -moz-filter: blur(30px);
+    -o-filter: blur(30px);
+    -ms-filter: blur(30px);
+    filter: blur(30px);
+}
+
+#tour-shard-import-container .form-control{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+}
+
+.place-detail-color{
+    color: #43E7C5;
+}
+
+.flight-detail-color{
+    color: #59aeed;
+}
+
+.train-detail-color{
+    color: #000000;
+}
+
+.walk-detail-color{
+    color: #fed420;
+}
+
+.restaurant-detail-color {
+    color: #fec939;
+}
+
+.attraction-detail-color {
+    color: #465A64;
+}
+
+.raidshare-detail-color{
+    color: #f16522;
+}
+
+.bus-detail-color{
+    color: #3c5b97;
+}
+.shard-info-wrapper .tour-status-container{
+    position: absolute;
+    top: 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 65px;
+    z-index: -1;
+}
+
+.shard-info-wrapper .tour-status-container .tour-status{
+    align-self: center;
+}
+
+.shard-info-wrapper .tour-status-container .tour-status.cue-ball{
+    align-self: center;
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+}
+
+.shard-info-wrapper .tour-status-container .tour-status.cue-ball.statusDraft{
+    background: #fed420;
+}
+
+.shard-info-wrapper .tour-status-container .tour-status.cue-ball.statusPublished{
+    background: #00C853;
+}
+
+.shard-info-wrapper .tour-status-container .tour-status.label{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#searchbox{
+    color: #78909C;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.search-container-navbar{
+    background: transparent;
+    display: flex;
+    justify-content: center;
+}
+
+#searchbox tags-input{
+    border: none;
+}
+
+#searchbox .host{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#searchbox .host .tags {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#searchbox .host .tags .input {
+    border: 0;
+    outline: none;
+    margin: 0;
+    padding-left: 0;
+    height: 100%;
+    background-color: transparent;
+}
+
+/**
+* 1. WebKit, Blink, Edge
+* 2. Standard (https://drafts.csswg.org/selectors-4/#placeholder)
+* 3. Mozilla Firefox 4 to 18
+* 4. Mozilla Firefox 19+
+* 5. Internet Explorer 10-11
+*/
+
+#searchbox input::-webkit-input-placeholder {
+    color: #b0bec5;
+    font-weight: 600;
+}
+
+#searchbox input:-moz-placeholder { /* Firefox 18- */
+    color: #b0bec5;
+    font-weight: 600;
+}
+
+#searchbox input::-moz-placeholder {  /* Firefox 19+ */
+    color: #b0bec5;
+    font-weight: 600;
+}
+
+#searchbox input:-ms-input-placeholder {
+    color: #b0bec5;
+    font-weight: 600;
+}
+
+.search-container-navbar .wn-icon.navbar-global{
+    border: none;
+    background-color: transparent;
+    font-size: 28px;
+    color: #B0BEC5;
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 14px);
+}
+
+.tour-edit-logo-global > img {
+    align-self: center;
+}
+
+.nav.navbar-nav.navbar-right .centered-div{
+    display: flex;
+    justify-content: center;
+    height: 55px;
+    font-size: 28px;
+    margin-right: 15px;
+}
+
+.nav.navbar-nav.navbar-right .centered-div.last{
+    margin-right: 0;
+}
+
+.nav.navbar-nav.navbar-right .centered-div .navbar-action{
+    align-self: center;
+    cursor: pointer;
+}
+
+.wn-cover-place{
+    position: relative;
+    height: 80vh;
+    border: 1px solid green;
+    display: flex;
+    justify-content: center;
+}
+
+.wn-cover-place .container{
+    align-self: center;
+    position: relative;
+    height: 100px;
+}
+
+.wn-cover-place .upon{
+    z-index: 5;
+    color: #FFFFFF;
+}
+
+.wn-cover-place .title{
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-self: center;
+    width: 100%;
+    text-align: center;
+    font-size: 6vh;
+    font-family: 'Playfair Display', serif;
+}
+
+.wn-cover-place .abstract{
+    position: absolute;
+    top: 30px;
+    align-self: center;
+    width: 100%;
+    text-align: center;
+}
+
+.wn-cover-place .place-cover-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.action-bar-place-detail{
+    margin-top: 25px;
+}

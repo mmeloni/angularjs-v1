@@ -1,0 +1,127 @@
+// this should be the style file of a new wn-icon component
+@import '../../../../assets/scss/overrides/bootstrap/variables';
+@import '../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+
+@mixin color-variant($name, $color) {
+    svg.#{$name}-color {
+        fill: $color;
+        border-color: $color;
+    }
+}
+
+@mixin border-shape-square() {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+}
+
+@mixin border-shape-circle() {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 100%;
+}
+
+@mixin border-shapes() {
+    &.square {
+        @include border-shape-square();
+    }
+
+    &.circle {
+        @include border-shape-circle();
+    }
+}
+
+svg {
+    width: $icon-size-base;
+    height: $icon-size-base;
+    line-height: 1;
+    fill: currentColor;
+
+    &.sm {
+        width: $icon-size-sm !important;
+        height: $icon-size-sm !important;
+    }
+
+    &.lg {
+        width: $icon-size-lg !important;
+        height: $icon-size-lg !important;
+    }
+
+    &.xl {
+        width: $icon-size-xl !important;
+        height: $icon-size-xl !important;
+    }
+
+    @include border-shapes();
+
+    // https://github.com/FortAwesome/Font-Awesome/blob/master/scss/_animated.scss
+    // Spinning Icons
+    // --------------------------
+
+    &.spin {
+      -webkit-animation: wn-spin 2s infinite linear;
+              animation: wn-spin 2s infinite linear;
+    }
+
+    &.pulse {
+      -webkit-animation: wn-spin 1s infinite steps(8);
+              animation: wn-spin 1s infinite steps(8);
+    }
+
+    @-webkit-keyframes wn-spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+      }
+    }
+
+    @keyframes wn-spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+      }
+    }
+}
+
+span.pin {
+    border-color: transparent;
+    background-color: #ffffff; // we want to ensure a pin has always a readable default color pair
+    color: $text-color; // we want to ensure a pin has always a readable default color pair
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    @include box-shadow($box-shadow-base-size $box-shadow-base-color);
+
+    @include border-shapes();
+}
+
+@include color-variant('attraction', $brand-attraction);
+@include color-variant('board',$brand-board);
+@include color-variant('car', $brand-car);
+@include color-variant('comment', #2b84f9);
+@include color-variant('flight', $brand-flight);
+@include color-variant('hotel', $brand-hotel);
+@include color-variant('like', #f10056);
+@include color-variant('loader', $brand-primary);
+@include color-variant('logo', $brand-primary);
+@include color-variant('mail', $brand-primary);
+@include color-variant('phone', $brand-primary);
+@include color-variant('place', $brand-place);
+@include color-variant('plan-outline', $brand-primary);
+@include color-variant('restaurant', $brand-restaurant);
+@include color-variant('save', $brand-success);
+@include color-variant('tour', $brand-tour);
+@include color-variant('train', $brand-train);
+@include color-variant('user-followed-fill', #2b84f9);

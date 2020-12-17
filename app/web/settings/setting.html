@@ -1,0 +1,38 @@
+<wn-navbar-social [labels]="translation"></wn-navbar-social>
+<div class="state-wrapper has-navbar">
+    <div class="row" id="settings-section">
+        <div class="col-md-3">
+            <div class="image-and-avatar margin-bottom-sm">
+                <div class="up-image">
+                    <wn-image class="up-cover-image" img-format="'_cover_'" user=user err-src="../assets/img/shard-empty.png"></wn-image>
+                </div>
+                <div class="left-bottom-image">
+                    <wn-image class="left-avatar-image" img-format="'_avatar_'" user=user err-src="../assets/img/shard-empty.png"></wn-image>
+                </div>
+                <div class="user-info">
+                    <div class="realname">{{user.firstname}}&#32;{{user.lastname}}</div>
+                    <div class="username">@{{user.username}}</div>
+                </div>
+            </div>
+
+            <div class="list-group">
+                <p ng-click="changeActiveMenu('overview')" class="list-group-item" ng-class=" (activeMenu == 'overview') ? 'activeSettingsMenu' : '' " >
+                    {{ translation.overview }}
+                </p>
+                <p ng-click="changeActiveMenu('myBookings')" class="list-group-item" ng-class=" (activeMenu == 'myBookings') ? 'activeSettingsMenu' : '' " >
+                    {{ translation.myBookings }}
+                </p>
+                <!--
+                <a href="javascript:void();" ng-click="changeActiveMenu('securityAndPrivacy')" class="grid-group-item" ng-class=" (activeMenu == 'securityAndPrivacy') ? 'activeSettingsMenu' : '' " >{{ translation.securityAndPrivacy }}</a>
+                <a href="javascript:void();" ng-click="changeActiveMenu('emailNotifications')" class="grid-group-item" ng-class=" (activeMenu == 'emailNotifications') ? 'activeSettingsMenu' : '' " >{{ translation.emailNotifications }}</a>
+                <a href="javascript:void();" ng-click="changeActiveMenu('webNotifications')" class="grid-group-item" ng-class=" (activeMenu == 'webNotifications') ? 'activeSettingsMenu' : '' " >{{ translation.webNotifications }}</a>
+                <a href="javascript:void();" ng-click="changeActiveMenu('findFriends')" class="grid-group-item" ng-class=" (activeMenu == 'findFriends') ? 'activeSettingsMenu' : '' " >{{ translation.findFriends }}</a>
+                -->
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div ui-view></div>
+        </div>
+    </div>
+</div>

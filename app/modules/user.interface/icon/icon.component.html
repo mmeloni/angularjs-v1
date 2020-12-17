@@ -1,0 +1,4 @@
+<span [ngClass]="spanClasses" *ngIf="glyph !== undefined && spanClasses.length > 0">
+    <svg [ngClass]="iconClasses"><use [attr.xlink:href]="iconRef"></use></svg>
+</span>
+<svg [ngClass]="iconClasses" *ngIf="glyph != undefined && spanClasses.length === 0"><use [attr.xlink:href]="iconRef"></use></svg>

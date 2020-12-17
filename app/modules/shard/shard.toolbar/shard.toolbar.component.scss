@@ -1,0 +1,115 @@
+@import "../../../../assets/scss/utils/mixins";
+
+@include keyframes(heartbeat) {
+    0% {
+        @include transform(scale(1));
+    }
+    50% {
+        @include transform(scale(1.12));
+    }
+    100% {
+        @include transform(scale(1));
+    }
+}
+
+.shard-toolbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    margin: 16px 16px 0 0;
+    @media screen and (min-width: 1280px) {
+        opacity: 0;
+    }
+    @include transition(opacity 250ms ease-in-out);
+    .btn {
+        @include border-radius();
+        padding: 5px;
+        cursor: pointer;
+    }
+    .btn.btn-plan {
+        padding: 7px 10px;
+        border: none;
+        height: 36px;
+        @include transition(color 150ms linear);
+        wn-icon {
+            height: 18px;
+            width: 18px;
+            display: inline-block;
+            float: left;
+            margin-right: 5px;
+            svg {
+                width: 18px;
+                height: 18px;
+                fill: #333;
+                border-color: #333;
+                @include transition(fill 150ms linear);
+
+            }
+        }
+
+        span {
+            float: right;
+        }
+
+        &:hover {
+            color: #6b6eff;
+            wn-icon svg {
+                fill: #6b6eff;
+                border-color: #6b6eff;
+            }
+        }
+    }
+    .btn.btn-like {
+        padding: 0;
+        border: none;
+        width: 36px;
+        height: 36px;
+        wn-icon {
+            svg {
+                @include transition(fill 150ms linear);
+                width: 20px;
+                height: 20px;
+                display: block;
+                margin: auto;
+                fill: #333;
+                border-color: #333;
+            }
+        }
+        &.liked {
+            wn-icon svg {
+                fill: #f10056;
+                border-color: #f10056;
+            }
+        }
+        &:hover,
+        &.anim {
+            wn-icon svg {
+                @include animation(heartbeat .3s ease-in 0.1s 2);
+            }
+        }
+    }
+    &.shard-is-draft {
+        color: white;
+        font-size: 16px;
+        opacity: 1 !important;
+        h4 {
+            margin-top: 0;
+            span {
+                display: inline-block;
+                @include border-radius(100%);
+                width: 10px;
+                height: 10px;
+                margin-right: 10px;
+                background: #fed420;
+                border: 1px solid rgba(0,0,0,.1);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    wn-shard:hover .shard-toolbar {
+        opacity: 1;
+    }
+}

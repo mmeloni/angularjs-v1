@@ -1,0 +1,20 @@
+<div class="li-container">
+    <div class="pull-left">
+        <img [wnImgSrc]="imageOptions" class="previewShard" />
+    </div>
+
+    <div class="title pull-left">
+        {{componentData.title}}
+    </div>
+
+    <div class="pull-right action-plan">
+        <wn-button
+            [label]="buttonLabel"
+            cssClasses="btn btn-default btn-sm"
+            iconClasses="wn-icon wn-icon-plan-empty wn-icon-plan-empty-color"
+            [isLoading]="isLoadingButton"
+            (click)="planOnBoard($event)"
+        ></wn-button>
+    </div>
+
+</div>

@@ -1,0 +1,100 @@
+/* === GRID RULES === */
+.wn-grid {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.wn-tile {
+    display: inline-block;
+    margin: 0 12px 24px 12px;
+}
+
+img.wn-tile-bg,
+.wn-tile-bg img {
+    width: 100%;
+    height: 100%;
+}
+
+/* === CONTAINER RULES === */
+.wn-flex-container {
+    display: flex;
+    position: relative;
+    height: auto;
+    width: 100%;
+
+    &.padded {
+        padding-right:12px;
+        padding-left: 12px;
+    }
+
+    &.wn-column {
+        flex-direction: column;
+    }
+
+    &.wn-size-3 {
+        width: 25%;
+    }
+
+    &.wn-size-6 {
+        width: 50%;
+    }
+
+    &.wn-size-12 {
+        width: 100%;
+    }
+
+    &.wn-row {
+        flex-direction: row;
+        flex-flow: row wrap;
+        flex: 1 100%;
+    }
+
+    &.h-align-center {
+        justify-content: center;
+    }
+
+    &.v-align-center {
+        align-items: center;
+    }
+
+    &.h-align-top {
+        justify-content: flex-start;
+    }
+
+    &.v-align-top {
+        align-items: flex-start;
+    }
+
+    &.h-align-bottom {
+        justify-content: flex-end;
+    }
+
+    &.v-align-bottom {
+        align-content: flex-end;
+    }
+
+    &.space-between {
+        justify-content: space-between;
+    }
+}
+
+.wn-responsive {
+    width: 100%;
+    height: 100%;
+}
+
+/* === CONTENT === */
+.wn-flex-content {
+    &.h-align-bottom {
+        margin-left: auto;
+    }
+
+    &.v-align-top {
+        margin-right: auto;
+    }
+}

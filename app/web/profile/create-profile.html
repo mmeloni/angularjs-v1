@@ -1,0 +1,23 @@
+<div class="container-fluid panel-fixed">
+	<div class="panel panel-default panel-create-profile">
+		<form id="formCreateProfile" name="formCreateProfile" class="panel-body form-create-profile" role="form" ng-submit="createProfile(formCreateProfile.$valid)" novalidate>
+			<div class="form-group">
+				<label for="nickname" class="sr-only"></label>
+				<input type="text" id="nickname" name="nickname" class="form-control" placeholder="{{ translation.nickname }}" required/>
+			</div>
+			<div class="form-group">
+				<label class="radio-inline">
+					<input type="radio" name="gender" id="male" value="M"> {{ translation.male }}
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="gender" id="female" value="F"> {{ translation.female }}
+				</label>
+			</div>
+
+			<button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="subscriptionForm.$invalid">{{ translation.lets_start }}!</button>
+		</form>
+		<div class="panel-footer">
+			<a href="#/subscribe" aria-label="Back to login page"><span class="glyphicon glyphicon-circle-arrow-left"></span> {{ translation.back }}</a>
+		</div>
+	</div>
+</div>

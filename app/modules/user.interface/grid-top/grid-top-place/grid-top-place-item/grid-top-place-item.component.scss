@@ -1,0 +1,8 @@
+@import '../../placeholder';
+
+.hotel-grid-item{
+    @extend %grid-item;
+    .content{
+        @extend %grid-item-headline;
+    }
+}

@@ -1,0 +1,38 @@
+@import '../../../../assets/scss/overrides/bootstrap/variables';
+
+$divider-vertical-offset: ($line-height-computed / 2) + 1; // account for 1px border of hr
+
+aside {
+    background-image: url('/assets/img/public/background-sign-in.jpg');
+    background-position: 50% 0;
+    background-size: cover;
+    position: relative;
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+.divider p {
+    margin-top: -$divider-vertical-offset;
+    span {
+        background-color: #ffffff;
+        display: inline-block;
+    }
+}
+
+.padding-bottom-custom {
+    padding-bottom: $line-height-computed !important;
+}
+
+@media (max-width: $screen-md - 1) {
+    .container {
+        padding-left: $grid-gutter-width;
+        padding-right: $grid-gutter-width;
+    }
+}
+

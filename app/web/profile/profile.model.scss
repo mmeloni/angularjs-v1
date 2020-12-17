@@ -1,0 +1,581 @@
+@import '../../../assets/scss/overrides/bootstrap/variables';
+
+/*=== CREATE PROFILE ===*/
+.panel-create-profile {
+    margin: 40px auto;
+    max-width: 350px;
+}
+
+.container.create-profile {
+    margin: 0;
+}
+
+.create-profile.ng-leave {
+    animation: fade 0.5s both ease-in;
+}
+
+.form-create-profile {
+    padding: 15px;
+}
+
+.form-create-profile .form-create-profile-heading,
+.form-create-profile .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-create-profile .checkbox {
+    font-weight: normal;
+}
+
+.form-create-profile .form-control {
+    position: relative;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+
+    /* Box Sizing */
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.form-create-profile .form-control:focus {
+    z-index: 2;
+}
+
+/*=== COVER ===*/
+.wn-cover.wn-cover-profile {
+    margin-bottom: 25px;
+    position: relative;
+
+    .user-info {
+        margin-top: -$shard-width;
+        height: $shard-width;
+    }
+
+    figure {
+        width: $shard-width-double;
+        background-color: rgba(255, 255, 255, 0.9);
+        transition: background-color 300ms ease;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        > .col-md-6 {
+            width: $shard-width;
+        }
+
+        img {
+            margin-top: -$grid-gutter-width;
+        }
+    }
+
+    figcaption {
+        overflow: hidden;
+    }
+}
+
+.container-fluid.profile-cover-full-width {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.wn-cover.wn-cover-profile .wn-cover-background {
+    max-height: 80vh;
+    overflow: hidden;
+    /*-webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,0.8) 80%,rgba(0,0,0,0) 100%);*/
+}
+
+.wn-cover.wn-cover-profile .wn-cover-background img{
+    width: 100%;
+    height: auto;
+}
+
+/*=== PROFILE DETAILS===*/
+.profile-view,
+.profile-edit {
+    background-color: inherit;
+}
+
+.profile-view > .container,
+.profile-edit > .container{
+    margin-top: -22px;
+    width: 1460px;
+}
+
+.profile-view .shard-o-saic {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.wn-profile-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#basic-info.panel {
+    margin: 0;
+    min-height: 240px;
+    border-radius:2px;
+}
+
+#basic-info span.ui-profile-edit {
+    line-height: 40px;
+    height: 40px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#basic-info .panel-footer > .material-icons{
+    vertical-align: text-bottom;
+}
+
+/*=== EDIT PROFILE ===*/
+#basic-info > .panel-body > .edit-avatar-controller {
+    height: 110px;
+    left: 26px;
+    overflow: hidden;
+    position: absolute;
+    top: 120px;
+    width: 110px;
+}
+
+#basic-info > .panel-body > .edit-cover-controller {
+    position: relative;
+}
+
+#basic-info > .panel-body > div.text-ruler {
+    padding: 10px 0 10px 110px;
+}
+
+#basic-info > .panel-body > div.text-ruler > h1,
+#basic-info > .panel-body > div.text-ruler > h2
+{
+    margin: 0;
+}
+
+#basic-info > .panel-body > .edit-avatar-controller > .helper,
+#basic-info > .panel-body > .edit-cover-controller > .helper {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    cursor: pointer;
+    display: table;
+    font-size: 24px;
+
+    position: absolute;
+    text-align: center;
+}
+
+#basic-info > .panel-body > .edit-avatar-controller > img.img-thumbnail,
+#basic-info > .panel-body > .edit-avatar-controller > .img-thumbnail img {
+    border-color: #ffffff;
+    border-radius: 0 2px 2px 2px;
+    width: 100%;
+    height: 100px;
+}
+
+#basic-info > .panel-body > .edit-avatar-controller > .helper > .wrapper,
+#basic-info > .panel-body > .edit-cover-controller > .helper > .wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#basic-info > .panel-body > .edit-avatar-controller > .helper p,
+#basic-info > .panel-body > .edit-cover-controller > .helper p{
+    font-size: 12px;
+}
+
+.edit-avatar-helper {
+    width: 100px;
+    height: 100px;
+
+    top: 5px;
+    left: 5px;
+}
+
+.edit-cover-helper {
+    width: 100%;
+    height: 150px;
+
+    top: 0;
+    left: 0;
+
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.edit-section {
+    padding: 20px;
+    border-radius: 2px;
+}
+
+.edit-section .editor {
+    margin-top: 50px;
+}
+
+#formEditProfile{
+    .wn-input-container {
+        margin-bottom: 50px;
+    }
+
+    .wn-select-container {
+        margin-bottom: 50px;
+    }
+}
+
+.profile-editor {
+    padding-top:22px;
+    padding-bottom: 22px;
+}
+
+form.form-edit-profile > .ui-action-container > button[type="submit"] {
+    width: 120px;
+}
+
+/* === PASSWORD RECOVERY ===*/
+.password-recovery img.wn-logo-lg,
+.check-code img.wn-logo-lg,
+.new-password img.wn-logo-lg {
+    margin-bottom: 65px;
+    margin-top: 50px;
+}
+
+.form-password-recovery,
+.form-new-password {
+    width: 500px;
+    margin: 100px auto;
+}
+
+.form-new-password .form-control {
+    margin-bottom: 50px;
+}
+
+.form-password-recovery .form-group button,
+.form-new-password .form-group button {
+    width: 49%;
+}
+
+.edit-cover-controller{
+    overflow: hidden;
+    height: 150px;
+
+    .cover-change-image {
+        width: 100%;
+        height: 150px;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+.profile-cover{
+    width: 100%;
+    height: auto;
+}
+
+.cropit-image-preview {
+    width: 220px;
+    height: 220px;
+    margin: auto;
+}
+
+.cropit-image-zoom-input.wn-zoom {
+    background: #eeeeee;
+    height: 5px;
+    margin: 20px auto 0;
+    outline: none;
+    position: relative;
+    width: 130px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+.edit-profile-update-cover-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.65;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.edit-profile-update-avatar-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.65;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#image-cropper {
+    margin-bottom: 15px;
+}
+
+/** Following follower tabs **/
+.follow.follow-preview{
+    width: 316px;
+    height: 480px;
+    padding: 15px;
+    background: #FFFFFF;
+    border: 1px solid #ECEFF1;
+    box-shadow: 0px 1px 1px 0px rgba(120,144,156,0.20);
+    border-radius: 4px;
+}
+.follow.follow-preview .follow-header{
+    position: relative;
+    height: 157px;
+}
+.follow.follow-preview .follow-header .follow-cover img{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 90px;
+}
+.follow.follow-preview .follow-header .follow-avatar img{
+    position: absolute;
+    top: 58px;
+    width: 100px;
+    height: 100px;
+    border-top: 2px solid #FFFFFF;
+    border-right: 2px solid #FFFFFF;
+}
+.follow.follow-preview .follow-header .settings-and-follow{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 60px;
+    width: 197px;
+    padding-top: 20px;
+}
+.follow.follow-preview .follow-header .settings-and-follow .float-to-right{
+    float: right;
+}
+.follow.follow-preview .follow-header .settings-and-follow .settings{
+    margin-right: 15px;
+}
+.follow.follow-preview .follow-header .settings-and-follow .settings .wn-icon.wn-icon-settings{
+    font-size: 32px;
+    color: #78909C;
+}
+.follow.follow-preview .follow-header .settings-and-follow .following-button{
+    text-transform: capitalize;
+    float: right;
+}
+
+.follow.follow-preview .follow-name-block{
+    height: 70px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.follow.follow-preview .follow-name-block .first-last-name{
+    font-size: 14px;
+    font-weight: 400;
+    color: #78909C;
+}
+.follow.follow-preview .follow-name-block .username{
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 5px;
+}
+.follow.follow-preview .follow-description-block{
+    margin-top: 15px;
+    height: 150px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.follow.follow-preview .follow-footer{
+    width: 100%;
+}
+.follow.follow-preview .follow-footer .wn-icon.wn-icon-place{
+    font-size: 24px;
+    font-weight: 400;
+    color: #3CE9B7;
+    align-self: center;
+}
+.follow.follow-preview .follow-footer .place{
+    font-size: 14px;
+    color: #465A64;
+    align-self: center;
+}
+
+.follow.follow-preview > hr {
+    margin-bottom: 15px;
+}
+/** Following follower tabs **/
+
+/*** Travelers Card ***/
+.card.traveler-card {
+    padding: 15px;
+    border: 1px solid #eceff1;
+    width: 316px;
+    position: relative;
+}
+
+.card.traveler-card > .traveler-cover {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 4px;
+    height: 90px;
+}
+
+.card.traveler-card > .traveler-cover img {
+    width: 100%;
+    height: 90px;
+}
+
+
+.card.traveler-card > .content .avatar {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 4px;
+    position: absolute;
+    top: -33px;
+    border: 2px solid white;
+}
+
+.card.traveler-card > .content .avatar > img {
+    width: 100%;
+    height: auto;
+}
+
+
+.card.traveler-card > .content {
+    padding-top: 15px;
+    position: relative;
+}
+
+.card.traveler-card > .content .actions {
+    position: absolute;
+    right: 0;
+    top: 35px;
+}
+
+.card.traveler-card > .content .actions > .ui-action-button.compact {
+    width: 30px;
+    height: 30px;
+    line-height: 24px;
+    padding: 1px;
+}
+
+.card.traveler-card > .content .actions > .ui-action-button.compact .wn-icon {
+    font-size: 24px;
+}
+
+.card.traveler-card > .content .traveler-info {
+    position: absolute;
+    top: 10px;
+    left: 110px;
+    max-width: 150px;
+}
+
+.card.traveler-card > .content .traveler-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #263238;
+}
+
+.card.traveler-card > .content .traveler-screen-name {
+    font-size: 12px;
+    color: #78909c;
+}
+
+.card.traveler-card > .content .traveler-geoposition {
+    line-height: 20px;
+    height: 20px;
+}
+
+.card.traveler-card > .content .traveler-geoposition > .label {
+    padding: 0;
+    font-size: 12px;
+    color: #465a64;
+    font-weight: normal;
+}
+
+.card.traveler-card > .content .traveler-geoposition > .wn-icon {
+    color: #3ce9b7;
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.card.traveler-card > .content .traveler-bio {
+    height: 100px;
+    margin-top: 65px;
+}
+
+.card.traveler-card > .footer {
+    padding-top: 15px;
+}
+
+.card.traveler-card > .footer > ul.traveler-stats {
+    list-style: none;
+    display: table;
+    table-layout: fixed;
+    margin: 0;
+    min-width: 100%;
+    padding: 0;
+}
+
+.card.traveler-card > .footer > ul.traveler-stats li {
+    display: table-cell;
+    position: relative;
+}
+
+.card.traveler-card > .footer > ul.traveler-stats li+li:before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: #eceff1;
+    top: calc(50% - 10px);
+}
+
+.card.traveler-card > .footer > ul.traveler-stats .label {
+    color: #b0bec5;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.card.traveler-card > .footer > ul.traveler-stats li+li > .label {
+    padding-left: 25px;
+}
+
+.card.traveler-card > .footer > ul.traveler-stats .value {
+    color: #465A64;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    padding: .2em .6em .3em;
+}
+
+.card.traveler-card > .footer > ul.traveler-stats li+li > .value {
+    padding-left: 25px;
+}
+
+
+.profile-edit {
+    .help-block {
+        position: relative;
+        top: -40px;
+    }
+}

@@ -1,0 +1,125 @@
+@import "../../../assets/scss/utils/mixins";
+
+.user-passport {
+    margin-bottom: 20px;
+    .detail-panel {
+        @include border-radius(4px);
+        @media screen and (min-width: 414px) {
+            max-width: 330px;
+            margin: auto;
+        }
+        @media screen and (min-width: 1024px) {
+            margin: 0;
+        }
+        @media screen and (min-width: 1200px) {
+            max-width: 300px;
+        }
+        @media screen and (min-width: 1440px) {
+            max-width: 330px;
+        }
+        width: 100%;
+        background: white;
+        padding: 15px;
+        border: 1px solid #e5eaec;
+        @include box-shadow($x: 0px, $y: 0px, $blur: 1px, $color: rgba(0, 0, 0, .1));
+        @include transition(box-shadow 250ms ease-in-out);
+        &:hover {
+            @include box-shadow($x: 1px, $y: 0px, $blur: 7px, $color: rgba(0, 0, 0, .1));
+        }
+        .detail-cover {
+            .wn-user-profile-cover {
+                @include border-radius(2px);
+                height: 125px;
+                @include transition(height 250ms ease-in);
+                img {
+                    max-width: 100%;
+                    width: 100%;
+                    display: inline-block;
+                }
+            }
+        }
+        .detail-user-profile-pic {
+            margin-bottom: 20px;
+            .pic-wrapper {
+                z-index: 1;
+                float: left;
+                position: absolute;
+                cursor: pointer;
+                @include transform(translateY(-50%));
+            }
+            .detail-user-name {
+                position: relative;
+                padding-left: 110px;
+                h2 {
+                    margin: 0;
+                    padding-top: 10px;
+                    font-size: 16px;
+                    color: #3b4556;
+                }
+                h3 {
+                    cursor: pointer;
+                    margin-top: 8px;
+                    margin-bottom: 0;
+                    font-size: 12px;
+                    color: #6b6eff;
+                    font-weight: 400;
+                }
+            }
+        }
+        .detail-user-website {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            a {
+                font-size: 14px;
+                line-height: 1.2;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%;
+                display: block;
+            }
+        }
+        .detail-user-description {
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e5eaec;
+            p {
+                font-size: 14px;
+                line-height: 1.2;
+                height: 45px;
+                display: block;
+
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        .detail-user-location {
+            margin-top: 10px;
+            wn-icon {
+                margin-right: 5px;
+                svg {
+                    height: 14px;
+                    width: 14px;
+                    margin-bottom: -2px;
+                }
+            }
+            p {
+                font-size: 12px;
+                line-height: 1.2;
+                color: #3b4556;
+                margin-bottom: 0;
+            }
+        }
+        @media screen and (min-width: 1024px) {
+            &.affix {
+                position: fixed;
+                top: 80px; // 60 header + 20 margin
+            }
+        }
+    }
+    .follow-button {
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,12 @@
+<figure class="user-profile-pic"
+        [ngClass]="{
+        'shape-round': shape === 'round',
+        'shape-square': shape === 'square',
+        'size-large': size === 'large',
+        'size-small': size === 'small',
+        'fully-loaded': imgLoaded,
+        'img-error': imgError
+        }" *ngIf="userNid">
+    <img wnLazyPic (onLoaded)="imageLoaded()" (onError)="imageError()" [src]="imageUrl" />
+    <div class="edit-mode-overlay" *ngIf="edit" (click)="showFileDialog()"></div>
+</figure>

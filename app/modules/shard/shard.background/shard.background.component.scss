@@ -1,0 +1,66 @@
+@import "../../../../assets/scss/utils/mixins";
+
+.shard-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(200, 200, 200, 1) url("../../../../assets/img/spinner.svg") no-repeat center center;
+    background-size: 64px;
+    overflow: hidden;
+    @include border-radius();
+
+    &.image-fully-loaded {
+        background: rgba(200, 200, 200, 1);
+        background-image: none;
+    }
+
+    figure {
+        z-index: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        @include box-shadow(0, 0, 3px, rgba(0, 0, 0, 0.2), inset);
+        @include border-radius(7px);
+        overflow: hidden;
+        img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            opacity: 0;
+            @include transition(opacity 300ms ease-in);
+            @include css3-hd-accelerated-animation();
+            &.visible {
+                opacity: 1;
+            }
+        }
+    }
+    .shard-background-overlay {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        @include transition(background 250ms ease-in-out);
+        @include css3-hd-accelerated-animation();
+        // FIXME: for God's sake, create a bloody mixing!!!
+        background: rgba(0, 0, 0, .6);
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, .6) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0, 0, 0, .6)), color-stop(20%, rgba(0, 0, 0, 0)), color-stop(80%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, .6)));
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, .6) 100%);
+        background: -o-linear-gradient(top, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, .6) 100%);
+        background: -ms-linear-gradient(top, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, .6) 100%);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, .6) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#000000', GradientType=0);
+    }
+
+    &.loading-error {
+        background: rgba(200, 200, 200, 1) url("../../../../assets/img/missing-pic.svg") no-repeat center center;
+        background-size: 32px;
+    }
+}

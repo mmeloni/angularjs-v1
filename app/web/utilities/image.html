@@ -1,0 +1,9 @@
+<!-- DO NOT TOUCH THIS ENCAPSULATING DIV BECAUSE GRANTS CHANGES DETECTED AT COMPONENT LEVEL (E.G. WHEN UPLOADING PROFILE AVATAR/COVER) -->
+<div>
+    <wn-image-ng2
+        [component-data]="vmImage.wnImageOptions"
+        [polling]="vmImage.polling"
+        [css-classes]="vmImage.wnCssclasses"
+        (is-polling-image-src)="vmImage.isPollingImageSrcCallback({ event: $event })"
+    ></wn-image-ng2>
+</div>

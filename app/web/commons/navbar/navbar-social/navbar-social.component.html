@@ -1,0 +1,100 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" (click)="goToHome($event)">
+                    <wn-icon
+                        glyph="loader"
+                        [color]="true"
+                        iconSize="xl"
+                        animation="spin"
+                        *ngIf="isLoadingGeneral | async"
+                    ></wn-icon>
+                    <wn-icon
+                        glyph="logo"
+                        [color]="true"
+                        iconSize="xl"
+                        *ngIf="!(isLoadingGeneral | async)"
+                    ></wn-icon>
+                </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
+            <wn-button
+                cssClasses="btn btn-primary navbar-btn navbar-left"
+                iconClasses="wn-icon wn-icon-camera-place vertical-align-bottom"
+                [label]="labels.addShard"
+                wnShardNewOpen
+            ></wn-button>
+
+            <wn-omnisearch cssClasses="navbar-form navbar-left" [labels]="labels.omnisearch"></wn-omnisearch>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <button type="button" class="btn btn-link navbar-btn" (click)="goToHome()">
+                        <wn-icon glyph="home-empty" cssClasses="vertical-align-middle"></wn-icon>
+                    </button>
+                </li>
+                <li class="dropdown" ngbDropdown>
+                    <button type="button" class="btn btn-link navbar-btn position-relative" ngbDropdownToggle>
+                        <wn-icon glyph="notify-empty" cssClasses="vertical-align-middle"></wn-icon>
+                        <span class="badge padding-horizontal-none" *ngIf="notificationCount > 0"><small>{{ notificationCount | numberToLimited }}</small></span>
+                    </button>
+                    <div class="dropdown-menu notifications">
+                        <wn-notification-list
+                            (read)="navbarReadedNotification($event)"
+                            (readAll)="markAllAsRead()"
+                            [notifications]="notifications | async"
+                            [labels]="labels.notificationList"
+                            [showMarkAllAsRead]="notificationCount > 0"
+                        ></wn-notification-list>
+                    </div>
+                </li>
+
+                <li class="dropdown" ngbDropdown>
+                    <wn-avatar [userId]="currentUser.id"
+                               cssClasses="navbar-avatar"
+                               ngbDropdownToggle></wn-avatar>
+                    <ul class="dropdown-menu padding-vertical-none">
+                        <li class="text-center padding-vertical-grid">
+                            <button class="btn btn-primary" (click)="planATour()">{{ labels.planATour }}</button>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="padding-vertical-grid">
+                            <a uiSref="profileById" [uiParams]="{ userNid: currentUser.id }">
+                                <span class="text-transform-none display-block font-weight-bold">@{{ currentUser.username }}</span>
+                                {{ labels.profile }}
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="padding-vertical-grid">
+                            <a uiSref="settings.mybookings">{{ labels.myBookings }}</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="padding-vertical-grid">
+                            <a href="http://about.wayonara.com/help" target="_blank" >Help</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="padding-vertical-grid">
+                            <a href="http://about.wayonara.com/promo" target="_blank" >Promo</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="padding-vertical-grid">
+                            <a href="#" (click)="goToLogout($event)">{{ labels.signOut }}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>

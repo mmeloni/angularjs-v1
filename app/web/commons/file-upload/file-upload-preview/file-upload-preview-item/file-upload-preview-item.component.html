@@ -1,0 +1,13 @@
+<figure
+    [ngClass]="cssClasses"
+    [ngStyle]="containerStyle"
+    [wnFileUploadPreview]="file"
+    [wnFileUploadPreviewStyle]="filePreviewStyle"
+    *ngIf="file !== undefined && file !== null"
+>
+    <wn-button
+        cssClasses="btn btn-default btn-sm"
+        iconClasses="wn-icon wn-icon-delete"
+        (click)="remove()"
+    ></wn-button>
+</figure>

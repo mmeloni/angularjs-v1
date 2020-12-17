@@ -1,0 +1,108 @@
+<div class="state-wrapper has-navbar">
+    <wn-navbar logged="true" theme="wayonara" navbar-controller="NavbarTourPresentationController" type="tour-presentation" tour-model="tour"></wn-navbar>
+    <wn-cover
+        wn-cover-url="tourCover"
+        wn-cover-template="tour"
+        wn-controller="CoverTourController"
+        user="tour.user"
+        tour="tour">
+    </wn-cover>
+    <section id="tourTimelineSection">
+        <wn-timeline
+            ng-if="tour.timeline.length > 0"
+            ng-disabled=true
+            on-node-clicked="clickHandler(node, tree)"
+            ng-model="tour.timeline">
+        </wn-timeline>
+    </section>
+    <div id="tourViewContent">
+        <section class="place-section" id="tourViewSection-{{ $index }}" ng-repeat="mainStage in tour.timeline track by $index" ng-switch="mainStage.model.category">
+            <div ng-switch-when="shard">
+
+                <div class="place-image">
+                    <wn-image class="cover" img-format="'_quad_shard_'" place=mainStage.model err-src="../assets/img/shard-empty.png"></wn-image>
+                    <div class="title">{{ mainStage.model.name }}</div>
+                    <div class="shard-upload">
+                        <!-- use `[wnShardNewOpen]="true"` once this whole page is ported to Angular -->
+                        <wn-button
+                            icon-classes="wn-icon wn-icon-plus vertical-align-bottom"
+                            css-classes="btn btn-default"
+                            ng-click="openMultiUploadModal(mainStage, $index)"
+                        ></wn-button>
+                        <wn-button
+                            icon-classes="wn-icon wn-icon-diary vertical-align-bottom"
+                            css-classes="btn btn-default"
+                            [label]="translation.importShardsFromDiary"
+                            ng-click="showImportPanel(mainStage, $index)"
+                        ></wn-button>
+                    </div>
+                    <div class="points-of-interest">
+                        <div class="point-block">
+                            <div class="up">
+                                <span class="wn-icon wn-icon-place"></span>
+                                <span class="poi-text">{{ ::translation.pointsOfInterest }}</span>
+                            </div>
+                            <div class="number">{{ mainStage.shardsCollection.length }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="place-shard-container shard-grid-{{ $index }}">
+                    <wn-grid
+                        grid-identity="$index"
+                        ng-model="mainStage.shardsCollection"
+                        tile-tmpl-url="web/tour/presentation/card.html"
+                        tiles-controller="PresentationCardController"
+                    >
+                    </wn-grid>
+                </div>
+
+            </div>
+
+            <div ng-switch-when="vehicle" class="vehicle-section" ng-if="mainStage.model.resultSelected.trip !== undefined" >
+                <wn-vector-shardifier
+                    ng-if="$index < mainStage.model.linkedNodeRoundtripId"
+                    model="mainStage.model"
+                    vectors-bit="mainStage.model.resultSelected.bm"
+                    distance="mainStage.model.resultSelected.trip.outboundSegment.distance"
+                    price="mainStage.model.resultSelected.price"
+                    duration="mainStage.model.resultSelected.trip.outboundSegment.duration">
+                </wn-vector-shardifier>
+                <wn-vector-shardifier
+                    ng-if="$index > mainStage.model.linkedNodeRoundtripId"
+                    model="mainStage.model"
+                    vectors-bit="mainStage.model.resultSelected.bm"
+                    distance="mainStage.model.resultSelected.trip.returnSegment.distance"
+                    price="mainStage.model.resultSelected.price"
+                    duration="mainStage.model.resultSelected.trip.returnSegment.duration">
+                </wn-vector-shardifier>
+                <wn-vector-shardifier
+                    ng-if="mainStage.model.linkedNodeRoundtripId === undefined"
+                    model="mainStage.model"
+                    vectors-bit="mainStage.model.resultSelected.bm"
+                    distance="mainStage.model.resultSelected.distance"
+                    price="mainStage.model.resultSelected.price"
+                    duration="mainStage.model.resultSelected.duration">
+                </wn-vector-shardifier>
+            </div>
+        </section>
+    </div>
+    <div id="actions-on-shards" ng-show="totalCheckedShards >= 1">
+
+        <div class="counter-and-place">
+            <div class="counter">
+                <p class="shard-added-details">
+                    {{ totalCheckedShards }}
+                </p>
+            </div>
+        </div>
+
+        <div class="delete-shards">
+            <button class="ui-action-button wn-btn-neutral" ng-click="removeShards()"><span class="wn-icon wn-icon-discard"></span></button>
+        </div>
+
+        <div class="right-container">
+        </div>
+
+    </div>
+    <div class="tour-shard-importer"></div>
+</div>

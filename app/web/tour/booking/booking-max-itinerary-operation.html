@@ -1,0 +1,20 @@
+<div class="booking-error-modal-container">
+    <div class="modal-body">
+        <button class="booking-error-modal-close-button" type="button" tooltip-placement="bottom" uib-tooltip="{{ translation.close }}" ng-click="cancel()">
+            <span class="wn-icon wn-icon-delete"></span>
+        </button>
+        <div class="text-message">
+            <div class="title">{{ translation.maxItineraryOperationTitle }}</div>
+            <div class="subtitle">{{ translation.maxItineraryOperationSubTitle }}</div>
+        </div>
+        <div class="wn-flex-container wn-row v-align-center h-align-center wn-dialog-section">
+            <button class="ui-action-button expanded wn-btn-neutral" ng-click="cancel()">{{ translation.got_it }}</button>
+        </div>
+        <div class="tip-container">
+            <div class="tip-container-inside">
+                <div class="title">{{ translation.wayonaraTipTitle }}</div>
+                <div class="text">{{ translation.maxItineraryOperationTipText }}</div>
+            </div>
+        </div>
+    </div>
+</div>

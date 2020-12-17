@@ -1,0 +1,10 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid position-relative">
+        <div class="navbar-header">
+            <a href="#" (click)="backToStart($event)" title="Restart the onboarding" class="navbar-brand">
+                <wn-icon glyph="logo" iconSize="xl" [color]="true"></wn-icon>
+            </a>
+        </div>
+        <wn-wizard-step-counter class="navbar-text small text-secondary" [options]="wizardStepCounterOptions"></wn-wizard-step-counter>
+    </div>
+</nav>

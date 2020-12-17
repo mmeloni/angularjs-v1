@@ -1,0 +1,9 @@
+<div class="wn-user-profile-cover"
+     [ngClass]="{'is-fully-loaded': imageLoaded, 'loading-error': imageLoadingErr, loading: isUploadingNewImg}">
+    <img wnLazyPic (onError)="imageLoadingError()" (onLoaded)="imageIsFullyLoaded()"
+         [src]="imageUrl" *ngIf="!removeImageTag" />
+    <div class="edit-mode-overlay" *ngIf="edit" (click)="showFileDialog()">
+        <p *ngIf="translations">{{translations.changeCover}}</p>
+        <input type="file" accept="image/*" (change)="handleFileUpload($event)" />
+    </div>
+</div>

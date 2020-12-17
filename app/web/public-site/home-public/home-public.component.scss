@@ -1,0 +1,82 @@
+@import '../../../../assets/scss/overrides/bootstrap/variables';
+
+#image-sign-up {
+    height: 394px;
+    background-image: url('/assets/img/public/point-on-map.jpg');
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+#image-wait-a-minute {
+    height: 400px;
+    background-image: url('/assets/img/public/plane-window.jpg');
+    background-position: 90% 50%;
+    background-size: cover;
+}
+
+#image-plan-your-trip {
+    background-image: url('/assets/img/public/campfire.jpg');
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+#footer {
+    background-color: #1c1c1c;
+    color: #ffffff;
+
+    ul.list-unstyled,
+    .social ul {
+        a:link, a:visited {
+            color: $gray-dark;
+        }
+
+        a:hover, a:active, a:focus {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    }
+}
+
+.social ul {
+    padding-left: 0;
+    list-style: none;
+    margin-left: -5px;
+    text-align: center;
+
+    > li {
+        display: inline-block;
+        padding-left: $grid-gutter-width / 2;
+        padding-right: $grid-gutter-width / 2;
+    }
+}
+
+@media (max-width: $screen-md - 1) {
+    .container {
+        padding-left: $grid-gutter-width;
+        padding-right: $grid-gutter-width;
+    }
+}
+
+@media (min-width: $screen-md-min) {
+    #image-sign-up {
+        height: 450px;
+    }
+
+    #image-wait-a-minute {
+        height: 400px;
+        background-size: 200%;
+        background-repeat: no-repeat;
+        background-position: 96% 38%;
+    }
+
+    .social ul {
+        margin-left: 0;
+        text-align: left;
+
+        > li {
+            display: block;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}

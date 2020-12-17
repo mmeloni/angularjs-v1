@@ -1,0 +1,16 @@
+<div class="wn-input-container">
+    <input id="{{wnInputId}}"
+            name="{{wnInputId}}"
+            type="{{wnInputType}}"
+            ng-model="wnInputModel"
+            uib-typeahead="city as city.label for city in getCity($viewValue)"
+            typeahead-editable="false"
+            typeahead-wait-ms="400"
+            typeahead-loading="loadingCities"
+            typeahead-no-results="wnInputNoResult"
+            autofill="off"
+            autocomplete="off"
+            autocorrect="off"
+           />
+    <label for="{{wnInputId}}">{{wnInputLabel}}</label>
+</div>

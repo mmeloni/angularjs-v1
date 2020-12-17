@@ -1,0 +1,11 @@
+<ul class="list-inline margin-vertical-none margin-horizontal-none">
+    <li *ngFor="let item of items; let isFirst = first; let isLast = last" class="padding-horizontal-none">
+        <wn-action-bar-item
+            [label]="item.label"
+            [value]="item.value"
+            [iconClasses]="item.iconClasses"
+            [state]="item.state"
+            [cssClasses]="{ 'padding-left-none': isFirst === true, 'padding-right-none': isLast === true }"
+        ></wn-action-bar-item>
+    </li>
+</ul>

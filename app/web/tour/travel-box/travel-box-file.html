@@ -1,0 +1,20 @@
+<div id="file{{ngModel.id}}" class="travel-box-file" ng-switch on="activeOverlay">
+    <wn-image img-format="'_square_'" shard=ngModel err-src="../assets/img/shard-empty.png"></wn-image>
+    <div class="overlay dark" ng-switch-default>
+        <div class="icon-wrapper"><span class="wn-icon wn-icon-place"></span></div>
+        <div class="label-wrapper">{{wnSelectedPlace.name}}</div>
+        <div class="actions-wrapper">
+            <button class="ui-action-button ui-icon-button xs" ng-click="delete()"><span class="wn-icon wn-icon-discard"></span></button>
+        </div>
+    </div>
+    <div class="overlay dark confirm-panel" ng-switch-when="confirm-delete">
+        <div class="panel-header">{{ translation.deleteThisShard }}?</div>
+        <div class="panel-actions">
+            <button class="ui-action-button confirm" ng-click="confirmDelete()">{{ translation.yesDelete }}</button>
+            <button class="ui-action-button not-inked" ng-click="cancelDelete()">{{ translation.cancel }}</button>
+        </div>
+    </div>
+    <div class="dnd-placeholder">
+        <div class="icon-wrapper"><span class="wn-icon wn-icon-place"></span></div>
+    </div>
+</div>

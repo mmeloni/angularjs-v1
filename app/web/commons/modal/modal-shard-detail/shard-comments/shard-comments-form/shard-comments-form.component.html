@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-avatar">
+        <wn-avatar [userId]="userId"></wn-avatar>
+    </div>
+    <form class="col-md-12 col-avatar-main" #commentForm="ngForm" novalidate>
+        <label class="sr-only" for="comment">{{ labels.buttonLabel }}</label>
+        <div class="input-group">
+            <input type="text"
+                   class="form-control"
+                   id="comment"
+                   name="comment"
+                   [(ngModel)]="model.comment"
+                   [placeholder]="labels.commentPlaceholder + '&hellip;'"
+                   required />
+            <span class="input-group-btn">
+                <!-- Not a wn-button because we need Bootstrap to activate proper classes for the input-group -->
+                <button class="btn btn-primary"
+                        (click)="onSubmit($event)"
+                        [disabled]="commentForm.form.valid === false">
+                    {{ labels.buttonLabel }}
+                </button>
+            </span>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,18 @@
+<div class="state-wrapper has-navbar">
+    <wn-navbar
+        logged="true"
+        type="booking"
+        tour-model="tour"
+        navbar-controller="NavbarTourController"
+        theme="wayonara">
+    </wn-navbar>
+    <wn-timeline
+        ng-if="tour.timeline.length > 0"
+        ng-disabled=true
+        ng-model="tour.timeline"
+        on-node-clicked="clickHandler(node, tree)"
+        on-change="autosave()">
+    </wn-timeline>
+    <!--The below container will be injected automatically by the substate-->
+    <div ui-view class=""></div>
+</div>

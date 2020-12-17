@@ -1,0 +1,61 @@
+<div class="include-shard-tour">
+    <!--Header-->
+    <div ng-mouseleave="isPopoverUserOpen = false">
+        <header
+            class="shard-header"
+            uib-popover-template="popoverUserTemplate"
+            popover-is-open="isPopoverUserOpen"
+            popover-trigger="none"
+            popover-placement="bottom">
+
+            <wn-avatar
+                [user-id]="shard.user.nid"
+                css-classes="pull-left owner-popover"
+                ng-mouseenter="isPopoverUserOpen = true"
+            ></wn-avatar>
+
+            <div class="tour-status-container">
+                <div class="tour-status cue-ball {{tourStatus.class}}"></div>
+                <div class="tour-status label" tooltip-placement="bottom" uib-tooltip="{{ translation.tourDraftTooltip }}">{{tourStatus.label}}</div>
+            </div>
+            <div class="hover pull-right">
+
+                <span uib-dropdown on-toggle="toggled(open)" class="btn btn-link pull-left" id="shard-dropdown" ng-if="menuOptions.length > 0">
+                    <wn-icon [glyph]="'chevron-down'" uib-dropdown-toggle></wn-icon>
+                    <ul class="uib-dropdown-menu">
+                        <li class="menuitem" ng-repeat-start="option in menuOptions track by $index" ng-click="option.action($event)">
+                            <a>
+                                <span class="ui-text-dark ui-font-md">{{option.label}}</span>
+                                <br/>
+                                <span class="ui-text-light ui-font-xs">{{option.description}}</span>
+                            </a>
+                        </li>
+                        <li class="divider" ng-repeat-end></li>
+                    </ul>
+                </span>
+                <button type="button" class="btn btn-default btn-sm" ng-click="toggleLike()">
+                    <span class="{{ like.iconClasses }}"></span>
+                </button>
+
+            </div>
+        </header>
+    </div>
+    <!--Content-->
+    <wn-image class="wn-tile-bg" shard=shard img-format="imgFormat" err-src="../assets/img/shard-empty.png"></wn-image>
+    <div class="overlay dark" ng-click="showDetails();">
+        <div class="shard-tour-text-inner">
+            <div class="shard-tour-text-inner-title">{{shard.title | uppercase}}</div>
+            <div class="shard-tour-text-inner-subtitle">{{shard.description}}</div>
+        </div>
+    </div>
+    <!--Footer-->
+    <footer layout-wrap>
+        <section layout="row" class="shard-poi-info pull-right">
+            <wn-icon
+                glyph="tour"
+                [color]="true"
+            ></wn-icon>
+        </section>
+    </footer>
+
+</div>

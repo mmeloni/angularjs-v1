@@ -1,0 +1,169 @@
+<div id="tour-shard-import-container">
+    <div id="shard-import-navbar-container">
+        <div id="tour-shard-import-navbar">
+            <div class="tour-shard-import-navbar-tabselection">
+                <span>{{ translation.addStagesFrom }}: </span>
+                <wn-button
+                    [label]="translation.yourProfile"
+                    [css-classes]="(selected === 'diary') ? 'btn btn-primary margin-left-grid' : 'btn btn-default margin-left-grid'"
+                    icon-classes="wn-icon wn-icon-diary vertical-align-bottom"
+                    ng-click="fromDiaries()"
+                ></wn-button>
+
+                <wn-button
+                    [label]="'Wayonara'"
+                    [css-classes]="(selected === 'wayonara') ? 'btn btn-primary margin-left-grid' : 'btn btn-default margin-left-grid'"
+                    icon-classes="wn-icon wn-icon-logo vertical-align-bottom"
+                    ng-click="fromWayonara()"
+                ></wn-button>
+            </div>
+            <div class="tour-shard-import-navbar-search padding-horizontal-grid border-gray-light margin-vertical-xs" ng-switch on="selected">
+                <!-- WAYONARA -->
+                <span class="wn-icon" ng-switch-when="wayonara" ng-click="doSearchFromWayonara()">search</span>
+                <form class="navbar-form navbar-left form-omnisearch searchbar-tour" ng-switch-when="wayonara" role="search" ng-submit="doSearchFromWayonara()" id="formOmnisearch" name="formOmnisearch">
+                    <tags-input
+                            id="searchbox"
+                            ng-init="initOmnisearch()"
+                            class="wn-input-search form-control ui-text-xlight"
+                            ng-model="searchTags"
+                            add-on-paste="true"
+                            key-property="id"
+                            display-property="label"
+                            min-length="1"
+                            add-on-enter="false"
+                            add-on-space="true"
+                            replace-spaces-with-dashes="false"
+                            on-tag-added="addToOmnisearch($tag)"
+                            on-tag-removed="removeFromOmnisearch($tag)"
+                            placeholder="{{ translation.search_on }} Wayonara..."
+                            add-from-autocomplete-only="true">
+                        <auto-complete
+                                source="omniSearch($query)"
+                                highlight-matched-text="false"
+                                template="web/commons/navbar/omnisearch-template.html"
+                                display-property="label"
+                                max-results-to-show="15"
+                                debounce-delay="800"
+                                select-first-match="false">
+                        </auto-complete>
+                    </tags-input>
+                </form>
+                <!-- DIARY -->
+                <span class="wn-icon" ng-switch-when="diary" ng-click="doSearchFromDiary()">search</span>
+                <form class="navbar-form navbar-left form-omnisearch searchbar-tour" role="search" ng-submit="doSearchFromDiary()" ng-switch-when="diary" id="formOmnisearch" name="formOmnisearch">
+                    <tags-input
+                            id="searchbox"
+                            ng-init="initOmnisearch()"
+                            class="wn-input-search form-control ui-text-xlight"
+                            ng-model="searchTags"
+                            add-on-paste="true"
+                            key-property="id"
+                            display-property="label"
+                            min-length="1"
+                            add-on-enter="false"
+                            add-on-space="true"
+                            replace-spaces-with-dashes="false"
+                            on-tag-added="addToOmnisearch($tag)"
+                            on-tag-removed="removeFromOmnisearch($tag)"
+                            placeholder="{{ translation.search_on }} Wayonara..."
+                            add-from-autocomplete-only="true">
+
+                        <auto-complete
+                                source="omniSearch($query)"
+                                highlight-matched-text="false"
+                                template="web/commons/navbar/omnisearch-template.html"
+                                display-property="label"
+                                max-results-to-show="15"
+                                debounce-delay="800"
+                                select-first-match="false">
+                        </auto-complete>
+                    </tags-input>
+                </form>
+            </div>
+        </div>
+        <div id="close-button-container" class="padding-horizontal-grid">
+            <span class="wn-icon wn-icon-delete font-weight-bold" ng-click="close()"></span>
+        </div>
+    </div>
+    <div id="tourMainContent">
+        <!--
+        SE SI DECCOMENTA QUESTO BISOGNA DECOMMENTARE    .tour-waal. { WIDTH: 85VW NEL TOUR-TOOLS.CSS
+        <div class="tour-toolbar">
+            <div class="tour-toolbar-text">
+                {{ translation.filterBy }} POI
+            </div>
+            <div class="tour-toolbar-buttons">
+                <div class="tour-toolbar-button" ng-click="poiFilter()">
+                    <span class="wn-icon import-wall">place</span>
+                </div>
+                <div class="tour-toolbar-button" ng-click="hotelFilter()">
+                    <span class="wn-icon">preview-empty</span>
+                </div>
+                <div class="tour-toolbar-button">
+                    <span class="wn-icon">preview-empty</span>
+                </div>
+                <div class="tour-toolbar-button">
+                    <span class="wn-icon">preview-empty</span>
+                </div>
+            </div>
+        </div>
+        -->
+
+        <div class="no-results" ng-show="shards.length <= 0">
+            <!-- TODO: add empty state text when it's done -->
+        </div>
+
+        <div class="tour-wall" ng-switch on="selected">
+            <div ng-switch-when="wayonara">
+                <div ng-include="'web/tour/edit/import-shard-panel/wall-types/wayonara.html'">
+                </div>
+            </div>
+
+            <!--
+            <div ng-switch-when="board">
+                <div ng-include="'web/tour/edit/import-shard-panel/wall-types/board.html'">
+                </div>
+            </div>
+            -->
+
+            <div ng-switch-when="diary">
+                <div ng-include="'web/tour/edit/import-shard-panel/wall-types/diary.html'">
+                </div>
+            </div>
+            <!--
+            <div ng-switch-when="tour">
+                <div ng-include="'web/tour/edit/import-shard-panel/wall-types/tour.html'">
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+
+    <wn-tutorial ng-if="user.onboardingTour === 0"></wn-tutorial>
+
+    <div id="bottomBarPlan">
+        <md-progress-linear ng-show="addingShard" md-diameter="35px" md-mode="query" value="{{progressPercentage}}"></md-progress-linear>
+        <div class="left">
+            <span class="counter spaced"><p  class="shard-added-details" >{{toAddShardsSelected}}</p></span>
+            <span class="wn-icon place-icon spaced">place</span>
+            <span class="place" ng-repeat="shard in toAddShards track by $index | limitTo:3">
+                <p class="shard-added-details" ng-if="$index <= 2">
+                    <span ng-if="$index === 1">, </span>{{shard.geoplace.title}}<span ng-if="$index > 0 && $index <= 2">, </span>
+                </p>
+
+                <p class="shard-added-details" ng-if="$index === 3" >
+                    ...
+                </p>
+            </span>
+        </div>
+        <div class="center">
+            <button ng-click="planAll();">
+                <span class="wn-icon place-icon">place</span>
+                <span>{{ translation.planAll }}</span>
+            </button>
+        </div>
+        <div class="right">
+            <span>{{ translation.planAllInfo }}.</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="wn-breadcrumbs">
+	<div class="wn-breadcrumb home" ng-click="homeClick()"></div>
+	<div class="wn-breadcrumb stage" ng-repeat="breadcrumb in info.wnBreadcrumbList track by $index" ng-click="onClickCallback(breadcrumb, $index)">
+		<span class="wn-icon">{{breadcrumb.icon}}</span>{{breadcrumb.label}}
+	</div>
+</div>

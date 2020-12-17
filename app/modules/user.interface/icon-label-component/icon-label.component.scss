@@ -1,0 +1,14 @@
+span {
+    vertical-align: middle;
+}
+
+.item-label {
+    display: inline-block;
+    font-weight: bold;
+    max-width: 200px; // TODO da verificare
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+

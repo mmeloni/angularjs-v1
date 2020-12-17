@@ -1,0 +1,11 @@
+@import "../../../../../modules/user.interface/grid-top/placeholder";
+
+.modal-plan-shard {
+    @extend %grid-item;
+    max-width: 336px;
+    height: 480px;
+
+    &:hover {
+        top: 0px !important;
+    }
+}

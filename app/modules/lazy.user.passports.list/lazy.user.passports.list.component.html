@@ -1,0 +1,21 @@
+<div class="clearfix lazy-users-list-wrapper">
+    <div class="lazy-users-list clearfix" *ngIf="list.length > 0"
+         infinite-scroll
+         [infiniteScrollDistance]="0.2"
+         [infiniteScrollThrottle]="250"
+         (scrolled)="fetchNextPageData()">
+        <div *ngFor="let item of list" class="list-item">
+            <wn-profile-passport [user]="item.user" [following]="item.isFollowing" [translations]="translations"
+                                 [followed]="item.isFollowed" [showFollowButton]="true"
+                                 (onFollowButtonToggle)="followButtonToggle($event)"
+            ></wn-profile-passport>
+        </div>
+    </div>
+    <div *ngIf="isFetching" class="grid-is-loading">
+        <div class="grid-spinner"></div>
+    </div>
+
+    <div *ngIf="gotEmptyResponse" class="no-more-shards">
+        <p>That's all, folks!</p>
+    </div>
+</div>

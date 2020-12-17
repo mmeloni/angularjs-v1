@@ -1,0 +1,125 @@
+<md-dialog ng-cloak class="add-participants-dialog" aria-label="Add your experience">
+    <md-dialog-content class="wn-dialog-content">
+        <div class="modal-body">
+            <div class="search-participants pull-left">
+                <div ng-if="tourModel.bitMaskPermission == 128" class="ui-flat ui-input-wrapper search-participants">
+                    <div  class="wn-icon-div-container"><span class="wn-icon">search</span></div>
+                    <md-autocomplete
+                        md-no-cache="true"
+                        md-search-text="searchText"
+                        md-items="participant in getUsers(searchText)"
+                        md-item-text="participant.label"
+                        md-min-length="3"
+                        md-delay="500"
+                        placeholder="{{ translation.searchOnWayonara }}..."
+                        md-floating-label=""
+                        md-menu-class="search-participants-custom-template">
+                        <md-item-template>
+                            <div class="participant-row" ng-click="addInternalParticipant(participant)">
+                                <div class="pull-left participant-details">
+                                    <wn-image class="ui-profile-picture ui-rounded" img-format="'_avatar_'" user=participant err-src="../assets/img/user_empty.png"></wn-image>
+                                    <span class="label">{{ participant.label }}</span>
+                                </div>
+                                <div class="pull-right participant-action">
+                                    <!-- <button class="glyphicon glyphicon-ok"></button> -->
+                                    <span>{{ translation.ADD }}</span>
+                                </div>
+                            </div>
+                        </md-item-template>
+                    </md-autocomplete>
+                    <span class="search-icon"><button class="navbar-search glyphicon glyphicon-search"></button></span>
+                </div>
+                <div ng-if="tourModel.bitMaskPermission == 128" class="add-partecipant-class" ng-click="addExternalParticipant()">
+                    <div class="text">+{{ translation.addExternalTraveler }}</div>
+                </div>
+                <span ng-if="(tourModel.bitMaskPermission == 128) && (internalParticipant.bitMaskPermission === 128)">
+                    {{ translation.MASK_OWNER }}
+                </span>
+            </div>
+
+            <div class="tour-participants pull-right">
+                <div class="heading">
+                    <span class="pull-left">{{ translation.membersOfYourCrew }}</span>
+                    <button class="wn-icon" ng-click="closeUiUpload()">{{ translation.del }}</button>
+                </div>
+                <div class="scrollable">
+                    <div class="internal-participants">
+                    <div class="participants-recap">
+                        <span class="pull-left">on Wayonara</span>
+                        <span class="count-participants pull-right">{{ internalParticipants.length }} {{ translation.travelers | lowercase }}</span>
+                    </div>
+                    <div class="added-participants">
+                        <div class="participant-row" ng-repeat="internalParticipant in internalParticipants = (addedParticipants | filter : { nid : '!!' }) track by internalParticipant.nid">
+                            <div class="pull-left participant-details">
+                                <div class="user-image-name">
+                                    <wn-image class="ui-profile-picture ui-rounded" img-format="'_avatar_'" user=internalParticipant err-src="../assets/img/user_empty.png"></wn-image>
+                                    <div class="label">{{ internalParticipant.label }}</div>
+                                </div>
+                                <div class="select-box">
+                                    <span class="is-pax">
+                                        <label>
+                                            <input ng-if="tourModel.bitMaskPermission == 128" ng-init="isPax=true" type="checkbox" ng-model="internalParticipant.isPax" ng-click="updateInternalParticipantPax(internalParticipant)">Traveler
+                                        </label>
+                                    </span>
+                                </div>
+                                <div class="user-status">
+                                    Adult
+                                </div>
+                                <div class="participant-role">
+                                    <select ng-if="tourModel.bitMaskPermission == 128" ng-model="internalParticipant.bitMaskPermission" ng-change="updateInternalParticipantRole(internalParticipant)" wn-convert-to-number>
+                                        <option
+                                            ng-repeat="role in roles track by role.label"
+                                            value="{{ role.value }}"
+                                            ng-selected="internalParticipant.bitMaskPermission == role.value">{{ translation[role.label] || role.label }}</option>
+                                    </select>
+                                    <span ng-if="tourModel.bitMaskPermission != 128">
+                                        {{ translation[role.label] }}
+                                    </span>
+                                </div>
+                                <div class="delete-button" ng-if="tourModel.bitMaskPermission == 128">
+                                    <button class="wn-icon" ng-click="deleteInternalParticipant(internalParticipant)">{{ translation.del }}</button>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                    <div class="external-participants">
+                    <div class="participants-recap">
+                        <span class="pull-left">{{ translation.outsideWayonara }}</span>
+                        <span class="count-participants pull-right">{{ externalParticipants.length }} travelers</span>
+                    </div>
+                    <div class="added-participants">
+                        <div class="participant-row" ng-repeat="externalParticipant in (externalParticipants = (addedParticipants | filter : { keyCode : '!!'})).reverse() track by $index">
+                            <div class="pull-left participant-details">
+                                <div class="user-image-name-outside">
+                                    <img class="ui-profile-picture ui-rounded ui-color-default" ng-src="../assets/img/user_empty.png" />
+                                    <div class="label">{{ externalParticipant.label }}</div>
+                                </div>
+                                <div class="user-select-age-range">
+                                    <span class="participant-age">
+                                        <select ng-model="externalParticipant.age" ng-change="updateExternalParticipant(externalParticipant)">
+                                            <option
+                                                ng-repeat="age in ages track by $index"
+                                                value="{{ age.value }}"
+                                                ng-selected="externalParticipant.age == age.value">{{ age.label }}</option>
+                                        </select>
+                                    </span>
+                                </div>
+                                <div ng-if="tourModel.bitMaskPermission == 128" class="delete-button">
+                                    <button class="wn-icon" ng-click="deleteExternalParticipant(externalParticipant)">{{ translation.del }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+    </md-dialog-content>
+</md-dialog>

@@ -1,0 +1,157 @@
+<div class="container">
+    <div class="row display-flex">
+        <div class="col-xs-12 col-md-4 col-md-offset-1">
+            <header class="margin-top-sm margin-bottom-none text-center">
+                <p class="margin-vertical-none">
+                    <a uiSref="homePublic"><img src="/assets/img/public/logo-payoff.png" width="112" height="42" alt="Wayonara" /></a>
+                </p>
+                <h1 class="margin-top-xs margin-bottom-sm">{{ labels.signUp.title }}<span class="text-primary">...</span></h1>
+            </header>
+
+            <main>
+                <form #signUpForm="ngForm" novalidate autocapitalize="none">
+                    <div class="form-group" [ngClass]="{
+                        'has-warning': (firstname.dirty === true || firstname.touched === true) && firstname.errors !== undefined && firstname.errors !== null,
+                        'padding-bottom-custom': (firstname.dirty === false && firstname.touched === false) || firstname.errors === undefined || firstname.errors === null
+                    }">
+                        <label for="firstname">{{ translationResolved.firstname }}</label>
+                        <input
+                            autofocus
+                            id="firstname"
+                            type="text"
+                            name="firstname"
+                            [(ngModel)]="model.firstname"
+                            #firstname="ngModel"
+                            #autofocusControl
+                            class="form-control"
+                            maxlength="150"
+                            required />
+                        <span class="help-block margin-vertical-none" *ngIf="(firstname.dirty === true || firstname.touched === true) && firstname.errors !== undefined && firstname.errors !== null && firstname.errors['required'] === true">
+                            {{ translationResolved.firstname_is_required }}
+                        </span>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{
+                        'has-warning': ((username.dirty === true || username.touched === true) && username.errors !== undefined && username.errors !== null) || authenticationError.username !== '',
+                        'padding-bottom-custom': ((username.dirty === false && username.touched === false) || username.errors === undefined || username.errors === null) && authenticationError.username === ''
+                    }">
+                        <label for="username">{{ translationResolved.username }}</label>
+                        <input
+                            id="username"
+                            type="text"
+                            name="username"
+                            [(ngModel)]="model.username"
+                            #username="ngModel"
+                            class="form-control"
+                            maxlength="15"
+                            required />
+                        <span class="help-block margin-vertical-none" *ngIf="(username.dirty === true || username.touched === true) && username.errors !== undefined && username.errors !== null && username.errors['required'] === true">
+                            {{ translationResolved.username_is_required }}
+                        </span>
+                        <span class="help-block margin-vertical-none" *ngIf="authenticationError.username !== ''">
+                            {{ authenticationError.username }}
+                        </span>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{
+                        'has-warning': ((email.dirty === true || email.touched === true) && email.errors !== undefined && email.errors !== null) || authenticationError.email !== '',
+                        'padding-bottom-custom': ((email.dirty === false && email.touched === false) || email.errors === undefined || email.errors === null) && authenticationError.email === ''
+                    }">
+                        <label for="firemailstname">{{ translationResolved.email }}</label>
+                        <input
+                            autofocus="true"
+                            id="email"
+                            type="email"
+                            name="email"
+                            [(ngModel)]="model.email"
+                            #email="ngModel"
+                            class="form-control"
+                            maxlength="160"
+                            required />
+                        <span class="help-block margin-vertical-none" *ngIf="(email.dirty === true || email.touched === true) && email.errors !== undefined && email.errors !== null && email.errors['required'] === true">
+                            {{ translationResolved.email_address_is_required }}
+                        </span>
+                        <span class="help-block margin-vertical-none" *ngIf="authenticationError.email !== ''">
+                            {{ authenticationError.email }}
+                        </span>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{
+                        'has-warning': (password.dirty === true || password.touched === true) && password.errors !== undefined && password.errors !== null,
+                        'padding-bottom-custom': (password.dirty === false && password.touched === false) || password.errors === undefined || password.errors === null
+                    }">
+                        <label for="password">{{ translationResolved.password }}</label>
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            [(ngModel)]="model.password"
+                            #password="ngModel"
+                            class="form-control"
+                            minlength="8"
+                            maxlength="256"
+                            required />
+                        <span class="help-block margin-vertical-none" *ngIf="(password.dirty === true || password.touched === true) && password.errors !== undefined && password.errors !== null && password.errors['required'] === true">
+                            {{ translationResolved.password_is_required }}
+                        </span>
+                        <span class="help-block margin-vertical-none" *ngIf="(password.dirty === true || password.touched === true) && password.errors !== undefined && password.errors !== null && password.errors['minlength']">
+                            {{ translationResolved.password_too_short }}
+                        </span>
+                    </div>
+
+                    <wn-button
+                        cssClasses="btn btn-primary btn-lg btn-block"
+                        [label]="labels.signUp.signUp"
+                        buttonType="submit"
+                        [isLoading]="isLoading"
+                        (click)="onSubmit($event)"
+                        [disabled]="!signUpForm.form.valid"
+                    ></wn-button>
+
+                    <span class="small text-center help-block margin-bottom-md">
+                        {{ translationResolved.by_joining_wayonara_you_agree_to_our }} <a href="http://about.wayonara.com/terms/">{{ translationResolved.terms_of_service }}</a>, <a href="http://about.wayonara.com/privacy/">{{ translationResolved.privacy_policy }}</a> {{ translationResolved.and }} <a href="http://about.wayonara.com/community-guidelines/">{{ translationResolved.community_guidelines }}</a>
+                    </span>
+                </form>
+
+                <hr class="margin-vertical-none" />
+
+                <p class="margin-vertical-sm">
+                    <wn-facebook-authentication
+                        [label]="labels.signUp.facebookSignUp"
+                        cssClasses="btn-block"
+                        (success)="onFacebookSignUpSuccess($event)"
+                        (error)="onFacebookSignUpError($event)"
+                    ></wn-facebook-authentication>
+                </p>
+
+                <div class="row margin-top-none margin-bottom-lg">
+                    <p class="col-xs-6 margin-vertical-none">
+                        {{ labels.signUp.useAccount }}
+                    </p>
+                    <p class="col-xs-6 text-right">
+                        <wn-button
+                            cssClasses="btn btn-default"
+                            [label]="translationResolved.sign_in"
+                            uiSref="signIn"
+                        ></wn-button>
+                    </p>
+                </div>
+            </main>
+
+            <footer class="padding-bottom-lg text-center small font-weight-bold">
+                <p class="margin-vertical-sm">{{ labels.commons.footer.madeInItalyIntro }}&#32;<wn-icon glyph="like" iconSize="sm"></wn-icon>&#32;{{ labels.commons.footer.madeInItalyOutro }}</p>
+                <p class="margin-top-none margin-bottom-sm text-secondary">{{ labels.commons.footer.copyright }}</p>
+            </footer>
+        </div>
+
+        <aside class="hidden-xs hidden-sm col-md-6 col-md-offset-1 background-color-gray-darker text-white">
+            <footer class="padding-vertical-md margin-bottom-md text-center">
+                <wn-author-info
+                    [author]="photoAuthor"
+                    cssClasses="text-white"
+                ></wn-author-info>
+            </footer>
+        </aside>
+    </div>
+</div>
+

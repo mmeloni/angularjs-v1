@@ -1,0 +1,13 @@
+<div class="wn-input-container">
+    <input
+		autocomplete="new-password"
+		id="{{wnInputId}}"
+		name="{{wnInputId}}"
+		type="{{wnInputType}}"
+		ng-model="wnInputModel"
+		ng-required="{{wnInputRequired}}"
+		ng-maxlength="{{wnInputMaxlength}}"
+		ng-minlength="{{wnInputMinlength}}"
+		autocomplete="{{wnInputId}}" />
+	<label for="{{wnInputId}}">{{wnInputLabel}}<abbr title="Mandatory" ng-show="wnInputRequired === true"> *</abbr></label>
+</div>

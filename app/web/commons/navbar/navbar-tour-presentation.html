@@ -1,0 +1,50 @@
+<div class="wn-flex-container v-align-center h-align-center">
+    <div id="navbar-tour" class="navbar-collapse collapse">
+        <div class="tour-edit-container">
+            <!--Logo-->
+            <!-- Needed to use ng-show because ng-if didn't work -->
+            <wn-icon
+                glyph="loader"
+                [color]="true"
+                icon-size="xl"
+                css-classes="wn-page-loader"
+                animation="spin"
+                ng-show="status=='loading'"
+            ></wn-icon>
+            <wn-icon
+                glyph="logo"
+                [color]="true"
+                icon-size="xl"
+                css-classes="wn-logo"
+                ng-click="backToWayonaraHome()"
+                ng-show="status!='loading'"
+            ></wn-icon>
+
+            <!--Breadcrumbs-->
+            <wn-breadcrumb wn-breadcrumb-list="breadcrumbs"></wn-breadcrumb>
+
+            <!--Actions-->
+            <div class="tour-edit-actions">
+                <wn-button
+                    css-classes="btn btn-default margin-right-grid"
+                    [label]="translation.saveAndClose"
+                    ng-click="save()"
+                ></wn-button>
+
+                <wn-button
+                    css-classes="btn btn-default margin-right-grid"
+                    [label]="translation.editTour"
+                    ng-click="goToTourEditPlan()"
+                ></wn-button>
+
+                <wn-button
+                    css-classes="btn btn-primary"
+                    [label]="translation.publish"
+                    ng-show="showPublish"
+                    ng-click="publish()"
+                ></wn-button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

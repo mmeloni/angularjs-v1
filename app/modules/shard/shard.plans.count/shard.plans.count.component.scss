@@ -1,0 +1,27 @@
+@import "../../../../assets/scss/utils/mixins";
+
+.shard-plans-count {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0 0 16px 16px;
+    height: 16px;
+    p {
+        text-transform: uppercase;
+        display: inline-block;
+        font-weight: bold;
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 14px;
+        color: white;
+        margin: 0;
+        line-height: 16px;
+    }
+    wn-icon svg {
+        fill: white;
+        border-color: white;
+    }
+}

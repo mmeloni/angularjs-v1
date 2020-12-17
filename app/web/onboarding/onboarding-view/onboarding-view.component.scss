@@ -1,0 +1,29 @@
+@import '../../../../assets/scss/overrides/bootstrap/variables';
+
+$footer-height: 97px; // design adapted for 1024x768
+$footer-padding-vertical: ($footer-height - $btn-lg-height) / 2;
+
+.container-setup {
+    padding-bottom: $footer-height;
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+h1 small {
+    line-height: $line-height-base;
+}
+
+header {
+    min-height: 240px;
+}
+
+footer {
+    border-top: 1px solid $gray-light;
+    background-color: #ffffff;
+    height: $footer-height;
+    padding: $footer-padding-vertical 0;
+}

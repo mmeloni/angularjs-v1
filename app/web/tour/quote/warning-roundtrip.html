@@ -1,0 +1,160 @@
+<div class="booking-error-modal-container warning-roundtrip">
+    <div class="modal-body">
+        <div class="text-message">
+            <div class="title">{{ vmTQC.translation.warningRoundtripTitle }}!</div>
+            <div class="subtitle">
+                <span>{{ vmTQC.translation.warningRoundtripMessage1 }}</span>
+                <span class="travelmode-highlight">{{ vmTQC.translation.oneway }}</span>
+                <span>{{ vmTQC.translation.warningRoundtripMessage2 }}</span>
+                <span class="travelmode-highlight">{{ vmTQC.translation.roundtrip }}</span>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-12 tour-results-navbar-ele error-view-details-column">
+                <button class="ui-action-button expanded wn-btn-neutral no-padding" type="button" ng-click="vmTQC.keepOneway()">
+                    <span class="wn-icon wn-icon-arrow-right result-row-secondary" aria-hidden="true"></span>
+                    {{ vmTQC.translation.keepOneWay }}
+                </button>
+                <button class="ui-action-button expanded wn-btn-neutral no-padding" type="button" ng-click="vmTQC.roundtripQuote()">
+                    <div class="navbar-arrows col-md-1">
+                        <span class="wn-icon wn-icon-arrow-left" aria-hidden="true"></span>
+                        <span class="wn-icon wn-icon-arrow-right" aria-hidden="true"></span>
+                    </div>
+                    {{ vmTQC.translation.quoteRoundtrip }}
+                </button>
+            </div>
+        </div>
+        <div class="row booking-error-row">
+            <div class="col-md-12">
+                <div class="tour-ele-decoration info-field">
+                    <span class="info-text wn-icon wn-icon-info pull-right"></span>
+                    <p class="info-title">{{ vmTQC.translation.warningRoundtripInfoTitle }}</p>
+                    <span class="info-text">{{ vmTQC.translation.warningRoundtripInfoText1 }}</span>
+                    <span class="travelmode-highlight">{{ vmTQC.translation.oneway | uppercase }}</span>
+                    <span class="info-text">{{ vmTQC.translation.warningRoundtripInfoText2 }}</span>
+                    <span class="info-text">{{ vmTQC.translation.warningRoundtripInfoText3 }}</span>
+                    <span class="travelmode-highlight">{{ vmTQC.translation.roundtrip | uppercase }}</span>
+                    <span class="info-text">{{ vmTQC.translation.warningRoundtripInfoText4 }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="tour-ele-decoration booking-error-row row">
+            <div class="col-md-4 border-right text-center tour-results-navbar-ele">
+                <div class="row">
+                    <span class="col-md-5">
+                        {{ vmTQC.linkedRoundtripDeparture }}
+                    </span>
+                    <div class="navbar-arrows col-md-1">
+                        <span class="wn-icon wn-icon-arrow-left result-row-secondary" aria-hidden="true"></span>
+                        <span class="wn-icon wn-icon-arrow-right result-row-secondary" aria-hidden="true"></span>
+                    </div>
+                    <span class="col-md-5 no-padding">
+                        {{ vmTQC.linkedRoundtripArrival }}
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2  border-right text-center no-padding">
+                <div class="wn-datepicker">
+                    <div class="row no-padding">
+                        <div class="col-md-2 no-padding">
+                            <span class="wn-icon wn-icon-calendar wn-datepicker-gly result-row-secondary" aria-hidden="true"></span>
+                        </div>
+                        <div class="col-md-10 no-padding">
+                            <span class="wn-datepicker-gly">{{ vmTQC.oneWayQuoted.trip.outboundSegment.startTime | date:'dd MMMM yyyy' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 text-center tour-results-navbar-ele">
+                <span class="result-row-secondary">{{ vmTQC.translation.travelers }}</span>
+                {{ (vmTQC.tour.participants | filter:{isPax : true}).length}}
+            </div>
+        </div>
+
+        <div id="tourResults">
+            <div class="tour-ele-decoration booking-error-row row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2 text-center details-col-left">
+                            <div class="row">
+                                <div class="col-md-12 no-padding" ng-bind-html="vmTQC.oneWayQuoted.price | priceFormatter"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 no-padding">
+                                    <div class="tour-cls-cnt text-center center-block">
+                                        <div class="tour-cl-cnt"
+                                            ng-repeat="carrier in vmTQC.oneWayQuoted.carriers track by $index"
+                                            data-ng-style="{'z-index':  ((vmTQC.oneWayQuoted.carriers.length - $index)*2 - 1) }"
+                                            data-is-last="{{ $last }}">
+                                            <img class="ui-rounded" ng-src="https://s3-eu-west-1.amazonaws.com/wayonara-assets/cl/32/{{carrier.code}}.png" alt="{{carrier.agency}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 no-padding show-details">
+                                    <div class="tour-cls-cnt text-center center-block">
+                                        <span class="pull-left" ng-click="status.open = !status.open; showDetail(vmTQC.oneWayQuoted, resultIndex, status)">
+                                            {{ status.open ? vmTQC.translation.hideDetails : vmTQC.translation.showDetails }}
+                                            <i class="glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 result-trip-row">
+                            <div ng-repeat="res in [vmTQC.oneWayQuoted.trip.outboundSegment, vmTQC.oneWayQuoted.trip.returnSegment] | filter:{trip:'!'}">
+                                <wn-results-details-row segment="res" tour="vmTQC.tour"></wn-results-details-row>
+                            </div>
+                        </div>
+                        <div class="col-md-3 tour-results-navbar-ele text-center no-padding">
+                            <div class="row">
+                                <div class="col-md-12 no-padding">
+                                    <div class="tour-cls-cnt text-center center-block">
+                                        <span class="quoted-date-unavailable pull-right ng-scope" ng-if="true">{{ vmTQC.translation.quoted }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 no-padding">
+                                    <div class="tour-cls-cnt text-center center-block result-row-secondary">
+                                        <!-- TODO VERIFICARE -->
+                                        <span ng-if="(bookingTravel.nextopSearchResultTrip.bm | checkSaleablesVectorsInTrip)">{{ vmTQC.translation.soldBy }} <b>Wayonara</b></span>
+                                        <span ng-if="!(bookingTravel.nextopSearchResultTrip.bm | checkSaleablesVectorsInTrip)">{{ vmTQC.translation.soldBy }} <b>{{ vmTQC.translation.otherCompanies }}</b></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <uib-accordion class="trip-details-explode" close-others="false">
+                    <uib-accordion-group is-open="status.open">
+                        <div class="segment-details">
+                            <div class="row segment-heading">
+                                <div class="col-md-12">
+                                    <b>{{ vmTQC.translation.depart }}: </b>
+                                    <span class="vector-secondary-details">{{ vmTQC.oneWayQuoted.trip.outboundSegment.startTime | date:'dd MMM yyyy' }}</span>
+                                </div>
+                            </div>
+                            <div ng-repeat="outboundVector in vmTQC.oneWayQuoted.trip.outboundSegment.vectors">
+                                <ng-include ng-init="vector = outboundVector; vectors = vmTQC.oneWayQuoted.trip.outboundSegment.vectors; segment = 'outboundSegment'; resIndex = resultIndex;" src="'web/results/selected-details-explode.html'"></ng-include>
+                            </div>
+                        </div>
+                        <div class="segment-details">
+                            <div class="row segment-heading" ng-if="vmTQC.oneWayQuoted.trip.returnSegment">
+                                <div class="col-md-12">
+                                    <b>{{ vmTQC.translation.return }}: </b><span class="vector-secondary-details">{{ vmTQC.oneWayQuoted.trip.returnSegment.startTime | date:'dd MMM yyyy' }}</span>
+                                </div>
+                            </div>
+                            <div ng-repeat="returnVector in vmTQC.oneWayQuoted.trip.returnSegment.vectors">
+                                <ng-include ng-init="vector = returnVector; vectors = vmTQC.oneWayQuoted.trip.returnSegment.vectors; segment = 'returnSegment'; resIndex = resultIndex;" src="'web/results/selected-details-explode.html'"></ng-include>
+                            </div>
+                        </div>
+                    </uib-accordion-group>
+                </uib-accordion>
+            </div>
+        </div>
+    </div>
+
+</div>

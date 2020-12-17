@@ -1,0 +1,13 @@
+@import '../../../../../../../../assets/scss/overrides/bootstrap/variables';
+@import '../../../../../../../../assets/scss/overrides/bootstrap/mixins/avatar-grid';
+
+$col-avatar-width: $avatar-size + $grid-gutter-width;
+
+.col-avatar {
+    @include avatar-grid-avatar($col-avatar-width);
+}
+
+.col-md-12.col-avatar-main {
+    $col-main-width: $modal-md - 4 - $col-avatar-width - $modal-inner-padding - ($grid-gutter-width * 2); // 2px + 2px border for modal-content, and grid-group (x2 because the row margin is nulled);
+    @include avatar-grid-main($col-main-width);
+}

@@ -1,0 +1,11 @@
+<button
+    [type]="buttonType"
+    (click)="onClick($event)"
+    class="btn"
+    [disabled]="disabled"
+    [ngClass]="cssClasses">
+        <span *ngIf="iconClasses" [ngClass]="iconClasses"></span>
+        <ng-content *ngIf="showMainIcon === true" select="wn-icon"></ng-content>
+        {{label}}
+        <wn-icon *ngIf="isLoading === true" glyph="loader" animation="spin" [iconSize]="loadingIconSize"></wn-icon>
+</button>

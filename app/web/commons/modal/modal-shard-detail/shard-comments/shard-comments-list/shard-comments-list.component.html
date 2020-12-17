@@ -1,0 +1,11 @@
+<!--<pre *ngFor="let comment of comments">
+{{ comment['creation_date']}}
+
+{{ comment | json }}
+</pre>-->
+
+<section class="list-group margin-bottom-none" *ngIf="comments !== undefined && comments.length > 0">
+    <article class="list-group-item row" *ngFor="let comment of comments">
+        <wn-shard-comments-item [comment]="comment"></wn-shard-comments-item>
+    </article>
+</section>

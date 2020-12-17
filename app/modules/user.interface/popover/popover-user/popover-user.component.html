@@ -1,0 +1,31 @@
+<article class="loading text-center display-flex justify-content-center" *ngIf="isTargetUserLoaded === false">
+    <wn-icon
+        glyph="loader"
+        animation="spin"
+        [color]="true"
+        iconSize="xl">
+    </wn-icon>
+</article>
+<article class="text-center" *ngIf="isTargetUserLoaded === true" (click)="goToProfilePage($event)">
+    <header class="cursor-pointer margin-bottom-sm">
+        <div class="avatar">
+            <wn-avatar
+                [userId]="this.componentData.nid"
+                shape="square"
+                size="md"
+            ></wn-avatar>
+        </div>
+        <h1 class="h2 margin-vertical-xs">{{ target.firstname }} {{ target.lastname }}</h1>
+        <p class="margin-vertical-sm text-primary">@{{ target.username }}</p>
+        <p class="margin-vertical-sm text-secondary">{{ target.city.name }}</p>
+    </header>
+    <wn-follow-button
+        *ngIf="actor.nid !== target.nid"
+        [targetId]="target.nid"
+        [isTargetFollowed]="target.isFollowed"
+        [translation]="translationFollowButton">
+    </wn-follow-button>
+    <section class="statistics margin-top-sm">
+        <wn-statistics-bar [items]="statisticsItems"></wn-statistics-bar>
+    </section>
+</article>

@@ -1,0 +1,28 @@
+@import '../../../../assets/scss/overrides/bootstrap/variables';
+
+.sidebar {
+    position: relative;
+    top: -300px;
+    min-height: 900px;
+
+    .panel {
+        min-height: 200px;
+    }
+
+    .map {
+        height: 180px;
+
+        /deep/ .ol-viewport {
+            border-radius: $border-radius-base;
+        }
+    }
+}
+
+.action-bar-board-detail {
+    margin-top: 10px;
+    display: block;
+}
+
+.cover-container {
+    height: 600px;
+}

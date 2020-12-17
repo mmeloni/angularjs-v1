@@ -1,0 +1,25 @@
+<article class="shard {{tileSize}}">
+	<div class="shard-info-wrapper" ng-switch on="shard.bit">
+
+		<!-- Stage -->
+		<div ng-switch-when="2">
+			<ng-include src="'web/commons/shard/types/shard-stage.html'" ng-init="imgFormat=imgFormat"></ng-include>
+		</div>
+
+        <!-- Attraction -->
+        <div ng-switch-when="128">
+			<ng-include src="'web/commons/shard/types/shard-attraction.html'" ng-init="imgFormat=imgFormat"></ng-include>
+		</div>
+
+        <!-- Hotel -->
+        <div ng-switch-when="16">
+			<ng-include src="'web/commons/shard/types/shard-hotel.html'" ng-init="imgFormat=imgFormat"></ng-include>
+		</div>
+
+		<!-- Tour -->
+		<div ng-switch-when="8">
+			<ng-include src="'web/commons/shard/types/shard-tour.html'"></ng-include>
+		</div>
+
+	</div>
+</article>

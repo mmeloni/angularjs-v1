@@ -1,0 +1,13 @@
+<article class="background-color-gray-darker text-center small">
+    <div class="alert alert-inverse margin-bottom-none padding-vertical-xs">
+        <p>
+            <wn-icon
+                glyph="cookie"
+                iconSize="sm"
+                cssClasses="margin-right-xs"
+            ></wn-icon>
+            {{ labels.text }}&#32;
+            <button type="button" class="btn btn-link btn-sm alert-link" (click)="accept($event)">{{ labels.button }}</button>
+        </p>
+    </div>
+</article>

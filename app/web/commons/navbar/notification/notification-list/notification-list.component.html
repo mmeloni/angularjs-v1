@@ -1,0 +1,22 @@
+<article class="panel panel-default margin-bottom-none">
+    <h1 class="panel-heading h5 margin-vertical-none">
+        {{ labels.title }}&#32;
+        <button type="button" class="btn-link pull-right" [hidden]="showMarkAllAsRead === false" (click)="markAllAsRead()">{{ labels.markAll }}</button>
+    </h1>
+    <ul class="list-group">
+        <li class="row list-group-item cursor-pointer" *ngFor="let n of notifications" (click)="goToByNotification($event, n)" [ngClass]="{ active: (n.read === false) }">
+            <div class="col-md-2 text-center">
+                <span class="center-block text-center flex-column">
+                    <wn-avatar [userId]="n.creatorNid"></wn-avatar>
+                    <span [ngClass]="getIconClasses(n.bit)"></span>
+                </span>
+            </div>
+            <div class="col-md-8 flex-self-start">
+                {{ n.prefix.name }}<b>@{{ n.creatorUsername }}</b>&#32;{{ n.text }}
+            </div>
+            <div class="col-md-2 center-block text-center flex-column" *ngIf="n.eventImageOptions !== undefined">
+                <wn-image [componentData]="n.eventImageOptions" cssClasses="navbar-shard-picture"></wn-image>
+            </div>
+        </li>
+    </ul>
+</article>

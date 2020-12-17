@@ -1,0 +1,43 @@
+@import '../../../../../../assets/scss/overrides/bootstrap/_variables.scss';
+
+// https://angular.io/docs/ts/latest/guide/component-styles.html#!#special-selectors
+:host /deep/ .btn {
+    box-shadow: none;
+    background-color: transparent;
+    color: $gray;
+
+    &:hover,
+    &:active {
+        box-shadow: none;
+    }
+}
+
+.input-group {
+    border-radius: $border-radius-large;
+}
+
+.input-group,
+.form-control {
+    background-color: $gray-light;
+}
+
+.input-group-btn span {
+    display: inline-block;
+    min-width: 24px;
+}
+
+.form-control {
+    border-color: transparent;
+    box-shadow: none;
+    padding-left: 0;
+    width: 300px !important;
+
+    &:active,
+    &:focus {
+        color: $text-color;
+    }
+
+    @media (min-width: $screen-md) {
+        width: 400px !important;
+    }
+}

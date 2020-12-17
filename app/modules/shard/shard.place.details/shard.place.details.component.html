@@ -1,0 +1,14 @@
+<div class="shard-place-details" (mouseenter)="showPopover()">
+    <wn-icon [glyph]="iconGlyph" [color]="true"></wn-icon>
+    <p class="place-name" *ngIf="!!place && !!place.title">
+        {{place.title}}
+    </p>
+</div>
+
+<div class="shard-place-details" *ngIf="type === types.tour">
+    <wn-icon [glyph]="iconGlyph" [color]="true"></wn-icon>
+</div>
+
+<div class="popover-item" *ngIf="canShowPopover">
+    <wn-popover-place [componentData]="place" [labels]="translations"></wn-popover-place>
+</div>

@@ -1,0 +1,37 @@
+.no-padding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.icon-place{
+    cursor: pointer;
+    color:#3ce9b7;
+}
+
+#toast-remove-shard-from-board .openButton{
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    background: #F5F7F8;
+    right: 120px;
+    top: 10px;
+    color: #78909C;
+    margin: 0;
+}
+#toast-remove-shard-from-board .cancelButton{
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    background: #F5F7F8;
+    right: 10px;
+    top: 10px;
+    color: #78909C;
+    margin: 0;
+}
+#toast-remove-shard-from-board{
+    width: 650px;
+    height: 60px;
+    max-width: 100%;
+    margin-left: 33vw;
+    background: #78909C;
+}

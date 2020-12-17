@@ -1,0 +1,11 @@
+{
+    "apiServerBaseURL": "https://staging-api.wayonara.com",
+    "awsWayonaraCloudfront": "https://d3f1e7oh2sbxe9.cloudfront.net",
+    "awsWayonaraBucket": "wayonara-stag",
+    "facebookAppId": "815526928595883",
+    "hotjar": false,
+    "hotjarId": 302738,
+    "fbPixel": false,
+    "siteURL": "https://staging.wayonara.com",
+    "notificationServerURL": "https://staging-node.wayonara.com"
+}

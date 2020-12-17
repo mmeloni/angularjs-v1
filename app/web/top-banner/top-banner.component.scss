@@ -1,0 +1,20 @@
+.top-banner {
+    padding: 5px 20px;
+    background: #6b6eff;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    .top-banner-content {
+        max-width: 1024px;
+        margin: 0 auto;
+        text-align: center;
+        .btn-top-banner {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 10px;
+            padding: 10px;
+            border-radius: 0;
+            line-height: 1.2;
+        }
+    }
+}

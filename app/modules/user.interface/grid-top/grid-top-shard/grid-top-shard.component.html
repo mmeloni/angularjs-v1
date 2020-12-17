@@ -1,0 +1,8 @@
+<div class="hotel-grid-container" [hidden]="hiddenComponent">
+    <h1>{{translations.topGrid.shards}} <small>{{subtitle}}</small></h1>
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let item of items">
+            <wn-grid-top-shard-item [componentData]="item" [translations]="translations"></wn-grid-top-shard-item>
+        </div>
+    </div>
+</div>

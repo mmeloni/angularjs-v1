@@ -1,0 +1,19 @@
+.panel-card {
+    border: none;
+    @include box-shadow($box-shadow-base-size $box-shadow-base-color);
+}
+
+.panel-flight {
+    // $panel-flight-heading-bg will be applied to everything
+    @include panel-variant($panel-flight-border, $panel-flight-text, $panel-flight-heading-bg, $panel-flight-border);
+}
+
+.panel-train {
+    // $panel-train-heading-bg will be applied to everything
+    @include panel-variant($panel-train-border, $panel-train-text, $panel-train-heading-bg, $panel-train-border);
+}
+
+.panel-success {
+    // $panel-train-heading-bg will be applied to everything
+    @include panel-variant($panel-success-border, $panel-success-text, $panel-success-heading-bg, $panel-success-border);
+}

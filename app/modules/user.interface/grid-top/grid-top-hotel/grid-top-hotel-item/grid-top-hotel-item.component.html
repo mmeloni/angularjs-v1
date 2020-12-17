@@ -1,0 +1,19 @@
+<article class="hotel-grid-item panel panel-default panel-card cursor-pointer" [ngStyle]="{ backgroundImage: componentData.backgroundImage }" (click)="goToHotel(componentData.id)">
+   <div class="panel-body">
+       <div class="content">
+            <h1>{{componentData.name}}</h1>
+            <wn-star-rating ratingValue="{{ componentData.rating }}"></wn-star-rating>
+            <h2>{{componentData.address}}, {{componentData.city}}, {{componentData.country}}</h2>
+       </div>
+
+        <div class="stats">
+           <wn-icon-label *ngIf="componentData.likeNumber > 0" [label]="componentData.likeNumber" iconClasses="wn-icon wn-icon-like wn-icon-like-color"></wn-icon-label>
+           <wn-icon-label *ngIf="componentData.planCount > 0" [label]="componentData.planCount" iconClasses="wn-icon wn-icon-plan-empty"></wn-icon-label>
+        </div>
+
+        <div class="type">
+            <wn-icon-label iconClasses="wn-icon wn-icon-hotel-color wn-icon-hotel"></wn-icon-label>
+        </div>
+   </div>
+
+</article>

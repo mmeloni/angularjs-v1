@@ -1,0 +1,319 @@
+#settings-section {
+    margin: 20px 10px 20px 20px;
+    padding: 0;
+}
+
+#settings-section .image-and-avatar{
+    width:  100%;
+    height: 240px;
+    border: 2px solid #ECEFF1;
+    padding: 15px;
+    position: relative;
+}
+
+#settings-section .image-and-avatar .up-image{
+    width: 100%;
+    height: 150px;
+}
+
+#settings-section .image-and-avatar .up-image .up-cover-image img {
+    width: 100%;
+    height: 150px;
+}
+
+#settings-section .image-and-avatar .left-bottom-image{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 120px;
+    left: 15px;
+    border-top: 2px solid #FFFFFF;
+    border-right: 2px solid #FFFFFF;
+}
+
+#settings-section .image-and-avatar .user-info{
+    position: absolute;
+    top: 165px;
+    left: 120px;
+}
+
+#settings-section .image-and-avatar .user-info .realname{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#settings-section .image-and-avatar .user-info .username{
+    font-size: 14px;
+    font-weight: 400;
+    color: #B0BEC5;
+}
+
+#settings-section .image-and-avatar .left-bottom-image .left-avatar-image img {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    width: 100%;
+    height: auto;
+}
+
+#settings-section .list-group .activeSettingsMenu{
+    background-color: #ECEFF1;
+}
+
+#settings-section {
+    margin: 20px 20px 20px 10px;
+    height: 100%;
+    padding: 0;
+}
+
+#settings-section #myBookingFilterBar{
+    border: 2px solid #ECEFF1;
+}
+
+#settings-section .myBookingList{
+    border: 2px solid #ECEFF1;
+}
+
+#settings-section .myBookingList .price-and-flags .price{
+    font-size: 22px;
+}
+
+#settings-section #myBookingDetails .price-and-flags .price-int {
+    font-size: 20px;
+}
+
+#settings-section #myBookingDetails .price-and-flags .price-decimal {
+    font-size: 16px;
+}
+
+#settings-section .myBookingList .price-and-flags .button{
+    display: flex;
+    justify-content: center;
+}
+
+#settings-section .myBookingList .travel-data .payment-order-number{
+    font-size: 14px;
+    font-weight: 400;
+    color: #78909C;
+}
+
+#settings-section .myBookingList .travel-data .travel-data-transports{
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+#settings-section .myBookingList .travel-data .travel-data-transports div{
+    float: left;
+    margin-right: 18px;
+}
+
+#settings-section .myBookingList .travel-data .travel-data-transports .flights{
+    display: flex;
+    justify-content: center;
+}
+#settings-section .myBookingList .travel-data .travel-data-transports .trains{
+    display: flex;
+    justify-content: center;
+}
+#settings-section .myBookingList .travel-data .travel-data-transports .passengers{
+    display: flex;
+    justify-content: center;
+}
+
+#settings-section .myBookingList .travel-data .travel-data-date{
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+}
+
+#settings-section .myBookingList .travel-data .travel-data-date .inside-container{
+    float: left;
+    display: flex;
+    justify-content: center;
+}
+
+#settings-section .myBookingList .travel-data .travel-data-date .inside-container .wn-icon {
+    color: #B0BEC5;
+    margin-right: 5px;
+}
+
+#settings-section .myBookingList .travel-data .travel-data-places .inside-container{
+    float: left;
+    display: flex;
+    justify-content: center;
+}
+
+#settings-section .myBookingList .travel-data .travel-data-places .inside-container .wn-icon {
+    color: #41B0A6;
+    margin-right: 5px;
+}
+
+
+#settings-section #myBookingDetails{
+    border-radius: 6px;
+}
+
+
+#settings-section #myBookingDetails .tour-cover{
+    position: relative;
+    width: 100%;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+}
+
+#settings-section #myBookingDetails .tour-cover-image,
+#settings-section #myBookingDetails .tour-cover-image img {
+    width: 100%;
+    height: 100%;
+}
+
+#settings-section #myBookingDetails .tour-cover .back-arrow{
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    z-index: 15;
+    color: #FFFFFF;
+}
+
+#settings-section #myBookingDetails .tour-cover .payment-order-id{
+    position: absolute;
+    height: 25px;
+    border-radius: 2px;
+    background-color: #606acc;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    color: #FFFFFF;
+}
+
+#settings-section #myBookingDetails .tour-cover .payment-order-id > span{
+    height: 17px;
+    font-family: OpenSans;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+    padding: 3.5px 5px 3.5px 5px;
+}
+
+#settings-section #myBookingDetails .tour-cover .tour-info{
+    align-self: center;
+    color: #FFFFFF;
+    z-index: 10;
+    display: block;
+    width: 100%;
+    padding: 30px;
+    position: absolute;
+}
+
+#settings-section #myBookingDetails .tour-cover .tour-info div{
+    display: flex;
+    justify-content: center;
+}
+
+#settings-section #myBookingDetails .tour-cover .tour-info .travel-data-date span{
+    align-self: center;
+}
+
+#settings-section #myBookingDetails .tour-cover .tour-info .travel-data-places span{
+    align-self: center;
+}
+
+
+#settings-section #myBookingDetails .tour-cover .tour-info .travel-data-price{
+    font-size: 22px;
+    line-height: 0.9;
+    text-align: center;
+    color: #ffffff;
+    align-self: center;
+    margin-right: 25px
+}
+
+.segment-block .segment-element .price-and-flags .price{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.segment-block .segment-element .data-label-row{
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.segment-block .segment-element .data-label{
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    height: 25px;
+    background-color: #78909C;
+}
+
+.segment-block .segment-element .data-label .text{
+    align-self: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+#myBookingDetails uib-accordion.trip-details-explode .segment-details{
+    padding: 20px;
+}
+
+#myBookingDetails uib-accordion.trip-details-explode .panel-default{
+    background: #ffffff;
+}
+
+#myBookingDetails uib-accordion .tour-booking-recap-segment .download-your-tickets{
+    min-width: 100%;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#myBookingDetails .back-arrow .wn-icon-arrow-left{
+    font-size: 32px;
+}
+
+.vouchers-download-modal-container .modal-body .text-title-content{
+    align-self: center;
+    color: #8c8c8c;
+    margin-top: 10px;
+}
+
+.vouchers-download-modal-container .ticket-download-row{
+    height: 40px;
+    margin: 10px 5px 10px 5px;
+}
+
+#myBookingDetails .commercial-offer-info {
+    width: 350px;
+    height: 50px;
+    background: #f5f7f8 none repeat scroll 0 0;
+    text-align: center;
+}
+
+#myBookingDetails .commercial-offer-info .info-text.wn-icon.wn-icon-info {
+    font-size: 32px;
+    line-height: 30px;
+}
+
+#myBookingDetails .commercial-offer-info .info-text {
+    color: #78909C;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 50px;
+}
+
+#myBookingDetails .info-field .info-text {
+    color: #78909C;
+    font-size: 14px;
+    font-weight: 600;
+}
+

@@ -1,0 +1,26 @@
+<article class="shard sm">
+    <div class="shard-info-wrapper">
+
+        <!-- Stage -->
+        <div class="shard-tour-view-edit">
+
+            <div class="include-shard-stage">
+                <!--Header-->
+                <header>
+                    <wn-avatar
+                        [user-id]="shard.user.nid"
+                        css-classes="pull-left owner-popover"
+                    ></wn-avatar>
+                    <div class="checkbox-container wn-btn-neutral" ng-click="checkShard($event, shard)">
+                        <span class="wn-icon wn-icon-save"></span>
+                    </div>
+                </header>
+                <!--Content-->
+                <wn-image css-classes="wn-tile-bg" shard=shard img-format="imgFormat" err-src="../assets/img/shard-empty.png" polling="true"></wn-image>
+                <div class="overlay dark" ng-click="showDetails()"></div>
+            </div>
+
+        </div>
+
+    </div>
+</article>

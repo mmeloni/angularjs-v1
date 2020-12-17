@@ -1,0 +1,109 @@
+<form class="profile-edit-form container-fluid" (submit)="onSubmit($event)">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- First name -->
+            <wn-form-input
+                [model]="dummyUser.firstname"
+                [name]="'firstname'"
+                [label]="translations.firstname"
+                [required]="true"
+                [placeholder]="translations.firstname"
+                [errorMessage]="translations.firstname_is_required"
+                (onChange)='onFieldChange($event)'
+            ></wn-form-input>
+        </div>
+        <div class="col-xs-12">
+            <!-- Surname -->
+            <wn-form-input
+                [model]="dummyUser.lastname"
+                [name]="'lastname'"
+                [label]="translations.lastname"
+                [placeholder]="translations.lastname"
+                (onChange)='onFieldChange($event)'
+            ></wn-form-input>
+        </div>
+        <div class="col-xs-12">
+            <!-- Website -->
+            <wn-textarea-input
+                [model]="dummyUser.biography"
+                [name]="'biography'"
+                [label]="translations.description"
+                [placeholder]="translations.description"
+                (onChange)='onFieldChange($event)'
+            ></wn-textarea-input>
+        </div>
+        <div class="col-xs-12">
+            <!-- Website -->
+            <wn-form-input
+                [model]="dummyUser.website"
+                [name]="'website'"
+                [type]="'url'"
+                [label]="translations.website"
+                [placeholder]="translations.website"
+                (onChange)='onFieldChange($event)'
+            ></wn-form-input>
+        </div>
+        <div class="col-xs-12">
+            <!-- Username -->
+            <wn-form-input
+                [model]="dummyUser.username"
+                [name]="'username'"
+                [label]="translations.username"
+                [required]="true"
+                [placeholder]="translations.username"
+                [errorMessage]="translations.username_is_required"
+                (onChange)='onFieldChange($event)'
+            ></wn-form-input>
+        </div>
+        <div class="col-xs-12">
+            <!-- Email -->
+            <wn-form-input
+                [model]="dummyUser.email"
+                [name]="'email'"
+                [type]="'email'"
+                [label]="translations.email"
+                [required]="true"
+                [placeholder]="translations.email"
+                [errorMessage]="translations.email_address_is_required"
+                (onChange)='onFieldChange($event)'
+            ></wn-form-input>
+        </div>
+        <div class="col-xs-12">
+            <!-- City -->
+            <wn-form-input-city-autocomplete
+                [name]="'city'"
+                [model]="dummyUser.city.name"
+                [label]="translations.cityWithHelpText"
+                [required]="true"
+                [placeholder]="translations.cityWithHelpText"
+                (onChange)='onCityChange($event)'
+            ></wn-form-input-city-autocomplete>
+        </div>
+        <div class="col-xs-12">
+            <!-- Nationality -->
+            <wn-form-select
+                [model]="dummyUser.nationality"
+                [name]="'nationality'"
+                [options]="countriesOptions"
+                [label]="translations.selectCountry"
+                (onChange)='onFieldChange($event)'
+            ></wn-form-select>
+        </div>
+        <div class="col-xs-12">
+            <!-- Gender -->
+            <wn-form-select
+                [model]="dummyUser.gender"
+                [name]="'gender'"
+                [options]="[{value: 'F', label: translations.female},{value: 'M', label: translations.male}]"
+                [label]="translations.select_your_gender"
+                (onChange)='onFieldChange($event)'
+            ></wn-form-select>
+        </div>
+        <div class="col-xs-12">
+            <button class="btn btn-primary btn-save" type="submit" [disabled]="isSavingData">
+                <wn-icon [glyph]="'save'"></wn-icon>
+                {{translations.save}}
+            </button>
+        </div>
+    </div>
+</form>

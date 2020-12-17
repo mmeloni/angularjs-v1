@@ -1,0 +1,35 @@
+<div class="booking-error-modal-container terms-and-conditions-modal">
+
+    <div class="modal-body">
+
+        <button class="booking-error-modal-close-button" type="button" tooltip-placement="bottom" uib-tooltip="Close" ng-click="cancel()">
+            <span class="wn-icon wn-icon-delete"></span>
+        </button>
+
+        <div class="text-message">
+            <div class="title">{{title}}</div>
+        </div>
+
+        <div class="terms-and-conditions-container">
+            <div class="from">{{termsAndConditions.from}}</div>
+            <div class="to">{{termsAndConditions.to}}</div>
+            <div class="rateClass">{{termsAndConditions.rateClass}}</div>
+            <div class="category-rule-list">
+                <div ng-repeat="categoryRule in termsAndConditions.categoryRuleList track by $index" class="category-rule">
+                    <div class="category-rule-title">
+                        <div class="category-id">{{categoryRule.categoryId}}</div>
+                    <!--    <div class="category-first-rule">{{categoryRule.textRuleList[0]}}</div> -->
+                    </div>
+                    <div class="other-text-rules">
+                        <div ng-repeat="textRule in categoryRule.TextRuleList.slice(0,categoryRule.TextRuleList.length) track by $index" class="category-text-rule">
+                            {{textRule}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="link" ng-if="termsAndConditions.link">{{termsAndConditions.link}}</div>
+        </div>
+        ​
+    </div>
+
+</div>

@@ -1,0 +1,30 @@
+@import './bootstrap/variables';
+@import './bootstrap/mixins';
+
+#toast-container {
+    z-index: $zindex-toast;
+
+    .toast {
+        background: transparent;
+        width: 90% !important;
+        padding: 0 !important;
+    }
+
+    .toast-success > div {
+        @include wn-toast-variant($brand-success);
+    }
+
+    .toast-info > div {
+        @include wn-toast-variant($brand-info);
+    }
+
+    .toast-error > div {
+        @include wn-toast-variant($brand-warning);
+    }
+}
+
+@media (min-width: $screen-md-min) {
+    #toast-container .toast {
+        width: $toast-width !important;
+    }
+}

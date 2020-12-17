@@ -1,0 +1,22 @@
+@import '../../../../../assets/scss/overrides/bootstrap/variables';
+@import '../../../../../assets/scss/placeholders';
+
+.item {
+    @extend %disable-selection;
+    cursor: default;
+    min-width: 90px;
+}
+
+a {
+    color: $gray-darker;
+    cursor: pointer;
+    &:hover, &:focus {
+        text-decoration: none;
+    }
+}
+
+small {
+    color: $gray-dark;
+}
+
+

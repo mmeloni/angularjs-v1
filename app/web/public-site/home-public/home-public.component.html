@@ -1,0 +1,362 @@
+<wn-cookie-policy
+    [labels]="labels.cookiePolicy"
+    (isAccepted)="cookiesAccept()"
+    *ngIf="isCookiesAccepted == false"
+></wn-cookie-policy>
+<header class="container padding-top-sm margin-bottom-lg">
+    <nav class="row">
+        <div class="col-xs-6 col-md-5 col-md-offset-1">
+            <img src="/assets/img/public/logo.png" width="35" height="42" alt="Wayonara"
+                 class="visible-xs visible-sm" />
+            <img src="/assets/img/public/logo-payoff.png" width="112" height="42" alt="Wayonara"
+                 class="visible-md visible-lg" />
+        </div>
+        <div class="col-xs-6 col-md-5 text-right">
+            <wn-button
+                cssClasses="btn btn-default"
+                [label]="translationResolved.sign_in"
+                uiSref="signIn"
+            ></wn-button>
+            <wn-button
+                cssClasses="btn btn-primary visible-md-inline-block visible-lg-inline-block margin-left-grid"
+                [label]="translationResolved.signUp"
+                uiSref="signUp"
+            ></wn-button>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1">
+                <h1 class="margin-vertical-none">
+                    {{ labels.homePage.sectionIntro.title }}
+                </h1>
+                <p class="text-secondary font-weight-bold margin-vertical-xs">
+                    {{ labels.homePage.sectionIntro.text }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <section id="image-sign-up"
+             class="margin-bottom-lg padding-vertical-xs background-color-gray-darker">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-10 col-md-offset-1">
+                    <wn-button
+                        cssClasses="btn btn-primary"
+                        [label]="labels.homePage.sectionImageSignUp.signUp"
+                        uiSref="signUp"
+                    ></wn-button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-md-offset-3">
+                <section class="padding-vertical-lg">
+                    <wn-testimonial
+                        [quote]="testimonials[0].quote"
+                        [source]="testimonials[0].source"
+                        [centered]="true"
+                    ></wn-testimonial>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1">
+                <section class="padding-bottom-lg row text-center">
+                    <article class="col-xs-12 col-md-4 padding-top-lg">
+                        <h1 class="margin-top-none margin-bottom-sm">{{ translationResolved.share }}<span
+                            class="text-primary">.</span></h1>
+                        <p class="margin-vertical-none text-center">
+                            <img src="/assets/img/public/illustration-share.png" width="250"
+                                 alt=" " />
+                        </p>
+                    </article>
+
+                    <article class="col-xs-12 col-md-4 padding-top-lg">
+                        <h1 class="margin-top-none margin-bottom-sm">{{ translationResolved.plan
+                            }}<span class="text-primary">.</span></h1>
+                        <p class="margin-vertical-none">
+                            <img src="/assets/img/public/illustration-plan.png" width="250"
+                                 alt=" " />
+                        </p>
+                    </article>
+
+                    <article class="col-xs-12 col-md-4 padding-top-lg">
+                        <h1 class="margin-top-none margin-bottom-sm">{{ translationResolved.book
+                            }}<span class="text-primary">.</span></h1>
+                        <p class="margin-vertical-none">
+                            <img src="/assets/img/public/illustration-book.png" width="250"
+                                 alt=" " />
+                        </p>
+                    </article>
+                </section>
+
+                <section class="padding-vertical-lg">
+                    <h1 class="margin-top-none margin-bottom-xs">{{
+                        labels.homePage.sectionTestimonials.title }}<span
+                            class="text-primary">.</span></h1>
+                    <p class="margin-vertical-none">
+                        {{ labels.homePage.sectionTestimonials.text }}
+                    </p>
+
+                    <div class="row margin-top-sm">
+                        <div class="col-md-6 margin-top-md padding-bottom-sm">
+                            <wn-testimonial
+                                [quote]="testimonials[1].quote"
+                                [source]="testimonials[1].source"
+                            ></wn-testimonial>
+                        </div>
+                        <div class="col-md-6 margin-top-md padding-bottom-sm">
+                            <wn-testimonial
+                                [quote]="testimonials[2].quote"
+                                [source]="testimonials[2].source"
+                            ></wn-testimonial>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <section id="image-wait-a-minute"
+             class="margin-vertical-lg background-color-gray-darker text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-10 col-md-offset-1">
+                    <h1 class="padding-top-sm margin-vertical-none">{{
+                        labels.homePage.sectionImageWaitAMinute.title }}<span
+                            class="text-primary">.</span></h1>
+                    <p class="margin-vertical-sm">{{ labels.homePage.sectionImageWaitAMinute.text
+                        }}</p>
+                    <wn-button
+                        cssClasses="btn btn-primary margin-bottom-sm"
+                        [label]="labels.homePage.sectionImageWaitAMinute.signUp"
+                        uiSref="signUp"
+                    ></wn-button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <section
+                class="padding-top-lg padding-bottom-md margin-bottom-md col-xs-12 col-md-10 col-md-offset-1">
+                <h1 class="margin-top-none margin-bottom-xs">{{
+                    labels.homePage.sectionStatistics.title }}<span class="text-primary">.</span>
+                </h1>
+                <p class="margin-top-none margin-bottom-lg">
+                    {{ labels.homePage.sectionStatistics.text }}
+                </p>
+
+                <div class="row">
+                    <div *ngFor="let item of statistics; let isFirst = first; let isLast = last"
+                         class="padding-horizontal-none margin-bottom-md col-xs-6 col-md-2">
+                        <wn-action-bar-item
+                            [label]="item.label"
+                            [value]="item.value"
+                            [cssClasses]="{ 'padding-left-none': isFirst === true, 'padding-right-none': isLast === true }"
+                            [hasIcon]="true"
+                        >
+                            <wn-icon
+                                [glyph]="item.iconGlyph"
+                                iconSize="lg"
+                                [color]="true"
+                            ></wn-icon>
+                        </wn-action-bar-item>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <section id="image-plan-your-trip"
+             class="padding-vertical-md background-color-gray-darker text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-5 col-md-offset-1">
+                    <h1 class="margin-vertical-none">{{
+                        labels.homePage.sectionImagePlanYourTrip.title }}<span class="text-primary">.</span>
+                    </h1>
+                    <p class="margin-vertical-sm">{{ labels.homePage.sectionImagePlanYourTrip.text
+                        }}</p>
+                </div>
+                <div class="col-xs-12 col-md-5 text-center">
+                    <div class="row">
+                        <p class="col-md-6">
+                            <wn-button
+                                cssClasses="btn btn-primary margin-bottom-sm"
+                                [label]="labels.homePage.sectionImagePlanYourTrip.signUp"
+                                uiSref="signUp"
+                            ></wn-button>
+                        </p>
+                        <p class="col-md-6">
+                            <wn-button
+                                cssClasses="btn btn-default margin-bottom-sm"
+                                [label]="labels.homePage.sectionImagePlanYourTrip.signIn"
+                                uiSref="signIn"
+                            ></wn-button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer id="footer" class="padding-vertical-lg">
+    <div class="container">
+        <section class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1">
+                <h1 class="margin-top-none margin-bottom-xs">{{
+                    labels.homePage.footer.newsletter.title }}<span class="text-primary">.</span>
+                </h1>
+
+                <p class="margin-vertical-none">{{ labels.homePage.footer.newsletter.subtitle}}</p>
+
+                <wn-button
+                    buttonType="submit"
+                    [label]="labels.homePage.footer.newsletter.mainAction"
+                    cssClasses="btn btn-primary margin-top-md margin-bottom-lg"
+                    (click)="goToMailchimpSubscription($event)"
+                ></wn-button>
+            </div>
+        </section>
+
+        <section class="row">
+            <p class="col-xs-12 col-md-10 col-md-offset-1 margin-top-none margin-bottom-md"><img
+                src="/assets/img/public/logo-payoff-white.png" width="112" height="42"
+                alt="Wayonara" /></p>
+        </section>
+
+        <section class="row">
+            <div class="col-xs-12 col-md-3 col-md-push-8 margin-vertical-sm">
+                <div ngbDropdown [up]="true">
+                    <wn-button
+                        cssClasses="dropdown-toggle btn btn-default"
+                        [label]="currentLocale.label"
+                        id="language-selection"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        ngbDropdownToggle
+                    >
+                        <wn-icon glyph="tour"></wn-icon>
+                    </wn-button>
+                    <ul class="dropdown-menu" aria-labelledby="language-selection">
+                        <li *ngFor="let locale of locales"
+                            [ngClass]="{ 'active': currentLocale.code === locale.code }">
+                            <a href="" (click)="changeLocale(locale.code)">{{ locale.label }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-7 col-md-pull-2">
+                <section class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <h1 class="h6 margin-vertical-sm text-uppercase">{{
+                            labels.homePage.footer.company }}</h1>
+                        <ul class="list-unstyled">
+                            <li class="margin-vertical-sm"><a
+                                href="http://about.wayonara.com/about-us/">{{
+                                translationResolved.aboutUs }}</a></li>
+                            <li class="margin-vertical-sm"><a href="http://about.wayonara.com/">{{
+                                labels.homePage.footer.blog }}</a></li>
+                            <li class="margin-vertical-sm"><a
+                                href="http://about.wayonara.com/contact/">{{
+                                translationResolved.contact_us }}</a></li>
+                            <li class="margin-vertical-sm"><a
+                                href="http://about.wayonara.com/jobs/">{{ translationResolved.jobs
+                                }}</a></li>
+                            <li class="margin-vertical-sm"><a
+                                href="http://about.wayonara.com/privacy/">{{
+                                translationResolved.privacy }}</a></li>
+                            <li class="margin-vertical-sm"><a
+                                href="http://about.wayonara.com/terms/">{{ translationResolved.terms
+                                }}</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <h1 class="h6 margin-vertical-sm text-uppercase">{{
+                            labels.homePage.footer.support }}</h1>
+                        <ul class="list-unstyled">
+                            <li class="margin-vertical-sm"><a
+                                href="http://about.wayonara.com/help/">{{
+                                labels.homePage.footer.helpCenter }}</a></li>
+                            <li class="margin-vertical-sm"><a
+                                href="http://about.wayonara.com/how-it-works/">{{
+                                labels.homePage.footer.howItWorks }}</a></li>
+                            <li class="margin-vertical-sm"><a href="http://about.wayonara.com/faq/">{{
+                                labels.homePage.footer.faqs }}</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 margin-top-sm social">
+                        <h1 class="h6 margin-vertical-none text-uppercase hidden-xs hidden-sm">{{
+                            labels.homePage.footer.social }}</h1>
+                        <ul>
+                            <li class="margin-vertical-sm">
+                                <a href="https://www.facebook.com/wayonaracom/">
+                                    <wn-icon glyph="facebook" iconSize="lg"
+                                             cssClasses="text-white hidden-md hidden-lg"></wn-icon>
+                                    <span class="hidden-xs hidden-sm">Facebook</span>
+                                </a>
+                            </li>
+                            <li class="margin-vertical-sm">
+                                <a href="https://www.instagram.com/wayonara/">
+                                    <wn-icon glyph="instagram" iconSize="lg"
+                                             cssClasses="text-white hidden-md hidden-lg"></wn-icon>
+                                    <span class="hidden-xs hidden-sm">Instagram</span>
+                                </a>
+                            </li>
+                            <li class="margin-vertical-sm">
+                                <a href="https://www.linkedin.com/company-beta/9352294/">
+                                    <wn-icon glyph="linkedin" iconSize="lg"
+                                             cssClasses="text-white hidden-md hidden-lg"></wn-icon>
+                                    <span class="hidden-xs hidden-sm">LinkedIn</span>
+                                </a>
+                            </li>
+                            <li class="margin-vertical-sm">
+                                <a href="https://twitter.com/wayonara">
+                                    <wn-icon glyph="twitter" iconSize="lg"
+                                             cssClasses="text-white hidden-md hidden-lg"></wn-icon>
+                                    <span class="hidden-xs hidden-sm">Twitter</span>
+                                </a>
+                            </li>
+                            <li class="margin-vertical-sm">
+                                <a href="https://www.youtube.com/channel/UCnJ1r1Glu6VklCKD4_SxWJQ">
+                                    <wn-icon glyph="youtube" iconSize="lg"
+                                             cssClasses="text-white hidden-md hidden-lg"></wn-icon>
+                                    <span class="hidden-xs hidden-sm">YouTube</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="text-center small padding-top-lg font-weight-bold">
+            <p class="margin-vertical-sm">{{ labels.commons.footer.madeInItalyIntro }}&#32;<wn-icon
+                glyph="like" iconSize="sm"></wn-icon>&#32;{{ labels.commons.footer.madeInItalyOutro
+                }}
+            </p>
+            <p class="margin-top-none margin-bottom-sm text-secondary">{{
+                labels.commons.footer.copyright }}</p>
+            <p class="margin-vertical-sm">
+                <img src="/assets/img/public/impact-hub-milan.png" width="75" height="34"
+                     alt="Backed by Impact Hub Milan" title="Backed by Impact Hub Milan" />
+                <img src="/assets/img/public/EU.png" class="margin-left-grid" width="51" height="34"
+                     alt="Eu funded project" title="Eu funded project" />
+            </p>
+        </section>
+    </div>
+</footer>

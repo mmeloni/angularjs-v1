@@ -1,0 +1,53 @@
+<wn-navbar-social [labels]="translationResolved"></wn-navbar-social>
+
+<main class="has-navbar">
+    <wn-hotel-cover [componentData]="componentData.coverData"></wn-hotel-cover>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 hidden-xs hidden-sm">
+                <div class="sidebar">
+
+                    <div class="panel minimap panel-default">
+                        <div class="panel-body">
+                            <div>
+                                <div class="caption text-center">
+                                    <h2>{{ componentData.title }}</h2>
+                                    <wn-star-rating ratingValue="{{ componentData.rating }}"></wn-star-rating>
+                                    <h3>{{ componentData.address }}, {{ componentData.city }}, {{ componentData.country }}</h3>
+                                </div>
+                                <div class="map">
+                                    <wn-maps [coordinates]="componentData.coordinates"></wn-maps>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <wn-amenities [componentData]="componentData.amenities" [labels]="translationsAmenities"></wn-amenities>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <wn-action-bar-view class="action-bar-board-detail" [items]="actionbar.items" [actions]="actionbar.actions" [transcludeFollowButton]="true">
+                    <wn-follow-button
+                        [targetId]="componentData.id"
+                        [isTargetFollowed]="isTargetFollowed"
+                        [translation]="translationFollowButton"
+                    ></wn-follow-button>
+                </wn-action-bar-view>
+
+                <h1>{{ translationsDescription }}</h1>
+                <wn-text-collapsed [text]="componentData.description"></wn-text-collapsed>
+
+                <wn-grid-top-sights [id]="componentData.relatedPlaceId" [subtitle]="componentData.title" [translations]="translationShard"></wn-grid-top-sights>
+                <wn-grid-top-shard [id]="componentData.id" [subtitle]="componentData.title" [translations]="translationShard"></wn-grid-top-shard>
+
+            </div>
+
+        </div>
+    </div>
+</main>

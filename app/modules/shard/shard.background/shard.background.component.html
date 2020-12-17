@@ -1,0 +1,8 @@
+<div class="shard-background"
+     [ngClass]="{'image-fully-loaded': showImage, 'loading-error':imageLoadingError }">
+    <figure>
+        <img wnLazyPic (onLoaded)="onImageLoaded()" (onError)="onImageLoadingError()"
+             [src]="imageUrl" [ngClass]="{visible: showImage}" class="shard-background-image" />
+        <div *ngIf="showImage" class="shard-background-overlay"></div>
+    </figure>
+</div>

@@ -1,0 +1,3 @@
+<aside [@slideInOut]="stateOptions.state" (@slideInOut.start)="animationStart($event)" (@slideInOut.done)="animationDone($event)" class="bg-primary">
+    <p class="h2 margin-vertical-none font-weight-bold" [innerHTML]="message"></p>
+</aside>

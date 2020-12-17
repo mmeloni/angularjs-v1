@@ -1,0 +1,13 @@
+<div class="board-shard-tile"
+     [ngClass]="{'fully-loaded': imageFullyLoaded, 'image-loading-error': imageLoadingError}">
+    <img [src]="imageUrl" wnLazyPic
+         (onLoaded)="imageFullyLoaded = true" (onError)="imageLoadingError = true">
+    <div class="board-shard-tile-content" *ngIf="shard">
+        <div class="icon-wrapper">
+            <wn-icon [glyph]="iconGlyph" [color]="true" [iconSize]="'lg'"></wn-icon>
+        </div>
+        <p class="place-info">
+            {{shard.title}}
+        </p>
+    </div>
+</div>

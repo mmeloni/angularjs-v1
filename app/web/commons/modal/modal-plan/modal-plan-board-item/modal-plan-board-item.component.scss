@@ -1,0 +1,36 @@
+@import '../../../../../../assets/scss/overrides/bootstrap/variables';
+
+.li-container{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 12px;
+    padding-left: 12px;
+    height: 60px;
+    clear: both;
+
+    &:hover{
+        background: $gray-light;
+        .action-plan{
+            display: block;
+        }
+    }
+
+    .previewShard{
+        width: 36px;
+        height: 36px;
+        border-radius: $border-radius-base;
+    }
+
+    .title{
+        padding-left: 12px;
+        font-size: $font-size-base;
+        font-weight: 600;
+        color: $gray-darker;
+        line-height: 40px;
+    }
+
+    .action-plan{
+        display: none;
+    }
+
+}

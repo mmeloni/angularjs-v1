@@ -1,0 +1,45 @@
+<section class="wn-cover wn-cover-profile">
+    <div class="container-fluid profile-cover-full-width">
+        <div class="wn-cover-background">
+            <wn-image
+                data-cover="big"
+                img-format="'_cover_'"
+                user=user
+                err-src="../assets/img/shard-empty.png"
+                polling="isUploadedCover"
+                is-polling-image-src-callback="setUploadedCover(event)"
+            ></wn-image>
+        </div>
+        <section class="wn-grid user-info">
+            <figure class="wn-tile panel panel-default panel-card">
+                <div class="panel-body text-center row">
+                    <div class="col-md-6">
+                        <wn-avatar
+                            [user-id]="user.nid"
+                            shape="square"
+                            size="responsive"
+                            [polling]="isUploadedAvatar"
+                            (polling-ended)="setUploadedAvatar(false)"
+                        ></wn-avatar>
+                    </div>
+                    <figcaption class="col-md-6">
+                        <header class="margin-vertical-xs font-weight-bold">
+                            <h1 class="h2 margin-vertical-xs">{{ user.firstname }} {{ user.lastname }}</h1>
+                            <p class="margin-vertical-xs text-primary">@{{ user.username }}</p>
+                            <p class="margin-vertical-xs text-secondary">{{ user.city.name }}</p>
+                            <p class="margin-vertical-none" ng-if="user.website !== null && user.website !== undefined && user.website !== ''">
+                                <wn-button
+                                    css-classes="btn btn-info btn-xs"
+                                    [label]="translation.website"
+                                    ng-click="goToUserWebsite($event)"
+                                    uib-tooltip="{{ user.website }}"
+                                ></wn-button>
+                            </p>
+                        </header>
+                        <p>{{ user.biography }}</p>
+                    </figcaption>
+                </div>
+            </figure>
+        </section>
+    </div>
+</section>

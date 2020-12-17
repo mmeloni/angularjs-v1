@@ -1,0 +1,41 @@
+<section class="profile-dynamic-content">
+    <div *ngIf="!contentIsEmpty">
+        <div class="shards-profile-grid stages-grid" *ngIf="currentStream === streamTypes.stages">
+            <wn-lazy-shards-grid [translations]="translations" [user]="user"
+                                 [streamType]="'user-stages'"
+                                 [itemsPerRow]="3" (onResponse)="onGridFetchResponse($event)">
+            </wn-lazy-shards-grid>
+        </div>
+        <div class="shards-profile-grid tours-grid" *ngIf="currentStream === streamTypes.tours">
+            <wn-lazy-shards-grid [translations]="translations" [user]="user"
+                                 [streamType]="'user-tours'"
+                                 [itemsPerRow]="3" (onResponse)="onGridFetchResponse($event)">
+            </wn-lazy-shards-grid>
+        </div>
+        <div class="boards-grid boards" *ngIf="currentStream === streamTypes.boards">
+            <wn-lazy-boards-grid [translations]="translations" [user]="user"
+                                 (onResponse)="onGridFetchResponse($event)"></wn-lazy-boards-grid>
+        </div>
+        <div class="passports-list followers" *ngIf="currentStream === streamTypes.following">
+            <wn-lazy-users-list [streamType]="'following'" [user]="user"
+                                [translations]="translations"
+                                (onFollowButtonToggle)="onFollowButtonToggle($event)"
+                                (onResponse)="onGridFetchResponse($event)"></wn-lazy-users-list>
+        </div>
+        <div class="passports-list followers" *ngIf="currentStream === streamTypes.followed">
+            <wn-lazy-users-list [streamType]="'followed'" [user]="user"
+                                [translations]="translations"
+                                (onFollowButtonToggle)="onFollowButtonToggle($event)"
+                                (onResponse)="onGridFetchResponse($event)"></wn-lazy-users-list>
+        </div>
+    </div>
+
+    <div class="empty-content text-center" *ngIf="contentIsEmpty">
+        <h1>{{translations.ops}}&hellip;</h1>
+        <p>{{translations.emptyContent}}</p>
+        <hr />
+        <button class="btn btn-primary" (click)="addNewContent()" *ngIf="isCurrentUserProfile">
+            {{translations.ADD}}&hellip;
+        </button>
+    </div>
+</section>

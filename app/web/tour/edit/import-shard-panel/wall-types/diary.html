@@ -1,0 +1,28 @@
+<div class="import-shard-panel-wall-shard" ng-repeat="shard in shards track by shard.id" ng-click="toggleCmdPanel($event,shard)" ng-mouseleave="showText($event,shard)" ng-mouseover="showPlan($event,shard)">
+    <wn-image class="import-shard-panel-wall-shard-background-image" img-format="'_square_'" shard=shard err-src="../assets/img/shard-empty.png"></wn-image>
+
+    <div class="import-shard-panel-wall-shard-front-selected"></div>
+
+    <div class="import-shard-panel-wall-shard-front-content">
+        <div class="import-shard-panel-wall-shard-front-content-icon">
+            <div class="div-container">
+                <span class="wn-icon import-wall" >place</span>
+            </div>
+        </div>
+        <div class="import-shard-panel-wall-shard-front-content-text">
+            <span class="">{{ shard.nearestPoi.name }}</span>
+        </div>
+        <wn-button css-classes="import-shard-panel-wall-shard-front-content-plan btn btn-default btn-sm"
+                   ng-click="planSingleShard(shard)"
+                   icon-classes="wn-icon wn-icon-plan-empty wn-icon-plan-empty-color"
+                   [label]="translation.plan"
+        ></wn-button>
+    </div>
+</div>
+<div ng-show="shards.length === 0" class="no-results">
+    <div class="title">{{ translation.noResultForKeyword }}!</div>
+    <div class="subtitle">{{ translation.tryAnotherKeyword }}!</div>
+    <div class="button">
+        <button class="ui-action-button expanded primary">{{ translation.retry }}</button>
+    </div>
+</div>

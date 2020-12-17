@@ -1,0 +1,110 @@
+.booking-confirmation{
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.booking-confirmation .row{
+    margin-bottom: 40px;
+}
+
+.booking-confirmation .info-text .boxed-text{
+    border: 2px solid #eceff1;
+    padding: 20px;
+}
+
+.booking-confirmation .info-text .info-text-content{
+    color: #78909C;
+}
+
+.booking-confirmation .info-text .boxed-text button{
+    display: block;
+    margin-top: 20px;
+}
+
+.booking-confirmation .info-text ul{
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 20px;
+}
+
+.booking-confirmation .info-title{
+    color:#6b6eff;
+    font-weight:400;
+    font-size:24px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.booking-confirmation .info-title.booked{
+    color: #00c853;
+}
+
+.booking-confirmation .info-subtitle{
+    font-weight: 600;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.booking-confirmation .informations .panel-title{
+    line-height: 40px;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 600;
+    color: #78909c;
+}
+
+.booking-confirmation .informations .info-text{
+    height: 38px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.07;
+    color: #78909c;
+    margin-bottom: 50px;
+    display: block;
+}
+
+// needed because on ng1 env there is a misalignment (probably due to different font size) from ng2 environment. Bootstrap classes passed through icon label component doesn't work
+.booking-confirmation .informations span.item-label {
+    vertical-align: text-bottom;
+}
+
+.info-image.info-comeBack{
+    width: 230px;
+    height: 195px;
+}
+
+.booking-confirmation .informations .info-title{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 0.83;
+    color: #6b6eff;
+}
+
+.booking-confirmation .informations .info-subtitle{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.08;
+    color: #393939;
+}
+
+.booking-confirmation .info-text .info-image{
+    position: absolute;
+    right: 30px;
+    bottom: 10px;
+}
+
+.booking-confirmation .trip-details-explode .segment-details .row{
+    margin-bottom: 0;
+}
+
+.booking-confirmation .external-transports .vectors-details-label{
+    color: #c7c7c7;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.booking-confirmation .external-transports .vectors-details-data, .info-text-important{
+    color: #2A2A2A;
+    font-weight: 600;
+}

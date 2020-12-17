@@ -1,0 +1,11 @@
+{
+    "apiServerBaseURL": "",
+    "awsWayonaraBucket": "wayonara-william",
+    "awsWayonaraCloudfront": "https://d3nqvd1cbjn8ia.cloudfront.net",
+    "facebookAppId": "815526928595883",
+    "hotjar": true,
+    "hotjarId": 302739,
+    "siteURL": "http://wayonara.local.nextop.co",
+    "notificationServerURL": "http://wayonara.local.nextop.co:7365",
+    "stripePublishableKey": "pk_test_PU7scFplad9indtnfewENIk4"
+}

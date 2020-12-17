@@ -1,0 +1,79 @@
+.btn {
+    &,
+    &:active,
+    &.active {
+        &:focus,
+        &.focus {
+            outline: none;
+        }
+    }
+
+    @include box-shadow($box-shadow-base-size $box-shadow-base-color);
+
+    &.btn-link,
+    &.btn-link:hover,
+    &.btn-link:active,
+    &.btn-link:focus {
+        box-shadow: none;
+    }
+
+    &:hover,
+    &:focus,
+    &.focus {
+        @include box-shadow($box-shadow-base-hover-size $box-shadow-base-hover-color);
+    }
+
+    &:active,
+    &.active {
+        @include box-shadow($box-shadow-base-pressed-size $box-shadow-base-pressed-color);
+    }
+}
+
+.btn-default {
+    @include wn-button-variant($btn-default-bg);
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        background-color: $gray-light;
+
+        &:hover,
+        &:focus,
+        &.focus {
+            box-shadow: none;
+            background-color: $gray-light;
+        }
+    }
+}
+
+.btn-primary {
+    @include wn-button-variant($btn-primary-bg);
+}
+
+.btn-success {
+    @include wn-button-variant($btn-success-bg);
+}
+
+.btn-info {
+    @include wn-button-variant($btn-info-bg);
+}
+
+.btn-warning {
+    @include wn-button-variant($btn-warning-bg);
+}
+
+.btn-danger {
+    @include wn-button-variant($btn-danger-bg);
+}
+
+.btn-facebook {
+    color: #fff !important;
+    background-color: $brand-facebook;
+
+    @include wn-button-variant($brand-facebook);
+}
+
+.btn-lg {
+  // line-height: ensure even-numbered height of button next to large input
+  @include button-size($padding-large-vertical, $btn-padding-large-horizontal, $font-size-large, $line-height-large, $btn-border-radius-large);
+}

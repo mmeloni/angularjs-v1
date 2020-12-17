@@ -1,0 +1,74 @@
+<div class="include-shard-stage">
+    <!--Header-->
+    <div ng-mouseleave="isPopoverUserOpen = false">
+        <header
+            class="shard-header"
+            uib-popover-template="popoverUserTemplate"
+            popover-is-open="isPopoverUserOpen"
+            popover-trigger="none"
+            popover-placement="bottom">
+
+            <wn-avatar
+                [user-id]="shard.user.nid"
+                css-classes="pull-left owner-popover"
+                ng-mouseenter="isPopoverUserOpen = true"
+            ></wn-avatar>
+
+            <div class="hover pull-right">
+                <span uib-dropdown on-toggle="toggled(open)" class="btn btn-link pull-left" id="shard-dropdown" ng-if="menuOptions.length > 0">
+                    <wn-icon [glyph]="'chevron-down'" uib-dropdown-toggle></wn-icon>
+                    <ul class="uib-dropdown-menu">
+                        <li class="menuitem" ng-repeat-start="option in menuOptions track by $index" ng-click="option.action($event)">
+                            <a>
+                                <span class="ui-text-dark ui-font-md">{{option.label}}</span>
+                                <br/>
+                                <span class="ui-text-light ui-font-xs">{{option.description}}</span>
+                            </a>
+                        </li>
+                        <li class="divider" ng-repeat-end></li>
+                    </ul>
+                </span>
+                <button type="button" class="btn btn-default btn-sm" ng-click="toggleLike()">
+                    <span class="{{ like.iconClasses }}"></span>
+                </button>
+
+                <button type="button" class="btn btn-default btn-sm" ng-click="plan()">
+                    <span class="wn-icon wn-icon-plan-empty wn-icon-plan-empty-color vertical-align-middle"></span>
+                    <span>{{ ::translation.plan }}</span>
+                </button>
+            </div>
+        </header>
+    </div>
+    <!--Content-->
+    <wn-image class="wn-tile-bg" shard=shard img-format="imgFormat" err-src="../assets/img/shard-empty.png"></wn-image>
+    <div class="overlay dark" ng-click="showDetails()"></div>
+    <!--Footer-->
+    <div ng-mouseleave="isPopoverPlaceOpen = false">
+        <footer layout-wrap
+            uib-popover-template="popoverPlaceTemplate"
+            popover-trigger="none"
+            popover-placement="top"
+            popover-is-open="isPopoverPlaceOpen">
+
+            <section ng-show="shard.planCount > 0" layout="row" class="shard-social-actions pull-left">
+                <wn-icon-label
+                    [has-icon]="true"
+                    [label]="shard.planCount">
+                    <wn-icon glyph="plan-outline"></wn-icon>
+                </wn-icon-label>
+            </section>
+
+            <section layout="row" class="shard-poi-info pull-right" ng-mouseenter="isPopoverPlaceOpen = true">
+                <wn-icon-label
+                    [has-icon]="true"
+                    [label]="shard.place.title">
+                    <wn-icon
+                        glyph="place"
+                        [color]="true">
+                    </wn-icon>
+                </wn-icon-label>
+            </section>
+
+        </footer>
+    </div>
+</div>

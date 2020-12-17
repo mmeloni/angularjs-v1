@@ -1,0 +1,37 @@
+<div class="travel-box-header border-bottom-gray-light">
+    <wn-travel-box-statistics [heading-item]="tourTitleItem" [main-items]="statisticsItem" [aside-item]="priceItem"></wn-travel-box-statistics>
+</div>
+<div class="travel-box-folders">
+    <div class="travel-box-folders-container" ng-if="hasAreaOfOrigin === true">
+        <div class="travel-box-folder" id="addPlaceController">
+            <div class="overlay">
+                <div class="icon-wrapper"><button class="wn-icon wn-icon-square wn-icon-pin wn-icon-plus" ng-click="onFolderAddCallback();"><span class="sr-only">+</span></button></div>
+                <div class="label-wrapper ui-text-dark">{{ translation.addPlaces }}</div>
+            </div>
+        </div>
+        <wn-travel-box-folder
+                ng-repeat="travelBoxPlace in places track by travelBoxPlace.place.id"
+                ng-model="travelBoxPlace"
+                is-area-of-origin="travelBoxPlace.place.nearestPoiId === currentUserAreaOfOriginId"
+                on-drag="onFolderDragCallback(attrs)"
+                on-press="onFolderPressCallback(attrs)"
+                on-release="onFolderReleaseCallback(attrs)"
+                on-delete="onFolderDeleteCallback(attrs)"
+        ></wn-travel-box-folder>
+    </div>
+    <div class="row" ng-if="hasAreaOfOrigin === false">
+        <div class="alert alert-info margin-vertical-md col-md-10 col-md-offset-1 text-center">
+            <p class="margin-bottom-md">
+                <span class="wn-icon wn-icon-info wn-icon-circle wn-icon-sm"></span>&#32;
+                {{ ::translation.noCity.helpText1 }}<br />
+                {{ ::translation.noCity.helpText2 }}
+            </p>
+            <p class="margin-vertical-none">
+                <wn-button
+                    css-classes="btn btn-success"
+                    label="{{ translation.noCity.buttonLabel }}"
+                    ng-click="goToUserProfile($event)"
+                ></wn-button>
+        </div>
+    </div>
+</div>

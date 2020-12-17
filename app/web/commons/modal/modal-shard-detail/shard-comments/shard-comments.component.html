@@ -1,0 +1,7 @@
+<wn-shard-comments-form
+    [labels]="labels"
+    [userId]="currentUser.nid"
+    [comment]="currentComment"
+    (newComment)="addComment($event)"
+></wn-shard-comments-form>
+<wn-shard-comments-list [comments]="comments$"></wn-shard-comments-list>

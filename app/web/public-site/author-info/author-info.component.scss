@@ -1,0 +1,34 @@
+@import '../../../../assets/scss/overrides/bootstrap/variables';
+@import '../../../../assets/scss/overrides/bootstrap/mixins/avatar-grid';
+
+cite {
+    font-style: normal;
+    display: inline-block;
+}
+
+cite,
+.small {
+    font-size: $font-size-small;
+
+    &:before {
+        content: '';
+    }
+}
+
+@media (min-width: $screen-sm-min) {
+    $col-avatar-width: $avatar-size + $grid-gutter-width;
+
+    .col-avatar {
+        @include avatar-grid-avatar($col-avatar-width);
+    }
+
+    .col-xs-12.col-avatar-main {
+        width: auto;
+        padding-left: 0;
+    }
+
+    cite {
+        text-align: left;
+    }
+}
+

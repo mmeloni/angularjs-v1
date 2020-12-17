@@ -1,0 +1,80 @@
+<!-- fareOffers -->
+<!-- <div class="row tour-booking-recap-segment-row" ng-if="vector.bit == 65536">
+<pre>{{ vector | json }}</pre>
+</div> -->
+
+
+<div class="row tour-booking-recap-segment-row" ng-if="vector.bit == 65536 && (vector.fare_offers.length !== 0) && (vector.fare_offers !== undefined)">
+
+        <div class="fareOffers">
+            <div class="row tour-booking-recap-segment-title train">
+                <div class="tour-booking-recap-segment-content pull-left">
+                    <span>{{ outbound ? vmTRC.translation.fareOffer.outboundTitle : vmTRC.translation.fareOffer.returnTitle }}</span>
+                </div>
+            </div>
+            <div class="row fare-row-title ">
+                <div class="col-md-2 text-center">
+                    {{ vmTRC.translation.fareOffer.carriage }}
+                </div>
+                <div class="col-md-2 text-center">
+                    {{ vmTRC.translation.fareOffer.serviceClass}}
+                </div>
+                <div class="col-md-2 text-center">
+                    Carrier
+                    <!-- {{ vmTRC.translation.fareOffer.carrier}} -->
+                </div>
+                <div class="col-md-2 text-center">
+                    {{ vmTRC.translation.fareOffer.rules}}
+                </div>
+                <div class="col-md-2 text-center">
+                    {{ vmTRC.translation.fareOffer.price}}
+                </div>
+                <div class="col-md-2 text-center">
+                </div>
+                <!-- <div class="col-md-2 text-center">
+                    {{ vmTRC.translation.fareOffer.tariffType}}
+                </div>
+                <div class="col-md-2 text-center">
+                    Number of seats
+                    {{ vmTRC.translation.fareOffer.numberOfSeats}}
+                </div> -->
+            </div>
+            <div class="fareOffer" ng-repeat="fare_offer in vector.fare_offers">
+                <!-- stopover origin -->
+                <div class="row fare-row-content">
+                    <div class="col-md-2 text-center">
+                        <!-- <div class="row">Id : {{fare_offer.fare_offer_id}}</div> -->
+                        {{fare_offer.fare_name}}
+                    </div>
+                    <div class="col-md-2 text-center">
+                        {{fare_offer.service_class}}
+                    </div>
+                    <div class="col-md-2 text-center">
+                        {{fare_offer.carriage_owner}}
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <a>						
+							<md-tooltip md-direction="bottom">
+								<div ng-repeat="fare_rules in fare_offer.fare_rules">{{fare_rules.header}} : {{fare_rules.text}}<br/></div>
+							</md-tooltip>
+							{{fare_offer.fare_rules.length}} {{ vmTRC.translation.fareOffer.rules }}
+						</a>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        {{fare_offer.price}} EUR
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <button class="btn btn-primary wn-btn wn-btn-primary btn-fare-select" ng-click="vmTRC.selectFareOffer(vmTRC.paymentOrder.tourId, bookingTravel, fare_offer)">{{ vmTRC.translation.select }}</button>
+                    </div>
+                    <!-- <div class="col-md-2 text-center">
+                        {{fare_offer.fare_offer_type}}
+                    </div>
+                    <div class="col-md-2 text-center">
+                        Total - ?
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end fareOrrders -->
+    

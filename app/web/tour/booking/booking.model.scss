@@ -1,0 +1,598 @@
+.booking-form .form .panel.panel-default,
+.booking-form .itinerary-resume .panel.panel-default{
+    border: 1px solid #eceff1;
+}
+
+.booking-form.ng-leave {
+    animation: fade 0.5s both ease-in;
+}
+
+.booking-form .form-group .form-control{
+    position: relative;
+    font-size: 16px;
+
+    /* Box Sizing */
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.booking-form .form-group .wn-select.wn-date-selector{
+    width: 32%;
+}
+
+.booking-form .form-group .form-control:focus{
+    z-index: 2;
+}
+
+.booking-form .form-group input,
+.booking-form .form-group select,
+.booking-form .form-group .btn-group{
+    margin-bottom: 50px;
+}
+
+.booking-form .form-group{
+    border-radius: 2px;
+    padding: 20px 20px 0 20px;
+}
+
+.booking-form .list-index{
+    font-weight: 600;
+    font-size: 14px;
+    color: #363A3F;
+    line-height: 20px;
+}
+
+.booking-form .form-group .btn-group label.btn.passenger-gender{
+    width: 80px;
+    height: 50px;
+    /*
+    border: 1px solid #ECEFF1;
+    box-shadow: 0 1px 1px 0 rgba(120,144,156,0.20);
+    color: #78909c;
+    */
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #dddddd;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    color: #363A3F;
+    padding: 0;
+    line-height: 50px;
+    vertical-align: middle;
+}
+
+.booking-form .form-group .btn-group label.btn.passenger-gender.male{
+    border-radius: 4px 0px 0px 4px;
+}
+
+.booking-form .form-group .btn-group label.btn.passenger-gender.female{
+    border-radius: 0px 4px 4px 0px;
+}
+
+.booking-form .form-group .btn-group label.btn.passenger-gender:hover{
+    background-color: #f5f7f8;
+    border: 1px solid #eceff1;
+    box-shadow: 0 0 1px 0 #eceff1;
+}
+
+.booking-form .form-group .btn-group label.btn.active.passenger-gender{
+    background: #78909C;
+    border: 1px solid #78909C ;
+    box-shadow: 0px 1px 1px 0px rgba(120,144,156,0.20);
+    border-radius: 2px 0px 0px 2px;
+    color: #ffffff;
+}
+
+
+.booking-form .form-group-title{
+    font-weight: 600;
+    font-size: 18px;
+    color: #78909C;
+    background: #f5f7f8 none repeat scroll 0 0;
+    border: 1px solid #eceff1;
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.booking-form .info-field{
+    height: 60px;
+    background: #eceff1 none repeat scroll 0 0;
+    text-align: center;
+}
+
+.booking-form .info-field .info-text{
+    color: #78909C;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 60px;
+}
+
+.booking-form .info-field label{
+    color: #B0BEC5;
+    font-weight: normal;
+    font-size: 12px;
+    position: absolute;
+    bottom: 60px;
+    left: 15px;
+    margin-bottom: 2px;
+}
+
+.booking-form .info-field span.info-text.wn-icon.wn-icon-info{
+    font-size: 32px;
+    line-height: 60px;
+}
+
+.booking-form img.credit-card-accepted{
+    width: 32px;
+    height: 23px;
+    margin: 18px 15px 0 10px;
+}
+
+.booking-form uib-accordion.info-box .panel-heading{
+    color: #78909C;
+    background: #f5f7f8 none repeat scroll 0 0;
+    border-top: 1px solid #eceff1;
+    border-right: 1px solid #eceff1;
+    border-bottom: none;
+    border-left: 1px solid #eceff1;
+    height: 60px;
+    padding-left: 20px;
+    border-radius: 4px;
+}
+
+.booking-form uib-accordion.info-box .panel-collapse .panel-body{
+    color: #78909C;
+    background: #f5f7f8 none repeat scroll 0 0;
+    border-top: none;
+    border-right: 1px solid #eceff1;
+    border-bottom: 1px solid #eceff1;
+    border-left: 1px solid #eceff1;
+    padding-left: 20px;
+}
+
+.booking-form uib-accordion.info-box .panel-heading h4.panel-title{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 38px;
+    vertical-align: middle;
+}
+
+.booking-form uib-accordion.info-box .panel-heading h4.panel-title .wn-icon.wn-icon-chevron-down,
+.booking-form uib-accordion.info-box .panel-heading h4.panel-title .wn-icon.wn-icon-chevron-up
+{
+    font-size: 24px;
+}
+
+.booking-form uib-accordion.info-box.visa-requirements .panel-collapse .panel-body {
+    padding: 0;
+}
+
+.booking-form uib-accordion.info-box.visa-requirements .panel-collapse .panel-body .visa-text,
+.booking-form uib-accordion.info-box.visa-requirements .panel-collapse .panel-body .visa-response{
+    padding: 20px;
+}
+
+.booking-form uib-accordion.info-box.visa-requirements .panel-collapse .panel-body .visa-response{
+    border-top: 1px dashed #cfd8dc;
+}
+
+
+.booking-form .checkbox{
+    margin-bottom: 10px;
+}
+
+.booking-form .checkbox{
+    font-weight: normal;
+    background-color: #27bfa5;
+    border: 1px solid #41b0a6;
+    border-radius: 4px;
+    color: white;
+    font-weight: normal;
+    padding: 20px;
+}
+
+.booking-form .checkbox label{
+    display: block;
+    margin-bottom: 20px;
+}
+
+.booking-form .booking-faq .row{
+    height: 50px;
+    margin-bottom: 40px;
+}
+
+.booking-form .booking-faq .wn-icon{
+    font-size: 32px;
+    color: #cfd8dc;
+}
+
+.booking-form .booking-faq-title{
+    color: #27BFA5;
+    font-size: 18px;
+}
+
+.booking-form .booking-faq-text{
+    color: #000000;
+    font-size: 12px;
+}
+
+.booking-faq-contact-text span{
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 7px;
+    margin-right: 45px;
+}
+
+// needed because on ng1 env there is a misalignment (probably due to different font size) from ng2 environment. Bootstrap classes passed through icon label component doesn't work
+.booking-form .booking-faq-contact-text span {
+    vertical-align: text-bottom;
+}
+
+.booking-itinerary-resume .section-heading, .booking-confirmation .section-heading{
+    background: #f5f7f8 none repeat scroll 0 0;
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+}
+
+.booking-itinerary-resume .section-title{
+    font-size: 16px;
+    font-weight: 600;
+    color: #78909C;
+}
+
+.booking-confirmation .section-title{
+    font-size: 18px;
+    font-weight: 600;
+    color: #78909C;
+}
+
+.booking-itinerary-resume .display-chunk-info{
+    margin-bottom: 20px;
+}
+
+.booking-itinerary-resume .display-chunk-info:last-child{
+    margin-bottom: 0;
+}
+
+.booking-itinerary-resume .display-chunk-info .info-title{
+    font-size: 14px;
+    font-weight: 400;
+    color: #9E9E9E;
+}
+
+.booking-itinerary-resume .info-vector{
+    padding: 0 15px 0 15px;
+    background: #f5f7f8 none repeat scroll 0 0;
+    text-transform: capitalize;
+    height: 30px;
+    line-height: 30px;
+}
+
+.booking-itinerary-resume .info-price{
+    padding: 15px 0 0 0;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2c2c2c;
+    text-transform: capitalize;
+}
+
+.booking-itinerary-resume .info-price span.info-text{
+    font-weight: 600;
+}
+
+.booking-itinerary-resume .total-price-info{
+    font-size: 20px;
+    color: #2c2c2c;
+    font-weight: 600;
+    padding: 15px;
+}
+
+.booking-itinerary-resume .total-price-info button{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px 0 10px 0;
+    height: 60px;
+}
+
+.booking-itinerary-resume .total-price-notes{
+    color: #78909C;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 15px;
+}
+
+.booking-itinerary-resume .display-chunk-info span.info-text, .info-vector span.info-text{
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c2c2c;
+}
+
+.booking-itinerary-resume .info-vector .info-text.wn-icon{
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.booking-itinerary-resume .info-vector .info-amount{
+    font-size: 14px;
+    font-weight: 400;
+    color: #2c2c2c;
+}
+
+.booking-itinerary-resume uib-accordion.info-box .panel{
+    margin: 0px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.booking-itinerary-resume uib-accordion.info-box .panel-heading{
+    background: #eceff1 none repeat scroll 0 0;
+    height: 60px;
+    padding: 13px 15px 0 15px;
+    border: none;
+    border-radius: 0;
+}
+
+.booking-itinerary-resume uib-accordion.info-box .display-chunks{
+    padding: 15px;
+}
+
+/*
+NOTE: this rules is an old-fashion override for panel-body inside uib-accordion which is catching panel-body inside "new" PNR panels too, but this break sidebar template.
+Fhe only way found to get rid of this incorrect behaviour is to assign a specific class to panel-body of PNR panels and targeting it with :not selector in this way
+*/
+.booking-itinerary-resume uib-accordion.info-box .panel-group .panel-body:not(.panel-body-flight):not(.panel-body-train){
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.booking-itinerary-resume uib-accordion.info-box .panel-group{
+    margin-bottom: 0px;
+}
+
+.booking-itinerary-resume uib-accordion.info-box .panel-heading h4.panel-title{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 38px;
+    color:#2c2c2c;
+    vertical-align: middle;
+}
+
+.booking-itinerary-resume uib-accordion.info-box .panel-heading h4.panel-title i{
+    color:#78909C;
+    font-weight: 400;
+}
+
+.booking-itinerary-resume .alert.alert-danger.help-block{
+    font-size: 14px;
+}
+
+.booking-error-modal-container .modal-body .booking-error-modal-close-button{
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background-color: #FFFFFF;
+    border: 0;
+}
+
+.booking-error-modal-container .modal-body .generic-error-text{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-weight: 200;
+    font-size: 18px;
+    color: #455A64;
+}
+
+.booking-error-modal-container .modal-body .booking-error-modal-close-button > span{
+    background-color: #FFFFFF;
+    color: #CFD8DC;
+    font-size: 32px;
+}
+
+.booking-error-modal-container .modal-body .text-message{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.booking-error-modal-container.terms-and-conditions-modal .modal-body .text-message{
+    margin-top: 24px;
+}
+
+.booking-error-modal-container.terms-and-conditions-modal .modal-body .terms-and-conditions-container{
+    padding: 10px;
+    font-size: 14px;
+    color: #8798ab;
+    text-align: justify;
+}
+
+.booking-error-modal-container .modal-body .tip-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.booking-error-modal-container .modal-body .tip-container .tip-container-inside{
+    align-self: center;
+    width: 800px;
+    max-height: 120px;
+    background-color: #6B6EFF;
+}
+
+.booking-error-modal-container .modal-body .tip-container .tip-container-inside .title{
+    color: #ffffff;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 20px 0 20px 0;
+}
+
+.booking-error-modal-container .modal-body .tip-container .tip-container-inside .text{
+    color: #ffffff;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    margin: 0 20px 20px 20px;
+}
+
+.booking-error-modal-container .modal-body{
+    height: 85vh;
+}
+
+.booking-error-modal-container.terms-and-conditions-modal .modal-body{
+    height: 650px;
+}
+
+.booking-error-modal-container.terms-and-conditions-modal .modal-body .category-rule-list{
+    max-height: 455px;
+    overflow-y: auto;
+}
+
+.booking-error-modal-container.terms-and-conditions-modal .link{
+    margin-top: 25px;
+}
+
+.booking-error-modal-container .modal-body .text-message .title{
+    flex-direction: row;
+    align-self: center;
+    font-weight: 200;
+    font-size: 20px;
+    color: #455A64;
+}
+
+.booking-error-modal-container .modal-body .text-message .subtitle{
+    flex-direction: row;
+    align-self: center;
+    font-weight: 400;
+    font-size: 16px;
+    color: #455A64;
+}
+
+.booking-error-modal-dialog-top-class .modal-dialog{
+    width: 90vw;
+    height: 90vh;
+}
+
+.booking-error-modal-container .modal-body .booking-error-row .red-date{
+    color: #F8161E;
+}
+
+.booking-error-modal-container .modal-body .exception-class-height{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.booking-error-modal-container .modal-body .error-view-details-column{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.booking-error-modal-container .modal-body .error-view-details-column > button{
+    align-self: center;
+}
+
+.booking-error-modal-container .modal-body .exception-class-height .quoted-date-unavailable{
+    margin-top: 0;
+    align-self: center;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body{
+    height: auto;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body .ui-action-button.expanded{
+    width: 200px;
+    margin-left: 10px !important;
+    line-height: 40px;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body .ui-action-button.expanded .wn-icon{
+    font-size: 14px;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body .ui-action-button.expanded .navbar-arrows{
+    white-space: normal;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body .text-message{
+    margin-bottom: 50px;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body .travelmode-highlight{
+    color: #6b6eff;
+}
+.booking-error-modal-container.warning-roundtrip .modal-body .booking-error-row{
+    margin-bottom: 0;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body uib-accordion.trip-details-explode .panel-default{
+    border: none;
+    box-shadow: none;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body #tourResults .tour-ele-decoration{
+    border-top: none;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body uib-accordion.trip-details-explode .panel{
+    background: none;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body uib-accordion.trip-details-explode .segment-details{
+    background: none;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body .info-field{
+    background: #eceff1 none repeat scroll 0 0;
+    text-align: center;
+    width: 800px;
+    margin: 50px auto 20px auto;
+    padding: 40px;
+    position: relative;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body .info-field .info-title{
+    flex-direction: row;
+    align-self: center;
+    font-weight: 200;
+    font-size: 20px;
+    color: #455A64;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body .info-field .info-text{
+    color: #78909C;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body .info-field label{
+    color: #B0BEC5;
+    font-weight: normal;
+    font-size: 12px;
+    position: absolute;
+    bottom: 60px;
+    left: 15px;
+    margin-bottom: 2px;
+}
+
+.booking-error-modal-container.warning-roundtrip .modal-body .info-field span.info-text.wn-icon.wn-icon-info{
+    font-size: 32px;
+    line-height: 60px;
+    font-size: 35px;
+}

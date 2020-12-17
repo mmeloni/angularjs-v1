@@ -1,0 +1,20 @@
+@import 'mixins/panels';
+@import 'mixins/avatar-grid';
+
+@mixin wn-button-variant($background) {
+    &:hover {
+        background-color: $background;
+    }
+
+    &:active,
+    &.active,
+    &:focus,
+    &.focus {
+        background-color: darken($background, 5%);
+    }
+}
+
+@mixin wn-toast-variant($background-color) {
+    background-color: $background-color;
+    padding: $grid-gutter-width / 2;
+}

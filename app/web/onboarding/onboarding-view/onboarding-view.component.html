@@ -1,0 +1,28 @@
+<div [ngClass]="['has-navbar', 'container-' + viewMode]">
+    <wn-navbar-onboarding [translation]=translationNavbar></wn-navbar-onboarding>
+    <article class="text-center container-fluid" [ngSwitch]="viewMode">
+        <header class="row">
+            <h1 class="col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3">
+                {{ currentStep.title }}
+                <small class="display-block margin-top-sm">{{ currentStep.text }}</small>
+            </h1>
+        </header>
+        <main *ngSwitchCase="'welcome'">
+            <img [src]="currentStep.imgURL" alt=" " />
+        </main>
+        <main *ngSwitchCase="'setup'">
+            <wn-onboarding-setup [itemsToFollow]="itemsToFollow" [translation]="translationSetup"></wn-onboarding-setup>
+        </main>
+        <footer class="row">
+            <p class="col-xs-6 col-xs-offset-3 col-lg-4 col-lg-offset-4 margin-vertical-none">
+                <wn-button
+                    [cssClasses]="['btn', 'btn-lg', 'btn-block', 'text-uppercase', buttonOptions.cssClasses]"
+                    [label]="buttonOptions.text"
+                    (click)="goToNextStep()"
+                    [disabled]="buttonOptions.isButtonDisabled"
+                ></wn-button>
+            </p>
+        </footer>
+    </article>
+</div>
+

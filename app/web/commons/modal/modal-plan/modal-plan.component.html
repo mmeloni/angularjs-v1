@@ -1,0 +1,120 @@
+<wn-modal-button-dismiss></wn-modal-button-dismiss>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-5">
+            <wn-modal-plan-shard [componentData]="componentData"></wn-modal-plan-shard>
+        </div>
+
+        <div class="col-md-7 main-content">
+            <h1 class="margin-top-none">
+                <wn-button
+                    [cssClasses]="['btn', 'btn-block', 'btn-success']"
+                    [label]="translations.searchFlights"
+                    (click)="fastQuote($event)"
+                ></wn-button>
+            </h1>
+            <div [ngSwitch]="modality">
+
+                <div *ngSwitchDefault>
+
+                    <h1 class="h3 margin-top-none">{{ translations.title }}</h1>
+
+                    <ul class="nav nav-pills nav-justified" role="tablist">
+                        <li role="presentation" [ngClass]="{'active': activeTab === 'board'}"><a href="#board" (click)="changeTab($event,'board')" aria-controls="home" role="tab" data-toggle="tab">{{ translations.boards }}</a></li>
+                        <li role="presentation" [ngClass]="{'active': activeTab === 'tour'}"><a href="#tour" (click)="changeTab($event,'tour')" aria-controls="profile" role="tab" data-toggle="tab">{{ translations.tours }}</a></li>
+                    </ul>
+
+                    <div [ngSwitch]="activeTab" class="modal-content-list">
+                        <div *ngSwitchCase="'board'">
+
+                            <h2 class="h4" *ngIf="boardItems.length !== 0">{{ translations.allYourBoards }}</h2>
+
+                            <div class="overflow">
+                                <ul class="list-group list-unstyled">
+                                    <li *ngFor="let item of boardItems">
+                                        <wn-modal-plan-board-item
+                                            [componentData]="item"
+                                            [buttonLabel]="translations.plan"
+                                            [isLoadingButton]="isLoadingPlanButton"
+                                            (plan)="planOnBoard($event, { board: item, shardsId: [componentData.id]})"
+                                        ></wn-modal-plan-board-item>
+                                    </li>
+                                </ul>
+
+                                <div *ngIf="boardItems.length === 0">
+                                    <wn-modal-plan-suggested
+                                        title="{{ translations.suggestedBoard }}"
+                                        [componentData]="['Place to visit','Future Trips','My favorites place on earth', 'Trips to do']"
+                                        [eventClick]="setSuggestedBoard"
+                                    ></wn-modal-plan-suggested>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div *ngSwitchDefault>
+
+                            <h2 class="h4" *ngIf="toursItems.length !== 0">{{ translations.allYourTours }}</h2>
+
+                            <div class="overflow">
+                                <ul class="list-group list-unstyled">
+                                    <li *ngFor="let item of toursItems">
+                                        <wn-modal-plan-tour-item
+                                            [componentData]="item"
+                                            [refId]="componentData.id"
+                                            [buttonLabel]="translations.plan"
+                                        ></wn-modal-plan-tour-item>
+                                    </li>
+                                </ul>
+
+                                <div *ngIf="toursItems.length === 0">
+                                    <wn-modal-plan-suggested
+                                        title="{{ translations.suggestedTour }}"
+                                        [componentData]="['Place to visit','Future Trips','My favorites place on earth', 'Trips to do']"
+                                        [eventClick]="setSuggestedTour"
+                                    ></wn-modal-plan-suggested>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-create" *ngIf="activeTab === 'board'" (click)="changeModality($event,'createBoard')">
+                        <span class="wn-icon wn-icon-plus wn-icon-lg"></span>
+                        <span>{{ translations.createBoard }}</span>
+                    </div>
+
+                    <div class="button-create" *ngIf="activeTab === 'tour'" (click)="changeModality($event,'createTour')">
+                        <span class="wn-icon wn-icon-plus wn-icon-lg"></span>
+                        <span>{{ translations.createTour }}</span>
+                    </div>
+
+                </div>
+
+                <div *ngSwitchCase="'createBoard'">
+                    <wn-modal-plan-form
+                        [translations]="translations"
+                        title="{{ translations.createBoard }}"
+                        (submit)="saveNewBoard($event)"
+                        (cancel)="onCancelForm()"
+                        [isLoadingButton]="isLoadingPlanButton"
+                        [initialName]="initialName"
+                    ></wn-modal-plan-form>
+                </div>
+
+                <div *ngSwitchCase="'createTour'">
+                    <wn-modal-plan-form
+                        [translations]="translations"
+                        title="{{ translations.createTour }}"
+                        (submit)="saveNewTour($event)"
+                        (cancel)="onCancelForm()"
+                        [isLoadingButton]="isLoadingPlanButton"
+                        [initialName]="initialName"
+                    ></wn-modal-plan-form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

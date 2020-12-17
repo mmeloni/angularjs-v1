@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="10px" height="30px" viewBox="0 0 10 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>bc_h</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="bc_h" sketch:type="MSArtboardGroup" fill="#6b6eff">
+            <path d="M10,0 L10,30 L7.74021582e-05,30 C0.159676937,29.8232894 0.304722252,29.6383989 0.432437553,29.446826 L8.21567167,17.7719748 C9.27593284,16.1815831 9.27576668,13.8181677 8.21567167,12.2280252 L0.432437553,0.553174018 C0.304724788,0.361604871 0.159649895,0.176713957 0,0 L10,0 Z" id="Rectangle-275-Copy" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,11 @@
+<div class="hotel-grid-container" [hidden]="hiddenComponent">
+    <h1>{{translations.topGrid.sights}} <small>{{subtitle}}</small></h1>
+
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let item of items">
+            <wn-grid-top-attraction-item *ngIf="item.type === 'PlaceAttraction'" [componentData]="item" [translations]="translations"></wn-grid-top-attraction-item>
+            <wn-grid-top-place-item *ngIf="item.type === 'Place'" [componentData]="item" [translations]="translations"></wn-grid-top-place-item>
+            <wn-grid-top-hotel-item *ngIf="item.type === 'PlaceHotel'" [componentData]="item" [translations]="translations"></wn-grid-top-hotel-item>
+        </div>
+    </div>
+</div>

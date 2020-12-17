@@ -1,0 +1,12 @@
+<article class="panel panel-default panel-card margin-bottom-none">
+    <div class="panel-body">
+        <h1 class="margin-vertical-none h2">
+            <span [ngClass]="[place.iconClasses, 'margin-bottom-sm']"></span><br />
+            {{ place.title }}
+        </h1>
+        <wn-follow-button [targetId]="place.id" [isTargetFollowed]="place.isFollowed" [translation]="translationFollowButton" (toggledFollow)="updateByIsFollowed($event)"></wn-follow-button>
+        <footer class="margin-top-sm">
+            <wn-statistics-bar [items]="statisticsItems"></wn-statistics-bar>
+        </footer>
+    </div>
+</article>

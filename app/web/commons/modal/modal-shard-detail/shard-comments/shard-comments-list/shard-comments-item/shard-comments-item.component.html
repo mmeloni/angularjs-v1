@@ -1,0 +1,10 @@
+<div class="col-avatar">
+    <wn-avatar [userId]="comment.user.nid" size="md"></wn-avatar>
+</div>
+<div class="col-md-12 col-avatar-main">
+    <p class="list-group-item-heading small font-weight-bold">
+        {{ comment.user.firstname }} {{ comment.user.lastname }}
+        <span class="text-secondary">@{{ comment.user.username }} • <span title="{{ commentDate }}">{{ commentDateAgo }}</span></span>
+    </p>
+    <p class="list-group-item-text">{{ comment.text }}</p>
+</div>

@@ -1,0 +1,19 @@
+@import '../../../../../../../assets/scss/overrides/bootstrap/variables';
+@import '../../../../../../../assets/scss/overrides/bootstrap/mixins/avatar-grid';
+
+$col-avatar-width: $avatar-size-sm + $grid-gutter-width;
+
+.row {
+    padding-top: $modal-inner-padding;
+}
+
+.col-avatar {
+    @include avatar-grid-avatar($col-avatar-width);
+    padding-top: (42px - $avatar-size-sm) / 2; // medium buttons are 42px tall
+    padding-bottom: (42px - $avatar-size-sm) / 2; // medium buttons are 42px tall
+}
+
+.col-md-12.col-avatar-main {
+    $col-main-width: $modal-md - 2 - $col-avatar-width - $modal-inner-padding; // 2px transparent border for modal-content;
+    @include avatar-grid-main($col-main-width);
+}

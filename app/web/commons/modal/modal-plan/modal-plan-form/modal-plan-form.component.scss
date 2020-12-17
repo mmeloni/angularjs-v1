@@ -1,0 +1,45 @@
+@import '../../../../../../assets/scss/overrides/bootstrap/variables';
+
+form{
+    .actions{
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+    }
+
+    .wn-input{
+        border: 1px solid $gray-light;
+        border-radius: $border-radius-base;
+        padding: 8px;
+        margin-bottom: 15px;
+
+        .form-group{
+            margin: 0;
+            padding: 0;
+            label{
+                font-size: 12px;
+                color: $gray;
+            }
+
+            input{
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+                color: $gray-darker;
+                font-weight: 600;
+                height: 22px;
+            }
+
+            textarea{
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+                color: $gray-darker;
+                font-weight: 600;
+            }
+        }
+    }
+}

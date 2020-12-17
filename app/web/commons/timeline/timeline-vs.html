@@ -1,0 +1,10 @@
+<div class="wn-vs wn-fvs">
+    <button class="ui-action-button compact default">
+        <span class="wn-icon wn-icon-plus"></span>
+    </button>
+    <div class="wn-fvs-list">
+        <button class="ui-action-button compact default" ng-repeat="vehicle in vehicles track by $index" ng-click="onSelectCallback($event)">
+            <span class="wn-icon wn-icon-{{vehicle.icon}} {{vehicle.icon}}-detail-color" ng-model="vehicle"></span>
+        </button>
+    </div>
+</div>

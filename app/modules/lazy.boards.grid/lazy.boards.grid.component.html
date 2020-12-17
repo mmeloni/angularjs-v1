@@ -1,0 +1,14 @@
+<div class="clearfix lazy-board-wrapper">
+    <div class="lazy-board-grid clearfix" *ngIf="grid.length > 0"
+         infinite-scroll
+         [infiniteScrollDistance]="0.2"
+         [infiniteScrollThrottle]="250"
+         (scrolled)="fetchNextPageData()">
+        <div *ngFor="let item of grid" class="board-item">
+            <wn-board [data]="item" [translations]="translations"></wn-board>
+        </div>
+    </div>
+    <div *ngIf="isFetching" class="grid-is-loading">
+        <div class="grid-spinner"></div>
+    </div>
+</div>

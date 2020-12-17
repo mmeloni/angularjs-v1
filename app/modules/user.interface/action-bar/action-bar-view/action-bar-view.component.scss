@@ -1,0 +1,19 @@
+.wn-actionbar{
+    ul {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        li {
+
+            list-style: none;
+            +li {
+                margin-left: 10px;
+            }
+        }
+
+        &.action{
+            justify-content: flex-end;
+        }
+    }
+
+}

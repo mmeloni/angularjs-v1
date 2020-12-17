@@ -1,0 +1,43 @@
+@import '../../../../../assets/scss/overrides/bootstrap/variables';
+
+$modal-height: $shard-height + ($modal-inner-padding * 2);
+$button-create-height: 60px;
+$overflow-height:  floor($modal-height - $button-create-height - 175);
+
+$gutter-base: 24px; // seek and destroy
+
+.modal-content-list {
+    h2.h4 {
+        margin: 0;
+        padding-top: $gutter-base;
+        padding-bottom: 8px;
+        color: $gray;
+    }
+}
+
+.main-content {
+    height: $shard-height;
+    border-left: 1px solid $gray-light;
+}
+
+.overflow {
+    height: $overflow-height;
+    overflow-y: auto;
+}
+
+.button-create {
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    height: $button-create-height;
+    left: $grid-gutter-width / 2;
+    line-height: $button-create-height;
+    cursor: pointer;
+    font-weight: 600;
+
+    .wn-icon {
+        vertical-align: middle;
+        font-weight: 100;
+    }
+}
+

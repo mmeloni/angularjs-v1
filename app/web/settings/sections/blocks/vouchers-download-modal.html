@@ -1,0 +1,25 @@
+<div class="vouchers-download-modal-container booking-error-modal-container">
+
+    <div class="modal-body">
+
+        <button class="booking-error-modal-close-button" type="button" tooltip-placement="bottom" uib-tooltip="Close" ng-click="cancel()">
+            <span class="wn-icon wn-icon-delete"></span>
+        </button>
+
+        <div class="text-message text-title-content">
+            <div class="title">{{title}}</div>
+            <div class="subtitle">{{subtitle}}</div>
+        </div>
+        ​
+        <div ng-repeat="ticket in tickets track by $index" class="row ticket-download-row">
+            <div class="col-md-4">{{ticket.traveler.firstName}} {{ticket.traveler.lastName}}:</div>
+            <div class="col-md-8">
+                <button class="btn ui-action-button expanded wn-btn-neutral ng-touched" ng-click="downloadTicket(ticket.downloadLink)">
+                    See your Ticket
+                </button>
+            </div>
+        </div>
+        ​
+    </div>
+
+</div>

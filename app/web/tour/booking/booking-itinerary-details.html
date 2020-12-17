@@ -1,0 +1,161 @@
+<!-- no stopovers -->
+<div class="no-stopovers" ng-if="((vector.cleanStopovers.length === 0) || (vector.cleanStopovers === undefined))">
+    <!-- vector origin -->
+    <div class="row">
+        <div class="col-md-1 text-center">
+            <span class="vector-primary-details">{{ vector.departureDate | momentTimeZone:'HH:mm':vector.origin.timezone }}</span>
+        </div>
+        <div class="col-md-1 text-center" ng-if="$first || (vector.isAncillary === false && vector.bit !== 8192)">
+            <button class="detail-tag">
+                <span class="wn-icon wn-icon-place place-detail-color"></span>
+            </button>
+        </div>
+        <div ng-if="$first" class="col-md-10">
+            <span class="vector-primary-details" ng-if="segment == 'outboundSegment'"> {{ bookingTravel.searchParams.origin.name }}</span>
+            <span class="vector-primary-details" ng-if="segment == 'returnSegment'"> {{ bookingTravel.searchParams.destination.name }}</span>
+        </div>
+        <!-- only if not ancillary and not blablacar -->
+        <div class="col-md-10" ng-if="(vector.isAncillary === false && vector.bit !== 8192)">
+            <span class="vector-primary-details" ng-if="vector.origin.iata">{{ vector.origin.iata }} </span>
+            <span class="vector-primary-details"> {{ vector.origin.name }}</span>
+        </div>
+    </div>
+    <!-- vector -->
+    <div class="row">
+        <div class="col-md-3">
+            <span class="vector-connector {{ vector.bit | vectorClassPrinter }}-detail-color"></span>
+        </div>
+    </div>
+    <div class="row vector">
+        <div class="col-md-1 text-center">
+            <span class="vector-primary-details">{{ vector.duration | time:'mm':'hhh mmm':false}}</span>
+        </div>
+        <div class="col-md-1 text-center">
+            <button class="detail-tag">
+                <span class="wn-icon wn-icon-{{ vector.bit | vectorClassPrinter }} {{ vector.bit | vectorClassPrinter }}-detail-color"></span>
+            </button>
+        </div>
+        <div class="col-md-10 text-left" ng-if="(vector.isAncillary === false && vector.bit !== 8192)">
+            <span class="vector-primary-details" ng-if="vector.origin.iata && vector.destination.iata">{{ vector.origin.iata }} to {{ vector.destination.iata }}</span>
+            <span class="vector-secondary-details">{{ vector.agency }} | </span>
+            <span class="vector-secondary-details" ng-if="vector.number">{{ vector.number }}</span>
+            <span class="vector-secondary-details" ng-if="vector.flightNumber">{{ vector.flightNumber }}</span>
+            <span class="vector-secondary-details">{{vector.commercialOfferLabel}} | </span>
+            <span class="vector-secondary-details">{{vector.bookingClassLabel}}</span>
+        </div>
+        <div class="col-md-5 text-left ancillary-details" ng-if="(vector.isAncillary === true || vector.bitmask === 8192)">
+            <button type="button" class="ui-action-button expanded wn-btn-neutral btn-ancillary-vector ancillary-selected" disabled=true aria-disabled="true">
+                <span class="wn-icon wn-icon-{{ vector.bit | vectorClassPrinter }} {{ vector.bit | vectorClassPrinter }}-detail-color"></span>
+                <span ng-if="vector.agency">{{ vector.agency }} </span>
+                <span ng-if="vector.price">&euro;{{ vector.price }}</span>
+                <span ng-if="!vector.agency">{{ translation.walking }}</span>
+            </button>
+        </div>
+        <div class="col-md-5" ng-if="(vector.isAncillary === true || vector.bit === 8192)">
+            <span class="result-row-secondary ancillary-details">
+            {{ ::vmTRC.translation.soldBy }} <b>{{ ::vmTRC.translation.otherCompanies }}</b>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <span class="vector-connector {{ vector.bit | vectorClassPrinter }}-detail-color"></span>
+        </div>
+    </div>
+    <!-- vector destination -->
+    <div class="row">
+        <div class="col-md-1 text-center">
+            <span class="vector-primary-details">{{ vector.arrivalDate | momentTimeZone:'HH:mm':vector.destination.timezone }}</span>
+        </div>
+        <div class="col-md-1 text-center" ng-if="$last || (vector.isAncillary === false && vector.bit !== 8192)">
+            <button class="detail-tag">
+                <span class="wn-icon wn-icon-place place-detail-color"></span>
+            </button>
+        </div>
+        <div ng-if="$last" class="col-md-10 text-left">
+            <span class="vector-primary-details" ng-if="segment == 'outboundSegment'"> {{ bookingTravel.searchParams.destination.name }}</span>
+            <span class="vector-primary-details" ng-if="segment == 'returnSegment'"> {{ bookingTravel.searchParams.origin.name }}</span>
+        </div>
+        <!-- only if not ancillary and not blablacar -->
+        <div class="col-md-10 text-left" ng-if="(vector.isAncillary === false && vector.bit !== 8192)">
+            <span class="vector-primary-details" ng-if="vector.destination.iata">{{ vector.destination.iata }} </span>
+            <span class="vector-primary-details"> {{ vector.destination.name }}</span>
+        </div>
+    </div>
+</div>
+<!-- end no stopovers -->
+
+<!-- stopovers -->
+<div class="stopovers" ng-repeat="stopover in vector.cleanStopovers" ng-if="((vector.cleanStopovers.length !== 0) || (vector.cleanStopovers !== undefined))">
+    <!-- stopover origin -->
+    <div class="row">
+        <div class="col-md-1 text-center">
+            <span class="vector-primary-details">{{ stopover.departureDate | momentTimeZone:'HH:mm':stopover.origin.timezone }}</span>
+        </div>
+        <div class="col-md-1 text-center">
+            <button class="detail-tag">
+                <span class="wn-icon wn-icon-place place-detail-color"></span>
+            </button>
+        </div>
+        <div class="col-md-10 text-left">
+            <span class="vector-primary-details" ng-if="stopover.destination.iata">{{ stopover.origin.iata }} </span>
+            <span class="vector-primary-details"> {{ stopover.origin.name }}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <span class="vector-connector {{ vector.bit | vectorClassPrinter }}-detail-color"></span>
+        </div>
+    </div>
+    <!-- stopover -->
+    <div class="row vector">
+        <div class="col-md-1 text-center">
+            <span class="vector-primary-details">{{ stopover.duration | time:'mm':'hhh mmm':false }}</span>
+        </div>
+        <div class="col-md-1 text-center">
+            <button class="detail-tag">
+                <span class="wn-icon wn-icon-{{ vector.bit | vectorClassPrinter }} {{ vector.bit | vectorClassPrinter }}-detail-color"></span>
+            </button>
+        </div>
+        <div class="col-md-10 text-left">
+            <span class="vector-primary-details" ng-if="stopover.origin.iata && stopover.destination.iata">{{ stopover.origin.iata }} to {{ stopover.destination.iata }}</span>
+            <span class="vector-secondary-details">{{ stopover.agency }} </span>
+            <span class="vector-secondary-details" ng-if="stopover.number">{{ stopover.number }}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <span class="vector-connector {{ vector.bit | vectorClassPrinter }}-detail-color"></span>
+        </div>
+    </div>
+    <!-- stopover destination -->
+    <div class="row">
+        <div class="col-md-1 text-center">
+            <span class="vector-primary-details">{{ stopover.arrivalDate | momentTimeZone:'HH:mm':stopover.destination.timezone }}</span>
+        </div>
+        <div class="col-md-1 text-center">
+            <button class="detail-tag">
+                <span class="wn-icon wn-icon-place place-detail-color"></span>
+            </button>
+        </div>
+        <div class="col-md-10 text-left">
+            <span class="vector-primary-details" ng-if="stopover.destination.iata">{{ stopover.destination.iata }} </span>
+            <span class="vector-primary-details"> {{ stopover.destination.name }}</span>
+        </div>
+    </div>
+
+    <div class="row" ng-if="!$last">
+        <div class="col-md-1 text-center">
+            <span class="stopover-secondary-details">{{ vector.cleanStopovers | waitingTime:$index | time:'mm':'hhh mmm':false }}</span>
+        </div>
+        <div class="col-md-1 text-center">
+            <span class="stopover-connector"></span>
+        </div>
+        <div class="col-md-10 text-left">
+            <span class="stopover-secondary-details">{{ translation.layoverTime }}</span>
+        </div>
+    </div>
+</div>
+<!-- end stopovers -->

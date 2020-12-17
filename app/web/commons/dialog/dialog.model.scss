@@ -1,0 +1,132 @@
+.wn-dialog-section {
+	padding: 15px;
+}
+
+/* === ADD SHARD === */
+.add-shard-dialog {
+	height: auto;
+
+	section {
+		margin-bottom: 20px;
+	}
+
+	textarea {
+		height: 80px;
+		margin-left: 10px;
+		border: none;
+		resize: none;
+		outline: none;
+		width: 400px;
+	}
+
+	button {
+		margin-right: 10px;
+	}
+
+	button:last-of-type {
+		margin-right: 0;
+	}
+
+	.upload-content {
+	}
+
+	.preview {
+		background-color: #000000;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.loading-preview {
+		height: 250px;
+		position: relative;
+		opacity: 0.6;
+		width: auto;
+	}
+
+	.loading-mask {
+		overflow: hidden;
+		height: 250px;
+		position: absolute;
+		top: 0;
+		width: 0;
+	}
+
+	.add-shard-thumb {
+		width: auto;
+		max-height: 250px;
+		margin: 0;
+	}
+
+	.upload-content-close-options {
+		height: 50px;
+	}
+
+	.upload-content-actions,
+	.upload-content-location {
+		position: relative;
+	}
+
+	.upload-content-location {
+		display: none;
+		top: 50px;
+		opacity: 0;
+	}
+
+	md-dialog-content {
+		position: relative;
+	}
+
+	.drop-area {
+		background-color: #f5f7f8;
+		border: 2px dashed #78909c;
+		border-radius: 3px;
+		color: #455a64;
+		display: none;
+		font-size: 16px;
+		font-weight: 600;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		text-align: center;
+		top: 0;
+		width: 100%;
+		z-index: 150;
+	}
+
+	md-autocomplete {
+		display: inline-block;
+	}
+
+	md-autocomplete input {
+		line-height: normal;
+		padding-left: 0;
+	}
+
+	md-autocomplete button {
+		top: 2px;
+	}
+
+	md-autocomplete-wrap {
+		box-shadow: none;
+	}
+}
+
+.add-shard-dialog .upload-link,
+#add-shard-launcher .upload-link {
+	color: #fed420;
+}
+
+.add-shard-dialog .upload-video,
+#add-shard-launcher .upload-video {
+	color: #fc6d0e;
+}
+
+.add-shard-dialog .upload-place,
+#add-shard-launcher .upload-place {
+	color: #3ce9b7;
+}
+
+.add-shard-dialog .upload-camera,
+#add-shard-launcher .upload-camera {
+	color: #4a90e2;
+}

@@ -1,0 +1,36 @@
+.dropdown-menu {
+    @include box-shadow($box-shadow-base-size $box-shadow-base-color);
+
+    // Links within the dropdown menu
+    a {
+        display: block;
+        padding: 3px 20px;
+        clear: both;
+        font-weight: normal;
+        line-height: $line-height-base;
+        color: $dropdown-link-color;
+        white-space: nowrap; // prevent links from randomly breaking onto new lines
+    }
+}
+
+// Hover/Focus state
+.dropdown-menu a {
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: $dropdown-link-hover-color;
+        background-color: $dropdown-link-hover-bg;
+    }
+}
+
+// Active state
+.dropdown-menu .active a {
+    &,
+    &:hover,
+    &:focus {
+        color: $dropdown-link-active-color;
+        text-decoration: none;
+        outline: 0;
+        background-color: $dropdown-link-active-bg;
+    }
+}

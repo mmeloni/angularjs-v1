@@ -1,0 +1,69 @@
+<wn-modal-button-dismiss></wn-modal-button-dismiss>
+
+<div class="modal-header container-fluid">
+    <div class="row">
+        <div class="col-header-avatar">
+            <wn-avatar [userId]="shard.user.nid"></wn-avatar>
+        </div>
+        <div class="col-md-12 col-header-main">
+            <div class="row">
+                <div class="col-md-8 small font-weight-bold">
+                    {{ shard.user.firstname }} {{ shard.user.lastname }}<br />
+                    <small class="text-secondary">{{ creationDate }}</small>
+                </div>
+                <div class="col-md-4 text-right">
+                    <wn-like-button
+                        cssClasses="btn btn-sm btn-default margin-right-grid"
+                        [targetId]="shard.id"
+                        [userId]="currentUser.nid"
+                        [isTargetLiked]="shard.likeUser"
+                    ></wn-like-button>
+
+                    <wn-button
+                        cssClasses="btn btn-sm btn-default"
+                        iconClasses="wn-icon wn-icon-plan-empty wn-icon-plan-empty-color"
+                        [label]="translations.plan"
+                        (click)="plan($event)"
+                    ></wn-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-body">
+    <p class="margin-bottom-sm">
+        <span>{{ shard.description }} <span class="text-secondary">~ {{ translations.at }}</span> <wn-linked-place-info [bit]="shard.bit" [placeId]="shard.place.id" [label]="shard.nearestPoi.name" cssClasses="text-capitalize"></wn-linked-place-info></span>
+    </p>
+
+    <wn-image [componentData]="imageOptions" cssClasses="img-responsive img-rounded margin-vertical-sm center-block"></wn-image>
+
+    <p class="margin-vertical-sm" *ngIf="shard.boards !== undefined && shard.boards.length > 0">
+        <span class="wn-icon wn-icon-board wn-icon-board-color vertical-align-bottom"></span>
+        {{ translations.plannedIn }} <a href="#" (click)="goToBoard($event)" class="text-board" data-board-title>{{ shard.boards[0].title }}</a>
+        {{ translations.by }} <a href="#" data-board-owner (click)="goToUserProfile($event)">{{ shard.user.firstname }} {{ shard.user.lastname }}</a>
+    </p>
+
+    <p class="margin-vertical-sm clearfix shard-source" *ngIf="shard.siteName !== null">
+        <span class="wn-icon wn-icon-link vertical-align-middle"></span>
+        {{ translations.savedFrom }} <a href="#" (click)="goToShardSource($event)" data-shard-source>{{ shard.siteName }}</a>
+        <wn-button
+            cssClasses="btn btn-default btn-sm pull-right"
+            [label]="translations.visit"
+            (click)="goToShardSource($event)"
+            data-shard-source
+        ></wn-button>
+    </p>
+
+    <wn-statistics-bar [items]="statisticsItems"></wn-statistics-bar>
+
+</div>
+
+<div class="modal-footer text-left">
+    <wn-shard-comments
+        [shardId]="shard.id"
+        [comments]="shard.comments"
+        [currentUser]="currentUser"
+        [labels]="translations.shardComments"
+    ></wn-shard-comments>
+</div>

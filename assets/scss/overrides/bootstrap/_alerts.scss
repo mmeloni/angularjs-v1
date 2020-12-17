@@ -1,0 +1,28 @@
+.alert-primary,
+.alert-flight,
+.alert-warning {
+    small {
+        color: rgba(255, 255, 255, 0.5);
+    }
+}
+
+.alert-dismissible .close,
+.alert-dismissable .close {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.alert-primary {
+    @include alert-variant($brand-primary, $brand-primary, #ffffff);
+}
+
+.alert-warning {
+    @include alert-variant($brand-warning, $brand-warning, #ffffff);
+}
+
+.alert-inverse {
+    @include alert-variant($gray-darker, $gray-darker, #ffffff);
+}
+
+.alert-flight {
+    @include alert-variant($brand-flight, $brand-flight, #ffffff);
+}

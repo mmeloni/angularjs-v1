@@ -1,0 +1,16 @@
+<div class="ancillaries-popover-content">
+    <span>{{ translation.chooseAtransport }}:</span>
+    <div>
+        <button ng-repeat="ancillaryVector in vector.ancillaries.slice(1,vector.ancillaries.length)"
+                ng-click="addAncillary(ancillaryVector, vector, resIndex, segment)"
+                ng-class="(ancillaryVector === ancillaryVectorsSelected[segment][resIndex][vector.id]) ? 'ancillary-selected':''"
+                type="button"
+                class="ui-action-button expanded wn-btn-neutral btn-ancillary-vector truncate-single-line"
+                style="max-width: 200px;"
+                aria-disabled="false"
+                title="{{ getAncillaryVectorButtonLabel(ancillaryVector) }}">
+            <span class="wn-icon wn-icon-{{ ancillaryVector.bit | vectorClassPrinter }} {{ ancillaryVector.bit | vectorClassPrinter }}-detail-color"></span>
+            {{ getAncillaryVectorButtonLabel(ancillaryVector) }}
+        </button>
+    </div>
+</div>

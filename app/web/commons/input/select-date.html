@@ -1,0 +1,12 @@
+<div class="wn-dateselector-container wn-select-container">
+    <label>{{wnInputLabel}}</label>
+    <select class="wn-select form-control wn-date-selector wn-day-selector" ng-model="selectedDay" ng-options="day for day in days track by day">
+        <option value="">{{ translation.selectDay }}</option>
+    </select>
+    <select class="wn-select form-control wn-date-selector wn-month-selector" ng-model="selectedMonth" ng-options="month.name for month in months track by month.value">
+        <option value="">{{ translation.selectMonth }}</option>
+    </select>
+    <select class="wn-select form-control wn-date-selector wn-year-selector" ng-model="selectedYear" ng-options="year for year in years track by year">
+        <option value="">{{ translation.selectYear }}</option>
+    </select>
+</div>

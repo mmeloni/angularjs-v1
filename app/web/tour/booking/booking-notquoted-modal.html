@@ -1,0 +1,43 @@
+<div class="booking-error-modal-container">
+
+    <div class="modal-body">
+
+        <button class="booking-error-modal-close-button" type="button" tooltip-placement="bottom" uib-tooltip="Close" ng-click="cancel()">
+            <span class="wn-icon wn-icon-delete"></span>
+        </button>
+
+        <div class="text-message">
+            <div class="title">{{title}}</div>
+            <div class="subtitle">{{subtitle}}</div>
+        </div>
+        ​
+        <div ng-repeat="unquotedVehicleNode in unquotedVehicleNodes track by $index" class="tour-ele-decoration booking-error-row row">
+            <div class="col-md-4 border-right text-center tour-results-navbar-ele no-padding">
+                <div class="row no-padding">
+                    <span class="col-md-5 ng-binding">
+                        {{ timeline[ unquotedVehicleNode.timelineIndex - 1 ].model.name}}
+                    </span>
+                    <div class="navbar-arrows col-md-1">
+                        <span class="wn-icon wn-icon-arrow-left result-row-secondary" aria-hidden="true"></span>
+                        <span class="wn-icon wn-icon-arrow-right result-row-secondary" aria-hidden="true"></span>
+                    </div>
+                    <span class="col-md-5 no-padding ng-binding">
+                        {{ timeline[ unquotedVehicleNode.timelineIndex + 1].model.name}}
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2 text-center tour-results-navbar-ele border-right ng-binding">
+                <span class="result-row-secondary">{{ translation.travelers }}</span>
+                1
+            </div>
+            <div class="col-md-3 tour-results-navbar-ele border-right text-center no-padding exception-class-height">
+                <span class="quoted-date-unavailable pull-right ng-scope" ng-if="true">{{ translation.notQuoted }}</span>
+            </div>
+            <div class="col-md-3 text-right tour-results-navbar-ele error-view-details-column">
+                <button class="ui-action-button expanded wn-btn-neutral" type="button" ng-click="quoteTravel(unquotedVehicleNode.timelineIndex)">{{ translation.quote }}</button>
+            </div>
+        </div>
+        ​
+    </div>
+
+</div>

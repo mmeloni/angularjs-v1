@@ -1,0 +1,11 @@
+<wn-action-bar-view [items]="actionbar.items" [actions]="actionbar.actions" [transclude-follow-button]="showFollowButton === true">
+    <wn-follow-button
+        [target-id]="target.nid"
+        [is-target-followed]="target.isFollowed"
+        [translation]="translationFollowButton"
+    ></wn-follow-button>
+</wn-action-bar-view>
+
+<div class="shard-o-saic">
+    <div ui-view></div>
+</div>

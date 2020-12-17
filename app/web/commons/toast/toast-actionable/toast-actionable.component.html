@@ -1,0 +1,34 @@
+<!--<button *ngIf="options.closeButton" (click)="remove()" class="toast-close-button">
+  &times;
+</button>
+<div *ngIf="title" class="{{options.titleClass}}" [attr.aria-label]="title">
+  {{title}}
+</div>
+<div *ngIf="message && options.enableHtml" class="{{options.messageClass}}" [innerHTML]="message">
+</div>
+<div *ngIf="message && !options.enableHtml" class="{{options.messageClass}}" [attr.aria-label]="message">
+  {{message}}
+</div>
+<div *ngIf="options.progressBar">
+  <div class="toast-progress" [style.width.%]="width"></div>
+</div>-->
+
+<!-- Linter issues make `this['']` mandatory. Wait for Codelyzer v3 to get rid of this. https://github.com/mgechev/codelyzer/releases -->
+<aside class="padding-vertical-grid padding-horizontal-grid bg-primary">
+    <div class="row">
+        <div class="col-md-2">
+            <span *ngIf="componentData.imageOptions === null || componentData.imageOptions === undefined" class="wn-icon wn-icon-pin wn-icon-lg wn-icon-circle wn-icon-info"></span>
+            <img *ngIf="componentData.imageOptions !== null && componentData.imageOptions !== undefined" [wnImgSrc]="componentData.imageOptions" class="img-rounded" width="42" />
+        </div>
+        <div class="col-md-7 small">
+            <span *ngIf="this['message'] && this['options'].enableHtml" class="{{ this['options'].messageClass }}" [innerHTML]="this['message']">
+            </span>
+            <span *ngIf="this['message'] && !this['options'].enableHtml" class="{{ this['options'].messageClass }}">
+              {{ this['message'] }}
+            </span>
+        </div>
+        <div class="col-md-3 text-right">
+            <button type="button" class="btn btn-default" (click)="open($event)">{{ labels.button }}</button>
+        </div>
+    </div>
+</aside>

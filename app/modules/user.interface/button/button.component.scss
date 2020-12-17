@@ -1,0 +1,16 @@
+.btn{
+    .wn-icon{
+       vertical-align: middle;
+    }
+
+    // fix button style
+    &.btn-link{
+        color: inherit;
+        box-shadow: none;
+        text-decoration: none;
+
+        &:focus{
+            background: none;
+        }
+    }
+}

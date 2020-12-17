@@ -1,0 +1,265 @@
+<div id="tourMainCnt">
+    <div class="row booking-confirmation">
+        <div class="col-md-9 panel panel-default">
+            <div class="row">
+                <div class="col-md-12 section-heading">
+                    <div class="section-title">
+                        <span>{{ vmTCC.translation.bookingConfirmation }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="info-text">
+                        <span class="info-title booked">{{ vmTCC.translation.yourTripIsBooked }}!!</span>
+                        <span class="info-text-content">{{ vmTCC.translation.bookingConfirmation1 }} <span class="info-text-important">{{ vmTCC.paymentOrder.customer.emailAddress }}</span> {{ vmTCC.translation.bookingConfirmation2 }}.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-success margin-top-md margin-bottom-sm">
+                        <p class="h3 panel-body margin-vertical-none text-center">{{ vmTCC.translation.itineraryNumber | uppercase }}: {{ vmTCC.paymentOrder.id }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="info-text">
+                        <span class="info-title">{{ vmTCC.translation.prepareToTravel }}!</span>
+                        <img class="info-image" src="../assets/img/Passport-for-mail-booking.png" />
+                        <div class="info-text-content boxed-text">
+                            <span class="info-subtitle">{{ vmTCC.translation.someAdvicesForYou }}</span>
+                            <ul>
+                                <li>{{ vmTCC.translation.advice1 }}.</li>
+                                <li>{{ vmTCC.translation.advice2 }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="info-text">
+                        <span class="info-title">{{ vmTCC.translation.lookUpYourTrip }}!</span>
+                        <img class="info-image" src="../assets/img/Tickets-mail-booking.png" />
+                        <div class="info-text-content boxed-text">
+                            <span class="info-subtitle">{{ vmTCC.translation.checkYourTrip }}!</span>
+                            <span>{{ vmTCC.translation.checkYourTripText }}!</span>
+                            <button ng-click="vmTCC.goToMyBookings()" class="ui-action-button expanded primary ng-binding">{{ vmTCC.translation.yourBookings | uppercase }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="info-text">
+                        <span class="info-title">{{ vmTCC.translation.externalTransports }}</span>
+                        <span class="info-text-content">{{ vmTCC.translation.externalTransportsText }}!</span>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-repeat="ancillaryVector in vmTCC.ancillaryVectors" ng-init="ancillaryIndex = $index">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="external-transports">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="vectors-details-label">{{ vmTCC.translation.from | uppercase }}</p>
+                                    <p class="vectors-details-data">{{ ancillaryVector.origin.name }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="vectors-details-label">{{ vmTCC.translation.to | uppercase }}</p>
+                                    <p class="vectors-details-data">{{ ancillaryVector.destination.name }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" ng-if="ancillaryVector.agency">
+                                    <p class="vectors-details-label">{{ vmTCC.translation.agency | uppercase }}</p>
+                                    <p class="vectors-details-data">{{ ancillaryVector.agency }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="vectors-details-label">{{ vmTCC.translation.duration | uppercase }}</p>
+                                    <p class="vectors-details-data">{{ ancillaryVector.duration | time:'mm':'hhh mmm':false }}</p>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="ancillaryVector.agency">
+                                <div class="col-md-12">
+                                    <div class="text-right">
+                                        <span class="vectors-details-label">{{ vmTCC.translation.soldBy }}</span>
+                                        <span class="vectors-details-data">{{ ancillaryVector.agency }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 trip-details-explode">
+                        <div class="segment-details">
+                            <ng-include ng-init="ancillary = ancillaryVector;" src="'web/tour/booking/booking-confirm-ancillaries.html'"></ng-include>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="informations">
+                        <span class="info-text">{{ vmTCC.translation.bookingNote }}</span>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="info-title">{{ vmTCC.translation.confirmFaqTitle }}</span>
+                                <span class="info-subtitle">{{ vmTCC.translation.confirmFaqText }}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="info-title">{{ vmTCC.translation.afterbookingFaqTitle }}?</span>
+                                <span class="info-subtitle">{{ vmTCC.translation.afterbookingFaqText }}.</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="info-title">{{ vmTCC.translation.transportsFaqTitle }}?</span>
+                                <span class="info-subtitle">{{ vmTCC.translation.transportsFaqText }}.</span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="info-title">{{ vmTCC.translation.contactFaqTitle }}</span>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <wn-icon-label
+                                            [has-icon]="true"
+                                            label="+39.06.5588833">
+                                            <wn-icon [color]="true" glyph="phone"></wn-icon>
+                                        </wn-icon-label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <wn-icon-label
+                                            [has-icon]="true"
+                                            label="booking@wayonara.com">
+                                            <wn-icon [color]="true" glyph="mail"></wn-icon>
+                                        </wn-icon-label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="info-text">
+                        <span class="info-title">{{ vmTCC.translation.comeBack }}!</span>
+                        <img class="info-image info-comeBack" src="../assets/img/Photos-booking-confirmation.png" />
+                        <div class="info-text-content boxed-text">
+                            <span class="info-subtitle">{{ vmTCC.translation.comeBackSubtitle }}</span>
+                            <span>{{ vmTCC.translation.comeBackTxt }}.</span>
+                            <button class="ui-action-button expanded primary ng-binding">
+                            <span class="wn-logo wn-icon wn-icon-logo" ng-click="vmTCC.backToWayonaraHome()"></span>
+                            {{ vmTCC.translation.backOnWayonara }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <section class="booking-itinerary-resume">
+                <div class="panel panel-default">
+                    <div class="section-heading">
+                        <div class="row no-padding">
+                            <div class="col-md-12 section-title">
+                                <span>{{ vmTCC.translation.itineraryResume }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-repeat="bookingTravel in vmTCC.paymentOrder.bookingTravel" ng-init="travelIndex = $index">
+                        <div class="itinerary-resume-segment">
+                            <div class="row no-padding">
+                                <div class="col-md-12 no-padding">
+                                    <uib-accordion class="info-box" close-others="false">
+                                        <uib-accordion-group ng-init="status.open = $first" is-open="status.open">
+                                            <uib-accordion-heading>
+                                                <span class="pull-left">
+                                                    {{bookingTravel.searchParams.origin.name}}
+                                                    <i class="wn-icon wn-icon-arrow-right vertical-align-middle"></i>
+                                                    {{bookingTravel.searchParams.destination.name}}
+                                                </span>
+                                                <span class="pull-right">
+                                                    <i class="wn-icon" ng-class="{'wn-icon-chevron-up': status.open, 'wn-icon-chevron-down': !status.open}"></i>
+                                                </span>
+                                            </uib-accordion-heading>
+                                            <div ng-repeat="bookingGroupChunk in bookingTravel.bookingGroupChunks" ng-init="bookingGroupChunkIndex = $index">
+                                                <div class="info-vector">
+                                                    <span class="wn-icon wn-icon-{{ bookingGroupChunk.vectorType | vectorClassPrinter }} {{ bookingGroupChunk.vectorType | vectorClassPrinter }}-detail-color vertical-align-middle"></span>
+                                                    <span class="info-text">{{ bookingGroupChunk.vectorType | vectorClassPrinter | lowercase }}</span>
+                                                    <span class="info-text info-amount pull-right">&euro; {{ bookingGroupChunk.total_amount }}</span>
+                                                </div>
+                                                <div class="row info-price" ng-repeat="bookingChunk in bookingGroupChunk.bookingChunks" ng-init="bookingChunkIndex = $index">
+                                                    <div class="col-md-12">
+                                                        <div class="panel panel-{{ bookingChunk.bitMask | bookingPluginClassPrinter }} margin-top-md margin-bottom-sm">
+                                                            <p ng-if="bookingChunk.bookingPlugin.reservationNumber.length > 0" class="h4 panel-body panel-body-{{ bookingChunk.bitMask | bookingPluginClassPrinter }} margin-vertical-none text-center">{{ vmTCC.translation.checkIn }} {{ vmTCC.translation.reservationNumber }}:
+                                                                    <span>&nbsp;</span>
+                                                                    <span ng-repeat="rn in bookingChunk.bookingPlugin.reservationNumber track by $index">{{rn.reservationNumber}}</span>
+                                                                </p>
+                                                            <p ng-if="bookingChunk.bookingPlugin.reservationNumber.length === 0" class="h4 panel-body panel-body-{{ bookingChunk.bitMask | bookingPluginClassPrinter }} margin-vertical-none text-center">{{ vmTCC.translation.checkIn }} PNR: {{ bookingChunk.bookingPlugin.pnr }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row info-price" ng-repeat="bookingChunk in bookingGroupChunk.bookingChunks">
+                                                    <div class="col-md-12">
+                                                        <span class="info-text">{{ vmTCC.translation.passengersAndLuggageOptions }}:</span>
+                                                        <div ng-repeat="travelersAncillaryService in bookingChunk.travelersAncillaryServices" ng-init="travelersAncillaryServiceIndex = $index">
+                                                            <div class="row info-price" ng-repeat="ancillaryService in travelersAncillaryService.ancillaryServices">
+                                                                <span class="info-text pull-left">{{ travelersAncillaryServiceIndex + 1 }}. {{ travelersAncillaryService.traveler.age | passengerAge: vmTCC.translation }}</span>
+                                                                <span class="pull-right">{{ ancillaryService.description }} &euro; {{ ancillaryService.amount }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </uib-accordion-group>
+                                    </uib-accordion>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-heading">
+                        <div class="row no-padding">
+                            <div class="col-md-12 section-title">
+                                <span>{{ vmTCC.translation.totalPriceInfo }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row info-price" ng-repeat="bookingTravel in vmTCC.paymentOrder.bookingTravel">
+                        <div class="col-md-12">
+                            <span class="pull-left">
+                                {{bookingTravel.searchParams.origin.name}}
+                                <i class="wn-icon wn-icon-arrow-right vertical-align-middle"></i>
+                                {{bookingTravel.searchParams.destination.name}}
+                            </span>
+                            <span class="pull-right">&euro; {{ bookingTravel.totalAmount }}</span>
+                        </div>
+                    </div>
+                    <div class="row info-price">
+                        <div class="col-md-12">
+                            <span class="info-text pull-left">{{ vmTCC.translation.serviceCharge }}</span>
+                            <span class="pull-right">&euro; {{ vmTCC.paymentOrder.totalAmountCommission }}</span>
+                        </div>
+                    </div>
+                    <div class="total-price-info">
+                        <span>{{ vmTCC.translation.total }}</span>
+                        <span class="pull-right">&euro; {{ vmTCC.paymentOrder.totalAmountToPay + totalAncillaryService}}</span>
+                        <button class="ui-action-button expanded primary-alternative" ng-click="vmTCC.backToWayonaraHome()">{{ vmTCC.translation.CONTINUE }}</button>
+                    </div>
+                </div>
+                <div class="total-price-notes">
+                    <p>{{ vmTCC.translation.noAdditionalCosts }}</p>
+                    <p>{{ vmTCC.translation.safeEnvironment }}</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>

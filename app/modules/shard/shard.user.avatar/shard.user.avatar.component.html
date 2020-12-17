@@ -1,0 +1,6 @@
+<div class="shard-user-profile-pic" (mouseenter)="showPopOver()">
+    <wn-user-profile-pic [userNid]="user.nid"></wn-user-profile-pic>
+</div>
+<div class="popover-item" *ngIf="showPopover">
+    <wn-popover-user [componentData]="user" [labels]="translations"></wn-popover-user>
+</div>

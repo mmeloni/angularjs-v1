@@ -1,0 +1,15 @@
+$red: #fd3259;
+$text: #444444;
+
+.form-group.wayonara-form-select {
+    label {
+        color: $text;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        span {
+            margin-left: 5px;
+            color: $red;
+        }
+    }
+}

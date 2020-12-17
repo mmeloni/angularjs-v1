@@ -1,0 +1,407 @@
+#tour-shard-import-container{
+    position: fixed;
+    height:100%;
+}
+
+#tour-shard-import-container #tour-shard-import-navbar .wn-icon,
+#tour-shard-import-container .import-shard-panel-wall-shard-front-content-plan .wn-icon{
+    align-self: center;
+}
+
+#tour-shard-import-navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: stretch;
+    padding-right: 12px;
+    float: left;
+}
+
+#close-button-container {
+    display: flex;
+    height: 60px;
+    float: right;
+}
+
+#close-button-container span {
+    align-self: center;
+}
+
+#shard-import-navbar-container {
+    min-height: 60px;
+    width: 100vw;
+}
+
+#tour-shard-import-navbar #searchbox .host .tags{
+    background: transparent;
+}
+
+#tour-shard-import-navbar #searchbox .host .tags .input{
+    background: transparent;
+}
+
+#tour-shard-import-navbar > div{
+    align-self: center;
+}
+
+.tour-shard-import-navbar-tabselection{
+    display: flex;
+    margin-left: 20px;
+}
+
+.tour-shard-import-navbar-tabselection > span{
+    width: 112px;
+    font-size: 14px;
+    align-self: center;
+}
+
+.tour-shard-import-navbar-search{
+    display: flex;
+    height: 42px;
+    margin-left: 12px;
+}
+
+.tour-shard-import-navbar-search .search-navbar-icon{
+    display: flex;
+    justify-content: center;
+}
+
+.tour-shard-import-navbar-search .search-navbar-icon >span{
+    align-self: center;
+}
+
+#tour-shard-import-container .wn-icon.selected{
+    color:  #455A64;
+}
+
+.tour-shard-import-navbar-search > input {
+    width: 18vw;
+    border: 0;
+}
+
+#tourMainContent{
+    height: 90vh;
+    width: 100vw;
+    border-top: 2px solid #ECEFF1;
+}
+
+.tour-toolbar{
+    width: 15vw;
+    height: 100%;
+    float: left;
+    margin-top: 10px;
+}
+
+.tour-toolbar-cnt {
+    height: 100%;
+}
+
+.tour-toolbar-text{
+    width: 100%;
+    text-align: left;
+    margin: 15px;
+    font-size: 18px;
+}
+
+.tour-toolbar-buttons{
+    width: 100%;
+    margin: 15px;
+}
+
+.tour-toolbar-buttons .tour-toolbar-button{
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-right: 2%;
+    cursor: pointer;
+    background: #FFFFFF;
+    border: 1px solid;
+    border-color: lightgrey;
+    display: flex;
+    justify-content: center;
+}
+
+.tour-toolbar-buttons .tour-toolbar-button > span{
+    align-self: center;
+    color: #3ce9b7;
+}
+
+.tour-wall {
+    width: 100%;
+    height: 100%;
+    float: right;
+    padding-left: 22px;
+    overflow-y: auto;
+    margin-top: 30px;
+}
+
+.import-shard-panel-wall-shard{
+    width: 216px;
+    height: 216px;
+    margin: 0 12px 24px;
+    float: left;
+    position: relative;
+    background-color: black;
+    border-radius: 6px;
+}
+
+.import-shard-panel-wall-tour{
+    width: 27.7%;
+    height: 59.7vh;
+    margin-bottom: 1.25%;
+    margin-right: 1.25%;
+    float: left;
+    position: relative;
+    background-color: black;
+    border-radius: 6px;
+}
+
+.import-shard-panel-wall-shard-background-image,
+.import-shard-panel-wall-shard-background-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    opacity: 0.8;
+}
+
+.import-shard-panel-wall-tour-background-image,
+.import-shard-panel-wall-tour-background-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    opacity: 0.8;
+}
+
+.import-shard-panel-wall-shard-front-selected{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    top: 0;
+    background: #3ce9b7;
+    opacity: 0.5;
+    display: none;
+}
+
+.import-shard-panel-wall-shard-front-content{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 25%;
+    color: #FFFFFF;
+}
+
+.import-shard-panel-wall-tour-front-content{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 20%;
+    color: #FFFFFF;
+}
+
+.import-shard-panel-wall-tour-front-content .tour-title{
+    font-size: 48px;
+    padding: 3%;
+}
+
+.import-shard-panel-wall-tour-front-content .tour-subtitle{
+    font-size: 16px;
+    font-style: italic;
+    padding-bottom: 3%;
+}
+
+.import-shard-panel-wall-tour-front-content .tour-hashtag{
+    font-size: 16px;
+    padding-bottom: 3%;
+}
+
+.import-shard-panel-wall-tour-front-content .tour-place-text{
+    font-size: 14px;
+    padding-top: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.import-shard-panel-wall-tour-front-content .tour-place-text > span{
+    align-self: center;
+}
+
+.import-shard-panel-wall-shard-front-content-icon{
+    margin-bottom: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.import-shard-panel-wall-shard-front-content-icon .div-container{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    background-color: #FFFFFF;
+    align-content: center;
+}
+
+#tour-shard-import-container .import-wall{
+    align-self: center;
+    color: #43E7C5;
+    font-size: 24px;
+}
+
+.import-shard-panel-wall-shard-front-content-text{
+    font-size: 15px;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.import-shard-panel-wall-shard-front-content-plan{
+    display: none;
+}
+
+.tour-ele-decoration{
+    border: 2px solid #eceff1;
+    border-radius: 4px;
+}
+
+.tour-cl-cnt{
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    position:relative;
+}
+
+.tour-cl-cnt:not(:first-child) {
+    left:-10px;
+}
+.tour-cl-cnt img{
+    border:1px solid #eceff1;
+    background: #ffffff;
+}
+
+.tour-cls-cnt{
+    display: table;
+    margin: 0 auto;
+}
+
+#bottomBarPlan{
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    display: none;
+    background: #FFFFFF;
+    border-top: 1px solid #eceff1;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+}
+
+#bottomBarPlan .left{
+    width: 40%;
+    height: 100%;
+    float: left;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 1%;
+}
+
+#bottomBarPlan .center{
+    width: 20%;
+    height: 100%;
+    float: left;
+    display: flex;
+    justify-content: center;
+}
+
+#bottomBarPlan .right{
+    width: 40%;
+    height: 100%;
+    float: left;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1%;
+}
+
+#bottomBarPlan .right > span {
+    align-self: center;
+}
+
+#bottomBarPlan .left > span{
+    align-self: center;
+}
+
+#bottomBarPlan .left > span.spaced{
+    margin-right: 2%;
+}
+
+#bottomBarPlan .place-icon{
+    color: #3ce9b7;
+    font-size: 28px;
+}
+
+#bottomBarPlan .left > span.counter{
+    align-self: center;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    background: #78909C;
+    width: 40px;
+    border-radius: 20px;
+    color: #FFFFFF;
+    border: none;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+}
+
+#bottomBarPlan .left > span > p.shard-added-details{
+    margin:0;
+}
+
+#bottomBarPlan .left > span.counter > p{
+    align-self: center;
+}
+
+#bottomBarPlan .center > button{
+    align-self: center;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    background: #FFFFFF;
+    width: 100px;
+    border-radius: 20px;
+    color: #000000;
+    border: 1px solid;
+    border-color: lightgrey;
+    font-size: 12px;
+    display: flex;
+}
+
+#bottomBarPlan .center > button > span{
+    align-self: center;
+}
+
+.no-results{
+    margin-left: 23%;
+    margin-top: 20%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    color: #455a64;
+}
+
+.no-results .title{
+    width: 100%;
+    align-self: center;
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: 100;
+}
+
+.no-results .subtitle{
+    width: 100%;
+    align-self: center;
+    font-size: 16px;
+    margin-bottom: 25px;
+}

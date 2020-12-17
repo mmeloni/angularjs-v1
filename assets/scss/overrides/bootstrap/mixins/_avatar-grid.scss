@@ -1,0 +1,14 @@
+@mixin avatar-grid-avatar($col-avatar-width) {
+    position: relative;
+    min-height: 1px;
+    padding-left:  $grid-gutter-width / 2;
+    padding-right: $grid-gutter-width / 2;
+    float: left;
+    width: $col-avatar-width;
+}
+
+@mixin avatar-grid-main($col-main-width) {
+    width: $col-main-width;
+    padding-left: 0;
+    line-height: 1.3 // for design's sake
+}

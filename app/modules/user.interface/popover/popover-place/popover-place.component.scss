@@ -1,0 +1,11 @@
+@import '../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+@import '../../../../../assets/scss/overrides/bootstrap/variables';
+
+article {
+    width: $popover-max-width - $grid-gutter-width;
+}
+
+article.loading {
+    min-height: 300px;
+    align-items: center;
+}

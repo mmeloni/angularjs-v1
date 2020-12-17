@@ -1,0 +1,22 @@
+.lazy-users-list-wrapper {
+    position: relative;
+    .list-item {
+        float: left;
+        width: 100%;
+        margin-right: 20px;
+        @media screen and (min-width: 769px) {
+            max-width: 330px;
+        }
+        @media screen and (min-width: 1024px) {
+            max-width: 300px;
+        }
+        @media screen and (min-width: 1280px) {
+            max-width: 295px;
+            margin-right: 10px;
+        }
+        @media screen and (min-width: 1440px) {
+            max-width: 330px;
+            margin-right: 20px;
+        }
+    }
+}

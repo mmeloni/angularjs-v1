@@ -1,0 +1,67 @@
+@import "../../../../assets/scss/utils/mixins";
+
+.shard-place-details {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 16px 10px 0;
+    z-index: 1;
+    height: 33px;
+    .place-name {
+        height: 16px;
+        text-transform: uppercase;
+        display: inline-block;
+        font-weight: bold;
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 14px;
+        color: white;
+        margin: 0;
+        line-height: 16px;
+    }
+    .shard-place-icon {
+        height: 16px;
+        line-height: 16px;
+        font-size: 14px;
+        display: inline-block;
+        width: 16px;
+        background-size: 16px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        &.shard-place-icon-stage {
+            background: #43e8c6;
+            @include css3-prefix(mask, url(../../../assets/icons/place.svg) no-repeat center center);
+            @include css3-prefix(mask-size, 16px);
+        }
+        &.shard-place-icon-tour {
+            background: #2082fe;
+            @include css3-prefix(mask, url(../../../assets/icons/tour.svg) no-repeat center center);
+            @include css3-prefix(mask-size, 16px);
+        }
+        &.shard-place-icon-hotel {
+            background: #ff5e3a;
+            @include css3-prefix(mask, url(../../../assets/icons/hotel.svg) no-repeat center center);
+            @include css3-prefix(mask-size, 16px);
+        }
+        &.shard-place-icon-attraction {
+            background: #d500c8;
+            @include css3-prefix(mask, url(../../../assets/icons/attraction.svg) no-repeat center center);
+            @include css3-prefix(mask-size, 16px);
+        }
+    }
+}
+
+.popover-item {
+    background: white;
+    padding: 15px;
+    position: absolute;
+    z-index: 101;
+    bottom: 40px;
+    left: 50%;
+    @include transform(translateX(-50%));
+    @include border-radius();
+    @include box-shadow($x: 0px, $y: 1px, $blur: 3px, $color: rgba(0, 0, 0, .2));
+}
+

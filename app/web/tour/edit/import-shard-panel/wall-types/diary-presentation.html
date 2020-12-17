@@ -1,0 +1,17 @@
+<div class="travel-box-file" ng-switch on="activeOverlay" ng-repeat="shard in shards track by shard.id">
+	<wn-image shard=shard img-format="'_square_'" err-src="../assets/img/shard-empty.png"></wn-image>
+	<div class="overlay dark confirm-panel" ng-switch-default>
+		<div class="icon-wrapper"><span class="wn-icon wn-icon-place"></span></div>
+		<div class="label-wrapper">{{shard.geoplace.title}}</div>
+		<div class="panel-actions">
+			<button class="ui-action-button expanded primary" ng-click="selectSingleShard(shard)">Add</button>
+		</div>
+	</div>
+</div>
+<div ng-show="shards.length === 0" class="no-results">
+	<div class="title">{{ translation.noResultForKeyword }}!</div>
+	<div class="subtitle">{{ translation.tryAnotherKeyword }}!</div>
+	<div class="button">
+		<button class="ui-action-button expanded primary">{{ translation.retry }}</button>
+	</div>
+</div>

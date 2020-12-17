@@ -1,0 +1,77 @@
+<wn-navbar-social [labels]="vmTourView.translation"></wn-navbar-social>
+
+<div class="state-wrapper has-navbar">
+    <section id = "tourPhotoButtonSection">
+            <div class="tour-head-image-container">
+                <div class="tour-head-text-opacity"></div>
+                <div class="tour-head-text">
+                    <h2 class="tour-head-text-element title">{{ vmTourView.tour.title || 'Set title' }}</h2>
+                    <span class="tour-head-text-element description">{{ vmTourView.tour.description || 'Set description' }}</span>
+                    <div class="tour-owner-data tour-head-text-element">
+                        <div class="tour-owner-data-image">
+                            <wn-image class="tour-owner-data-image-img" img-format="'_avatar_'" user=vmTourView.tour.user err-src="../assets/img/user_empty.png"></wn-image>
+                        </div>
+                        <div class="tour-owner-data-name">by {{ vmTourView.tour.user.username | uppercase }}</div>
+                    </div>
+                </div>
+                <wn-image class="tour-head-image" img-format="'_cover_tour_'" shard=vmTourView.tour err-src="../assets/img/shard-empty.png"></wn-image>
+            </div>
+
+            <div class="tour-people-and-button-container">
+                <div class="people-in-tour">
+                    <div class="people-in-tour-text">
+                        {{ ::vmTourView.translation.peopleInTour }}
+                    </div>
+                    <div class="people-in-tour-avatar-images">
+                        <wn-image class="people-in-tour-avatar-image" ng-repeat="participant in vmTourView.participants track by $index" user=participant img-format="'_avatar_'" err-src="../assets/img/user_empty.png"></wn-image>
+                    </div>
+                </div>
+
+                <div class="action-button-in-tour">
+                    <button ng-show="vmTourView.showLeave" class="ui-action-button expanded wn-btn-neutral" type="button" ng-click="vmTourView.leaveTour(vmTourView.tourId)">{{ ::vmTourView.translation.leave }}</button>
+                </div>
+            </div>
+    </section>
+
+    <section id = "tourTimelineSection">
+        <wn-timeline ng-if="vmTourView.tour.timeline.length > 0"
+                ng-disabled=true
+                ng-model="vmTourView.tour.timeline"
+                on-node-clicked="vmTourView.clickHandler(node, tree)">
+        </wn-timeline>
+    </section>
+
+    <div id="tourViewContent" >
+        <section class="place-section" id="tourViewSection-{{ $index }}" ng-repeat="mainstage in vmTourView.tour.timeline track by $index" ng-switch="mainstage.model.category">
+            <div ng-switch-when="shard">
+
+                <div class="place-image">
+                    <wn-image class="cover" img-format="'_quad_shard_'" place=mainstage.model err-src="../assets/img/shard-empty.png"></wn-image>
+                    <div class="title">{{ mainstage.model.name }}</div>
+                </div>
+
+                <div class="place-shard-container">
+                    <wn-grid
+                        grid-identity="$index"
+                        ng-model="mainstage.shardsCollection"
+                        tile-tmpl-url="web/commons/shard/types/shard.html"
+                        tiles-controller="ShardController">
+                    </wn-grid>
+                </div>
+
+            </div>
+
+            <div ng-switch-when="vehicle" ng-class="mainstage.model.resultSelected.trip !== undefined ? 'vehicle-section' : ''" ng-if="mainstage.model.resultSelected.trip !== undefined">
+                <wn-vector-shardifier
+                        index="$index"
+                        model="mainstage.model"
+                        vectors-bit="mainstage.model.resultSelected.bm"
+                        distance="mainstage.model.resultSelected.distance"
+                        price="mainstage.model.resultSelected.price"
+                        duration="mainstage.model.resultSelected.duration">
+                </wn-vector-shardifier>
+            </div>
+        </section>
+    </div>
+
+</div>

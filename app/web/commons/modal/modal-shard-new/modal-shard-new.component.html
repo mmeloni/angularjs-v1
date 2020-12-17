@@ -1,0 +1,104 @@
+<wn-modal-button-dismiss></wn-modal-button-dismiss>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default" wnFileUploadInput [wnFileUploadInputFilter]="applyFilters">
+                <span class="wn-icon wn-icon-camera-place vertical-align-bottom"></span>&#32;
+                {{ labels.addPicture }}
+            </button>
+        </div>
+        <p class="col-md-8 help-block margin-top-grid margin-bottom-none text-right">
+            <span class="wn-icon wn-icon-circle wn-icon-sm wn-icon-info"></span>&#32;{{ labels.newShard.helpText }}
+        </p>
+    </div>
+
+    <form #shardForm="ngForm" novalidate>
+        <div class="form-group margin-vertical-grid">
+            <label for="description" class="sr-only">{{ labels.description }}</label>
+            <textarea id="description"
+                        name="description"
+                        class="form-control"
+                        maxlength="200"
+                        placeholder="{{ labels.describeYourShard }}"
+                        style="resize: none;"
+                        [(ngModel)]="model.description"
+                        wnURLWatcher [wnURLWatcherCallback]="scrapUrl">
+            </textarea>
+        </div>
+
+        <wn-file-upload-preview-item
+            [file]="model.file"
+            [fileId]="0"
+            cssClasses="margin-vertical-grid text-center"
+            filePreviewStyle="max-width: 100%; max-height: 250px; border-radius: 6px;"
+            (removeFromList)="removeFile($event)"
+        ></wn-file-upload-preview-item>
+
+        <div class="form-group margin-vertical-grid">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span [ngClass]="selectedPoiIconClasses"></span>
+                </span>
+
+                <input *ngIf="filteredPois.length === 0"
+                        type="text"
+                        class="form-control col-sm-11"
+                        id="poi"
+                        name="poi"
+                        [placeholder]="labels.selectAPosition"
+                        [(ngModel)]="model.poi"
+                        [ngbTypeahead]="searchLocation"
+                        [resultTemplate]="poiTemplate"
+                        [inputFormatter]="formatLocation"
+                        [showHint]="true"
+                        [editable]="false"
+                        required />
+
+                <input *ngIf="filteredPois.length > 0"
+                        type="text"
+                        class="form-control col-sm-11"
+                        id="poi"
+                        name="poi"
+                        [placeholder]="labels.selectAPosition"
+                        [(ngModel)]="model.poi"
+                        [ngbTypeahead]="searchFilteredPois"
+                        (focus)="onFocus($event)"
+                        [resultTemplate]="poiTemplate"
+                        [inputFormatter]="formatLocation"
+                        [showHint]="true"
+                        [editable]="false"
+                        required />
+            </div>
+        </div>
+
+        <div class="form-group margin-top-grid margin-bottom-none text-right">
+            <wn-button
+                cssClasses="btn btn-default"
+                [label]="labels.cancel"
+                (click)="dismiss($event)"
+            ></wn-button>
+
+            <wn-button
+                cssClasses="btn btn-primary margin-left-grid"
+                [label]="labels.shardIt"
+                [disabled]="!(shardForm.form.valid === true && isPictureChosen === true)"
+                [isLoading]="isLoadingSubmitButton"
+                (click)="onSubmit($event)"
+            ></wn-button>
+        </div>
+    </form>
+</div>
+<div class="modal-footer" *ngIf="progressBar.isUploading === true">
+    <ngb-progressbar [max]="100"
+                        [value]="progressBar.value"
+                        [type]="progressBar.type"
+                        [striped]="progressBar.isStriped"
+                        [animated]="progressBar.isAnimated">
+        {{ progressBar.label }}
+    </ngb-progressbar>
+</div>
+
+<template #poiTemplate let-result="result">
+  <span [ngClass]="['wn-icon', 'wn-icon-' + result.tagType, 'wn-icon-' + result.tagType + '-color', 'vertical-align-middle']"></span> {{ result.label }}
+</template>

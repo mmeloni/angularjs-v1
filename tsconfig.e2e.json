@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": false,
+        "inlineSourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": false,
+        "noImplicitAny": false,
+        "suppressImplicitAnyIndexErrors": true,
+        "outDir": "build/e2e-compiled"
+    },
+    "exclude": [
+        "node_modules",
+        "doc",
+        "**/*.spec.ts"
+    ],
+    "include": [
+        "app/e2e/**/*.e2e.ts"
+    ]
+}

@@ -1,0 +1,13 @@
+@import '../../../../../assets/scss/overrides/bootstrap/variables';
+
+$thumbnail-height: $grid-gutter-width + ($thumbnail-padding * 2) + 2px + 100px; // .margin-vertical-grid + .thumbnail padding & border + preview img height;
+$rows-needed-to-host-10-files: 2;
+$peek-a-boo-last-row-height: $thumbnail-height / 2;
+
+$file-preview-container-height: $thumbnail-height * $rows-needed-to-host-10-files + $peek-a-boo-last-row-height;
+
+.file-preview-container {
+    height: $file-preview-container-height;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}

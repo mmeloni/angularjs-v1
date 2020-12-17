@@ -1,0 +1,25 @@
+<div class="clearfix lazy-grid-wrapper">
+    <div class="lazy-shards-grid clearfix" *ngIf="grid.length > 0"
+         [ngClass]="{'items-4': itemsPerRow === 4, 'items-3': itemsPerRow ===3}"
+         infinite-scroll
+         [infiniteScrollDistance]="0.2"
+         [infiniteScrollThrottle]="250"
+         (scrolled)="fetchNextPageData()">
+        <div *ngFor="let item of grid" [ngClass]="{
+        'grid-item': true,
+        'grid-item-sm': item.size === 'single',
+        'grid-item-md': item.size === 'double',
+        'last-in-a-row': item.lastInARow
+    }">
+            <wn-shard [data]="item.shard" [size]="item.size"
+                      [translations]="translations"></wn-shard>
+        </div>
+    </div>
+    <div *ngIf="isFetching" class="grid-is-loading">
+        <div class="grid-spinner"></div>
+    </div>
+
+    <div *ngIf="gotEmptyResp && showEmptyResponseMessage" class="no-more-shards">
+        <p>{{emptyResponseMessage}}</p>
+    </div>
+</div>

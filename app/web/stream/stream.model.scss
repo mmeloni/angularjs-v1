@@ -1,0 +1,172 @@
+@import '../../../assets/scss/overrides/bootstrap/variables';
+
+.shard-o-saic {
+    position: relative;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 12px 0 $tutorial-message-box-height 0; // making room for when tutorial messages appear;
+
+    &:after {
+        clear: both;
+        content: '';
+        display: block;
+    }
+}
+
+.shard {
+    border: none;
+    border-radius: 6px;
+    float: left;
+    height: 480px;
+
+    /* Shadows */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+
+    &.active {
+        opacity: 1;
+    }
+
+    &.sm {
+        width: 316px;
+    }
+
+    &.md {
+        width: 656px;
+    }
+
+    &.lg {
+        width: 996px;
+    }
+
+    >.shard-info-wrapper {
+        position: relative;
+        height: 480px;
+        width: auto;
+
+        img {
+            &.wn-tile-bg {
+                height: 480px;
+                border-radius: 6px;
+            }
+        }
+
+        .wn-tile-bg img {
+            height: 480px;
+            border-radius: 6px;
+        }
+
+
+        header.shard-header {
+            padding: 10px;
+            border-radius: 6px 6px 0 0;
+            height: 60px;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 11;
+
+            .hover {
+                position: absolute;
+                top: -10px;
+                right: 10px;
+                transition: all 0.3s;
+                opacity: 0;
+            }
+
+            &:hover{
+                .hover{
+                    opacity: 1;
+                    top: 10px;
+                }
+            }
+
+            #shard-dropdown {
+                color: #ffffff;
+            }
+        }
+
+        footer {
+            border-radius: 0 0 6px 6px;
+            height: 45px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            z-index: 10;
+            font-size: 14px;
+            font-weight: normal;
+            color: #ffffff;
+            padding: 10px;
+
+            .shard-poi-info {
+                line-height: 20px;
+                display: flex;
+                flex-direction: row;
+                align-content: center;
+                justify-content: space-around;
+            }
+
+            .shard-poi-name {
+                font-weight: bold;
+                text-transform: uppercase;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 200px;
+            }
+
+            .shard-social-actions {
+                line-height: 20px;
+                display: flex;
+                flex-direction: row;
+                align-content: center;
+                justify-content: space-around;
+            }
+
+            .shard-info-numbers {
+                display: none;
+            }
+
+        }
+    }
+
+    //--TODO: move to profile (???)
+    &.wn-profile-sidebar {
+        height: auto;
+        opacity: 1;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        word-wrap: break-word;
+        border-radius: 6px;
+
+        &.dark {
+            color: #ffffff;
+            height: 100%;
+            align-items: center;
+            word-wrap: break-word;
+
+            background: -moz-linear-gradient(top, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.35) 100%);
+            background: -webkit-linear-gradient(top, rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.35) 100%);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.1) 50%,rgba(0,0,0,0.35) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#a6000000',GradientType=0 );
+
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        }
+    }
+}
+
+.shard-type-icon{
+    position: absolute;
+    bottom: 4px;
+    right: 0;
+    color: rgb(255, 255, 255);
+}

@@ -1,0 +1,8 @@
+<div class="text-collapsed clearfix">
+    <p [hidden]="showAll" [innerHTML]="textTruncated"></p>
+    <p [hidden]="!showAll" [innerHTML]="text"></p>
+    <a class="btn-read-more" (click)="eventShowAll($event)" *ngIf="isLong">
+        <span *ngIf="!showAll">Read more</span>
+        <span *ngIf="showAll">Read less</span>
+    </a>
+</div>

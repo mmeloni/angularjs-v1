@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="panel-subscription">
+                <div class="row text-center logo">
+                    <span class="wn-logo"> <img src="../assets/img/logo-wayonara.svg" /></span>
+                </div>
+                <div class="row text-center logo-caption">
+                    <span>{{ ::translation.lets_start_with_your_passport }}</span>
+                </div>
+                <div class="row">
+                    <form id="formSubscription" name="formSubscription" autocomplete="off" class="panel-body form-subscription" role="form" ng-submit="subscribe(formSubscription.$valid)" novalidate>
+                        <input type="text" class="hidden" />
+                        <input type="password" class="hidden" />
+                        <input type="email" class="hidden" />
+                        <div class="row">
+                            <div class="form-group">
+                                <wn-input
+                                    input-controller="InputTypeController"
+                                    wn-input-id="firstname"
+                                    wn-input-type="text"
+                                    wn-input-label="{{ ::translation.firstname }}"
+                                    wn-input-model="registrationData.firstname"
+                                    wn-input-maxlength="150"
+                                    wn-input-required="true">
+                                </wn-input>
+                                <span ng-show="formSubscription.firstname.$dirty && formSubscription.firstname.$error.required" class="help-block">{{ ::translation.firstname_is_required }}</span>
+                                <span ng-show="formSubscription.firstname.$dirty && formSubscription.firstname.$error.maxlength" class="help-block">{{ ::translation.firstname_too_long }}</span>
+                            </div>
+
+                            <div class="form-group">
+                                <wn-input
+                                    input-controller="InputTypeController"
+                                    wn-input-id="username"
+                                    wn-input-type="text"
+                                    wn-input-label="{{ ::translation.username }}"
+                                    wn-input-model="registrationData.username"
+                                    wn-input-maxlength="15"
+                                    wn-input-required="true">
+                                </wn-input>
+                                <span ng-show="formSubscription.username.$dirty && formSubscription.username.$error.required" class="help-block">{{ ::translation.username_is_required }}</span>
+                                <span ng-show="formSubscription.username.$dirty && formSubscription.username.$error.maxlength" class="help-block">{{ ::translation.username_too_long }}</span>
+                            </div>
+
+                            <div class="form-group">
+                                <wn-input
+                                    input-controller="InputTypeController"
+                                    wn-input-id="email"
+                                    wn-input-type="email"
+                                    wn-input-label="{{ ::translation.email }}"
+                                    wn-input-model="registrationData.email"
+                                    wn-input-maxlength="160"
+                                    wn-input-required="true">
+                                </wn-input>
+                                <span ng-show="formSubscription.email.$dirty && formSubscription.email.$error.required" class="help-block">{{ ::translation.email_address_is_required }}</span>
+                                <span ng-show="formSubscription.email.$dirty && formSubscription.email.$error.maxlength" class="help-block">{{ ::translation.email_address_too_long }}</span>
+                            </div>
+
+                            <div class="form-group">
+                                <wn-input
+                                    input-controller="InputTypeController"
+                                    wn-input-id="password"
+                                    wn-input-type="password"
+                                    wn-input-label="Password"
+                                    wn-input-model="registrationData.password"
+                                    wn-input-minlength="8"
+                                    wn-input-maxlength="160"
+                                    wn-input-required="true">
+                                </wn-input>
+                                <span ng-show="formSubscription.password.$dirty && formSubscription.password.$error.required" class="help-block">{{ ::translation.password_is_required }}</span>
+                                <span ng-show="formSubscription.password.$dirty && formSubscription.password.$error.minlength" class="help-block">{{ ::translation.password_too_short }}</span>
+                                <span ng-show="formSubscription.password.$dirty && formSubscription.password.$error.maxlength" class="help-block">{{ ::translation.password_too_long }}</span>
+                            </div>
+                        </div>
+                        <div class="row disclaimer">
+                            <span>{{ ::translation.by_joining_wayonara_you_agree_to_our }} <a href="http://about.wayonara.com/terms/">{{ ::translation.terms_of_service }}</a>, <a href="http://about.wayonara.com/privacy/">{{ ::translation.privacy_policy }}</a> {{ ::translation.and }} <a href="http://about.wayonara.com/community-guidelines/">{{ ::translation.community_guidelines }}</a></span>
+                        </div>
+                        <div class="row text-center" ng-show="!remoteValidation">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="alert alert-danger">{{ subscriptionStatus }}</div>
+                            </div>
+                        </div>
+                        <div class="row ui-action-container">
+                            <button class="btn btn-lg btn-primary btn-block wn-btn wn-btn-primary" type="submit" ng-disabled="formSubscription.$invalid || loading">{{ ::translation.signup_on }} Wayonara</button>
+                            <md-progress-circular md-mode="indeterminate" md-diameter="35px" class="wn-spinner" ng-show="loading"></md-progress-circular>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="row text-center copyright">
+                    <span>Copyright &copy; Nextop Italia Srl </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel-shards affix hidden-sm hidden-xs">
+                <div class="sliding-shards"></div>
+            </div>
+        </div>
+    </div>
+</div>

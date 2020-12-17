@@ -1,0 +1,59 @@
+<div class="booking-error-modal-container">
+
+    <div class="modal-body">
+
+        <button class="booking-error-modal-close-button" type="button" tooltip-placement="bottom" uib-tooltip="{{ translation.close }}" ng-click="cancel()">
+            <span class="wn-icon wn-icon-delete"></span>
+        </button>
+
+        <div class="text-message">
+            <div class="title">{{title}}</div>
+            <div class="subtitle">{{subtitle}}</div>
+        </div>
+
+        <div class="generic-error-text" ng-if="bookingQuoteErrorToRenderizeVectors.length == 0">
+            {{ translation.tryLater }}
+        </div>
+        ​
+        <div ng-repeat="bookingQuoteErrorToRenderizeVector in bookingQuoteErrorToRenderizeVectors track by $index" class="tour-ele-decoration booking-error-row row margin-vertical-grid">
+            <div class="col-md-4 border-right text-center tour-results-navbar-ele no-padding">
+                <div class="row no-padding">
+                    <span class="col-md-5 ng-binding">
+                        {{bookingQuoteErrorToRenderizeVector.travelVector.buyableVector.origin.cityName}}
+                    </span>
+                    <div class="navbar-arrows col-md-2">
+                        <span class="wn-icon wn-icon-arrow-left result-row-secondary" aria-hidden="true"></span>
+                        <span class="wn-icon wn-icon-arrow-right result-row-secondary" aria-hidden="true"></span>
+                    </div>
+                    <span class="col-md-5 no-padding ng-binding">
+                        {{bookingQuoteErrorToRenderizeVector.travelVector.buyableVector.destination.cityName}}
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2  border-right text-center no-padding">
+                <div class="wn-datepicker">
+                    <div class="row no-padding">
+                        <div class="col-md-2 no-padding">
+                            <span class="wn-icon wn-icon-calendar wn-datepicker-gly result-row-secondary" aria-hidden="true"></span>
+                        </div>
+                        <div class="col-md-10 no-padding">
+                            <span class="wn-datepicker-gly ng-binding red-date" ng-class="{'red-date': true}">
+                                {{bookingQuoteErrorToRenderizeVector.travelVector.buyableVector.departureDate  | date : 'dd/MM/yyyy'}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 text-center tour-results-navbar-ele border-right ng-binding">
+                <span class="result-row-secondary">{{ translation.travelers }}</span>
+                1
+            </div>
+            <div class="col-md-2 tour-results-navbar-ele border-right text-center no-padding exception-class-height">
+                <span class="quoted-date-unavailable pull-right ng-scope" ng-if="true">{{bookingQuoteErrorToRenderizeVector.bookingQuoteError.message}}</span>
+            </div>
+            <div class="col-md-2 text-right tour-results-navbar-ele error-view-details-column">
+                <button class="ui-action-button expanded wn-btn-neutral" type="button" ng-click="viewDetails(bookingQuoteErrorToRenderizeVector.travelVector.timeLineId)">{{ translation.viewDetails }}</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="wayonara" default="build">
+    <property name="workspace" value="${basedir}" />
+    <property name="distdir" value="${basedir}/dist" />
+    <property name="packagedir" value="${workspace}/packages" />
+    <property name="builddir" value="${workspace}/build" />
+    <property environment="env" />
+
+    <target name="build" depends="clean, dist, version, post-dist, release" />
+
+    <target name="build-no-version" depends="clean, dist, release" />
+
+    <target name="clean" description="Cleanup build artifacts">
+        <delete dir="${packagedir}" />
+    </target>
+
+    <target name="dist">
+        <exec executable="npm" failonerror="true">
+            <arg value="run" />
+            <arg value="dist:${env.NPMENV}" />
+        </exec>
+    </target>
+
+    <target name="version">
+        <exec executable="npm" failonerror="true">
+            <arg value="version" />
+            <arg value="patch" />
+        </exec>
+    </target>
+
+    <target name="post-dist">
+        <property file="${builddir}/build.properties" prefix="buildfile" />
+        <exec executable="git" failonerror="true">
+            <arg value="push" />
+            <arg value="origin" />
+            <arg value="${env.GIT_LOCAL_BRANCH}" />
+        </exec>
+        <exec executable="git" failonerror="true">
+            <arg value="push" />
+            <arg value="origin" />
+            <arg value="${buildfile.VERSION}" />
+        </exec>
+    </target>
+
+    <target name="release" description="Create Release">
+        <tar destfile="${packagedir}/wayonara.tar.bz2" basedir="${distdir}" compression="bzip2" />
+    </target>
+</project>

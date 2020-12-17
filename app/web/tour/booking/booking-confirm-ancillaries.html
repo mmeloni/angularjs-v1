@@ -1,0 +1,62 @@
+
+    <div class="row">
+        <div class="col-md-3 text-center vector-primary-details">
+            <span>{{ ancillary.departureDate | momentTimeZone:'HH:mm':ancillary.origin.timezone }}</span>
+        </div>
+        <div class="col-md-2 text-center">
+            <button class="detail-tag">
+                <span class="wn-icon wn-icon-place place-detail-color"></span>
+            </button>
+        </div>
+        <div class="col-md-7 text-left vector-primary-details">
+            <span ng-if="ancillary.origin.iata">{{ ancillary.origin.iata }} </span>
+            <span> {{ ancillary.origin.name }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <span class="vector-connector {{ ancillary.bit | vectorClassPrinter }}-detail-color"></span>
+        </div>
+    </div>
+    <div class="row vector">
+        <div class="col-md-3 text-center vector-primary-details">
+            <span>{{ ancillary.duration | time:'mm':'hhh mmm':false}}</span>
+        </div>
+        <div class="col-md-2 text-center">
+            <button class="detail-tag">
+                <span class="wn-icon wn-icon-{{ ancillary.bit | vectorClassPrinter }} {{ ancillary.bit | vectorClassPrinter }}-detail-color"></span>
+            </button>
+        </div>
+        <div class="col-md-7 text-left ancillary-details">
+            <button type="button" class="ui-action-button expanded wn-btn-neutral btn-ancillary-vector ancillary-selected">
+                <span class="wn-icon wn-icon-{{ ancillary.bit | vectorClassPrinter }} {{ ancillary.bit | vectorClassPrinter }}-detail-color"></span>
+                <span ng-if="ancillary.agency">{{ ancillary.agency }} </span>
+                <span ng-if="!ancillary.agency">{{ translation.walking }}</span>
+            </button>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <span class="vector-connector {{ ancillary.bit | vectorClassPrinter }}-detail-color"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 text-center vector-primary-details">
+            <span>{{ ancillary.arrivalDate | momentTimeZone:'HH:mm':ancillary.destination.timezone }}</span>
+        </div>
+        <div class="col-md-2 text-center">
+            <button class="detail-tag">
+                <span class="wn-icon wn-icon-place place-detail-color"></span>
+            </button>
+        </div>
+        <div class="col-md-7 text-left vector-primary-details">
+            <span ng-if="ancillary.destination.iata">{{ ancillary.destination.iata }} </span>
+            <span> {{ ancillary.destination.name }}</span>
+        </div>
+    </div>
+
+
+
+
+
+

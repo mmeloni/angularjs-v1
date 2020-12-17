@@ -1,0 +1,38 @@
+@import '../../placeholder';
+
+.hotel-grid-item{
+
+    @extend %grid-item;
+
+    .content{
+
+        @extend %grid-item-headline;
+    }
+
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba(0,0,0,0.3);
+    }
+
+    .stats{
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+
+        wn-icon-label{
+            display: inline-block;
+        }
+    }
+
+    .type{
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
+
+}

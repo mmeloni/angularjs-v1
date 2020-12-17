@@ -1,0 +1,201 @@
+.tour-booking-recap-segment button.active{
+    background: #00C853;
+    border: 1px solid #00B34A;
+    box-shadow: 0 1px 1px 0 #008C3A;
+    color: #ffffff;
+}
+
+.tour-booking-recap-segment button.active:hover{
+    background: #01BB4E ;
+    border: 1px solid #00B34A;
+    box-shadow: 0px 1px 1px 0px #008C3A;
+    border-radius: 4px;
+}
+
+.not-salable-info{
+    background: #ECEFF1 ;
+    border-radius: 0px 0px 2px 2px;
+    border-top: 2px solid #CFD8DC;
+    border-left: 2px solid #CFD8DC;
+    border-right: 2px solid #CFD8DC;
+    border-bottom: 2px solid #CFD8DC;
+    padding: 10px;
+    margin-bottom: 22px;
+    position: relative;
+}
+
+.info-text.wn-icon-info{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 35px;
+}
+
+.not-salable-info p{
+    padding: 10px;
+}
+
+.tour-booking-recap-segment-left {
+    background: #ffffff;
+}
+
+.tour-booking-recap-segment-details{
+    background-color: $gray-lighter;
+    padding: 15px;
+}
+
+.booking-recap .trip-details-explode .tour-booking-recap-segment-details button.detail-tag{
+    margin-bottom: 0;
+}
+
+.booking-recap .info-field .info-text{
+    color: #78909C;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.booking-recap .commercial-offer-info{
+    width: 350px;
+    height: 50px;
+    background: #f5f7f8 none repeat scroll 0 0;
+    text-align: center;
+}
+
+.tour-booking-recap-segment button.commercial-offer-info{
+    margin-bottom: 15px;
+}
+
+.booking-recap .commercial-offer-info .info-text{
+    color: #78909C;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 50px;
+}
+
+.booking-recap .commercial-offer-info .info-text.wn-icon.wn-icon-info{
+    font-size: 32px;
+    line-height: 30px;
+}
+
+.tour-booking-recap-navbar-content{
+    line-height: 60px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.tour-booking-recap-navbar-content-travelers{
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.tour-booking-recap-navbar-title-travelers{
+    line-height: 60px;
+    font-size: 16px;
+    font-weight: 600;
+    color:#c7c7c7;
+}
+
+.tour-booking-recap-navbar{
+    height: 62px;
+}
+
+.tour-booking-recap-navbar .wn-icon{
+    font-size: 24px;
+}
+
+.tour-booking-recap-segment-title{
+    border:0px;
+    background-color: $brand-flight;
+    color:#FFF;
+    margin: 0 0 15px 0;
+    padding: 0 10px 0 10px;
+    height: 40px;
+}
+
+.tour-booking-recap-segment-title.train{
+    background-color: $brand-train;
+}
+
+.tour-booking-recap-segment .tour-booking-recap-segment-row{
+    margin: 0 0 15px 0;
+}
+
+.tour-booking-recap-segment-content{
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.recap-row-title{
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 600;
+    color:#c7c7c7;
+    margin-bottom: 0;
+}
+.recap-row-content{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+.tour-booking-recap-itinerary-resume-title{
+    background-color:#f5f7f8;
+    color:#e4e9eb;
+}
+
+.tour-booking-recap-itinerary-resume-segment{
+    height: 60px;
+    line-height: 60px;
+    background-color: #eceff1;
+}
+
+.info-field.price-change{
+    padding: 15px;
+    text-align: left;
+}
+
+.info-field.price-change.bad{
+    background: #eceff1 none repeat scroll 0 0;
+}
+
+.info-field.price-change.good{
+    background: #00c853 none repeat scroll 0 0;
+}
+
+.info-field.price-change.good .info-text{
+    color:white;
+}
+
+.info-field.price-change span.info-text.wn-icon.wn-icon-info{
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.fare-row-title{
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 600;
+    color:#c7c7c7;
+    margin-bottom: 0;
+    padding: 10px 0px;
+}
+.fare-row-content{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 30px;
+    padding: 10px 0px;
+    height: 60px;
+}
+.btn-fare-select{
+    padding: 0px 40px;
+    height: 40px;
+}
+.fareOffers{
+    padding: 12px 12px;
+}
+
+md-tooltip .md-content {
+    height: auto;
+}

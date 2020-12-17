@@ -1,0 +1,91 @@
+/* === BREADCRUMBS === */
+.wn-breadcrumbs{
+  background-color: #FFFFFF;
+  text-align: center;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+
+  .wn-breadcrumb {
+    float: left;
+    background-color: #b0bec5;
+
+    &.home {
+      background-image: url('/assets/img/bc_home.svg');
+      background-color: transparent;
+      background-repeat: no-repeat;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+      height: 30px;
+      width: 60px;
+      z-index:10;
+    }
+
+    &.stage {
+      position: relative;
+      background-repeat: no-repeat;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      line-height: 30px;
+      color: #FFFFFF;
+      height: 30px;
+      padding-right: 10px;
+      display: inline-block;
+      margin-left: 2px;
+      margin-right: 10px;
+      background-color: #6b6eff;
+
+      &:before {
+        background-color: transparent;
+        background-repeat: no-repeat;
+        content: '';
+        cursor: pointer;
+        height: 30px;
+        position: absolute;
+        width: 12px;
+        top:0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        left: -10px;
+        background-image: url('/assets/img/bc_t_1lvl.svg');
+      }
+
+      &:after {
+        background-color: transparent;
+        background-repeat: no-repeat;
+        content: '';
+        cursor: pointer;
+        height: 30px;
+        position: absolute;
+        width: 12px;
+        top:0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        right: -10px;
+        background-image: url('/assets/img/bc_h_1lvl.svg');
+      }
+
+      &:last-child {
+        &:before {
+          background-image: url('/assets/img/bc_t_2lvl.svg');
+        }
+
+        &:after {
+          background-image: url('/assets/img/bc_h_2lvl.svg');
+        }
+      }
+    }
+
+    .wn-icon {
+      font-size: 24px;
+      line-height: 24px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+  }
+}

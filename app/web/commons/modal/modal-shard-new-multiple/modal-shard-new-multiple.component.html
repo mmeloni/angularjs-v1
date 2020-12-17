@@ -1,0 +1,48 @@
+<wn-modal-button-dismiss></wn-modal-button-dismiss>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default" [wnFileUploadInput]="true" [wnFileUploadInputFilter]="applyFilters">
+                <span class="wn-icon wn-icon-camera-place vertical-align-bottom"></span>&#32;
+                {{ labels.addPictures }}
+            </button>
+        </div>
+        <p class="col-md-8 help-block margin-top-grid margin-bottom-none text-right">
+            <span class="wn-icon wn-icon-circle wn-icon-sm wn-icon-info"></span>&#32;{{ labels.newShardMultiple.helpText }}
+        </p>
+    </div>
+
+    <form #shardForm="ngForm" novalidate>
+        <div class="form-group row margin-vertical-grid file-preview-container">
+            <wn-file-upload-preview-list
+                [filesToPreview]="model.files"
+                (removeFromList)="removeFile($event)"
+            ></wn-file-upload-preview-list>
+        </div>
+        <div class="form-group margin-top-grid margin-bottom-none text-right">
+            <wn-button
+                cssClasses="btn btn-default"
+                [label]="labels.cancel"
+                (click)="dismiss($event)"
+            ></wn-button>
+
+            <wn-button
+                cssClasses="btn btn-primary margin-left-grid"
+                [label]="labels.shardIt"
+                [disabled]="arePicturesChosen === false"
+                [isLoading]="isLoadingSubmitButton"
+                (click)="onSubmit($event)"
+            ></wn-button>
+        </div>
+    </form>
+</div>
+<div class="modal-footer" *ngIf="progressBar.isUploading === true">
+    <ngb-progressbar [max]="100"
+                        [value]="progressBar.value"
+                        [type]="progressBar.type"
+                        [striped]="progressBar.isStriped"
+                        [animated]="progressBar.isAnimated">
+        {{ progressBar.label }}
+    </ngb-progressbar>
+</div>

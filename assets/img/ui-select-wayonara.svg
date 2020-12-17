@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="9px" height="20px" viewBox="0 0 9 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>selector</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Edit-Profile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Edit-Profile-v1.4" sketch:type="MSArtboardGroup" transform="translate(-528.000000, -1490.000000)" fill="#B0BEC5">
+            <g id="Cellphone" sketch:type="MSLayerGroup" transform="translate(388.000000, 1470.000000)">
+                <g id="05-+-selector" transform="translate(105.000000, 19.000000)" sketch:type="MSShapeGroup">
+                    <path d="M35.1894238,13.778017 C34.6792551,12.7986895 35.1582318,12.0047877 36.2593933,12.0047877 L42.7406067,12.0047877 C43.8417032,12.0047877 44.3235901,12.7932277 43.8105762,13.778017 L40.4237421,20.279435 C39.9135734,21.2587625 39.0892718,21.2642243 38.5762579,20.279435 L35.1894238,13.778017 Z M43.8105762,8.22198303 C44.3207449,9.20131053 43.8417682,9.99521234 42.7406067,9.99521234 L36.2593933,9.99521234 C35.1582968,9.99521234 34.6764099,9.20677231 35.1894238,8.22198303 L38.5762579,1.72056501 C39.0864266,0.741237506 39.9107282,0.73577573 40.4237421,1.72056501 L43.8105762,8.22198303 Z" id="selector"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

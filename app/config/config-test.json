@@ -1,0 +1,5 @@
+{
+    "awsWayonaraBucket": "wayonara-impossibru-test-buckit",
+    "awsCloudFrontDistributionId": "XxXxXxXxXx",
+    "notificationServerURL": "foo"
+}

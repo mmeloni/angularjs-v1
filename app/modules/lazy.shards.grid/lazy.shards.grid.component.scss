@@ -1,0 +1,108 @@
+.lazy-grid-wrapper {
+    .no-more-shards {
+        text-align: center;
+        p {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-style: italic;
+        }
+    }
+    .lazy-shards-grid {
+        position: relative;
+        max-width: 770px;
+        width: 100%;
+        padding: 0 15px;
+        margin: 0 auto;
+        @media screen and (min-width: 768px) {
+            padding: 0 30px;
+        }
+        @media screen and (min-width: 1024px) {
+            padding: 0 25px 30px 25px;
+            max-width: 1px*(310*3)+(20*2)+(25*2);
+        }
+        @media screen and (min-width: 1280px) {
+            max-width: 1220px; // 1200 ???
+            padding: 0 0 30px 0;
+        }
+        @media screen and (min-width: 1440px) {
+            max-width: 1400px;
+            padding: 0 0 30px 0;
+        }
+        .grid-item {
+            position: relative;
+            width: 100%;
+            margin: 0 auto 20px auto;
+            max-width: 340px;
+            @media screen and (min-width: 768px) {
+                margin-right: 25px;
+                float: left;
+                &:nth-child(2n) {
+                    margin-right: 0;
+                }
+            }
+            @media screen and (min-width: 1024px) {
+                max-width: 310px;
+                margin-right: 20px;
+                float: left;
+                &:nth-child(2n) {
+                    margin-right: 20px;
+                }
+                &:nth-child(3n) {
+                    margin-right: 0;
+                }
+            }
+            @media screen and (min-width: 1280px) {
+                max-width: 285px;
+                margin-right: 20px;
+                float: left;
+                &:nth-child(2n) {
+                    margin-right: 20px;
+                }
+                &:nth-child(3n) {
+                    margin-right: 20px;
+                }
+                &.grid-item-md {
+                    max-width: 20+285px*2;
+                }
+                &.last-in-a-row {
+                    margin-right: 0;
+                }
+            }
+            @media screen and (min-width: 1440px) {
+                max-width: 330px;
+                margin-right: 20px;
+                float: left;
+                &:nth-child(2n) {
+                    margin-right: 20px;
+                }
+                &:nth-child(3n) {
+                    margin-right: 20px;
+                }
+                &.grid-item-md {
+                    max-width: 20+330px*2;
+                }
+            }
+        }
+        &.items-3 {
+            @media screen and (min-width: 1280px) {
+                .grid-item.last-in-a-row {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .grid-is-loading {
+        padding: 10px 0;
+        text-align: center;
+        .grid-spinner {
+            $size: 60px;
+            margin: 20px auto;
+            width: $size;
+            height: $size;
+            background: url("../../../assets/img/spinner.svg") no-repeat center center;
+            background-size: $size*2;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<article class="row">
+    <header class="col-md-4 padding-vertical-grid">
+        <wn-action-bar-item
+            [label]="headingItem.label"
+            [value]="headingItem.value"
+        ></wn-action-bar-item>
+    </header>
+
+    <section
+        class="padding-vertical-grid"
+        [ngClass]="{ 'col-md-6': asideItem !== undefined, 'col-md-8': asideItem === undefined }">
+        <wn-statistics-bar [items]="mainItems"></wn-statistics-bar>
+    </section>
+
+    <section
+        class="col-md-2 padding-vertical-grid border-left-gray-light"
+        *ngIf="asideItem !== undefined">
+        <wn-action-bar-item
+            [label]="asideItem.label"
+            [value]="asideItem.value"
+        ></wn-action-bar-item>
+    </section>
+</article>

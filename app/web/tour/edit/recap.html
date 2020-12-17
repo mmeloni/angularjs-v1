@@ -1,0 +1,234 @@
+<div id="tourMainCnt">
+    <div class="tour-main-cnt-box">
+        <!-- Toolbar Section Start -->
+        <div class="tour-toolbar-cnt tour-ele-decoration">
+
+            <uib-tabset>
+                <uib-tab class="tab-toolbar"  index="{{direction}}"  active="tab.active" heading="{{direction == 0? 'Outbound':'Return'}}" ng-repeat="(direction,statsgrp) in [resultSelected.totalStats.outboundSegment, resultSelected.totalStats.returnSegment] | filter:{returnSegment:'!'}" select="refreshSlider()" >
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ translation.transport }}
+                                </div>
+                                <div ng-if="direction == 0 ">
+                                    <wn-vector-filter available-vector-bm="statsgrp.inv_vecs" wn-vector-filter-model="models.skipOutboundVectors"></wn-vector-filter>
+                                </div>
+                                <div ng-if="direction == 1 ">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ translation.maxStops }}
+                                </div>
+                                <div ng-if="direction == 0 ">
+                                    <rzslider class="wn-slider" rz-slider-model="models.maxStopsNumberOut" rz-slider-options="{floor: 0, ceil: statsgrp.maxStop, onChange: filterOutStops }"></rzslider>
+                                </div>
+                                <div ng-if="direction == 1 ">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ translation.departure }} -  {{ translation.arrival }}
+                                </div>
+                                <wn-slider wn-slider-model="deptime" wn-slider-high="arrtime" segment="statsgrp" on-change="updateTimeOutbound(attrs)"></wn-slider>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ translation.waitingTime }}
+                                </div>
+                                <rzslider class="wn-slider" rz-slider-model="models.maxWaitingTimeOut" rz-slider-options="{floor: 0, ceil: statsgrp.maxWT, onChange: filterMaxWaitingTimeOut}"></rzslider>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ translation.from }}
+                                </div>
+                                <div class="poi-filter" ng-repeat="startPoi in statsgrp.pois.start" >
+                                    <input type="checkbox" ng-change="syncFrom(bool, startPoi.id)" ng-model="bool" ng-checked="bool" ng-init="bool=true" class="ng-valid ng-dirty ng-valid-parse ng-touched ng-not-empty">
+                                    {{startPoi.label}}
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ translation.to }}
+                                </div>
+                                <div class="poi-filter" ng-repeat="endPoi in statsgrp.pois.end" >
+                                    <input type="checkbox" ng-change="syncTo(bool, endPoi.id)" ng-model="bool" ng-checked="bool" ng-init="bool=true" class="ng-valid ng-dirty ng-valid-parse ng-touched ng-not-empty">
+                                    {{endPoi.label}}
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <div class="row tour-toolbar-text no-padding">
+                            <div class="col-md-12 text-left">
+                                <div class="filter-row-head">
+                                {{ translation.carriers }}
+                                </div>
+                                <div class="poi-filter" ng-repeat="carrier in statsgrp.inv_crs" >
+                                    <input type="checkbox" ng-change="syncCarriers(bool, carrier)" ng-model="bool" ng-checked="bool" ng-init="bool=true" class="ng-valid ng-dirty ng-valid-parse ng-touched ng-not-empty">
+                                    {{carrier}}
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+        <!-- Toolbar Section End -->
+
+        <!-- Results Section Start -->
+        <div class="tour-wall-cnt" ng-switch on="recap">
+            <!-- Results Navbar sectiom Start -->
+            <div id="tourResultsNavbar" class="tour-ele-decoration row no-padding">
+                <div class="col-md-4 border-right text-center tour-results-navbar-ele no-padding">
+                    <div class="row no-padding">
+                        <span class="col-md-5">
+                            {{ tripOriginName }}
+                        </span>
+                        <div class="navbar-arrows col-md-1">
+                            <span class="wn-icon wn-icon-arrow-left result-row-secondary" aria-hidden="true"></span>
+                            <span class="wn-icon wn-icon-arrow-right result-row-secondary" aria-hidden="true"></span>
+                        </div>
+                        <span class="col-md-5 no-padding">
+                            {{ tripDestinationName }}
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-2  border-right text-center no-padding">
+                    <div class="wn-datepicker">
+                        <div class="row no-padding">
+                            <div class="col-md-2 no-padding">
+                                <span class="wn-icon wn-icon-calendar wn-datepicker-gly result-row-secondary" aria-hidden="true"></span>
+                            </div>
+                            <div class="col-md-10 no-padding">
+                                <span class="wn-datepicker-gly">{{ resultSelected.trip.outboundSegment.startTime | date:'dd-MM-yyyy' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2  border-right text-center no-padding" >
+                </div>
+                <div class="col-md-1 text-center tour-results-navbar-ele">
+                     <span class="result-row-secondary">travelers</span>
+                     {{(tour.participants | filter:{isPax : true}).length}}
+                </div>
+                <div class="col-md-3 text-right tour-results-navbar-ele">
+                     <button class="ui-action-button expanded wn-btn-neutral" type="button" ng-click="changeQuote()">{{ translation.change }}</button>
+                </div>
+            </div>
+            <div>
+                <!-- Results selected rendering start -->
+                <div id="tourResults">
+                    <div class="row result-row no-padding">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-2 text-center details-col-left">
+                                    <div class="col-md-12 no-padding" ng-bind-html='resultSelected.price | priceFormatter'></div>
+                                    <div ng-repeat="carrier in resultSelected.carriers" >{{carrier}}</div>
+
+                                </div>
+                                <div class="col-md-10 result-trip-row no-padding">
+                                    <div class="row no-padding">
+                                        <div class="col-md-2">
+                                            <div>{{ resultSelected.trip.outboundSegment.startTime | tripSegmentTime:'HH:mm' }}</div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <!-- TO-DO: ENABLE VECTORS TO PRINT ICON -->
+                                            <div class="res-vector" ng-repeat="vector in resultSelected.trip.outboundSegment.vectors | buyableResults">
+                                                <span class="wn-icon wn-icon-{{ vector.bit | vectorClassPrinter }} {{ vector.bit | vectorClassPrinter }}-detail-color"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div>{{ resultSelected.trip.outboundSegment.endTime | tripSegmentTime:'HH:mm' }}</div>
+                                        </div>
+                                        <div class="result-row-secondary">
+                                            <div class="col-md-2">
+                                                <div>
+                                                    <span class="wn-icon wn-icon-arrow-right" aria-hidden="true"></span><span class="segment-duration">{{ resultSelected.trip.outboundSegment.duration | time:'mm':'hhh mmm':false }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <span>{{ resultSelected.trip.outboundSegment.stop }} {{ translation.stops }}</span>
+                                            </div>
+                                            <div class="col-md-2 text-right">
+                                                <span class="quoted-label pull-right">{{ translation.quoted | uppercase }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 text-center details-col-left">
+                                    <button class="ui-action-button expanded primary" type="button" ng-click="">{{ translation.book }}</button>
+                                </div>
+                                <div class="col-md-4 text-left show-details">
+                                    <span class="pull-left" ng-click="status.open = !status.open; showDetail(resultSelected, status)">
+                                        {{ status.open ? translation.hideDetails : translation.showDetails }}
+                                        <i class="glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                                    </span>
+                                </div>
+                                <div class="col-md-6 result-row-secondary text-right">
+                                    <span ng-if="(resultSelected.bm | checkSaleablesVectorsInTrip)">{{ translation.soldBy }} <b>Wayonara</b></span>
+                                    <span ng-if="!(resultSelected.bm | checkSaleablesVectorsInTrip)">{{ translation.soldBy }} <b>{{ translation.otherCompanies }}</b></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <uib-accordion class="trip-details-explode" close-others="false">
+                        <uib-accordion-group is-open="status.open">
+                            <div class="segment-details">
+                                <div class="row segment-heading">
+                                    <div class="col-md-12">
+                                        <b>{{ translation.depart }}: </b><span class="vector-secondary-details">{{ resultSelected.trip.outboundSegment.startTime | date:'dd MMM yyyy' }}</span>
+                                    </div>
+                                </div>
+                                <md-progress-linear ng-show="loadingDetails" md-diameter="2px" md-mode="query"></md-progress-linear>
+                                <div ng-repeat="outboundVector in resultSelected.trip.outboundSegment.vectors">
+                                    <ng-include ng-init="vector = outboundVector; vectors = resultSelected.trip.outboundSegment.vectors; resIndex = resultIndex; segment = 'outboundSegment'" src="'web/results/selected-details-explode.html'"></ng-include>
+                                </div>
+                            </div>
+                            <div class="segment-details">
+                                <div class="row segment-heading" ng-if="resultSelected.trip.returnSegment">
+                                    <div class="col-md-12">
+                                        <b>{{ translation.return }}: </b><span class="vector-secondary-details">{{ resultSelected.trip.returnSegment.startTime | date:'dd MMM yyyy' }}</span>
+                                    </div>
+                                </div>
+                                <div ng-repeat="returnVector in resultSelected.trip.returnSegment.vectors">
+                                    <ng-include ng-init="vector = returnVector; vectors = resultSelected.trip.returnSegment.vectors; resIndex = resultIndex; segment = 'returnSegment'" src="'web/results/selected-details-explode.html'"></ng-include>
+                                </div>
+                            </div>
+                        </uib-accordion-group>
+                    </uib-accordion>
+                </div>
+                <!-- Result selected rendering End -->
+            </div>
+        </div>
+    </div>
+</div>

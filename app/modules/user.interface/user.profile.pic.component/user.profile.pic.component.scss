@@ -1,0 +1,61 @@
+@import "../../../../assets/scss/utils/mixins";
+
+$large_size: 100px;
+$small_size: 36px;
+
+figure.user-profile-pic {
+    background: rgba(200, 200, 200, 1) url("../../../../assets/img/spinner.svg") no-repeat center center;
+    background-size: 16px;
+    @include box-shadow(0, 0, 2px, rgba(0, 0, 0, .2));
+    overflow: hidden;
+    &.shape-round {
+        @include border-radius(100%);
+        .edit-mode-overlay {
+            @include border-radius(100%);
+        }
+    }
+    &.shape-square {
+        @include border-radius(4px);
+        .edit-mode-overlay {
+            @include border-radius(4px);
+        }
+    }
+    img {
+        opacity: 0;
+        @include transition(opacity 350ms ease-in);
+    }
+    &.fully-loaded img {
+        opacity: 1;
+    }
+    &.size-small {
+        width: $small_size;
+        height: $small_size;
+        img {
+            max-width: $small_size;
+            max-height: $small_size;
+        }
+    }
+    &.size-large {
+        width: $large_size;
+        height: $large_size;
+        border: 2px solid white;
+        img {
+            max-width: $large_size;
+            max-height: $large_size;
+        }
+    }
+    &.img-error {
+        background: url("../../../../assets/img/user_empty.png") no-repeat center center;
+        background-size: 100%;
+    }
+    .edit-mode-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba(0, 0, 0, .2) url("../../../../assets/img/edit-picture.svg") no-repeat center center;
+        background-size: 24px;
+        z-index: 1;
+    }
+}

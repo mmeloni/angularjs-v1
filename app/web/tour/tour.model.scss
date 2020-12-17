@@ -1,0 +1,949 @@
+.tour {
+    position: fixed;
+}
+
+#tour-navbar-section{
+    height: 12vh;
+}
+
+#tourTimelineSection.fixed {
+    position: fixed;
+    top: 55px;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 100%;
+}
+
+.wn-cover-tour {
+    height: 70vh;
+    width: 100%;
+    text-align: center;
+}
+
+.wn-cover-tour .floating-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.tour-view,
+.tour-edit-plan,
+.tour-edit-quote{
+    overflow: hidden;
+}
+
+/* === TRAVEL BOX === */
+.travel-box-wrapper {
+    height: 82vh;
+    width: 100%;
+    padding: 22px;
+    min-width: 1024px;
+}
+
+.travel-box {
+    min-width: 936px;
+    width: 100%;
+    height:100%;
+    border: 2px solid #eceff1;
+    border-radius: 2px;
+    -webkit-flex: 1 100%;
+    flex: 1 100%;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.travel-box-folders {
+    position: absolute;
+    padding-left: 15px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.travel-box-folders-container {
+    overflow-y: auto;
+    width: 100%;
+    height:100%;
+    padding-bottom: 250px;
+}
+
+.travel-box-folder {
+    min-width: 297px;
+    max-width: 326px;
+    width: calc(25% - 15px);
+    display: inline-block;
+    position: relative;
+    padding: 30px;
+    text-align: center;
+    height: 154px;
+    font-weight: 600;
+    margin-right: 15px;
+    margin-top: 15px;
+
+    .area-of-origin {
+        position: absolute;
+        top: 5px;
+        left: 12px;
+        z-index: 20;
+    }
+
+    .shard-statistics {
+        color: #ffffff;
+        position: absolute;
+        bottom: 5px;
+        left: 12px;
+        z-index: 20;
+        line-height: 1;
+    }
+}
+
+// For the popover on the Place card in the travel box
+.place-statistics-detail-spacer {
+    padding-left: 6px
+}
+
+.place-statistics-detail-list {
+    padding-left: 30px; // the size of a wn-icon + 6px
+}
+// End For the popover on the Place card in the travel box
+
+.travel-box-folder .actions-wrapper,
+.travel-box-file .actions-wrapper{
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity:0;
+    z-index: 20;
+}
+
+.travel-box-folder .actions-wrapper button,
+.travel-box-file .actions-wrapper button {
+    cursor: pointer;
+}
+
+.travel-box-folder .overlay,
+.travel-box-file .overlay {
+    position: absolute;
+    padding: 30px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+}
+
+.travel-box-file .overlay {
+    padding: 30px 0;
+}
+
+.travel-box-folder .overlay.confirm-panel,
+.travel-box-file .overlay.confirm-panel {
+    z-index: 20;
+}
+
+.travel-box-folder .overlay.confirm-panel .panel-header,
+.travel-box-file .overlay.confirm-panel .panel-header {
+    font-size: 14px;
+}
+
+.travel-box-folder .overlay.confirm-panel .panel-actions,
+.travel-box-file .overlay.confirm-panel .panel-actions {
+    margin-top: 30px;
+}
+
+.travel-box-folder .overlay.confirm-panel .ui-action-button,
+.travel-box-file .overlay.confirm-panel .ui-action-button {
+    font-size: 12px;
+    border-radius: 2px;
+}
+
+.travel-box-folder .overlay.confirm-panel .ui-action-button.confirm,
+.travel-box-file .overlay.confirm-panel .ui-action-button.confirm {
+    background-color: #ce0056;
+    border: none;
+    cursor: pointer;
+}
+
+.travel-box .overlay.dark{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+}
+
+.travel-box .overlay.dark .icon-wrapper,
+.travel-box .dnd-placeholder .icon-wrapper {
+    display: inline-block;
+    background: #fff;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+
+.travel-box .dnd-placeholder {
+    position: absolute;
+    opacity: 0;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.travel-box .dnd-placeholder .icon-wrapper {
+    border: 1px solid #eceff1;
+}
+
+.travel-box-tabs {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    background-color: #eceff1;
+}
+
+.travel-box-tabs > ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.travel-box-tabs > ul:after {
+    clear: both;
+}
+
+.travel-box-tabs > ul > li {
+    display: block;
+    float: left;
+    position: relative;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.travel-box-tabs > ul > li+li {
+    margin-left: 2px;
+}
+
+.travel-box-folder .label-wrapper {
+    margin-top:30px;
+}
+
+#addPlaceController.travel-box-folder {
+    border: 2px dashed #eceff1;
+}
+
+/* === END TRAVEL BOX === */
+
+.tour-head-image-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height:100%; */
+    max-height: 694px;
+}
+
+.tour-head-image,
+.tour-head-image img {
+    width: 100%;
+    max-height: 694px;
+}
+
+
+.tour-head-text{
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    height:100%;
+    text-align: center;
+    padding: 10%;
+    background: transparent;
+    top: 0;
+}
+
+.tour-head-text-opacity{
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    height:100%;
+    text-align: center;
+    background: black;
+    opacity: 0.3;
+    padding: 10%;
+    top: 0;
+}
+
+.tour-head-text-element{
+    width: 100%;
+    clear: both;
+    float: left;
+    padding: 10px;
+    color: #fff;
+}
+
+.tour-head-text-element.title{
+    font-size: 6vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 10vh;
+}
+
+.tour-head-text-element.subtitle{
+    font-size: 2vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 18vh;
+}
+
+.tour-head-text-element.description{
+    font-size: 1.8vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 18vh;
+}
+.tour-head-text-element.hashtag{
+    font-size: 3vh;
+}
+
+.gg-editable-text input, .gg-editable-text textarea {
+    width:auto;
+}
+
+.tour-data-number{
+    font-size: 27px;
+}
+
+.tour-owner-data{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 8vh;
+}
+
+.tour-owner-data-image {
+    width: 70px;
+    height: 70px;
+    margin: auto;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.tour-owner-data-name{
+    margin-top: 10px;
+}
+
+.tour-owner-data-image-img,
+.tour-owner-data-image-img img {
+    width: 70px;
+    height: 70px;
+}
+
+.wn-cover-tour .inner-shadow {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 200;
+    top:0;
+}
+
+.wn-cover-tour .wn-cover-background {
+    height: 100%;
+    position: relative;
+}
+
+.wn-cover-tour .wn-cover-background .upper img,
+.wn-cover-tour .wn-cover-background .lower img {
+    opacity: 0.7;
+    width: 100%;
+    height: 694px;
+}
+
+.wn-cover-tour .upper,
+.wn-cover-tour .lower
+{
+    width: 100%;
+    height: 50%;
+    margin:0;
+    padding:0;
+    position:absolute;
+    overflow: hidden;
+    background: #000000;
+}
+
+.wn-cover-tour .upper{
+    top:0;
+}
+
+.wn-cover-tour .lower{
+    top:50%;
+}
+
+.wn-cover-tour .wn-cover-background .upper img,
+.wn-cover-tour .wn-cover-background .lower img
+{
+    position: relative;
+}
+
+.wn-cover-tour .wn-cover-background .upper img{
+    top:0;
+}
+
+.wn-cover-tour .wn-cover-background .lower img{
+    transform: translateY(-35vh);
+}
+
+.tour-people-and-button-container{
+    width: 100%;
+    height: 8vh;
+    margin-top: 20px;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+.people-in-tour{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.people-in-tour-text{
+    height: 40%;
+    width:100%;
+    margin-left: 5px;
+}
+
+.people-in-tour-avatar-images{
+    height: 60%;
+    width: 100%;
+    margin-left: 5px;
+}
+
+.people-in-tour-avatar-image,
+.people-in-tour-avatar-image img {
+    height: 100%;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.action-button-in-tour{
+    width: 50%;
+    height: 100%;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.action-button-in-tour button{
+    margin-left: 20px;
+}
+
+.action-button-in-tour .btn{
+    margin-right: 10px;
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    text-transform: uppercase;
+    height: 40px;
+}
+
+.book-tour{
+    background-color: #41b0a6;
+    font-size: 12px;
+    box-shadow: #1b6d85;
+    color: #fff;
+    border: 0;
+}
+
+.shard-tour-text-inner{
+    margin: 0 auto;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.shard-tour-text-inner-title{
+    font-size: 48px;
+    line-height: 120%;
+    margin-bottom: 10px;
+}
+
+.shard-tour-text-inner-subtitle {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+
+.shard-tour-text-inner .wn-icon {
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+.shard-tour-text-inner .tour-vehicles,
+.shard-tour-text-inner .tour-dates {
+    margin-bottom: 10px;
+}
+
+.shard-tour-text-inner .tour-vehicles > .wn-icon + .wn-icon:before {
+    margin-left: 15px;
+}
+
+.upload-tour-cover{
+    cursor: pointer;
+    align-content: center;
+    margin: 22px auto;
+    color: #ffffff;
+}
+
+.tour-button-show-shards-folders-container{
+    width: 100%;
+    text-align: center;
+}
+
+.tour-button-show-shards-folders-button{
+    width: 40px;
+    height:40px;
+    border-radius: 50px;
+    float: left;
+}
+
+.travel-box-title{
+    width: 100%;
+    height: 5vh;
+    text-align: left;
+    padding: 15px;
+}
+
+.travel-box-tab .active{
+    background-color: #41b0a6;
+}
+
+.travel-box-tab-not-imported{
+    width: 50%;
+    float: left;
+    height: 100%;
+}
+
+.travel-box-tab-not-imported-button{
+    width: 25%;
+    float: right;
+    color: #FFFFFF;
+    cursor: pointer;
+    height: 100%;
+}
+
+.travel-box-tab-not-imported-button:hover{
+    background-color: lightgrey;
+}
+
+.travel-box-tab-timeline{
+    width: 50%;
+    float: right;
+    height: 100%;
+}
+
+.travel-box-tab-timeline-button{
+    width: 25%;
+    float: left;
+    color: #FFFFFF;
+    cursor: pointer;
+    height: 100%;
+}
+
+.travel-box-tab-timeline-button:hover{
+    background-color: lightgrey;
+}
+
+.box-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+}
+
+.travel-box-folder .wn-icon-place{
+    align-self: center;
+}
+
+.travel-box-files {
+    padding-left: 15px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.travel-box-files-container {
+    overflow-y: auto;
+    width: 100%;
+    height:100%;
+}
+
+.travel-box-file {
+    max-width: 154px;
+    max-height: 154px;
+    width: calc(25% - 15px);
+    display: inline-block;
+    position: relative;
+    padding: 30px;
+    text-align: center;
+    height: 154px;
+    font-weight: 600;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+.travel-box-file > img,
+.travel-box-file img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 154px;
+    height: 154px;
+}
+
+.travel-box-file .icon-wrapper {
+    display: inline-block;
+    background: #fff;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+
+.travel-box-file .wn-icon-place{
+    align-self: center;
+    font-size: 30px;
+    background: transparent;
+    color: #43E7C5;
+}
+
+.travel-box-file .title{
+    margin-top: 35px;
+    color: #FFFFFF;
+}
+
+.travel-box-header.file-detail{
+    display: flex;
+    border-bottom: 2px solid #eceff1;
+    justify-content: center;
+    position: relative;
+}
+
+.travel-box-header.file-detail .title{
+    align-self: center;
+    position: absolute;
+    left: 0;
+    margin-left: 15px;
+}
+
+.travel-box-header.file-detail .wn-icon{
+    font-size: 32px;
+    align-self: center;
+    vertical-align: middle;
+}
+
+.travel-box-header.file-detail .wn-icon-delete{
+    color: #CFD8DC;
+
+    position: absolute;
+    right: 0;
+    margin-right: 15px;
+}
+
+.travel-box-file-detail {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.travel-box-file-detail-container{
+    padding: 15px;
+    width: 100%;
+    height:100%;
+    overflow-y: auto;
+}
+
+.travel-box-file-detail-container .image{
+    width: 50%;
+    max-height: 400px;
+    float: left;
+}
+
+.travel-box-file-detail-container .image img{
+    width: 100%;
+    max-height: 400px;
+    border-radius: 2px;
+}
+
+.travel-box-file-detail-container .data{
+    width: 50%;
+    min-height: 400px;
+    float: left;
+    padding-left: 15px;
+}
+
+.travel-box-file-detail-container .data .owner-data{
+    width: 100%;
+    min-height: 80px;
+}
+
+.travel-box-file-detail-container .data .file-description{
+    width: 100%;
+}
+
+.travel-box-file-detail-container .data .avatar{
+    border-radius: 100%;
+    height: 60px;
+    width: 60px;
+    float: left;
+}
+
+.travel-box-file-detail-container .data .text{
+    float: left;
+    margin-left: 8px;
+}
+
+.travel-box-file-detail-container .data .avatar img{
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+}
+
+.wn-cover-background .gg-editable-text input, .gg-editable-text textarea{
+    text-align: center;
+}
+
+/* Tour View */
+#tourViewContent {
+    width: 100%;
+    padding: 0 22px 0 22px;
+    margin-top: 22px;
+}
+
+#tourViewContent .place-section .place-image,
+#tourViewContent .place-section .place-image img {
+    width: 100%;
+    height: 480px;
+    position: relative;
+    margin-bottom: 22px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#tourViewContent .place-section .place-image .cover,
+#tourViewContent .place-section .place-image .cover img {
+    width: 100%;
+    height: 100%;
+}
+
+#tourViewContent .place-section .title{
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    font-size: 48px;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+#tourViewContent .place-section .shard-upload{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    font-size: 48px;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+#tourViewContent .place-section .points-of-interest{
+    position: absolute;
+    bottom: 120px;
+    width: 100%;
+    height: 70px;
+    padding: 0 30px 30px 30px;
+    display: flex;
+}
+
+#tourViewContent .place-section .points-of-interest .point-block{
+    align-self: center;
+    width: 200px;
+    height: 100%;
+}
+
+#tourViewContent .place-section .points-of-interest .point-block .up{
+    float: left;
+    display: flex;
+    width: 100%;
+}
+
+#tourViewContent .place-section .points-of-interest .point-block .up .wn-icon-place{
+    font-size: 24px;
+    color: #41B0A6;
+    align-self: center;
+}
+
+#tourViewContent .place-section .points-of-interest .point-block .up .poi-text{
+    font-size: 18px;
+    font-weight: 300;
+    color: #FFFFFF;
+    align-self: center;
+}
+
+#tourViewContent .place-section .points-of-interest .point-block .number{
+    font-size: 28px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+#tourViewContent .place-section .transports{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    padding: 30px;
+}
+#tourViewContent .place-section .transports .transport{
+    height: 100%;
+    width: 140px;
+    margin-right: 30px;
+    float: left;
+}
+
+#tourViewContent .place-section .transports .transport .vehicle{
+    width: 100%;
+    display: flex;
+}
+
+#tourViewContent .place-section .transports .transport .vehicle .wn-icon{
+    font-size: 24px;
+    color: #59aeed;
+    align-self: center;
+}
+
+#tourViewContent .place-section .transports .transport .vehicle .vehicle-text{
+    font-size: 18px;
+    font-weight: 300;
+    color: #FFFFFF;
+    align-self: center;
+}
+
+#tourViewContent .place-section .transports .transport .number{
+    font-size: 28px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+/* Tour View */
+
+/* Tour View Edit */
+.shard-tour-view-edit .include-shard-stage .checkbox-container{
+    float: right;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    cursor:	pointer;
+    border-radius: 4px;
+}
+
+.shard-tour-view-edit .include-shard-stage .checkbox-container.shard-checked{
+    background-color: #41B0A6;
+    opacity: 0.7;
+    color: #FFFFFF;
+}
+
+.shard-tour-view-edit .include-shard-stage .checkbox-container .wn-icon-save{
+    font-size: 24px;
+    align-self: center;
+}
+#actions-on-shards{
+    position: fixed;
+    bottom: 0;
+    height: 70px;
+    width: 100vw;
+    background: #FFFFFF;
+    box-shadow: 0 1px 20px 0 rgba(69,89,100,0.60), inset 0 1px 1px 0 #F5F7F8 ;
+    display: flex;
+    justify-content: center;
+    z-index: 21;
+}
+
+#actions-on-shards .delete-shards{
+    flex-grow: 1;
+    align-self: center;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+#actions-on-shards .delete-shards .ui-action-button.wn-btn-neutral{
+    display: flex;
+    justify-content: center;
+}
+
+#actions-on-shards .delete-shards .ui-action-button.wn-btn-neutral .wn-icon.wn-icon-luggage{
+    font-size: 32px;
+    align-content: center;
+}
+#actions-on-shards .counter-and-place{
+    flex-grow: 1;
+    align-self: center;
+    display: flex;
+    margin-left: 20px;
+}
+#actions-on-shards .counter-and-place .counter{
+    align-self: center;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    background: #78909C;
+    width: 40px;
+    border-radius: 20px;
+    color: #FFFFFF;
+    border: none;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+}
+#actions-on-shards .counter-and-place .counter .shard-added-details{
+    align-self: center;
+    margin: 0;
+}
+.place-icon{
+    color: #3ce9b7;
+    font-size: 28px;
+}
+
+.vehicle-section{
+    margin-bottom: 22px;
+}
+
+#actions-on-shards .right-container{
+    flex-grow: 1;
+    align-self: center;
+}
+
+#tourViewContent md-toast{
+    position: fixed;
+    bottom: 10px;
+}
+
+#tourMainContent .import-from-diary-tour-edit-view{
+    flex-wrap: wrap;
+    position: relative;
+    overflow: auto;
+    height: 100%;
+    padding-left: 22px;
+}
+/* Tour View Edit */

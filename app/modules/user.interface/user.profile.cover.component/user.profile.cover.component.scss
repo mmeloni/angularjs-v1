@@ -1,0 +1,82 @@
+@import "../../../../assets/scss/utils/mixins";
+
+.wn-user-profile-cover {
+    position: relative;
+    height: 250px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    @include transition(background 300ms ease-in);
+    background: rgba(200, 200, 200, 1) url("../../../../assets/img/spinner.svg") no-repeat center center;
+    background-size: 64px;
+    @media screen and (min-width: 768px) {
+        height: 350px;
+    }
+    @media screen and (min-width: 1280px) {
+        height: 450px;
+    }
+    img {
+        opacity: 0;
+        pointer-events: none;
+        width: 100%;
+        max-width: 100%;
+        display: block;
+        @include transition(opacity 300ms ease-in);
+    }
+    &.is-fully-loaded:not(.loading) {
+        height: auto;
+        max-height: 450px;
+        background: rgba(200, 200, 200, 1);
+        img {
+            opacity: 1;
+        }
+    }
+    &.loading-error:not(.loading) {
+        height: 320px;
+        background: rgba(200, 200, 200, 1) url("../../../../assets/img/missing-pic.svg") no-repeat center center;
+        background-size: 48px;
+    }
+    .edit-mode-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .3) url("../../../../assets/img/edit-picture.svg") no-repeat center center;
+        background-size: 32px;
+        @include transition(background-size 350ms ease-in-out, background-color 350ms ease-in-out, opacity 250ms);
+        cursor: pointer;
+        text-align: center;
+        p {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            margin-top: 50px;
+            font-weight: bold;
+            opacity: 0;
+            @include transition(margin 250ms ease-in, opacity 500ms ease-in);
+        }
+        &:hover {
+            background-color: rgba(0, 0, 0, .7);
+            background-size: 36px;
+            p {
+                opacity: 1;
+                margin-top: 40px;
+            }
+        }
+        input[type="file"] {
+            visibility: hidden !important;
+            display: none !important;
+        }
+    }
+    &.loading {
+        img {
+            opacity: 0;
+        }
+        .edit-mode-overlay {
+            opacity: 0;
+        }
+    }
+}

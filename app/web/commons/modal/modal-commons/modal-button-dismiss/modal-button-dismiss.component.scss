@@ -1,0 +1,7 @@
+span {
+    position: absolute;
+    top: -20px; // pin-height / 2
+    right: -20px; // pin-width / 2
+    z-index: 100;
+    cursor: pointer;
+}

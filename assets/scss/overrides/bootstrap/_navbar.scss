@@ -1,0 +1,23 @@
+// Added by Wayonara
+.navbar-avatar {
+    @include navbar-vertical-align($avatar-size-sm);
+
+    @media (min-width: $grid-float-breakpoint) {
+        float: left;
+        margin-left: $navbar-padding-horizontal;
+        margin-right: $navbar-padding-horizontal;
+    }
+}
+
+.navbar-default,
+.navbar-inverse {
+    .btn-link {
+        box-shadow: none;
+    }
+}
+
+// Brand/project name
+
+.navbar-brand {
+    padding: $navbar-brand-padding-vertical $navbar-padding-horizontal;
+}

@@ -1,0 +1,82 @@
+import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { UserPassportComponent } from './user.passport.component';
+import { FollowService } from '../../shared/follow/follow.service';
+import { UserInterfaceModule } from '../user.interface/user.interface.module';
+import { CommonModule } from '@angular/common';
+import { ImagesProvider } from '../../providers/images.provider';
+import { UserService } from '../../shared/user/user.service';
+import { Observable } from 'rxjs/Observable';
+import { User } from '../../shared/user/user.model';
+import { StateService } from 'ui-router-ng2';
+
+// the current mock for the ImagesProvider
+const mockImagesProvider = {
+    getUserAvatar: (nid: string) => Observable.of(`mocked-url-${nid}`),
+    getUserCover: (nid: string) => Observable.of(`mocked-url-${nid}`)
+};
+
+// the current mock for the UserService
+const mockUserProvider = {
+    getUser: () => new User()
+};
+
+const mockStateService = {
+    go: (where: string, param: any) => null
+};
+
+/**
+ * Describe the test suite
+ */
+describe('UserPassportComponent', () => {
+    // our component;
+    let component: UserPassportComponent;
+    // the fixture is a test environment for the component:
+    let fixture: ComponentFixture<UserPassportComponent>;
+    // the rendered HTML
+    let de: DebugElement;
+
+    /**
+     * Prepare the TestBed for this test suite.
+     * A TestBed is just an NgModule specific for testing
+     */
+    beforeEach(async(() => {
+        // import component and related services
+        TestBed.configureTestingModule({
+            declarations: [
+                UserPassportComponent // the single shard title and description component
+            ],
+            imports: [ CommonModule, UserInterfaceModule ],
+            providers: [
+                { provide: ImagesProvider, useValue: mockImagesProvider },
+                { provide: FollowService, useValue: {} },
+                { provide: UserService, useValue: mockUserProvider },
+                { provide: StateService, useValue: mockStateService }
+            ]
+        }).compileComponents();
+    }));
+
+    /**
+     * setup variables
+     */
+    beforeEach(() => {
+        fixture = TestBed.createComponent(UserPassportComponent);
+        component = fixture.componentInstance;
+        de = fixture.debugElement;
+
+        component.user = new User();
+        component.user.nid = 1;
+        console.log(component.user);
+
+        fixture.detectChanges();
+    });
+
+    // tests specs:
+
+    it('should create', () => {
+        expect(component).toBeDefined();
+        expect(component).toBeTruthy();
+
+        expect(component instanceof UserPassportComponent).toBe(true);
+    });
+});

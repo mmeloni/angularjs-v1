@@ -1,0 +1,25 @@
+<!-- Cookies -->
+<section class="background-color-gray-darker text-center small">
+    <div class="alert alert-inverse margin-bottom-none padding-vertical-small" ng-if="cookiesAccepted === false">
+        <p>
+            <span class="wn-icon wn-icon-cookie vertical-align-middle"></span>&#32;
+            {{ translation.cookies }}&#32;
+            <button type="button" class="btn btn-link btn-sm alert-link" ng-click="acceptCookies()">{{ translation.got_it }}</button>
+        </p>
+    </div>
+</section>
+<!-- // Cookies -->
+
+<div class="container">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">
+        <img ng-show="showLogo" src="../assets/img/logo-wayonara.svg" alt="Wayonara" />
+        <img ng-show="showLogoInverted" src="../assets/img/logo-wayonara-inverted.svg" alt="Wayonara" />
+    </a>
+  </div>
+  <ul class="nav navbar-nav navbar-right">
+      <li>
+          <a href="#" ng-click="showLoginDialog()" ng-disabled="loginButtonIsDisabled" class="font-weight-bold">{{ translation.log_in }}</a>
+      </li>
+  </ul>
+</div>

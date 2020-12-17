@@ -1,0 +1,26 @@
+<div class="travel-box-header file-detail">
+    <div class="title">
+	    <span class="wn-icon wn-icon-place place-detail-color"></span>
+	    <span>{{selectedPlaceShardWithPlaceDetails.title}}</span>
+    </div>
+    <span class="wn-icon wn-icon-delete" ng-click="backToShardList(1)"></span>
+</div>
+<div class="travel-box-file-detail">
+    <div class="travel-box-file-detail-container">
+        <div class="image shard-img-wrapper">
+        </div>
+        <div class="data">
+            <div class="owner-data">
+                <div class="avatar avatar-wrapper">
+                </div>
+                <div class="text">
+                    <div class="firstLastName">{{selectedPlaceShardWithDetails.user.username}}</div>
+                    <div class="time">{{selectedPlaceShardWithDetails.creationDate}}</div>
+                </div>
+            </div>
+            <div class="file-description">
+                {{selectedPlaceShardWithDetails.description}}
+            </div>
+        </div>
+    </div>
+</div>

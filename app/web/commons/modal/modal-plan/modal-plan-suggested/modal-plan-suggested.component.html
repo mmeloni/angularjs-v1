@@ -1,0 +1,8 @@
+<div class="suggested">
+    <h2 class="h4">{{title}}</h2>
+    <ul class="list-unstyled">
+        <li *ngFor="let item of componentData" (click)="setTitleToNew($event,item)">
+            {{item}}
+        </li>
+    </ul>
+</div>

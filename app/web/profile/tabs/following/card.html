@@ -1,0 +1,39 @@
+<div class="follow follow-preview">
+    <!--Cover-->
+    <div class="follow-header">
+        <wn-image class="follow-cover" img-format="'_cover_popover_'" user="targetForImage" err-src="../assets/img/shard-empty.png" ng-click="viewProfile()"></wn-image>
+        <wn-image class="follow-avatar" img-format="'_avatar_'" user="targetForImage" err-src="../assets/img/user_empty.png" ng-click="viewProfile()"></wn-image>
+        <div class="settings-and-follow">
+            <div class="float-to-right">
+                <span uib-dropdown on-toggle="toggled(open)">
+                    <ul ng-if="dropDownActions.length > 0" class="uib-dropdown-menu" uib-dropdown-menu aria-labelledby="card-dropdown">
+                        <li class="menuitem" ng-repeat="dropDownAction in dropDownActions track by $index">
+                            <a ng-click="this[dropDownAction.action](dropDownAction.params)">{{ dropDownAction.label }}</a>
+                        </li>
+                    </ul>
+                </span>
+                <button ng-show="buttonToshow != null" class="following-button ui-action-button expanded {{ buttonToshow.class }}" ng-click="this[buttonToshow.action](buttonToshow.params)">{{ buttonToshow.label }}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="follow-name-block">
+        <div class="username truncate-single-line" ng-click="viewProfile()" uib-tooltip="@{{ target.username }}">
+            @{{ target.username }}
+        </div>
+        <div class="first-last-name">
+            {{ target.firstname || ""}} {{ target.lastname || "" }}
+        </div>
+    </div>
+
+    <div class="follow-description-block">
+        {{ target.biography || "" }}
+    </div>
+
+    <hr/>
+
+    <div class="follow-footer">
+        <span class="wn-icon wn-icon-place vertical-align-middle"></span>
+        <span class="place">{{ target.city.name }}</span>
+    </div>
+</div>

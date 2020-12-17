@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Star-big</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FED958" offset="0%"></stop>
+            <stop stop-color="#FECC2F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Landing-Page-Advanced" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing-Page-1.5---Intro" transform="translate(-275.000000, -251.000000)" fill="url(#linearGradient-1)">
+            <g id="Stars_l" transform="translate(194.000000, 166.000000)">
+                <path d="M86.1499415,98.2109421 C85.4433879,95.6512093 85.3490345,95.5568559 82.7890579,94.8500585 C81.7321533,94.5582212 81,93.5964014 81,92.5 C81,91.4033548 81.7321533,90.4417788 82.7890579,90.1499415 C85.3490345,89.4429003 85.4433879,89.3485469 86.1499415,86.7890579 C86.4420226,85.7321533 87.4038424,85 88.5002438,85 C89.596889,85 90.558465,85.7321533 90.8505461,86.7890579 C91.5570997,89.3487907 91.6512093,89.4429003 94.2111859,90.1499415 C95.2680905,90.4417788 96.0002438,91.4033548 96.0002438,92.5 C96.0002438,93.5964014 95.2680905,94.5582212 94.2111859,94.8500585 C91.6512093,95.5568559 91.5570997,95.6512093 90.8505461,98.2106983 C90.558465,99.2678467 89.596889,100 88.5002438,100 C87.4038424,100 86.4420226,99.2680905 86.1499415,98.2109421 Z" id="Star-big"></path>
+            </g>
+        </g>
+    </g>
+</svg>

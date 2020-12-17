@@ -1,0 +1,28 @@
+@import '../../../../assets/scss/overrides/bootstrap/variables';
+
+.wn-tutorial-toast {
+    .alert-dismissible .close,
+    .alert-dismissable .close {
+        right: 0;
+        top: 0;
+        font-weight: normal;
+    }
+
+    .alert {
+        display: block !important;
+        min-height: 153px;
+        padding: 24px;
+        margin: 0;
+        border-radius: 0;
+
+        h1 {
+            margin: 0 0 58px 0;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+            font-weight: normal;
+        }
+    }
+}

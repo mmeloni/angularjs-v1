@@ -1,0 +1,25 @@
+@import "../../../../assets/scss/utils/mixins";
+
+$red: #fd3259;
+$text: #444444;
+
+.form-group.wayonara-form-textarea {
+    [hidden], span[hidden] {
+        display: none !important;
+    }
+    label {
+        color: $text;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        span {
+            margin-left: 5px;
+            color: $red;
+        }
+    }
+    textarea {
+        @include box-shadow(none);
+        @include border-radius(5px);
+        min-height: 80px;
+    }
+}

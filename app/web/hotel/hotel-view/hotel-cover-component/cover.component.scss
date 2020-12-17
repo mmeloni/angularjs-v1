@@ -1,0 +1,58 @@
+.cover-container{
+    position: relative;
+
+    .photo{
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        &.photo-half{
+            width: 50%;
+        }
+
+        &.photo-vertical-half{
+            height: 50%;
+        }
+    }
+
+    .single{
+        height: 600px;
+    }
+
+    .multiple{
+        height: 600px;
+
+        .photo{
+
+            &.photo-first, .photo-first{
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            &.photo-second, .photo-second{
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            &.photo-third{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+
+                &.not-used:last-child{
+                    &:after{
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        content: '';
+                        background: rgba(0,0,0,0.4);
+                    }
+                }
+            }
+        }
+    }
+}

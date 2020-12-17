@@ -1,0 +1,34 @@
+<form [ngClass]="cssClasses">
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <wn-button
+                    cssClasses="btn btn-default btn-sm"
+                    [isLoading]="isSearching === true"
+                    [isLoadingReplace]="true"
+                    (click)="onSubmit()">
+                    <wn-icon glyph="search" iconSize="sm"></wn-icon>
+                </wn-button>
+            </span>
+            <input
+                type="search"
+                class="form-control"
+                [placeholder]="labels.placeholder"
+                name="text"
+                [(ngModel)]="model.text"
+                #name="ngModel"
+                (focus)="onFocus($event)"
+                (blur)="onBlur($event)"
+                [ngbTypeahead]="searchResult"
+                [resultTemplate]="resultTemplate"
+                [inputFormatter]="formatResult"
+                [showHint]="true"
+                (selectItem)="selectItem($event)"
+            />
+        </div>
+    </div>
+</form>
+
+<template #resultTemplate let-result="result">
+    <wn-omnisearch-result [componentData]="result" (searchByDescription)="onSubmit()"></wn-omnisearch-result>
+</template>

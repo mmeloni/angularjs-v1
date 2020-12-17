@@ -1,0 +1,23 @@
+<div class="cropup-container">
+    <div class="modal-body">
+        <wn-crop-tool weight="220px" height="220px"></wn-crop-tool>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">
+            <button class="btn btn-default" data-open="select-image" type="button">{{ ::translation.addNewPhoto }}</button>
+        </div>
+        <div class="pull-right">
+            <wn-button
+                css-classes="btn btn-default"
+                [label]="translation.cancel"
+                ng-click="cancel()"
+            ></wn-button>
+            <wn-button
+                css-classes="btn btn-primary"
+                label="Ok"
+                [is-loading]="isLoading"
+                ng-click="ok($event)"
+            ></wn-button>
+        </div>
+    </div>
+</div>

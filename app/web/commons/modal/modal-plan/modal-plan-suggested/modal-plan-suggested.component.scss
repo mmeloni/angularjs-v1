@@ -1,0 +1,18 @@
+@import '../../../../../../assets/scss/overrides/bootstrap/variables';
+
+.suggested {
+    h2.h4 {
+        color: $gray;
+        margin-bottom: 24px;
+        margin-top: 24px;
+    }
+
+    ul {
+        li {
+            cursor: pointer;
+            color: gray;
+            font-size: $font-size-base;
+            padding-bottom: 16px;
+        }
+    }
+}

@@ -1,0 +1,623 @@
+<div id="tourMainCnt">
+    <div class="row booking-form">
+        <div class="col-md-9">
+            <section class="form">
+                <form id="bookingForm" name="bookingForm" novalidate autocomplete="off" ng-model="bookingForm" stripe-form="stripeCallback">
+                    <div class="panel panel-default">
+                        <div class="passengers-subform" ng-repeat="passenger in bookingFormFields.passengers track by $index">
+                            <div class="form-group-title" ng-if="passenger !== null">
+                                <span>{{ ::translation.passengerDetails }}</span>
+                            </div>
+                            <div class="form-group" ng-if="passenger !== null">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="list-index" ng-bind-html-unsafe="">{{ $index+1 }}. {{ passenger.age | passengerAge: translation }}</p>
+                                        <div class="btn-group">
+                                            <label class="btn passenger-gender male" ng-model="bookingForm.passenger[$index].passengerGender" uib-btn-radio="'M'">Mr.</label>
+                                            <label class="btn passenger-gender female" ng-model="bookingForm.passenger[$index].passengerGender" uib-btn-radio="'F'">Ms.</label>
+                                            <input id="passenger[$index].passengerGender" type="hidden" ng-model="bookingForm.passenger[$index].passengerGender" name="passengerGender">
+                                            <input id="passenger[$index].age" type="hidden" ng-model="bookingForm.passenger[$index].passengerAge" name="age" value="passenger.age">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <wn-input
+                                            input-controller="InputTypeController"
+                                            wn-input-id="{{ 'firstName' + $index }}"
+                                            wn-input-type="{{ passenger.firstName.type }}"
+                                            wn-input-label="{{ ::translation.firstName }}"
+                                            wn-input-model="bookingForm.passenger[$index].firstName"
+                                            wn-input-maxlength="150"
+                                            wn-input-required="passenger.firstName.required">
+                                        </wn-input>
+                                        <span ng-show="bookingForm.{{ 'firstName' + $index }}.$dirty && bookingForm.{{ 'firstName' + $index }}.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                        <span ng-show="bookingForm.{{ 'firstName' + $index }}.$dirty && bookingForm.{{ 'firstName' + $index }}.$error.maxlength" class="help-block">{{ ::translation.firstname_too_long }}</span>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <wn-input
+                                            input-controller="InputTypeController"
+                                            wn-input-id="{{ 'lastName' + $index }}"
+                                            wn-input-type="{{ passenger.lastName.type }}"
+                                            wn-input-label="{{ ::translation.lastName }}"
+                                            wn-input-model="bookingForm.passenger[$index].lastName"
+                                            wn-input-maxlength="150"
+                                            wn-input-required="passenger.lastName.required">
+                                        </wn-input>
+                                        <span ng-show="bookingForm.{{ 'lastName' + $index }}.$dirty && bookingForm.{{ 'lastName' + $index }}.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                        <span ng-show="bookingForm.{{ 'lastName' + $index }}.$dirty && bookingForm.{{ 'lastName' + $index }}.$error.maxlength" class="help-block">{{ ::translation.lastname_too_long }}</span>
+                                    </div>
+                                    <div class="col-md-6"  ng-if="passenger.patronymic">
+                                        <wn-input
+                                                input-controller="InputTypeController"
+                                                wn-input-id="{{ 'patronymic' + $index }}"
+                                                wn-input-type="{{ passenger.patronymic.type }}"
+                                                wn-input-label="{{ ::translation.patronymic }}"
+                                                wn-input-model="bookingForm.passenger[$index].patronymic"
+                                                wn-input-maxlength="150"
+                                                wn-input-required="passenger.patronymic.required">
+                                        </wn-input>
+                                        <span ng-show="bookingForm.{{ 'patronymic' + $index }}.$dirty && bookingForm.{{ 'patronymic' + $index }}.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                        <span ng-show="bookingForm.{{ 'patronymic' + $index }}.$dirty && bookingForm.{{ 'patronymic' + $index }}.$error.maxlength" class="help-block">{{ ::translation.patronymic_too_long }}</span>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <wn-dateselector wn-input-label="{{ ::translation.dateOfBirth }}" ng-model="bookingForm.passenger[$index].dateOfBirth"></wn-dateselector>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="wn-select-container">
+                                            <label for="country">{{ ::translation.country }}</label>
+                                            <select class="wn-select form-control" id="passenger[$index].country" name="passenger[$index].country" ng-model="bookingForm.passenger[$index].country">
+                                                <option value="">-- Select a Country --</option>
+                                                <option ng-repeat="translatedCountry in translatedCountries" value="{{translatedCountry.iso}}">{{translatedCountry.country}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="passenger.documentType">
+                                    <div class="col-md-6">
+                                        <div class="wn-select-container">
+                                            <label for="documentType">{{ ::translation.documentType }}</label>
+                                            <select class="wn-select form-control" id="passenger[$index].documentType" name="passenger[$index].documentType" ng-model="bookingForm.passenger[$index].documentType">
+                                                <option ng-repeat="documentOption in passenger.documentType.options track by $index" value="{{ documentOption }}">{{ documentOption }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <wn-input
+                                            input-controller="InputTypeController"
+                                            wn-input-id="{{ 'documentNumber' + $index }}"
+                                            wn-input-type="{{ passenger.documentNumber.type }}"
+                                            wn-input-label="{{ ::translation.documentNumber }}"
+                                            wn-input-model="bookingForm.passenger[$index].documentNumber"
+                                            wn-input-required="passenger.documentNumber.required">
+                                        </wn-input>
+                                        <span ng-show="bookingForm.{{ 'documentNumber' + $index }}.$dirty && bookingForm.{{ 'documentNumber' + $index }}.$error.required" class="help-block">{{ ::translation.doc_number_is_required }}</span>
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="passenger.documentType">
+                                    <div class="col-md-6">
+                                        <div class="wn-select-container">
+                                            <label for="countryIssue">{{ ::translation.countryIssue }}</label>
+                                            <select class="wn-select form-control" id="countryIssue" name="passenger[$index].countryIssue" ng-model="bookingForm.passenger[$index].countryIssue">
+                                                <option value="">-- Select a Country --</option>
+                                                <option ng-repeat="translatedCountry in translatedCountries" value="{{translatedCountry.iso}}">{{translatedCountry.country}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <wn-dateselector wn-input-label="{{ ::translation.emissionDate }}" ng-model="bookingForm.passenger[$index].emissionDate"></wn-dateselector>
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="passenger.documentType">
+                                    <div class="col-md-6">
+                                        <wn-dateselector wn-input-label="{{ ::translation.expirationDate }}" ng-model="bookingForm.passenger[$index].expirationDate" wn-expiration="true"></wn-dateselector>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group-title">
+                            <span>{{ ::translation.contactInformation }}</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <wn-input
+                                        input-controller="InputTypeController"
+                                        wn-input-id="email"
+                                        wn-input-type="{{ bookingFormFields.customer.email.type }}"
+                                        wn-input-label="{{ ::translation.email }}"
+                                        wn-input-model="bookingForm.customer.email"
+                                        wn-input-maxlength="160"
+                                        wn-input-required="bookingFormFields.customer.email.required">
+                                    </wn-input>
+                                    <span ng-show="bookingForm.email.$dirty && bookingForm.email.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                    <span ng-show="bookingForm.email.$dirty && bookingForm.email.$error.maxlength" class="help-block">{{ ::translation.email_address_too_long }}</span>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="wn-select-container">
+                                        <select class="wn-select form-control" id="customer.phonePrefix" name="customer.phonePrefix" ng-model="bookingForm.customer.phonePrefix">
+                                            <option ng-repeat="prefixOption in bookingFormFields.customer.phonePrefix.options track by $index" value="{{ prefixOption }}">{{ prefixOption }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <wn-input
+                                        input-controller="InputTypeController"
+                                        wn-input-id="phoneNumber"
+                                        wn-input-type="{{ bookingFormFields.customer.phoneNumber.type }}"
+                                        wn-input-label="{{ ::translation.phoneNumber }}"
+                                        wn-input-model="bookingForm.customer.phoneNumber"
+                                        wn-input-required="bookingFormFields.customer.phoneNumber.required">
+                                    </wn-input>
+                                    <span ng-show="bookingForm.phoneNumber.$dirty && bookingForm.phoneNumber.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group-title">
+                            <span>{{ ::translation.paymentInformation }}</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <wn-input
+                                        input-controller="InputTypeController"
+                                        wn-input-id="cardholderName"
+                                        wn-input-type="{{ bookingFormFields.payment.cardholderName.type }}"
+                                        wn-input-label="{{ ::translation.cardholderName }}"
+                                        wn-input-model="bookingForm.payment.cardholderName"
+                                        wn-input-required="bookingFormFields.payment.cardholderName.required">
+                                    </wn-input>
+                                    <span ng-show="bookingForm.cardholderName.$dirty && bookingForm.cardholderName.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="info-field">
+                                        <label>{{ ::translation.creditCardsAccepted }}</label>
+                                        <img class="credit-card-accepted pull-left" ng-repeat="creditCard in creditCardsAccepted" ng-src="{{ creditCard.url }}" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="wn-select-container">
+                                        <label for="creditCardType">{{ ::translation.creditCardType }}</label>
+                                        <select class="wn-select form-control" id="payment.creditCardType" name="payment.creditCardType" ng-model="bookingForm.payment.creditCardType">
+                                            <option value="">-- Select --</option>
+                                            <option ng-repeat="creditCardType in bookingFormFields.payment.creditCardType.options track by $index" value="{{creditCardType}}">{{creditCardType}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <wn-input
+                                        input-controller="InputTypeController"
+                                        wn-input-id="cardNumber"
+                                        wn-input-type="{{ bookingFormFields.payment.cardNumber.type }}"
+                                        wn-input-label="{{ ::translation.cardNumber }}"
+                                        wn-input-model="number"
+                                        wn-input-required="bookingFormFields.payment.cardNumber.required">
+                                    </wn-input>
+                                    <span ng-show="bookingForm.cardNumber.$dirty && bookingForm.cardNumber.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <wn-input
+                                                input-controller="InputTypeController"
+                                                wn-input-id="expiry"
+                                                wn-input-type="{{ bookingFormFields.payment.expiry.type }}"
+                                                wn-input-label="{{ ::translation.expirationMonth }} / {{ ::translation.expirationYear }} (MM/YY)"
+                                                wn-input-model="expiry"
+                                                wn-input-required="bookingFormFields.payment.expiry.required">
+                                            </wn-input>
+                                            <span ng-show="bookingForm.expiry.$dirty && bookingForm.expiry.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <wn-input
+                                                input-controller="InputTypeController"
+                                                wn-input-id="verificationCode"
+                                                wn-input-type="{{ bookingFormFields.payment.verificationCode.type }}"
+                                                wn-input-label="{{ ::translation.verificationCode }}"
+                                                wn-input-model="cvc"
+                                                wn-input-required="bookingFormFields.payment.verificationCode.required">
+                                            </wn-input>
+                                            <span ng-show="bookingForm.verificationCode.$dirty && bookingForm.verificationCode.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="info-field">
+                                        <label>{{ ::translation.cvvInfoLabel }}</label>
+                                        <span class="info-text">{{ ::translation.cvvInfo }}</span>
+                                        <span class="info-text wn-icon wn-icon-info pull-right"></span>
+                                    </div>
+                                    <input id="payment.stripeToken" name="payment.stripeToken" type="{{ bookingFormFields.payment.stripeToken.type }}" ng-model="bookingForm.payment.stripeToken" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="checkbox"
+                                        ng-model="checkInvoice"
+                                        ng-true-value="true"
+                                        ng-false-value="false"
+                                    />
+                                    <span class="info-text">{{ ::translation.needAnInvoice }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-show="checkInvoice === true">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="font-weight-bold">{{ ::translation.accountHolder }}</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="radio" name="customerTypeCheck" ng-model="customerTypeCheck" value="Private" ng-checked="true"><span class="margin-left-xs margin-right-grid">{{ ::translation.privateIndividual }}</span>
+                                    <input type="radio" name="customerTypeCheck" ng-model="customerTypeCheck" value="Company"><span class="margin-left-xs margin-right-grid">{{ ::translation.company }}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <wn-input
+                                        input-controller="InputTypeController"
+                                        wn-input-id="invoice-details-business-name"
+                                        wn-input-type="{{ bookingFormFields.invoiceDetails.businessName.type }}"
+                                        wn-input-label="{{ ::translation.businessName }}"
+                                        wn-input-model="bookingForm.invoiceDetails.businessName"
+                                        wn-input-required="customerTypeCheck === 'Company'"
+                                        ng-show="customerTypeCheck === 'Company'">
+                                    </wn-input>
+                                    <span ng-show="bookingForm.invoice-details-business-name.$dirty && bookingForm.invoice-details-business-name.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <wn-input
+                                        input-controller="InputTypeController"
+                                        wn-input-id="invoice-details-firstname"
+                                        wn-input-type="{{ bookingFormFields.invoiceDetails.firstName.type }}"
+                                        wn-input-label="{{ ::translation.firstName }}"
+                                        wn-input-model="bookingForm.invoiceDetails.firstName"
+                                        wn-input-required="checkInvoice">
+                                    </wn-input>
+                                    <span ng-show="bookingForm.invoice-details-firstname.$dirty && bookingForm.invoice-details-firstname.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <wn-input
+                                        input-controller="InputTypeController"
+                                        wn-input-id="invoice-details-lastname"
+                                        wn-input-type="{{ bookingFormFields.invoiceDetails.lastName.type }}"
+                                        wn-input-label="{{ ::translation.lastName }}"
+                                        wn-input-model="bookingForm.invoiceDetails.lastName"
+                                        wn-input-required="checkInvoice">
+                                    </wn-input>
+                                    <span ng-show="bookingForm.invoice-details-lastname.$dirty && bookingForm.invoice-details-lastname.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <wn-input
+                                        input-controller="InputTypeController"
+                                        wn-input-id="invoice-details-vat"
+                                        wn-input-type="{{ bookingFormFields.invoiceDetails.vat.type }}"
+                                        wn-input-label="{{ ::translation.taxCodeOrVatNumber }}"
+                                        wn-input-model="bookingForm.invoiceDetails.vat"
+                                        wn-input-required="checkInvoice">
+                                    </wn-input>
+                                    <span ng-show="bookingForm.invoice-details-vat.$dirty && bookingForm.invoice-details-vat.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <wn-input
+                                        input-controller="InputTypeController"
+                                        wn-input-id="invoice-details-email"
+                                        wn-input-type="{{ bookingFormFields.invoiceDetails.email.type }}"
+                                        wn-input-label="{{ ::translation.email }}"
+                                        wn-input-model="bookingForm.invoiceDetails.email"
+                                        wn-input-required="checkInvoice">
+                                    </wn-input>
+                                    <span ng-show="bookingForm.invoice-details-email.$dirty && bookingForm.invoice-details-email.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <wn-input
+                                        input-controller="InputTypeController"
+                                        wn-input-id="invoice-details-address"
+                                        wn-input-type="{{ bookingFormFields.invoiceDetails.address.type }}"
+                                        wn-input-label="{{ ::translation.cardholderAddress }}"
+                                        wn-input-model="bookingForm.invoiceDetails.address"
+                                        wn-input-required="checkInvoice">
+                                    </wn-input>
+                                    <span ng-show="bookingForm.invoice-details-address.$dirty && bookingForm.invoice-details-address.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <wn-input
+                                        input-controller="InputTypeController"
+                                        wn-input-id="invoice-details-city"
+                                        wn-input-type="{{ bookingFormFields.invoiceDetails.city.type }}"
+                                        wn-input-label="{{ ::translation.city }}"
+                                        wn-input-model="bookingForm.invoiceDetails.city"
+                                        wn-input-required="checkInvoice">
+                                    </wn-input>
+                                    <span ng-show="bookingForm.invoice-details-city.$dirty && bookingForm.invoice-details-city.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <wn-input
+                                        input-controller="InputTypeController"
+                                        wn-input-id="invoice-details-zipcode"
+                                        wn-input-type="{{ bookingFormFields.invoiceDetails.zipCode.type }}"
+                                        wn-input-label="{{ ::translation.cardholderPostalCode }}"
+                                        wn-input-model="bookingForm.invoiceDetails.zipCode"
+                                        wn-input-required="checkInvoice">
+                                    </wn-input>
+                                    <span ng-show="bookingForm.invoice-details-zipcode.$dirty && bookingForm.invoice-details-zipcode.$error.required" class="help-block">{{ ::translation.bookingRequiredField }}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="wn-select-container">
+                                        <label for="invoice-details-nation">{{ ::translation.country }}</label>
+                                        <select class="wn-select form-control" id="invoice-details-nation" name="invoice-details-nation" ng-model="bookingForm.invoiceDetails.nation">
+                                            <option value="">-- Select a Country --</option>
+                                            <option ng-repeat="translatedCountry in translatedCountries" value="{{translatedCountry.iso}}">{{translatedCountry.country}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group-title">
+                            <span>{{ ::translation.agreementsAndPolicy }}</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span class="info-text">{{ ::translation.safeEnvironment }}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" required ng-model="bookingForm.checkPayment" />
+                                            {{ ::translation.checkPayment }} <strong>{{ ::translation.privacyTerms }}</strong> {{ ::translation.agreePayment }}  &euro; {{ paymentOrder.totalAmountToPay }}
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" required ng-model="bookingForm.checkPrivacy" />
+                                            {{ ::translation.checkPrivacy }}
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" ng-model="bookingForm.checkAdv" />
+                                            {{ ::translation.checkAdv }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- INFO BOXES -->
+                        <div class="form-group">
+                            <uib-accordion class="info-box visa-requirements" close-others="false">
+                                <uib-accordion-group is-open="status.open">
+                                    <uib-accordion-heading>
+                                        <span class="pull-left">{{ ::translation.visaRequirementsTitle }}</span>
+                                        <span class="pull-right">
+                                            <i class="wn-icon" ng-class="{'wn-icon-chevron-up': status.open, 'wn-icon-chevron-down': !status.open}"></i>
+                                        </span>
+                                    </uib-accordion-heading>
+                                    <div class="visa-text">
+                                        <span>{{ ::translation.visaRequirementsText }}</span>
+                                    </div>
+                                    <div class="visa-response">
+                                        <span>{{ ::translation.visaRequirementsNotRequired }}</span>
+                                    </div>
+                                </uib-accordion-group>
+                            </uib-accordion>
+                            <uib-accordion class="info-box" close-others="false">
+                                <uib-accordion-group is-open="status.open">
+                                    <uib-accordion-heading>
+                                        <span class="pull-left">{{ ::translation.cancellationPolicy }}</span>
+                                        <span class="pull-right">
+                                            <i class="wn-icon" ng-class="{'wn-icon-chevron-up': status.open, 'wn-icon-chevron-down': !status.open}"></i>
+                                        </span>
+                                    </uib-accordion-heading>
+                                    <p><strong>{{::translation.important }}: {{::translation.importantText }}</strong></p>
+                                    <span>{{::translation.cancellationPolicyText }}</span>
+                                </uib-accordion-group>
+                            </uib-accordion>
+                            <uib-accordion class="info-box" close-others="false">
+                                <uib-accordion-group is-open="status.open">
+                                    <uib-accordion-heading>
+                                        <span class="pull-left">{{ ::translation.observations }}</span>
+                                        <span class="pull-right">
+                                            <i class="wn-icon" ng-class="{'wn-icon-chevron-up': status.open, 'wn-icon-chevron-down': !status.open}"></i>
+                                        </span>
+                                    </uib-accordion-heading>
+                                    <span>{{::translation.observationsText1 }}</span>
+                                    <a href="#">{{::translation.clickHere }}</a>
+                                    <span>{{::translation.observationsText2 }}</span>
+                                    <a href="https://get.adobe.com/it/reader">{{::translation.officialWebsite }}</a>
+                                </uib-accordion-group>
+                            </uib-accordion>
+                        </div>
+                        <!-- FAQS -->
+                        <div class="form-group booking-faq">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span>{{::translation.bookingNote }}</span><a href="#"> {{::translation.visasDetails }}</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="booking-faq-title">{{::translation.confirmFaqTitle }}</p>
+                                    <span class="booking-faq-text">{{::translation.confirmFaqText }}</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="booking-faq-title">{{::translation.transportsFaqTitle }}</p>
+                                    <span class="booking-faq-text">{{::translation.transportsFaqText }}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="booking-faq-title">{{::translation.afterbookingFaqTitle }}</p>
+                                    <span class="booking-faq-text">{{::translation.afterbookingFaqText }}</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="booking-faq-title">{{::translation.contactFaqTitle }}</p>
+                                    <div class="booking-faq-contact-text wn-flex-container">
+                                        <wn-icon-label
+                                            [has-icon]="true"
+                                            label="+39.06.5588833">
+                                            <wn-icon [color]="true" glyph="phone"></wn-icon>
+                                        </wn-icon-label>
+                                        <wn-icon-label
+                                            [has-icon]="true"
+                                            label="booking@wayonara.com">
+                                            <wn-icon [color]="true" glyph="mail"></wn-icon>
+                                        </wn-icon-label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+        <div class="col-md-3">
+            <section class="booking-itinerary-resume">
+                <div class="panel panel-default">
+                    <div class="section-heading">
+                        <div class="row no-padding">
+                            <div class="col-md-12 section-title">
+                                <span>{{ ::translation.itineraryResume }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-repeat="bookingTravel in paymentOrder.bookingTravel" ng-init="travelIndex = $index">
+                        <div class="itinerary-resume-segment">
+                            <div class="row no-padding">
+                                <div class="col-md-12 no-padding">
+                                    <uib-accordion class="info-box" close-others="false">
+                                        <uib-accordion-group is-open="status.open">
+                                            <uib-accordion-heading>
+                                                <span class="pull-left">
+                                                    {{bookingTravel.searchParams.origin.name}}
+                                                    <i class="wn-icon wn-icon-arrow-right vertical-align-middle"></i>
+                                                    {{bookingTravel.searchParams.destination.name}}
+                                                </span>
+                                                <span class="pull-right">
+                                                    <i class="wn-icon" ng-class="{'wn-icon-chevron-up': status.open, 'wn-icon-chevron-down': !status.open}"></i>
+                                                </span>
+                                            </uib-accordion-heading>
+                                            <div ng-repeat="bookingGroupChunk in bookingTravel.bookingGroupChunks" ng-init="bookingGroupChunkIndex = $index">
+                                                <div class="info-vector">
+                                                    <i class="info-text pull-left wn-icon wn-icon-{{ bookingGroupChunk.vectorType | vectorClassPrinter }} {{ bookingGroupChunk.vectorType | vectorClassPrinter }}-detail-color vertical-align-middle"></i>
+                                                    <span class="info-text pull-left">
+                                                        {{ bookingGroupChunk.vectorType | vectorClassPrinter | lowercase }}
+                                                    </span>
+                                                    <span class="info-text info-amount pull-right">&euro; {{ bookingGroupChunk.total_amount }}</span>
+                                                </div>
+                                                <div ng-repeat="displayChunk in bookingGroupChunk.displayChunks" class="display-chunks">
+                                                    <div class="display-chunk-info">
+                                                        <span class="info-title">FROM</span><br />
+                                                        <span class="info-text">{{ displayChunk.origin.name }}</span>
+                                                    </div>
+                                                    <div class="display-chunk-info">
+                                                        <span class="info-title">TO</span><br />
+                                                        <span class="info-text">{{ displayChunk.destination.name }}</span>
+                                                    </div>
+                                                    <div class="display-chunk-info">
+                                                        <span class="info-title">DATE</span><br />
+                                                        <span class="info-text">{{ displayChunk.departureDate | date:'dd MMM yyyy' }}</span>
+                                                    </div>
+                                                    <div class="display-chunk-info">
+                                                        <span class="info-title">DEPARTURE</span><br />
+                                                        <span class="info-text">{{ displayChunk.departureDate | tripSegmentTime:'HH:mm' }}</span>
+                                                    </div>
+                                                    <div class="display-chunk-info">
+                                                        <span class="info-title">ARRIVAL</span><br />
+                                                        <span class="info-text">{{ displayChunk.arrivalDate | tripSegmentTime:'HH:mm' }}</span>
+                                                        <span class="info-text shiftDays">{{ displayChunk.departureDate | shiftDays:displayChunk.arrivalDate }}</span>
+                                                    </div>
+                                                    <div class="display-chunk-info">
+                                                        <span class="info-title">AGENCY</span><br />
+                                                        <span class="info-text">{{ displayChunk.agency }}</span>
+                                                    </div>
+                                                </div>
+                                                <div ng-repeat="bookingChunk in bookingGroupChunk.bookingChunks">
+                                                    <div class="row info-price">
+                                                        <div class="col-md-12">
+                                                            <span class="info-text">{{ ::translation.passengersAndLuggageOptions }}:</span>
+                                                            <div ng-repeat="travelersAncillaryService in bookingChunk.travelersAncillaryServices" ng-init="travelersAncillaryServiceIndex = $index">
+                                                                <div class="row info-price" ng-repeat="ancillaryService in travelersAncillaryService.ancillaryServices">
+                                                                    <span class="info-text pull-left">{{ travelersAncillaryServiceIndex + 1 }}. {{ travelersAncillaryService.traveler.age | passengerAge: translation }}</span>
+                                                                    <span class="pull-right">{{ ancillaryService.description }} &euro; {{ ancillaryService.amount }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </uib-accordion-group>
+                                    </uib-accordion>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-heading">
+                        <div class="row no-padding">
+                            <div class="col-md-12 section-title">
+                                <span>{{ ::translation.totalPriceInfo }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row info-price" ng-repeat="bookingTravel in paymentOrder.bookingTravel">
+                        <div class="col-md-12">
+                            <span class="info-text pull-left">
+                                {{bookingTravel.searchParams.origin.name}}
+                                <i class="wn-icon wn-icon-arrow-right vertical-align-middle"></i>
+                                {{bookingTravel.searchParams.destination.name}}
+                            </span>
+                            <span class="pull-right">&euro; {{ bookingTravel.totalAmount }}</span>
+                        </div>
+                    </div>
+                    <div class="row info-price">
+                        <div class="col-md-12">
+                            <span class="info-text pull-left">{{ ::translation.serviceCharge }}</span>
+                            <span class="pull-right">&euro; {{ paymentOrder.totalAmountCommission }}</span>
+                        </div>
+                    </div>
+                    <div class="total-price-info">
+                        <span>{{ ::translation.total }}</span>
+                        <span class="pull-right">&euro; {{ paymentOrder.totalAmountToPay }}</span>
+                        <button class="ui-action-button expanded primary" form="bookingForm" type="submit" ng-disabled="bookingForm.$invalid || paymentStarted">{{ ::translation.PAY }} &euro; {{ paymentOrder.totalAmountToPay }}</button>
+                        <div class="row text-center" ng-show="stripeErrorMessage">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="alert alert-danger help-block">{{ stripeErrorMessage }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="total-price-notes">
+                    <p>{{ ::translation.noAdditionalCosts }}</p>
+                    <p>{{ ::translation.safeEnvironment }}</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

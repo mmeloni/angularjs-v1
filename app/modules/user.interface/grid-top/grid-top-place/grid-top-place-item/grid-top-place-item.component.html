@@ -1,0 +1,23 @@
+<article data-name="place" class="hotel-grid-item panel panel-default panel-card cursor-pointer" [wnBackgroundImage]="placeBackgroundOptions" (click)="goToPlace(componentData.id)">
+   <div class="panel-body">
+
+       <div class="hover">
+           <wn-button label="{{translations.plan}}" status="btn-default btn-sm" iconClasses="wn-icon wn-icon-plan-empty wn-icon-plan-empty-color" [action]="plan"></wn-button>
+       </div>
+
+       <div class="content">
+            <h1>{{componentData.title}}</h1>
+            <h2>{{componentData.subtitle}}</h2>
+       </div>
+
+        <div class="stats">
+           <wn-icon-label *ngIf="componentData.likeNumber > 0" [label]="componentData.likeNumber" iconClasses="wn-icon wn-icon-like wn-icon-like-color"></wn-icon-label>
+           <wn-icon-label *ngIf="componentData.planCount > 0" [label]="componentData.planCount" iconClasses="wn-icon wn-icon-plan-empty"></wn-icon-label>
+        </div>
+
+        <div class="type">
+            <wn-category-icon [type]="componentData.bit"></wn-category-icon>
+        </div>
+   </div>
+
+</article>

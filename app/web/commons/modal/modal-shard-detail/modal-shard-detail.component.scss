@@ -1,0 +1,27 @@
+@import '../../../../../assets/scss/overrides/bootstrap/variables';
+@import '../../../../../assets/scss/overrides/bootstrap/mixins/avatar-grid';
+
+$col-avatar-width: $avatar-size-sm + $grid-gutter-width;
+
+.col-header-avatar {
+    @include avatar-grid-avatar($col-avatar-width);
+}
+
+.col-md-12.col-header-main {
+    $col-main-width: $modal-md - 2 - $col-avatar-width - $modal-inner-padding; // 2px transparent border for modal-content;
+    @include avatar-grid-main($col-main-width);
+}
+
+.modal-footer {
+    background-color: $gray-lighter;
+    padding: 0 $modal-inner-padding $modal-inner-padding $modal-inner-padding;
+    text-align: left;
+}
+
+.shard-source {
+    line-height: ($padding-small-vertical * 2) + ($font-size-small * $line-height-small) // height of a .btn-sm
+}
+
+a.text-board:hover {
+    text-decoration: none;
+}

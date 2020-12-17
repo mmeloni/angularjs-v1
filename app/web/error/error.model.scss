@@ -1,0 +1,104 @@
+@import 'error.palette';
+
+@mixin blur-filter($blur){
+  -webkit-filter: blur($blur);
+  -moz-filter: blur($blur);
+  -o-filter: blur($blur);
+  -ms-filter: blur($blur);
+  filter: blur($blur);
+}
+
+//--Main Container
+.wn-error{
+  width: 100%;
+  height: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background-image: $wnErrorBgImg;
+  color: $wnErrorColor;
+
+  //--Background Box
+  .wn-error-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+
+    //-- Stars positioning
+    > .stars{
+      > .star{
+        position: absolute;
+      }
+    }
+
+    //-- Planets positioning
+    .planets{
+      > .planet{
+        position: absolute;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+
+        //--Pluto
+        &.pluto{
+          width: 145px;
+          height: 145px;
+          top: 80px;
+          left: 400px;
+        }
+
+        //--Erebus
+        &.erebus{
+          width: 290px;
+          height: 290px;
+          right: 10px;
+          bottom: 70px;
+
+          @include blur-filter(5px)
+        }
+
+        &.mars{
+          width: 512px;
+          height: 512px;
+          left: -248px;
+          bottom: 50px;
+
+          @include blur-filter(30px)
+        }
+      }
+    }
+  }
+
+  //--Content Box
+  .wn-error-content {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    height: 100vh;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0 auto 12px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 400;
+      margin: 0 auto 48px;
+    }
+
+    a {
+      color: $wnErrorLinkColor;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+}
+

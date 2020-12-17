@@ -1,0 +1,16 @@
+<div [ngSwitch]="typeView" class="cover-container">
+
+    <div *ngSwitchCase="'single'" class="single">
+        <div class="photo" [ngStyle]="{ backgroundImage: photos[0] }"></div>
+    </div>
+
+    <div *ngSwitchCase="'multiple'" class="multiple">
+        <div class="photo photo-first photo-half" [ngStyle]="{ backgroundImage: photos[0] }"></div>
+        <div class="photo photo-second photo-half photo-vertical-half" [ngStyle]="{ backgroundImage: photos[1] }"></div>
+        <div class="photo photo-third photo-half photo-vertical-half">
+            <div class="photo photo-first photo-half" [ngStyle]="{ backgroundImage: photos[2] }"></div>
+            <div class="photo photo-second photo-half" [ngStyle]="{ backgroundImage: photos[3] }"></div>
+        </div>
+    </div>
+
+</div>

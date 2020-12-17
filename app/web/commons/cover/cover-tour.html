@@ -1,0 +1,47 @@
+<section class="wn-cover wn-cover-tour">
+    <div class="wn-cover-background">
+        <div class="floating-text">
+            <div class="upload-tour-cover">
+                <wn-icon
+                    glyph="loader"
+                    icon-size="xl"
+                    animation="spin"
+                    ng-show="loading === true"
+                ></wn-icon>
+
+                <wn-cover-upload
+                    [apply-filters]="applyFilters"
+                    (new-cover)="uploadTourCover($event)"
+                    [label]="translation.uploadTourCover"
+                    ng-show="loading === false"
+                ></wn-cover-upload>
+            </div>
+
+            <h2 class="tour-head-text-element title" editable-text="tour.title" on-change="editTourTitle(value)"></h2>
+            <span class="tour-head-text-element subtitle" editable-text="tour.description" on-change="editTourDescription(value)"></span>
+            <div class="tour-owner-data tour-head-text-element">
+                <div class="tour-owner-data-image">
+                    <wn-image class="tour-owner-data-image-img" img-format="'_avatar_'" user=user err-src="../assets/img/user_empty.png"></wn-image>
+                </div>
+                <div class="tour-owner-data-name">by {{user.username | uppercase}}</div>
+            </div>
+        </div>
+        <div class="upper">
+            <wn-image
+                img-format="'_cover_tour_'"
+                shard=tour
+                err-src="../assets/img/shard-empty.png"
+                polling="isUploadedTourCover"
+            ></wn-image>
+        </div>
+        <div class="lower">
+            <wn-image
+                img-format="'_cover_tour_'"
+                shard=tour
+                err-src="../assets/img/shard-empty.png"
+                polling="isUploadedTourCover"
+                is-polling-image-src-callback="setLoading(event)"
+            ></wn-image>
+        </div>
+    </div>
+</section>

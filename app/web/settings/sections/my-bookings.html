@@ -1,0 +1,77 @@
+<!--
+<div id="myBookingFilterBar" class="row no-padding">
+    <div class="col-md-4 border-right text-center tour-results-navbar-ele no-padding">
+        <div>Search</div>
+    </div>
+    <div class="col-md-2 tour-results-navbar-ele border-right text-center no-padding">
+        <div class="wn-datepicker">
+            <div class="row no-padding">
+                <div class="col-md-2 no-padding">
+                    <span class="wn-icon wn-icon-calendar wn-datepicker-gly result-row-secondary" aria-hidden="true"></span>
+                </div>
+                <div class="col-md-10 no-padding">
+                    <span class="wn-datepicker-gly ng-binding" ng-class="callInError ? 'red-date': ''">30-06-2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 tour-results-navbar-ele border-right text-center no-padding">
+        <div class="wn-datepicker">
+            <div class="row no-padding">
+                <div class="col-md-2 no-padding">
+                    <span class="wn-icon wn-icon-calendar wn-datepicker-gly result-row-secondary" aria-hidden="true"></span>
+                </div>
+                <div class="col-md-10 no-padding">
+                    <span class="wn-datepicker-gly ng-binding" ng-class="callInError ? 'red-date': ''">30-06-2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 tour-results-navbar-ele border-right text-center no-padding">
+    </div>
+</div>
+-->
+
+<div class="row myBookingList margin-bottom-sm padding-vertical-sm" ng-repeat="myBooking in myBookings track by $index">
+    <div class="col-md-2 price-and-flags text-center">
+        <div class="price margin-bottom-sm">
+            &#8364; {{ myBooking.totalAmountPaied }}
+        </div>
+        <div class="tour-cls-cnt text-center margin-bottom-sm">
+            <div class="tour-cl-cnt" ng-repeat="carrier in myBooking.carriers track by $index" data-ng-style="{'z-index':  ((myBooking.carriers.length - $index)*2 - 1) }" data-is-last="{{ $last }}">
+                <img class="ui-rounded" ng-src="https://s3-eu-west-1.amazonaws.com/wayonara-assets/cl/32/{{carrier.code}}.png" alt="{{carrier.agency}}" title="{{carrier.agency}}">
+            </div>
+        </div>
+        <button class="ui-action-button expanded wn-btn-neutral margin-bottom-sm" type="button" ng-click="viewBookingDetails(myBooking)">View</button>
+    </div>
+    <div class="col-md-7 travel-data">
+        <div class="h3 margin-top-none" ng-click="goToTour(myBooking.tourId)">
+            {{ myBooking.tourTitle }} <span class="payment-order-number">[#{{ myBooking.id }}]</span>
+        </div>
+        <div class="travel-data-transports">
+            <div class="flights" ng-repeat="tourVector in myBooking.tourVectors track by $index" >
+                <span class="wn-icon wn-icon-{{ tourVector.name }} {{ tourVector.name }}-detail-color vertical-align-middle"></span>
+                <span class="text-capitalize">{{ tourVector.number }} {{ tourVector.name }}</span>
+            </div>
+            <div class="passengers">
+                <span class="wn-icon wn-icon-users vertical-align-middle"></span>
+                <span class="text-capitalize">{{ myBooking.infoPassengers }} {{ ::translation.passengers }}</span>
+            </div>
+        </div>
+        <div class="travel-data-date">
+            <div class="inside-container">
+                <span class="wn-icon wn-icon-calendar"></span>
+                <span>{{ ::translation.from }} {{ myBooking.dateStart | date:'dd MMMM yyyy' }} {{ ::translation.to }} {{ myBooking.dateEnd | date:'dd MMMM yyyy' }}</span>
+            </div>
+        </div>
+        <div class="travel-data-places">
+            <div class="inside-container">
+                <span class="wn-icon wn-icon-place wn-icon-place-color"></span>
+                <span ng-repeat="city in myBooking.stagesList track by $index">{{ city }}<span ng-show="!$last"> - </span></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 text-right" ng-click="goToTour(myBooking.tourId)">
+        <wn-mini-cover css-classes="img-responsive" format="{{ coverFormat }}" item-id="{{ myBooking.tourId }}"></wn-mini-cover>
+    </div>
+</div>

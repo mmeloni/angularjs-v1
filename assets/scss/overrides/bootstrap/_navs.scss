@@ -1,0 +1,31 @@
+//
+// Navs
+// --------------------------------------------------
+
+
+// Base class
+// --------------------------------------------------
+
+.nav {
+    > li {
+        > a {
+            &:active,
+            &:hover,
+            &:focus {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+// Pills
+// -------------------------
+.nav-pills {
+    > li {
+        // Links rendered as pills
+        > a {
+            color: $text-color;
+            font-weight: $btn-font-weight;
+        }
+    }
+}

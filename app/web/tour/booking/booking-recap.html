@@ -1,0 +1,309 @@
+<div id="tourMainCnt">
+    <div class="row booking-recap">
+        <div class="col-md-9">
+            <div ng-repeat="bookingTravel in vmTRC.paymentOrder.bookingTravel" ng-init="bookingTravelIndex = $index">
+                <div class="row tour-booking-recap-navbar tour-ele-decoration">
+                    <div class="col-md-4 border-right">
+                        <div class="row">
+                            <div class="col-md-12 wn-flex-container v-align-middle">
+                                <span class="tour-booking-recap-navbar-content">{{ bookingTravel.searchParams.origin.name }}</span>
+                                <span class="tour-booking-recap-navbar-content wn-icon wn-icon-arrow-right result-row-secondary" aria-hidden="true"></span>
+                                <span class="tour-booking-recap-navbar-content">{{ bookingTravel.searchParams.destination.name }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 border-right">
+                        <div class="wn-datepicker">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="wn-icon wn-icon-calendar wn-datepicker-gly result-row-secondary" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-md-10">
+                                    <span class="wn-datepicker-gly recap-row-content">{{ bookingTravel.nextopSearchResultTrip.outboundSegment.startTime | date:'dd/MM/yyyy' }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 border-right" ng-if="bookingTravel.searchParams.travelMode === 'roundtrip'">
+                        <div class="wn-datepicker">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="wn-icon wn-icon-calendar wn-datepicker-gly result-row-secondary" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-md-10">
+                                    <span class="wn-datepicker-gly recap-row-content">{{ bookingTravel.nextopSearchResultTrip.returnSegment.startTime | date:'dd/MM/yyyy' }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="tour-booking-recap-navbar-title-travelers">{{ vmTRC.translation.Travelers }}</span>
+                                <span class="tour-booking-recap-navbar-content-travelers">{{ bookingTravel.searchParams.passengers.passenger.length }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="bookingTravel.totalAmount - bookingTravel.totalAmountCached > 0">
+                    <div class="info-field price-change bad">
+                        <span class="info-text">{{ vmTRC.translation.priceChangeFrom }}</span>
+                        <span class="info-text"><strong> &euro;{{ bookingTravel.totalAmountCached }}</strong> </span>
+                        <span class="info-text">{{ vmTRC.translation.to }}</span>
+                        <span class="info-text"><strong> &euro;{{ bookingTravel.totalAmount }}</strong>. </span>
+                        <span class="info-text">{{ vmTRC.translation.priceChangeText }}</span>
+                        <span class="info-text wn-icon wn-icon-info pull-right"></span>
+                    </div>
+                </div>
+                <div class="row" ng-if="bookingTravel.totalAmount - bookingTravel.totalAmountCached < 0">
+                    <div class = "col-md-12 no-padding">
+                        <div class="info-field price-change good">
+                            <span class="info-text">{{ vmTRC.translation.priceChangeFrom }}</span>
+                            <span class="info-text">{{ bookingTravel.totalAmountCached }}</span>
+                            <span class="info-text">{{ vmTRC.translation.to }}</span>
+                            <span class="info-text">{{ bookingTravel.totalAmount }}</span>
+                            <span class="info-text">{{ vmTRC.translation.priceChangeText }}</span>
+                            <span class="info-text wn-icon wn-icon-info pull-right"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class = "row not-salable-info" ng-if="!(bookingTravel.nextopSearchResultTrip.bm | checkSaleablesVectorsInTrip)">
+                    <span class="info-text wn-icon wn-icon-info pull-right"></span>
+                    <p>Hello Traveler, this is just a reminder to say that the transport you choose isn't sold by <strong>Wayonara</strong>, that's why you can't book it in this page.</p>
+
+                    <p>The route choose by you from <strong>{{ bookingTravel.searchParams.origin.name }}</strong>
+                        to <strong>{{ bookingTravel.searchParams.destination.name }}</strong>
+                        it will be viewable in the booking confirmation page and you will find details and the chance to buy it.</p>
+                    <p>Hoping not to have you created problems, we wish you a good journey.</p>
+                </div>
+
+                <div class="row tour-booking-recap-segment" ng-if="(bookingTravel.nextopSearchResultTrip.bm | checkSaleablesVectorsInTrip)">
+                    <div class="col-md-12">
+                        <div class="row tour-booking-recap-segment-fareoffer">
+                            <div ng-repeat="outboundVector in bookingTravel.nextopSearchResultTrip.outboundSegment.vectors">
+                                <ng-include ng-init="vector = outboundVector; vectors = bookingTravel.nextopSearchResultTrip.outboundSegment.vectors; segment = 'outboundSegment';" src="'web/tour/booking/booking-itinerary-fare-offers.html'"></ng-include>
+                            </div>
+                        </div>
+                        <div class="row tour-booking-recap-segment-fareoffer" ng-if="bookingTravel.nextopSearchResultTrip.returnSegment">
+                            <div ng-repeat="returnVector in bookingTravel.nextopSearchResultTrip.returnSegment.vectors">
+                                <ng-include ng-init="vector = returnVector; vectors = bookingTravel.nextopSearchResultTrip.returnSegment.vectors; segment = 'returnSegment';" src="'web/tour/booking/booking-itinerary-fare-offers.html'"></ng-include>
+                            </div>
+                        </div>
+                        <div class="row tour-booking-recap-segment-left" ng-repeat="bookingGroupChunk in bookingTravel.bookingGroupChunks" ng-init="bookingGroupChunkIndex = $index">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="row" ng-repeat="displayChunk in bookingGroupChunk.displayChunks">
+                                    <div class="col-md-12">
+                                        <div class="row tour-booking-recap-segment-title {{ displayChunk.vectorType | vectorClassPrinter | lowercase }}">
+                                            <div class="tour-booking-recap-segment-content pull-left">
+                                                <span>{{ displayChunk.vectorType | vectorClassPrinter | lowercase }} Depart: {{displayChunk.departureDate | date:'dd MMM yyyy' }}</span>
+                                            </div>
+                                            <div class="tour-booking-recap-segment-content pull-right">
+                                                <span ng-if="displayChunk.origin.iata">{{ displayChunk.origin.iata }}</span>
+                                                <span ng-if="!displayChunk.origin.iata">{{ displayChunk.origin.name }}</span>
+                                                <span class="wn-icon wn-icon-arrow-right vertical-align-middle" aria-hidden="true"></span>
+                                                <span ng-if="displayChunk.destination.iata">{{ displayChunk.destination.iata }}</span>
+                                                <span ng-if="!displayChunk.destination.iata">{{ displayChunk.destination.name }}</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row tour-booking-recap-segment-row">
+                                            <div class="col-md-6">
+                                                <p class="recap-row-title">{{ vmTRC.translation.from | uppercase }}</p>
+                                                <p class="recap-row-content">{{displayChunk.origin.name}}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="recap-row-title">{{ vmTRC.translation.to | uppercase }}</p>
+                                                <p class="recap-row-content">{{displayChunk.destination.name}}</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row tour-booking-recap-segment-row">
+                                            <div class="col-md-12">
+                                                <p class="recap-row-title">{{ vmTRC.translation.date | uppercase }}</p>
+                                                <p class="recap-row-content"> {{displayChunk.departureDate | date:'dd/MM/yyyy' }} </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row tour-booking-recap-segment-row">
+                                            <div class="col-md-4">
+                                                <p class="recap-row-title">{{ vmTRC.translation.departure | uppercase }}</p>
+                                                <p class="recap-row-content">{{displayChunk.departureDate | tripSegmentTime:'HH:mm' }}</p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="recap-row-title">{{ vmTRC.translation.arrival | uppercase }}</p>
+                                                <p class="recap-row-content">{{ displayChunk.arrivalDate | tripSegmentTime:'HH:mm' }} <span class="shiftDays">{{ displayChunk.departureDate | shiftDays:displayChunk.arrivalDate }}</span></p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="recap-row-title">{{ vmTRC.translation.duration | uppercase }}</p>
+                                                <p class="recap-row-content">{{ vmTRC.Math.floor(displayChunk.duration / 60)}} h {{displayChunk.duration % 60}} m</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row tour-booking-recap-segment-row">
+                                            <div class="col-md-8">
+                                                <p class="recap-row-title">{{ vmTRC.translation.agency | uppercase }}</p>
+                                                <p class="recap-row-content">{{displayChunk.agency}}</p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p class="recap-row-title">{{ displayChunk.vectorType | vectorClassPrinter | uppercase }} NUMBER</p>
+                                                <p class="recap-row-content">{{displayChunk.vectorNumber}}</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row tour-booking-recap-segment-row">
+                                            <div class="col-md-5">
+                                                <div class="info-field">
+                                                    <button class="ui-action-button expanded wn-btn-neutral commercial-offer-info" ng-click="vmTRC.openRulesAndTariffModal(bookingGroupChunk)">
+                                                        <span class="info-text">{{ vmTRC.translation.commercialOffer }}: {{ displayChunk.bookingClassLabel }}</span>
+                                                        <span class="info-text wn-icon wn-icon-info pull-right"></span>
+                                                    </button>
+                                                    <span class="info-text">{{ vmTRC.translation.termsAndConditionsBy }} {{displayChunk.agency}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div ng-repeat="bookingChunk in bookingGroupChunk.bookingChunks" ng-init="bookingChunkIndex = $index">
+                                    <div ng-if="bookingChunk.ancillaryServiceAvailable.length >0">
+                                        <div class="row tour-booking-recap-segment-row">
+                                            <div class="col-md-6">
+                                                <p class="recap-row-title">{{ vmTRC.translation.passengers | uppercase }}</p>
+                                                <p class="recap-row-content" >{{bookingTravel.searchParams.passengers.passenger.length}}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="recap-row-content" >{{ vmTRC.translation.additionalLuggage }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row tour-booking-recap-segment-row" ng-repeat="travelerAs in bookingChunk.travelersAncillaryServices "ng-init="tkk = $index">
+                                        <div class="col-md-6">
+                                            <span class="recap-row-content">{{tkk +1}}. {{ travelerAs.traveler.age | passengerAge: vmTRC.translation}}</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button
+                                                ng-repeat="ancillaryServiceAvailable in bookingChunk.ancillaryServiceAvailable track by $index"
+                                                class="ui-action-button expanded wn-btn-neutral btn-ancillary-vector "
+                                                id ="{{bookingTravelIndex}}_{{bookingChunkIndex}}_{{travelerAs.traveler.keyCode}}_{{$index}}"
+                                                ng-click="vmTRC.addAncillaryServices(ancillaryServiceAvailable, bookingChunk,bookingTravelIndex,bookingChunkIndex,travelerAs.traveler,$index)">
+                                                    <span ng-if="ancillaryServiceAvailable.amount">&euro;{{ ancillaryServiceAvailable.amount }}{{traveler.keyCode}}</span>
+                                                    <span ng-if="ancillaryServiceAvailable.description">{{ ancillaryServiceAvailable.description }}</span>
+                                            </button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-12 trip-details-explode">
+                                <div class="row tour-booking-recap-segment-details">
+                                    <div ng-repeat="outboundVector in bookingTravel.nextopSearchResultTrip.outboundSegment.vectors">
+                                        <ng-include ng-init="outbound = true; vector = outboundVector; vectors = bookingTravel.nextopSearchResultTrip.outboundSegment.vectors; segment = 'outboundSegment';" src="'web/tour/booking/booking-itinerary-details.html'"></ng-include>
+                                    </div>
+                                </div>
+                                <div class="row tour-booking-recap-segment-details" ng-if="bookingTravel.nextopSearchResultTrip.returnSegment">
+                                    <div ng-repeat="returnVector in bookingTravel.nextopSearchResultTrip.returnSegment.vectors">
+                                        <ng-include ng-init="outbound = false; vector = returnVector; vectors = bookingTravel.nextopSearchResultTrip.returnSegment.vectors; segment = 'returnSegment';" src="'web/tour/booking/booking-itinerary-details.html'"></ng-include>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <section class="booking-itinerary-resume">
+                <div class="panel panel-default">
+                    <div class="section-heading">
+                        <div class="row no-padding">
+                            <div class="col-md-12 section-title">
+                                <span>{{ vmTRC.translation.itineraryResume }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-repeat="bookingTravel in vmTRC.paymentOrder.bookingTravel" ng-init="travelIndex = $index">
+                        <div class="itinerary-resume-segment">
+                            <div class="row no-padding">
+                                <div class="col-md-12 no-padding">
+                                    <uib-accordion class="info-box" close-others="false">
+                                        <uib-accordion-group is-open="status.open">
+                                            <uib-accordion-heading>
+                                                <span class="info-text pull-left">
+                                                    {{bookingTravel.searchParams.origin.name}}
+                                                    <i class="wn-icon wn-icon-arrow-right vertical-align-middle"></i>
+                                                    {{bookingTravel.searchParams.destination.name}}
+                                                </span>
+                                                <span class="pull-right">
+                                                    <i class="wn-icon" ng-class="{'wn-icon-chevron-up': status.open, 'wn-icon-chevron-down': !status.open}"></i>
+                                                </span>
+                                            </uib-accordion-heading>
+                                            <div ng-repeat="bookingGroupChunk in bookingTravel.bookingGroupChunks" ng-init="bookingGroupChunkIndex = $index">
+                                                <div class="info-vector">
+                                                    <span class="wn-icon wn-icon-{{ bookingGroupChunk.vectorType | vectorClassPrinter }} {{ bookingGroupChunk.vectorType | vectorClassPrinter }}-detail-color vertical-align-middle"></span>
+                                                    <span class="info-text">{{ bookingGroupChunk.vectorType | vectorClassPrinter | lowercase }}</span>
+                                                    <span class="info-text info-amount pull-right">&euro; {{ bookingGroupChunk.total_amount }}</span>
+                                                </div>
+                                                <div ng-repeat="bookingChunk in bookingGroupChunk.bookingChunks" ng-init="bookingChunkIndex = $index">
+                                                    <div class="row info-price">
+                                                        <div class="col-md-12">
+                                                            <span class="info-text">{{ vmTRC.translation.passengersAndLuggageOptions }}:</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row info-price" ng-repeat="vector in bookingChunk.vectors">
+                                                        <div class="col-md-12">
+                                                            <div class="row info-price" ng-repeat="travelerAs in bookingChunk.travelersAncillaryServices" ng-init="travelersAsIndex = $index">
+                                                                <div class="col-md-6 text-left">
+                                                                    <span class="info-text">{{ travelersAsIndex + 1 }}. {{ travelerAs.traveler.age | passengerAge: vmTRC.translation }}</span>
+                                                                </div>
+                                                                <div class="col-md-6 text-right" ng-init="ancillarySelectedIndex = travelIndex + '_' + bookingChunkIndex + '_' + travelerAs.traveler.keyCode">
+                                                                    <span ng-if="vmTRC.ancillaryServiceList[ancillarySelectedIndex][0] !== undefined">{{ vmTRC.ancillaryServiceList[ancillarySelectedIndex][0].description }} &euro; {{ vmTRC.ancillaryServiceList[ancillarySelectedIndex][0].amount }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </uib-accordion-group>
+                                    </uib-accordion>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-heading">
+                        <div class="row no-padding">
+                            <div class="col-md-12 section-title">
+                                <span>{{ vmTRC.translation.totalPriceInfo }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row info-price" ng-repeat="bookingTravel in vmTRC.paymentOrder.bookingTravel">
+                        <div class="col-md-12">
+                            <span class="pull-left">
+                                {{bookingTravel.searchParams.origin.name}}
+                                <i class="wn-icon wn-icon-arrow-right vertical-align-middle"></i>
+                                {{bookingTravel.searchParams.destination.name}}
+                            </span>
+                            <span class="pull-right">&euro; {{ bookingTravel.totalAmount }}</span>
+                        </div>
+                    </div>
+                    <div class="row info-price">
+                        <div class="col-md-12">
+                            <span class="info-text pull-left">{{ vmTRC.translation.serviceCharge }}</span>
+                            <span class="pull-right">&euro; {{ vmTRC.paymentOrder.totalAmountCommission }}</span>
+                        </div>
+                    </div>
+                    <div class="total-price-info">
+                        <span>{{ vmTRC.translation.total }}</span>
+                        <span class="pull-right">&euro; {{ vmTRC.Math.round( (vmTRC.paymentOrder.totalAmountToPay + vmTRC.totalAncillaryService) * 100 ) / 100 }}</span>
+                        <button class="btn btn-lg btn-primary wn-btn wn-btn-primary" ng-click="vmTRC.buildBookingForm()" ng-disabled="vmTRC.enteringForm || vmTRC.bookAllDisable">{{ vmTRC.translation.BOOK_ALL }}</button>
+                    </div>
+                </div>
+                <div class="total-price-notes">
+                    <p>{{ vmTRC.translation.noAdditionalCosts }}</p>
+                    <p>{{ vmTRC.translation.safeEnvironment }}</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>

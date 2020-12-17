@@ -1,0 +1,13 @@
+<div class="shard-toolbar" *ngIf="!isDraft">
+    <button class="btn btn-default btn-sm btn-like" (click)="likeHandler()"
+            [ngClass]="{liked:liked, anim: hearthBeat}">
+        <wn-icon [glyph]="'like'" [color]="true"></wn-icon>
+    </button>
+    <button class="btn btn-default btn-sm btn-plan" (click)="planHandler()" *ngIf="showPlanButton">
+        <wn-icon [glyph]="'plan-outline'" [color]="true"></wn-icon>
+        <span>{{labels.plan}}</span>
+    </button>
+</div>
+<div class="shard-toolbar shard-is-draft" *ngIf="isDraft">
+    <h4><span></span>Draft</h4>
+</div>

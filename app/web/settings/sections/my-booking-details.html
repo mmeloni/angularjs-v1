@@ -1,0 +1,56 @@
+<div id="myBookingDetails" class="border-gray-light">
+    <div class="tour-cover">
+        <wn-image class="tour-cover-image" img-format="'_cover_tour_'" shard=tour err-src="../assets/img/shard-empty.png" ng-click="goToTour(tour.id)"></wn-image>
+
+        <div class="back-arrow" ng-click="backToMyBookings()">
+            <span class="wn-icon wn-icon-arrow-left"></span>
+        </div>
+
+        <div class="tour-info">
+            <div class="h3 margin-vertical-sm" ng-click="goToTour(tour.id)">
+                {{ tour.title }}
+            </div>
+            <div class="travel-data-transports margin-bottom-sm">
+                <div class="flights margin-right-sm" ng-repeat="tourVector in fullBookingPreview.tourVectors track by $index" >
+                    <span class="wn-icon wn-icon-{{ tourVector.name }} {{ tourVector.name }}-detail-color vertical-align-middle"></span>
+                    <span class="text-capitalize">{{ tourVector.number }} {{ tourVector.name }}</span>
+                </div>
+                <div class="passengers">
+                    <span class="wn-icon wn-icon-users"></span>
+                    <span class="text-capitalize">{{ fullBookingPreview.infoPassengers }} {{ ::translation.passengers }}</span>
+                </div>
+            </div>
+            <div class="travel-data-date margin-bottom-sm">
+                <div class="inside-container">
+                    <span class="wn-icon wn-icon-calendar"></span>
+                    <span >{{ ::translation.from}} {{ fullBookingPreview.dateStart | date:'dd MMMM yyyy' }} {{ ::translation.to }} {{ fullBookingPreview.dateEnd | date:'dd MMMM yyyy' }}</span>
+                </div>
+            </div>
+            <div class="travel-data-places margin-bottom-sm">
+                <div class="inside-container">
+                    <span class="wn-icon wn-icon-place wn-icon-place-color"></span>
+                    <span ng-repeat="city in fullBookingPreview.stagesList track by $index">{{ city }}<span ng-show="!$last"> - </span></span>
+                </div>
+            </div>
+
+            <div class="price-and-carrierslogo margin-bottom-sm">
+                <div class="travel-data-price">
+                    &#8364; {{ fullBookingPreview.totalAmountPaied }}
+                </div>
+                <div class="tour-cl-cnt" ng-repeat="carrier in fullBookingPreview.carriers track by $index" data-ng-style="{'z-index':  ((fullBookingPreview.carriers.length - $index)*2 - 1) }" data-is-last="{{ $last }}">
+                    <img class="ui-rounded" ng-src="https://s3-eu-west-1.amazonaws.com/wayonara-assets/cl/32/{{carrier.code}}.png" alt="{{carrier.agency}}" title="{{carrier.agency}}">
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-order-id">
+            <span>#{{ fullBookingPreview.id }}</span>
+        </div>
+
+    </div>
+
+    <div ng-repeat="bookingTravel in bookingTravels track by $index">
+        <ng-include src="'web/settings/sections/blocks/segment.html'" ng-init="bookingTravel=bookingTravel"></ng-include>
+    </div>
+
+</div>

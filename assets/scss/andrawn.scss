@@ -1,0 +1,335 @@
+@import 'overrides/bootstrap/variables';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+
+@mixin icon-color-active-variant($name, $color) {
+    #{$name}-color,
+    #{$name}.active {
+        color: $color;
+    }
+}
+
+@font-face {
+    font-family: 'andrawn';
+    src:    url('../fonts/andrawn.eot?8adfe');
+    src:    url('../fonts/andrawn.eot?8adfe#iefix') format('embedded-opentype'),
+    url('../fonts/andrawn.ttf?8adfe') format('truetype'),
+    url('../fonts/andrawn.woff?8adfe') format('woff'),
+    url('../fonts/andrawn.svg?8adfe#andrawn') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.wn-icon {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'andrawn' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: $icon-font-size-base;
+    display: inline-block;
+
+    /* Enable Ligatures ================ */
+    letter-spacing: 0;
+    -webkit-font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga=1";
+    -moz-font-feature-settings: "liga";
+    -ms-font-feature-settings: "liga" 1;
+    font-feature-settings: "liga";
+    -webkit-font-variant-ligatures: discretionary-ligatures;
+    font-variant-ligatures: discretionary-ligatures;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.wn-icon-sm {
+    font-size: $icon-font-size-sm !important;
+}
+
+.wn-icon-lg {
+    font-size: $icon-font-size-lg !important;
+}
+
+.wn-icon-square {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+}
+
+.wn-icon-circle {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 100%;
+}
+
+.wn-icon-pin {
+    border-color: transparent;
+    background-color: #ffffff;
+    color: $text-color;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 38px; // 40 - (1px border-width * 2)
+    vertical-align: middle;
+    text-align: center;
+    @include box-shadow($box-shadow-base-size $box-shadow-base-color);
+}
+
+@include icon-color-active-variant('.wn-icon-place', $brand-place);
+@include icon-color-active-variant('.wn-icon-hotel', $brand-hotel);
+@include icon-color-active-variant('.wn-icon-restaurant', $brand-restaurant);
+@include icon-color-active-variant('.wn-icon-attraction', $brand-attraction);
+@include icon-color-active-variant('.wn-icon-flight', $brand-flight);
+@include icon-color-active-variant('.wn-icon-like', #f10056);
+@include icon-color-active-variant('.wn-icon-comment', #2b84f9);
+@include icon-color-active-variant('.wn-icon-user-followed-fill', #2b84f9);
+@include icon-color-active-variant('.wn-icon-board',$brand-board);
+@include icon-color-active-variant('.wn-icon-tour', $brand-tour);
+@include icon-color-active-variant('.wn-icon-save', $brand-success);
+@include icon-color-active-variant('.wn-icon-plan-empty', $brand-primary);
+@include icon-color-active-variant('.wn-icon-logo', $brand-primary);
+
+.wn-icon-user-followed-fill:before {
+    content: "\e94e";
+}
+.wn-icon-user-followed-emtpy:before {
+    content: "\e94f";
+}
+.wn-icon-attraction:before {
+    content: "\e94c";
+}
+.wn-icon-restaurant:before {
+    content: "\e94d";
+}
+.wn-icon-diary-fill:before {
+    content: "\e942";
+}
+.wn-icon-user-followed:before {
+    content: "\e943";
+}
+.wn-icon-chevron-left:before {
+    content: "\e944";
+}
+.wn-icon-chevron-right:before {
+    content: "\e945";
+}
+.wn-icon-cookie:before {
+    content: "\e946";
+}
+.wn-icon-globe:before {
+    content: "\e947";
+}
+.wn-icon-logo:before {
+    content: "\e948";
+}
+.wn-icon-place-followed:before {
+    content: "\e949";
+}
+.wn-icon-place-add:before {
+    content: "\e94a";
+}
+.wn-icon-share:before {
+    content: "\e94b";
+}
+.wn-icon-settings-stroke:before {
+    content: "\e92f";
+}
+.wn-icon-clock:before {
+    content: "\e930";
+}
+.wn-icon-arrow-left:before {
+    content: "\e931";
+}
+.wn-icon-arrow-right:before {
+    content: "\e932";
+}
+.wn-icon-briefcase:before {
+    content: "\e933";
+}
+.wn-icon-calendar:before {
+    content: "\e934";
+}
+.wn-icon-chat:before {
+    content: "\e935";
+}
+.wn-icon-chevron-down:before {
+    content: "\e936";
+}
+.wn-icon-chevron-up:before {
+    content: "\e937";
+}
+.wn-icon-arrow-down-solid:before {
+    content: "\e938";
+}
+.wn-icon-arrow-up-solid:before {
+    content: "\e939";
+}
+.wn-icon-image:before {
+    content: "\e93a";
+}
+.wn-icon-info:before {
+    content: "\e93b";
+}
+.wn-icon-logo2:before {
+    content: "\e93c";
+}
+.wn-icon-luggage:before {
+    content: "\e93d";
+}
+.wn-icon-phone:before {
+    content: "\e93e";
+}
+.wn-icon-camera-place:before {
+    content: "\e93f";
+}
+.wn-icon-ticket:before {
+    content: "\e940";
+}
+.wn-icon-users:before {
+    content: "\e941";
+}
+.wn-icon-diary:before {
+    content: "\e900";
+}
+.wn-icon-user-remove:before {
+    content: "\e901";
+}
+.wn-icon-user-add:before {
+    content: "\e902";
+}
+.wn-icon-plus:before {
+    content: "\e903";
+}
+.wn-icon-arrow-down:before {
+    content: "\e904";
+}
+.wn-icon-board:before {
+    content: "\e905";
+}
+.wn-icon-bus:before {
+    content: "\e906";
+}
+.wn-icon-car:before {
+    content: "\e907";
+}
+.wn-icon-raidshare:before {
+    content: "\e908";
+}
+.wn-icon-collapse:before {
+    content: "\e909";
+}
+.wn-icon-delete:before {
+    content: "\e90a";
+}
+.wn-icon-discard:before {
+    content: "\e90b";
+}
+.wn-icon-discard-empty:before {
+    content: "\e90c";
+}
+.wn-icon-expand:before {
+    content: "\e90d";
+}
+.wn-icon-flight:before {
+    content: "\e90e";
+}
+.wn-icon-hotel:before {
+    content: "\e90f";
+}
+.wn-icon-import:before {
+    content: "\e910";
+}
+.wn-icon-plan-empty:before {
+    content: "\e911";
+}
+.wn-icon-preview-empty:before {
+    content: "\e912";
+}
+.wn-icon-preview:before {
+    content: "\e913";
+}
+.wn-icon-save:before {
+    content: "\e914";
+}
+.wn-icon-ship:before {
+    content: "\e915";
+}
+.wn-icon-taxi:before {
+    content: "\e916";
+}
+.wn-icon-tour:before {
+    content: "\e917";
+}
+.wn-icon-train:before {
+    content: "\e918";
+}
+.wn-icon-user:before {
+    content: "\e919";
+}
+.wn-icon-user-empty:before {
+    content: "\e91a";
+}
+.wn-icon-list:before {
+    content: "\e91b";
+}
+.wn-icon-grid:before {
+    content: "\e91c";
+}
+.wn-icon-walk:before {
+    content: "\e91d";
+}
+.wn-icon-twitter:before {
+    content: "\e91e";
+}
+.wn-icon-facebook:before {
+    content: "\e91f";
+}
+.wn-icon-instagram:before {
+    content: "\e920";
+}
+.wn-icon-camera:before {
+    content: "\e921";
+}
+.wn-icon-comment:before {
+    content: "\e922";
+}
+.wn-icon-home:before {
+    content: "\e923";
+}
+.wn-icon-like:before {
+    content: "\e924";
+}
+.wn-icon-link:before {
+    content: "\e925";
+}
+.wn-icon-notify:before {
+    content: "\e926";
+}
+.wn-icon-place:before {
+    content: "\e927";
+}
+.wn-icon-search:before {
+    content: "\e928";
+}
+.wn-icon-settings:before {
+    content: "\e929";
+}
+.wn-icon-video:before {
+    content: "\e92a";
+}
+.wn-icon-comment-empty:before {
+    content: "\e92b";
+}
+.wn-icon-home-empty:before {
+    content: "\e92c";
+}
+.wn-icon-like-empty:before {
+    content: "\e92d";
+}
+.wn-icon-notify-empty:before {
+    content: "\e92e";
+}

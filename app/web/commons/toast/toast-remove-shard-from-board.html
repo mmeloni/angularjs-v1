@@ -1,0 +1,10 @@
+<md-toast id="toast-remove-shard-from-board" class="toast-plan-board">
+    <wn-image class="image" img-format="'_square_'" shard=shard err-src="../assets/img/shard-empty.png" ></wn-image>
+    <span class="planned">{{message}}</span>
+    <md-button ng-click="deleteShardAndBoard(boardRequest)" class="openButton">
+        {{ translation.remove }}
+    </md-button>
+    <md-button ng-click="cancel()" class="cancelButton">
+        {{ translation.cancel }}
+    </md-button>
+</md-toast>

@@ -1,0 +1,30 @@
+<wn-navbar-social [labels]="translationResolved"></wn-navbar-social>
+<div class="profile-page" *ngIf="user && user.id && user.nid">
+    <div class="profile-header">
+        <!-- Profile Cover -->
+        <wn-user-profile-cover [userNid]="user.nid" [parallax]="true"></wn-user-profile-cover>
+    </div>
+    <!-- Profile toolbar -->
+    <div class="profile-content-wrapper clearfix">
+        <div class="toolbar-container">
+            <wn-profile-toolbar [user]="user"
+                                [translations]="translationResolved"></wn-profile-toolbar>
+        </div>
+        <div class="page-container">
+            <aside class="profile-sidebar">
+                <h1>Passport</h1>
+                <wn-profile-passport [user]="user" [affix]="true"
+                                     [translations]="translationResolved"
+                                     [followed]="user.isFollowed" [following]="user.isFollowing"
+                                     [showFollowButton]="!isCurrentUserProfile"></wn-profile-passport>
+            </aside>
+            <section class="profile-content">
+                <wn-profile-dynamic-content
+                    [tab]="tab"
+                    [user]="user"
+                    [translations]="translationResolved"></wn-profile-dynamic-content>
+            </section>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

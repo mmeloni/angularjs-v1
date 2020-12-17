@@ -1,0 +1,14 @@
+{
+  "name": "front-end-style-guide",
+  "version": "1.0.0",
+  "description": "A style guide for the front-end of the Wayonara web app",
+  "main": "index.html",
+  "scripts": {
+    "start": "browser-sync start --port 30301 --server . --files ."
+  },
+  "author": "William Ghelfi <william@wayonara.com>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "browser-sync": "2.17.6"
+  }
+}

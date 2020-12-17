@@ -1,0 +1,180 @@
+<wn-action-bar-view [items]="actionbar.items" [actions]="actionbar.actions"></wn-action-bar-view>
+
+<div class="profile-editor">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-sm-12 col-md-3 col-xs-12">
+                <section>
+                    <div id="basic-info" class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="edit-cover-controller">
+                                <div class="edit-profile-update-cover-progress" ng-show="loading">
+                                    <wn-icon
+                                        glyph="loader"
+                                        icon-size="xl"
+                                        animation="spin"
+                                        css-classes="circular-progress"
+                                    ></wn-icon>
+                                </div>
+
+                                <div class="cover-change-image">
+                                    <wn-image
+                                        data-cover="small"
+                                        img-format="'_cover_'"
+                                        user=target
+                                        custom-img-width="'100%'"
+                                        custom-img-height="auto"
+                                        err-src="../assets/img/shard-empty.png"
+                                        polling="isUploadedCover"
+                                        is-polling-image-src-callback="setLoading(event)"
+                                    ></wn-image>
+                                </div>
+                                <div class="helper edit-cover-helper">
+                                    <div class="wrapper">
+                                        <wn-cover-upload
+                                            [apply-filters]="applyFilters"
+                                            (new-cover)="uploadCover($event)"
+                                            [label]="translation.changeCover">
+                                        </wn-cover-upload>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="edit-avatar-controller">
+                                <div class="edit-profile-update-avatar-progress" ng-show="loadingAvatar">
+                                    <wn-icon
+                                        glyph="loader"
+                                        icon-size="xl"
+                                        animation="spin"
+                                        css-classes="circular-progress"
+                                    ></wn-icon>
+                                </div>
+
+                                <wn-image
+                                    id="avatar-image-updated"
+                                    class="img-thumbnail"
+                                    img-format="'_avatar_'"
+                                    user=target
+                                    err-src="../assets/img/user_empty.png"
+                                    polling="isUploadedAvatar"
+                                    is-polling-image-src-callback="setloadingAvatar(event)">
+                                </wn-image>
+
+                                <div class="helper edit-avatar-helper" ng-click="openCropup(1000)">
+                                    <div class="wrapper">
+                                        <wn-icon glyph="camera"></wn-icon>
+                                        <p>{{ ::translation.changeAvatar }}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="text-ruler">
+                                <h1 class="ui-font-md">{{target.firstname}} {{target.lastname}}</h1>
+                                <h2 class="ui-font-xs ui-text-light">@{{target.username}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-9 col-sm-12 col-md-9 col-xs-12">
+                <section>
+                    <form id="formEditProfile" name="formEditProfile" class="form-edit-profile" novalidate autocomplete="off" ng-submit="saveEditedProfile(formEditProfile.$valid)">
+                        <div class="panel panel-default edit-section">
+                            <h1 class="ui-font-md ui-text-light">Account</h1>
+                            <h2 class="ui-font-sm ui-text-light">{{ ::translation.change_your_basic_account_info }}</h2>
+                            <div class="editor">
+                                <wn-input input-controller="InputTypeController" wn-input-id="firstname" wn-input-type="text" wn-input-label="{{ ::translation.firstname }}"
+                                    wn-input-model="target.firstname" wn-input-maxlength="150" wn-input-required="true">
+                                </wn-input>
+                                <span ng-show="formEditProfile.firstname.$dirty && formEditProfile.firstname.$error.required" class="help-block">{{ ::translation.firstname_is_required }}</span>
+                                <span ng-show="formEditProfile.firstname.$dirty && formEditProfile.firstname.$error.maxlength" class="help-block">{{ ::translation.firstname_too_long }}</span>
+
+                                <wn-input input-controller="InputTypeController" wn-input-id="lastname" wn-input-type="text" wn-input-label="{{ ::translation.lastname }}"
+                                    wn-input-model="target.lastname" wn-input-maxlength="150">
+                                </wn-input>
+                                <span ng-show="formEditProfile.lastname.$dirty && formEditProfile.lastname.$error.maxlength" class="help-block">{{ ::translation.lastname_too_long }}</span>
+
+                                <wn-input input-controller="InputTypeController" wn-input-id="website" wn-input-type="url" wn-input-label="{{ ::translation.website }}"
+                                    wn-input-model="target.website" wn-input-maxlength="2048"> <!-- http://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers -->
+                                </wn-input>
+                                <span ng-show="formEditProfile.website.$dirty && formEditProfile.website.$error.maxlength" class="help-block">{{ ::translation.website_too_long }}</span>
+                                <span ng-show="formEditProfile.website.$dirty && formEditProfile.website.$error.url" class="help-block">{{ ::translation.website_invalid }}</span>
+
+                                <wn-input input-controller="InputTypeController" wn-input-id="username" wn-input-type="text" wn-input-label="{{ ::translation.username }}"
+                                    wn-input-model="target.username" wn-input-maxlength="15" wn-input-required="true">
+                                </wn-input>
+                                <span ng-show="formEditProfile.username.$dirty && formEditProfile.username.$error.required" class="help-block">{{ ::translation.username_is_required }}</span>
+                                <span ng-show="formEditProfile.username.$dirty && formEditProfile.username.$error.maxlength" class="help-block">{{ translation.username_too_long }}</span>
+
+                                <wn-input input-controller="InputTypeController" wn-input-id="email" wn-input-type="email" wn-input-label="{{ ::translation.email }}"
+                                    wn-input-model="target.email" wn-input-maxlength="160" wn-input-required="true">
+                                </wn-input>
+                                <span ng-show="formEditProfile.email.$dirty && formEditProfile.email.$error.required" class="help-block">{{ ::translation.email_address_is_required }}</span>
+                                <span ng-show="formEditProfile.email.$dirty && formEditProfile.email.$error.maxlength" class="help-block">{{ ::translation.email_address_too_long }}</span>
+
+                                <wn-input
+                                    input-controller="AutocompleteController"
+                                    wn-input-id="city"
+                                    wn-input-type="text"
+                                    wn-input-no-result="noResults"
+                                    wn-input-label="{{ ::translation.cityWithHelpText }}"
+                                    wn-input-model="target.city.name"
+                                    autocomplete-available="true"
+                                    wn-input-required="true">
+                                </wn-input>
+
+                                <span ng-show="formEditProfile.city.$dirty && formEditProfile.city.$error.required" class="help-block">{{ ::translation.city_is_required }}</span>
+                                <span ng-show="noResults" class="help-block">{{ ::translation.city_is_wrong }}</span>
+
+                                <div class="wn-select-container">
+                                    <label for="nationality">{{ ::translation.nationality }}</label>
+                                    <!--
+                                    <select class="wn-select form-control" id="nationality" name="nationality" ng-model="target.nationality">
+                                        <option value="">{{ ::translation.select_your_nationality }}...</option>
+                                        <option value="IT">{{ ::translation.italian }}</option>
+                                    </select>
+                                    -->
+
+                                    <select class="wn-select form-control" id="nationality" name="nationality" ng-model="target.nationality">
+                                        <option value="">-- {{ ::translation.selectCountry }} --</option>
+                                        <option ng-repeat="translatedCountry in translatedCountries" value="{{translatedCountry.iso}}">{{ translatedCountry.country }}</option>
+                                    </select>
+                                </div>
+                                <div class="wn-select-container">
+                                    <label for="gender">Gender</label>
+                                    <select class="wn-select form-control" id="gender" name="gender" ng-model="target.gender">
+                                        <option value="u">{{ ::translation.select_your_gender }}...</option>
+                                        <option value="M">{{ ::translation.male }}</option>
+                                        <option value="F">{{ ::translation.female }}</option>
+                                    </select>
+                                </div>
+
+                                <wn-dateselector ng-model="target.dateOfBirth.date" wn-input-label="{{ ::translation.birthdate }}">
+                                </wn-dateselector>
+                                <!--<wn-input wn-input-type="text" wn-input-id="address" wn-input-label="{{ ::translation.where_do_you_live_now }}?" ng-model="user.address"></wn-input>-->
+                                <wn-input input-controller="InputTypeController" wn-input-id="cellphone" wn-input-type="text" wn-input-label="{{ ::translation.cellphone }}"
+                                    wn-input-model="target.phone">
+                                </wn-input>
+
+                                <wn-input input-controller="InputTypeController" wn-input-id="biography" wn-input-type="textarea" wn-input-label="{{ ::translation.description }}"
+                                    wn-input-model="target.biography" wn-input-maxlength="140" wn-input-required="false">
+                                </wn-input>
+                                <span ng-show="formEditProfile.biography.$dirty && formEditProfile.biography.$error.maxlength" class="help-block">{{ ::translation.bio_too_long }}</span>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    <span>{{ profileStatus }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-action-container">
+                            <button class="ui-action-button expanded primary" type="submit" ng-disabled="formEditProfile.$invalid || loading">{{ ::translation.save }}</button>
+                            <md-progress-circular md-mode="indeterminate" md-diameter="35px" class="wn-spinner" ng-show="loading"></md-progress-circular>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

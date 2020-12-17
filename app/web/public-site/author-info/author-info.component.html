@@ -1,0 +1,12 @@
+<cite class="row" [ngClass]="cssClasses">
+    <div class="col-avatar col-xs-12" *ngIf="author.imageSrc !== undefined">
+        <img [src]="author.imageSrc" width="48" height="48" class="img-circle" />
+    </div>
+    <div [ngClass]="{ 'col-avatar-main': author.imageSrc !== undefined, 'col-xs-12': true }">
+        <h1 class="small margin-vertical-none">
+            <a [href]="author.url" *ngIf="author.url !== undefined">{{ author.title }}</a>
+            <span *ngIf="author.url === undefined">{{ author.title }}</span>
+        </h1>
+        <p *ngIf="author.subtitle">{{ author.subtitle }}</p>
+    </div>
+</cite>

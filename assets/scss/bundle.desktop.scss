@@ -1,0 +1,97 @@
+/*---Subscribe---*/
+@media screen and (max-width: 1249px) {
+    .panel-subscription {
+        margin: 50px auto;
+    }
+}
+
+/*---Stream---*/
+
+/* One column */
+@media screen and (max-width: 1019px) {
+    .navbar-wayonara .navbar-brand,
+    .navbar-wayonara-inverted .navbar-brand {
+        width: auto;
+    }
+
+    .wn-grid {
+        max-width: 1020px;
+    }
+}
+
+/* Three columns */
+@media screen and (min-width: 1020px) and (max-width: 1359px) {
+    .navbar-wayonara > .container,
+    .navbar-wayonara-inverted > .container,
+    .wn-action-bar > .container,
+    .wn-cover > .container,
+    .profile-editor > .container{
+        width: 100%;
+    }
+
+    .wn-grid {
+        max-width: 1020px;
+    }
+
+    .navbar-wayonara .navbar-brand,
+    .navbar-wayonara-inverted .navbar-brand {
+        width: auto;
+    }
+}
+
+/* Four columns */
+@media screen and (min-width: 1360px) and (max-width: 1699px) {
+    .navbar-wayonara > .container,
+    .navbar-wayonara-inverted > .container,
+    .wn-action-bar > .container,
+    .wn-cover > .container-fluid,
+    .profile-editor > .container {
+        /*width: 1426px;*/
+        width: 100%;
+    }
+
+    .wn-grid {
+        max-width: 1360px;
+    }
+}
+/* Five columns */
+@media screen and (min-width: 1700px) and (max-width: 2039px) {
+    .navbar-wayonara > .container,
+    .navbar-wayonara-inverted > .container,
+    .wn-action-bar > .container,
+    .wn-cover > .container,
+    .profile-editor > .container{
+        width: 100%;
+    }
+
+    .wn-grid {
+        max-width: 1700px;
+    }
+}
+
+/* Six columns */
+@media screen and (min-width: 2040px){
+    .navbar-wayonara > .container,
+    .navbar-wayonara-inverted > .container,
+    .wn-action-bar > .container,
+    .wn-cover > .container,
+    .profile-editor > .container{
+        width: 100%;
+    }
+
+    .wn-grid {
+        max-width: 2040px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .tour-toolbar-cnt {
+        width: 240px;
+    }
+
+}
+@media screen and (min-width: 1366px) {
+    .tour-toolbar-cnt {
+        width: 316px;
+    }
+}

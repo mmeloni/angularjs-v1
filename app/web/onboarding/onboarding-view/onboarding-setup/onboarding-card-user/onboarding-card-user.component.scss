@@ -1,0 +1,30 @@
+@import '../../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+@import '../../../../../../assets/scss/overrides/bootstrap/variables';
+
+$cover-height: 96px;
+
+article {
+    min-height: $shard-short-height;
+    margin-bottom: 0;
+    padding-top: $cover-height;
+    transition: all ease 0.3s 0s;
+
+    &:hover {
+        margin-top: -10px;
+        @include box-shadow($box-shadow-base-hover-size $box-shadow-base-hover-color);
+    }
+}
+
+.panel-body {
+    min-height: $shard-short-height - $cover-height;
+    background-color: #ffffff;
+}
+
+.offset-vertical {
+    margin-top: -$avatar-size-lg / 2;
+}
+
+.name {
+    display: inline-block;
+    margin-top: $grid-gutter-width / 4;
+}

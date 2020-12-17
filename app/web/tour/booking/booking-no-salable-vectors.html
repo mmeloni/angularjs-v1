@@ -1,0 +1,103 @@
+<div class="booking-error-modal-container">
+
+    <div class="modal-body">
+
+        <button class="booking-error-modal-close-button" type="button" tooltip-placement="bottom" uib-tooltip="{{ translation.close }}" ng-click="cancel()">
+            <span class="wn-icon wn-icon-delete"></span>
+        </button>
+
+        <div class="text-message">
+            <div class="title">{{title}}</div>
+            <div class="subtitle">{{subtitle}}</div>
+        </div>
+
+        <div class="tip-container">
+            <div class="tip-container-inside">
+                <div class="title">{{ wayonaraTipTitle }}</div>
+                <div class="text">{{ noSalableTipText }}</div>
+            </div>
+        </div>
+        ​
+        <div ng-repeat="notSalableVector in notSalableVectors track by $index" class="not-salable-block-container">
+            <!-- From to e data -->
+            <div class="tour-ele-decoration booking-no-salable-row row">
+                <div class="col-md-4 border-right text-center tour-results-navbar-ele no-padding">
+                    <div class="row no-padding">
+                        <span class="col-md-5 ng-binding">
+                            {{notSalableVector.vector.origin.name}}
+                        </span>
+                        <div class="navbar-arrows col-md-1">
+                            <span class="wn-icon wn-icon-arrow-left result-row-secondary" aria-hidden="true"></span>
+                            <span class="wn-icon wn-icon-arrow-right result-row-secondary" aria-hidden="true"></span>
+                        </div>
+                        <span class="col-md-5 no-padding ng-binding">
+                            {{notSalableVector.vector.destination.name}}
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-2  border-right text-center no-padding">
+                    <div class="wn-datepicker">
+                        <div class="row no-padding">
+                            <div class="col-md-2 no-padding">
+                                <span class="wn-icon wn-icon-calendar wn-datepicker-gly result-row-secondary" aria-hidden="true"></span>
+                            </div>
+                            <div class="col-md-10 no-padding">
+                                <span class="wn-datepicker-gly ng-binding red-date" ng-class="{'red-date': true}">
+                                    {{notSalableVector.vector.departureDate  | date : 'dd/MM/yyyy'}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 text-center tour-results-navbar-ele border-right ng-binding">
+                    <span class="result-row-secondary">{{ notSalableVector.vector.paxBM }}</span>
+                </div>
+                <div class="col-md-5 tour-results-navbar-ele border-right text-center no-padding exception-class-height">
+
+                </div>
+
+            </div>
+            <!-- From to e data -->
+
+            <!-- Dati vettore -->
+            <div class="tour-ele-decoration booking-no-salable-row details no-top-border row">
+                <div class = "row no-margin-left-right">
+                    <div class="col-md-10 text-center tour-results-navbar-ele no-padding">
+                        <div class="row no-margin-left-right">
+                            <div class="column-details text-center tour-results-navbar-ele no-padding">
+                                <div class="price-icon-view">
+                                    <div class="price">	&euro; {{notSalableVector.vector.price}}</div>
+                                    <div><img class="ui-rounded" ng-src="https://s3-eu-west-1.amazonaws.com/wayonara-assets/cl/32/{{(notSalableVector.vector.agency).toLowerCase()}}.png" alt="{{notSalableVector.vector.agency}}"></div>
+                                    <div><button class="ui-action-button expanded wn-btn-neutral ng-binding" type="button" ng-click="redirectToLink(notSalableVector.vector.vendors[0].vendor_url)">View Deal</button></div>
+                                </div>
+                            </div>
+                            <div class="column-details text-center tour-results-navbar-ele no-padding">
+                                <div>{{ notSalableVector.vector.departureDate | tripSegmentTime:'HH:mm' }}</div>
+                            </div>
+                            <div class="column-details text-center tour-results-navbar-ele no-padding">
+                                <span class="wn-icon wn-icon-{{ notSalableVector.vector.bit | vectorClassPrinter }} {{ notSalableVector.vector.bit | vectorClassPrinter }}-detail-color"></span>
+                            </div>
+                            <div class="column-details text-center tour-results-navbar-ele no-padding">
+                                <div>{{ notSalableVector.vector.arrivalDate | tripSegmentTime:'HH:mm' }}</div>
+                            </div>
+                            <div class="column-details text-center tour-results-navbar-ele no-padding">
+                                <div>
+                                    <span class="wn-icon wn-icon-arrow-right" aria-hidden="true"></span><span class="segment-duration">{{ notSalableVector.vector.duration | time:'mm':'hhh mmm':false }}</span>
+                                </div>
+                            </div>
+                            <div class="column-details text-center tour-results-navbar-ele no-padding">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 text-center tour-results-navbar-ele sold-by-column no-padding">
+                        <div>Sold By <span class="raidshare-detail-color">{{notSalableVector.vector.agency}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Dati vettore -->
+
+        </div>
+
+    </div>
+
+</div>

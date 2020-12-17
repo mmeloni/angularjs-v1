@@ -1,0 +1,14 @@
+<article class="panel panel-default panel-card background-size-cover" [wnBackgroundImage]="coverImageOptions">
+    <div class="panel-body padding-top-none">
+        <h1 class="h2 margin-top-none">
+            <div class="display-block text-center offset-vertical">
+                <wn-avatar [userId]="user.id" shape="square" size="lg"></wn-avatar>
+            </div>
+            <span class="name">
+                {{ user.fullName }}<br />
+                <small>@{{ user.username }}</small>
+            </span>
+        </h1>
+        <wn-follow-button [targetId]="user.id" [isTargetFollowed]="user.isFollowed" [translation]="translationFollowButton" (toggledFollow)="updateByIsFollowed($event)"></wn-follow-button>
+    </div>
+</article>

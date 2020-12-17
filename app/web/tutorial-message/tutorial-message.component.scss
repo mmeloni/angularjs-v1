@@ -1,0 +1,14 @@
+@import '../../../assets/scss/overrides/bootstrap/variables';
+
+aside {
+    height: $tutorial-message-box-height;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: $zindex-tutorial-message;
+
+    p {
+        line-height: $tutorial-message-box-height;
+    }
+}

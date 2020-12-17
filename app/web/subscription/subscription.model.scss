@@ -1,0 +1,107 @@
+.panel-subscription .logo{
+    margin-bottom: 25px;
+    font-size: 48px;
+}
+
+.logo-caption{
+    margin-bottom: 50px;
+    font-size: 24px;
+}
+
+.links{
+    margin-bottom: 50px;
+}
+
+.subscribe{
+    & span{
+        color: #90a4ae;
+    }
+    & a{
+        color: #90a4ae;
+        text-decoration: none;
+    }
+    & > .container
+    {
+        margin: 0 auto;
+    }
+}
+
+.panel-subscription {
+    margin: 50px auto;
+    height: 100%;
+    max-width: 400px;
+}
+
+.panel-shards{
+    overflow: hidden;
+}
+
+.sliding-shards{
+    background: rgba(0, 0, 0, 0) url("/assets/img/subscription-shards.jpg") repeat-y right top;
+    height: 2008px;
+    width: 680px;
+    animation: slide 120s linear infinite;
+}
+
+@keyframes slide {
+    from {
+        background-position:0 0;
+    }
+    to {
+        background-position:0 -2008px;
+    }
+}
+
+.container.subscribe {
+    overflow: hidden;
+}
+
+.disclaimer {
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+
+.subscription.ng-leave {
+    animation: fade 0.5s both ease-in;
+}
+
+.form-subscription {
+    padding: 15px;
+
+    .subscription-form-heading {
+        margin-bottom: 10px;
+    }
+    .checkbox {
+        margin-bottom: 10px;
+        font-weight: normal;
+    }
+
+
+    .form-control {
+        font-size: 16px;
+        padding: 10px;
+        position: relative;
+        margin-bottom: 50px;
+
+        /* Box sizing */
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+
+        &:focus {
+            z-index: 2;
+        }
+
+    }
+
+    button {
+        font-size:20px;
+        margin-bottom:50px;
+    }
+
+    .help-block {
+        position: relative;
+        top: -40px;
+    }
+
+}

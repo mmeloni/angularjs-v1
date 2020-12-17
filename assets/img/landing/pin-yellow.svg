@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="46px" height="65px" viewBox="0 0 46 65" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>pin-yellow</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="2" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FED958" offset="0%"></stop>
+            <stop stop-color="#FECC2F" offset="100%"></stop>
+        </linearGradient>
+        <path d="M40,12.5 C27.5725,12.5 17.5,22.175 17.5,34.1075 C17.5,39.33 19.43,44.1175 22.64,47.8525 L36.55,65.665 C37.2725,66.765 38.545,67.5 40,67.5 C41.455,67.5 42.7275,66.765 43.45,65.665 L57.36,47.8525 C60.57,44.1175 62.5,39.33 62.5,34.1075 C62.5,22.175 52.4275,12.5 40,12.5" id="path-3"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="2.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="2" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Landing-Page-Advanced" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing-Page-1.5---Intro" transform="translate(-690.000000, -557.000000)">
+            <g id="pin-yellow" transform="translate(673.000000, 545.000000)">
+                <rect id="Grid" fill-opacity="0" fill="#FFFFFF" x="0" y="0" width="80" height="80"></rect>
+                <ellipse id="Shadow" fill-opacity="0.498980978" fill="#313131" style="mix-blend-mode: overlay;" filter="url(#filter-1)" cx="40" cy="67.2" rx="13.6" ry="4"></ellipse>
+                <g id="Fill-1">
+                    <use fill="url(#linearGradient-2)" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,39 @@
+graph TD
+
+AuthenticationService((AuthenticationService))
+BoardService((BoardService))
+DialogService((DialogService))
+FollowService((FollowService))
+PlaceService((PlaceService))
+ResultsService((ResultsService))
+Shard((Shard))
+ShardFactory((ShardFactory))
+ShardService((ShardService))
+SocketService((SocketService))
+ToastService((ToastService))
+TourBookingService((TourBookingService))
+TourService((TourService))
+Upload((Upload))
+UploadService((UploadService))
+User((User))
+UserService((UserService))
+VectorBitmaskService((VectorBitmaskService))
+WayonaraTutorialHelperService((WayonaraTutorialHelperService))
+WayonaraTutorialService((WayonaraTutorialService))
+
+AuthenticationService --> SocketService
+AuthenticationService --> UserService
+BoardService --> UserService
+FollowService --> PlaceService
+FollowService --> UserService
+ShardService --> Upload
+ShardService --> UploadService
+SocketService --> UserService
+TourBookingService --> ResultsService
+TourService --> Upload
+TourService --> UploadService
+TourService --> WayonaraTutorialService
+UserService --> UploadService
+UserService --> User
+WayonaraTutorialHelperService --> UserService
+WayonaraTutorialService --> WayonaraTutorialHelperService
